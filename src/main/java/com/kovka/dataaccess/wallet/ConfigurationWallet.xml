@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.2//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+
+    <typeAliases>
+
+        <typeAlias type="com.kovka.common.data.wallet.ExchangeRate" alias="ExchangeRate"/>
+        <typeAlias type="com.kovka.common.data.wallet.ExchangeSource" alias="ExchangeSource"/>
+        <typeAlias type="com.kovka.common.data.wallet.Wallet" alias="Wallet"/>
+
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="com.kovka.dataaccess.merchant.extension.CurrencyTypeHandler" javaType="com.kovka.common.data.merchant.lcp.CurrencyType"/>
+    </typeHandlers>
+
+    <mappers>
+        <mapper resource="com/kovka/dataaccess/wallet/mapper/ExchangeRateMap.xml"/>
+        <mapper resource="com/kovka/dataaccess/wallet/mapper/WalletMap.xml"/>
+    </mappers>
+
+</configuration>

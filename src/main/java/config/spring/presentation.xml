@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="ResponseDto" class="com.kovka.web.action.dto.ResponseDto" scope="prototype"/>
+
+
+    <bean id="BaseAction" class="com.kovka.web.action.BaseAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="ExceptionHandlerAction" class="com.kovka.web.action.ExceptionHandlerAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="CompanyFormRequestAction" class="com.kovka.web.action.admin.CompanyFormRequestAction"
+          scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="companyFormRequestManager" ref="CompanyFormRequestManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="CompanyAction" class="com.kovka.web.action.cashier.CompanyAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="companyFormRequestManager" ref="CompanyFormRequestManagerImpl"/>
+        <property name="companyManager" ref="CompanyManagerImpl"/>
+    </bean>
+
+    <bean id="CompanyActivationAction" class="com.kovka.web.action.general.CompanyActivationAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="companyFormRequestManager" ref="CompanyFormRequestManagerImpl"/>
+    </bean>
+
+    <bean id="BranchAction" class="com.kovka.web.action.cashier.BranchAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="branchManager" ref="BranchManagerImpl"/>
+        <property name="roleManager" ref="RoleManagerImpl"/>
+        <property name="companyManager" ref="CompanyManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="CashierAction" class="com.kovka.web.action.cashier.CashierAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="branchManager" ref="BranchManagerImpl"/>
+        <property name="roleManager" ref="RoleManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="ProfileAction" class="com.kovka.web.action.cashier.ProfileAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="ProviderAction" class="com.kovka.web.action.cashbox.ProviderAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="branchManager" ref="BranchManagerImpl"/>
+    </bean>
+
+    <bean id="ProviderBranchAction" class="com.kovka.web.action.cashbox.ProviderBranchAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+        <property name="branchManager" ref="BranchManagerImpl"/>
+        <property name="cashBoxProviderManager" ref="BranchCashBoxProviderManagerImpl"/>
+    </bean>
+
+    <bean id="ProviderTakerAction" class="com.kovka.web.action.cashbox.TakerBranchAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+        <property name="cashBoxTakerManager" ref="BranchCashBoxTakerManagerImpl"/>
+    </bean>
+
+    <bean id="RoleAction" class="com.kovka.web.action.cashier.RoleAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="roleManager" ref="RoleManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="Login" class="com.kovka.web.action.general.Login" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="transactionManager" ref="TransactionManagerImpl"/>
+    </bean>
+
+    <bean id="Logout" class="com.kovka.web.action.general.Logout" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="Registration" class="com.kovka.web.action.general.Registration" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="companyManager" ref="CompanyManagerImpl"/>
+    </bean>
+
+    <bean id="DataUploadAction" class="com.kovka.web.action.general.DataUploadAction"
+          scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="responseDto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="LocaleAction" class="com.kovka.web.action.general.LocaleAction"
+          scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="DataDownloadAction" class="com.kovka.web.action.general.DataDownloadAction"
+          scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="MailAction" class="com.kovka.web.action.general.MailAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="responseDto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="SmsAction" class="com.kovka.web.action.general.SmsAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="responseDto" ref="ResponseDto"/>
+    </bean>
+
+    <!--
+    Cashier
+    -->
+
+    <bean id="HomeAction" class="com.kovka.web.action.cashier.HomeAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+
+
+
+
+</beans>
