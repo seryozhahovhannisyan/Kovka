@@ -11,7 +11,14 @@
         <put-attribute name="header-area" value="/WEB-INF/pages/layout/header-area.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
         <put-attribute name="content" value=""/>
-        <put-attribute name="modal" value="/WEB-INF/pages/general/modal.jsp"/>
+        <put-attribute name="modal" value="/WEB-INF/pages/general/banner.jsp"/>
+    </definition>
+
+    <definition name="web-kovka" template="/WEB-INF/pages/layout/main-general.jsp">
+        <put-attribute name="header-area" value="/WEB-INF/pages/layout/header-area.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="banner" value=""/>
     </definition>
 
 
@@ -45,7 +52,7 @@
         <put-attribute name="content" value="/WEB-INF/pages/error/internal.jsp"/>
     </definition>
 
-    <definition name="start" extends="web-general">
+    <definition name="start" extends="web-kovka">
         <put-attribute name="content" value="/WEB-INF/pages/general/home.jsp"/>
     </definition>
 
@@ -85,7 +92,7 @@
 
     <definition name="cashier-home" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/cashier/home.jsp"/>
-        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>
 
     <!--branch-->
@@ -129,29 +136,29 @@
 
     <definition name="cashier-search-wallet" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/wallet/list.jsp"/>
-        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>
 
     <definition name="transaction-pending" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/wallet/list-transaction.jsp"/>
-        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>
 
     <!--Provider Action-->
 
     <definition name="provider-admin-company" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/provide/admin-company.jsp"/>
-        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>
 
     <definition name="provider-admin-branch" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/provide/admin-branch.jsp"/>
-        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>
 
     <definition name="provider-cashier" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/provide/cashier.jsp"/>
-        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>
 
 

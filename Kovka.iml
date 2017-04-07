@@ -3,6 +3,9 @@
   <component name="FacetManager">
     <facet type="web" name="Web">
       <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/lib" relative="WEB-INF" />
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
@@ -21,6 +24,12 @@
             <file>file://$MODULE_DIR$/src/main/java/config/struts/merchant.xml</file>
             <file>file://$MODULE_DIR$/src/main/java/struts.xml</file>
             <file>file://$MODULE_DIR$/src/main/java/config/struts/transaction-json.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-convention-plugin/2.5.2/struts2-convention-plugin-2.5.2.jar!/struts-plugin.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-core/2.5.2/struts2-core-2.5.2.jar!/struts-default.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-json-plugin/2.5.2/struts2-json-plugin-2.5.2.jar!/struts-plugin.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-spring-plugin/2.5.2/struts2-spring-plugin-2.5.2.jar!/struts-plugin.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-tiles-plugin/2.5.2/struts2-tiles-plugin-2.5.2.jar!/struts-plugin.xml</file>
+            <file>file://$MODULE_DIR$/src/main/java/config/struts/custom-json-default.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -52,7 +61,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.75" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.54" level="application_server_libraries" />
     <orderEntry type="library" name="Maven: org.apache.struts:struts2-core:2.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.struts:struts2-spring-plugin:2.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.struts:struts2-convention-plugin:2.5.2" level="project" />
