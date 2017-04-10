@@ -17,17 +17,7 @@ public class SetupInfo implements Serializable {
 //    public String staticDirProd = "/var/lib/tomcat7/webapps";//".";
     public String staticDirProd = "/opt/tomcat/webapps";//".";
 
-    public String socialFb = "ConnectTo-Communications-176878392348752";
-    public String socialGmail = "u/1/103581122530817965828/posts";
-    public String socialTwitter = "ConnectToCom";
 
-    public String notificationSmsUsername = "aramter";
-    public String notificationSmsPassword = "Art22Arax";
-    public String notificationEmailUsername = "merchant@connectto.com";
-    public String notificationEmailPassword = "XwN$!sf8+P";
-
-    public String recaptchaSecretKey = "6Ldf0hETAAAAAP94esg5vk5ch2K19_0khG6HFw8v";
-    public String recaptchaClientKey = "6Ldf0hETAAAAAKRPDJYZ-rnVHGI8bQyWPeyN7eiM";
 
     public SetupInfo() {
     }
@@ -39,18 +29,6 @@ public class SetupInfo implements Serializable {
             version = properties.getProperty("version");
             staticDir = properties.getProperty("static.dir");
             staticDirProd = properties.getProperty("static.dir.prod");
-
-            socialFb = properties.getProperty("social.link.fb");
-            socialGmail = properties.getProperty("social.link.gmail");
-            socialTwitter = properties.getProperty("social.link.tw");
-
-            notificationSmsUsername = properties.getProperty("notification.sms.bulk.username");
-            notificationSmsPassword = properties.getProperty("notification.sms.bulk.password");
-            notificationEmailUsername = properties.getProperty("notification.email.username");
-            notificationEmailPassword = properties.getProperty("notification.email.password");
-
-            recaptchaSecretKey = properties.getProperty("recaptcha.secret.key");
-            recaptchaClientKey = properties.getProperty("recaptcha.client.key");
 
 
         } catch (Exception e) {

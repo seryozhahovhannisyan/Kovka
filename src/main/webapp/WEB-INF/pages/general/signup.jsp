@@ -1,5 +1,4 @@
 <%@ page import="com.kovka.common.data.merchant.lcp.Privilege" %>
-<%@ page import="com.kovka.web.util.Constants" %>
 <%@ page import="com.kovka.web.util.ScopeKeys" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>

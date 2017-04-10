@@ -1,7 +1,7 @@
 package com.kovka.web.action.general;
 
-import com.kovka.common.data.merchant.FileData;
-import com.kovka.common.data.merchant.lcp.Status;
+import com.kovka.common.data.FileData;
+import com.kovka.common.data.lcp.Status;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
 import com.kovka.web.action.dto.ResponseDto;

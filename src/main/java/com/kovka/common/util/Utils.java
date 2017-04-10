@@ -165,21 +165,7 @@ public class Utils {
         return cal.getTime();
     }
 
-    public static void main(String args[]) {
-        Date date1 = DataConverter.toMerchantDate("2017-06-06 22:22:22");
-        Date date2 = DataConverter.toMerchantDate("2017-06-06 22:22:22");
-        System.out.println(diffSeconds(date1, date2));
 
-        date2 = DataConverter.toMerchantDate("2017-06-06 22:22:25");
-        System.out.println(diffSeconds(date1, date2));
-
-        date2 = DataConverter.toMerchantDate("2017-06-06 22:22:20");
-        System.out.println(diffSeconds(date1, date2));
-
-        date1 = DataConverter.toMerchantDate("2017-01-18 06:40:52");
-        System.out.println(diffSeconds(date1, new Date(System.currentTimeMillis())));
-
-    }
 
     /**
      * Iterates through a Collection to create a single string list separated by a delimiter.

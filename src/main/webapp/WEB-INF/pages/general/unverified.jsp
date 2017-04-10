@@ -1,5 +1,5 @@
-<%@ page import="com.kovka.web.util.Initializer" %>
 <%@ page import="com.kovka.common.data.merchant.lcp.Privilege" %>
+<%@ page import="com.kovka.web.util.Initializer" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%--main header start--%>
 

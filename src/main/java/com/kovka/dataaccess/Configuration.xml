@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.2//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+
+    <!-- <settings>
+         &lt;!&ndash;<setting name="proxyFactory" value="CGLIB"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="cacheEnabled" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="lazyLoadingEnabled" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="multipleResultSetsEnabled" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="useColumnLabel" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="useGeneratedKeys" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="mapUnderscoreToCamelCase" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="localCacheScope" value="SESSION"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="proxyFactory" value="CGLIB"/>&ndash;&gt;
+     </settings>-->
+
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <typeAliases>
+
+        <typeAlias type="java.util.List" alias="List"/>
+        <typeAlias type="java.util.Map" alias="Map"/>
+
+        <typeAlias type="com.kovka.common.data.FileData" alias="FileData"/>
+        <typeAlias type="com.kovka.common.data.User" alias="User"/>
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="com.kovka.dataaccess.extension.LanguageHandler" javaType="com.kovka.common.data.lcp.Language"/>
+        <typeHandler handler="com.kovka.dataaccess.extension.StatusHandler" javaType="com.kovka.common.data.lcp.Status"/>
+    </typeHandlers>
+
+    <mappers>
+        <!--<mapper resource="com/kovka/dataaccess/mapper/FileDataMap.xml"/>-->
+    </mappers>
+
+</configuration>

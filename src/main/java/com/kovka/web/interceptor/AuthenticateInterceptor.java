@@ -1,6 +1,6 @@
 package com.kovka.web.interceptor;
 
-import com.kovka.common.data.merchant.Cashier;
+import com.kovka.common.data.User;
 import com.kovka.web.action.BaseActionConstants;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -20,12 +20,12 @@ public class AuthenticateInterceptor extends AbstractInterceptor implements Base
 
         Map<String, Object> session = context.getSession();
 
-        Cashier cashier = (Cashier) session.get(SESSION_CASHIER);
-        if (cashier == null) {
+        User user = (User) session.get(SESSION_USER);
+        if (user == null) {
             return GLOBAL_RESULT_LOGIN;
         }
 
-        if (session.get(COOKIE_MODERATOR_CASHIER_DATA) != null) {
+        if (session.get(COOKIE_MODERATOR_USER_DATA) != null) {
 
             Cookie[] cookies = ServletActionContext.getRequest().getCookies();
             if (cookies != null && cookies.length > 0) {

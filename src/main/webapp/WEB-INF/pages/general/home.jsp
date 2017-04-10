@@ -1,4 +1,3 @@
-<%@ page import="com.kovka.web.util.Initializer" %>
 <%@ page import="com.kovka.common.data.merchant.lcp.Privilege" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>

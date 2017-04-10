@@ -40,7 +40,7 @@
             </div>
 
             <div class="header_logo_block" >
-                <a href="cashier-home.htm" class="site_title">
+                <a href="user-home.htm" class="site_title">
                     <img  src="<%=request.getContextPath()%>/img/main/merchant_main_logo.png" alt="<s:text name="alt.main.Logo">Logo</s:text>" />
                 </a>
             </div>
@@ -48,7 +48,7 @@
             <ul class="nav navbar-nav navbar-right ng-cloak" ng-controller="notificationControllerView">
 
                 <li class="">
-                    <a href="cashier-home.htm" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                    <a href="user-home.htm" class="user-profile dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
                         <s:if test="%{isUserThumbFileExist(#session.session_user.id, #session.session_user.photoData.fileName)}">
                             <img class="user-prof-pic" src="<s:property value='%{getUserThumbImg(#session.session_user.id, #session.session_user.photoData.fileName)}'/>" />

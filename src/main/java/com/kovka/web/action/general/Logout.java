@@ -1,7 +1,6 @@
 package com.kovka.web.action.general;
 
 import com.kovka.web.action.BaseAction;
-import com.kovka.web.action.util.Log;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
 
@@ -19,7 +18,6 @@ public class Logout extends BaseAction {
             session.invalidate();
         } catch (Exception e){
             e.printStackTrace();
-            Log.inform().error(e);
         }
         return SUCCESS;
     }

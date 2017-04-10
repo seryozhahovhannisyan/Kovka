@@ -1,7 +1,7 @@
 <%@ page import="com.kovka.common.data.merchant.Role" %>
-<%@ page import="java.util.List" %>
+<%@ page import="com.kovka.common.data.wallet.lcp.CurrencyType" %>
 <%@ page import="com.kovka.common.util.Utils" %>
-<%@ page import="com.kovka.common.data.wallet.lcp.CurrencyType" %><%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Serozh
   Date: 7/29/2016

@@ -1,6 +1,6 @@
 package com.kovka.web.interceptor;
 
-import com.kovka.common.data.merchant.lcp.Language;
+import com.kovka.common.data.lcp.Language;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
 import com.kovka.web.util.ScopeKeys;

@@ -1,12 +1,8 @@
 package com.kovka.web.action.general;
 
-import com.kovka.business.merchant.ICashierManager;
-import com.kovka.business.merchant.ITransactionManager;
-import com.kovka.common.data.merchant.Cashier;
-import com.kovka.common.data.merchant.lcp.Status;
-import com.kovka.common.data.transaction.cashbox.CashierCashBox;
-import com.kovka.common.data.transaction.lcp.TransactionState;
-import com.kovka.common.util.DataConverter;
+import com.kovka.business.IUserManager;
+import com.kovka.common.data.User;
+import com.kovka.common.data.lcp.Status;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
 import org.apache.log4j.Logger;
@@ -14,9 +10,6 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import javax.servlet.http.Cookie;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Serozh on 7/4/2016.
@@ -24,9 +17,7 @@ import java.util.Map;
 public class Login extends BaseAction {
 
 
-    private ICashierManager cashierManager;
-
-    private ITransactionManager transactionManager;
+    private IUserManager userManager;
 
     private static Logger logger = Logger.getLogger(Login.class);
 
@@ -41,15 +32,15 @@ public class Login extends BaseAction {
 
     public String authenticate() {
         try {
-            Cashier cashier = cashierManager.login(username, password);
-            if (cashier.getStatus() == Status.ACTIVE) {
+            User user = userManager.login(username, password);
+            if (user.getStatus() == Status.ACTIVE) {
                 // stores last activity time via cookie
                 Cookie cookie = new Cookie(COOKIE_MODERATOR_LAST_ACTIVITY, String.valueOf(System.currentTimeMillis()));
                 cookie.setMaxAge(DEFAULT_TIMEOUT_MODERATOR);
                 ServletActionContext.getResponse().addCookie(cookie);
 
 
-                logger.info(String.format("User Logged In :[ %s, %s, %s ]", cashier.getName(), cashier.getEmail(), cashier.getPrivilege().toString()));
+                logger.info(String.format("User Logged In :[ %s, %s ]", user.getName(), user.getEmail()));
             } else {
                 String message = String.format("User %s account is disabled", username);
                 addActionError(message);
@@ -57,16 +48,8 @@ public class Login extends BaseAction {
                 return INPUT;
             }
 
-            CashierCashBox cashBox = cashier.getCurrentCashBox();
-            Map<String, Object> params = new HashMap<String, Object>();
-            params.put("cashBoxId", cashBox.getId());
-            params.put("states", DataConverter.convertIdesToString(Arrays.asList(new Integer[]{TransactionState.PENDING.getId()})));
 
-            int pendingCount = transactionManager.getWithdrawsCountByParams(params);
-            //pendingCount += transactionManager.getDepositsCountByParams(params);
-
-            cashier.setPendingCount(pendingCount);
-            session.put(SESSION_CASHIER, cashier);
+            session.put(SESSION_USER, user);
         } catch (Exception e) {
             logger.error(e);
             session.put(MESSAGE, "Internal Server Exception");
@@ -103,11 +86,7 @@ public class Login extends BaseAction {
         this.password = password;
     }
 
-    public void setCashierManager(ICashierManager cashierManager) {
-        this.cashierManager = cashierManager;
-    }
-
-    public void setTransactionManager(ITransactionManager transactionManager) {
-        this.transactionManager = transactionManager;
+    public void setUserManager(IUserManager userManager) {
+        this.userManager = userManager;
     }
 }

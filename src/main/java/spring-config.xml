@@ -22,9 +22,5 @@
     <!-- business models configuration -->
     <import resource="classpath:config/spring/businesslayer.xml"/>
 
-    <!-- persistence configuration -->
-    <!--<import resource="classpath:config/spring/crm-mailsupport.xml"/>-->
-    <!--<import resource="classpath:config/spring/mailsupport.xml"/>-->
-    <!--<import resource="classpath:spring/scheduler-service.xml"/>-->
 
 </beans>

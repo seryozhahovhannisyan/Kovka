@@ -7,9 +7,9 @@
 
     <!--real tiles-->
 
-    <definition name="web-general" template="/WEB-INF/pages/layout/main-general.jsp">
-        <put-attribute name="header-area" value="/WEB-INF/pages/layout/header-area.jsp"/>
-        <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
+    <definition name="web-general" template="/WEB-INF/pages/layoutM/main-general.jsp">
+        <put-attribute name="header-area" value="/WEB-INF/pages/layoutM/header-area.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/layoutM/footer.jsp"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="modal" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>
@@ -64,8 +64,8 @@
         <put-attribute name="content" value="/WEB-INF/pages/general/area-cashier.jsp"/>
     </definition>
 
-    <definition name="cashier-entry" extends="web-general">
-        <put-attribute name="content" value="/WEB-INF/pages/general/cashier-entry.jsp"/>
+    <definition name="user-entry" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/user-entry.jsp"/>
     </definition>
 
     <definition name="forgot-password" extends="web-general">
@@ -90,7 +90,7 @@
 
     <!--cashier-->
 
-    <definition name="cashier-home" extends="web">
+    <definition name="user-home" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/cashier/home.jsp"/>
         <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>

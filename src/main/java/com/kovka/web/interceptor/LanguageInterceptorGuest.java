@@ -1,6 +1,6 @@
 package com.kovka.web.interceptor;
 
-import com.kovka.common.data.merchant.lcp.Language;
+import com.kovka.common.data.lcp.Language;
 import com.kovka.web.action.BaseAction;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;

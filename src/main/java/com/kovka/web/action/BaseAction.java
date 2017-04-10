@@ -1,13 +1,7 @@
 package com.kovka.web.action;
 
-
-import com.kovka.business.merchant.IMerchantLoggerManager;
-import com.kovka.common.data.merchant.MerchantLogger;
-import com.kovka.common.data.merchant.lcp.Language;
-import com.kovka.common.data.merchant.lcp.LogAction;
-import com.kovka.common.data.merchant.lcp.LogLevel;
-import com.kovka.common.data.merchant.lcp.Status;
-import com.kovka.common.exception.InternalErrorException;
+import com.kovka.common.data.lcp.Language;
+import com.kovka.common.data.lcp.Status;
 import com.kovka.common.util.Utils;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
@@ -19,7 +13,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -32,8 +25,6 @@ public class BaseAction extends ActionSupport
     protected Logger tracker = Logger.getLogger("Tracker");
 
     private static Logger logger = Logger.getLogger(BaseAction.class);
-
-    protected IMerchantLoggerManager merchantLoggerManager;
 
     /**
      * data of application scope
@@ -119,55 +110,6 @@ public class BaseAction extends ActionSupport
         return Utils.isEmpty(str)
                 ? str
                 : str.toUpperCase();
-    }
-
-    /*public CRMType getCRMType(){
-        return Initializer.getCrmTypes();
-    }
-
-    public boolean isSimpleCRM(){
-        return getCRMType() == CRMType.SIMPLE;
-    }
-
-    public boolean isFullCRM(){
-        return getCRMType() == CRMType.FULL;
-    }
-
-    public boolean isMultiBranchCRM(){
-        return getCRMType() == CRMType.MULTI_BRANCH;
-    }
-
-    public boolean isMultiDepartmentCRM(){
-        return getCRMType() == CRMType.MULTI_DEPARTMENT;
-    }
-
-    public boolean isMultiUserCRM(){
-        return getCRMType() == CRMType.MULTI_USER;
-    }*/
-
-
-
-    protected synchronized void writeLog(String className, Exception ex, LogLevel logLevel, LogAction logAction, String msg) {
-        Date currentDate = new Date(System.currentTimeMillis());
-        MerchantLogger merchantLogger;
-        if (ex != null) {
-            logger.error(ex);
-            merchantLogger = new MerchantLogger(className, logLevel, logAction, ex.getMessage(), currentDate);
-            session.put(ERROR, ex.getMessage());
-        } else {
-            logger.error(msg);
-            merchantLogger = new MerchantLogger(className, logLevel, logAction, msg, currentDate);
-            session.put(ERROR, msg);
-        }
-        try {
-            merchantLoggerManager.add(merchantLogger);
-        } catch (InternalErrorException e) {
-            logger.error(e);
-        }
-    }
-
-    public void setMerchantLoggerManager(IMerchantLoggerManager merchantLoggerManager) {
-        this.merchantLoggerManager = merchantLoggerManager;
     }
 
     public Status[] getStatuses(){

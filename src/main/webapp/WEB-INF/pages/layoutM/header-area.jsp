@@ -117,7 +117,7 @@
             <%--todo if logged in show block above--%>
         </div>
     </div>
-    <form action="cashier-entry.htm" method="post" autocomplete="off" du-parallax y="mainContent.background">
+    <form action="user-entry.htm" method="post" autocomplete="off" du-parallax y="mainContent.background">
         <input type="password" style="display: none;"/>
         <div class="main-form-login-message"></div>
         <div class="main-login-form pull-right col-lg-4 col-md-6 col-sm-6 col-xs-8" ng-style="login.mainLoginFormDisplay">

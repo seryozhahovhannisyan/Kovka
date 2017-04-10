@@ -1,6 +1,6 @@
 package com.kovka.web.servlet;
 
-import com.kovka.common.data.merchant.FileData;
+import com.kovka.common.data.FileData;
 import com.kovka.common.util.Utils;
 import com.kovka.web.util.ScopeKeys;
 import org.apache.log4j.Logger;

@@ -18,7 +18,7 @@ public class LoggedInInterceptor extends AbstractInterceptor implements BaseActi
         ActionContext context = actionInvocation.getInvocationContext();
 
         Map<String, Object> session = context.getSession();
-        if (session.get(COOKIE_MODERATOR_CASHIER_DATA) != null) {
+        if (session.get(COOKIE_MODERATOR_USER_DATA) != null) {
 
             Cookie[] cookies = ServletActionContext.getRequest().getCookies();
             if (cookies != null && cookies.length > 0) {
@@ -29,7 +29,7 @@ public class LoggedInInterceptor extends AbstractInterceptor implements BaseActi
                         if (System.currentTimeMillis() - lastActivity < INTERVAL) {
 
                             // executes required action
-                            return DEFAULT_CASHIER_REF;
+                            return DEFAULT_USER_REF;
                         }
                     }
                 }

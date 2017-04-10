@@ -50,50 +50,6 @@
             <result name="success" type="tiles">company-area</result>
         </action>
 
-        <action name="cashier-area">
-            <result name="success" type="tiles">cashier-area</result>
-        </action>
-
-        <action name="do-company-form-request" class="CompanyFormRequestAction" method="clientSendRequest">
-            <result name="success" type="redirect">start.htm</result>
-            <result name="input" type="tiles">start</result>
-        </action>
-
-        <action name="convert-company-form-request" class="CompanyFormRequestAction" method="convertSendRequest">
-            <result name="success" type="json"/>
-        </action>
-
-        <action name="convert-location-to-branch" class="BranchAction" method="convertLocationToBranch">
-            <result name="success" type="json"/>
-        </action>
-
-
-
-        <!--<action name="admin-company-form-request-load" class="CompanyFormRequestAction" method="adminLoadAllRequest">
-            <result name="success" type="tiles">admin-company-form-request-load</result>
-            <result name="error" type="tiles">start</result>
-        </action>
-
-        <action name="admin-company-form-request-change-status" class="CompanyFormRequestAction"  method="adminCompanyRequestChangeStatus">
-            <result name="success" type="redirect">admin-company-form-request-load.htm</result>
-            <result name="error">index.jsp</result>
-        </action>-->
-
-        <action name="activation-redirect-account" class="CompanyActivationAction"  method="redirectActivateAccount">
-            <result name="success" type="redirect">company-activation.htm</result>
-            <result name="error">index.jsp</result>
-        </action>
-
-        <action name="company-activation" class="CompanyActivationAction"  method="activateAccount">
-            <result name="success" type="tiles">company-activation</result>
-            <result name="error">index.jsp</result>
-        </action>
-
-        <action name="activate-company" class="CompanyActivationAction"  method="activate">
-            <result name="success" type="redirect">entry-view.htm</result>
-            <result name="error" type="tiles">company-activation</result>
-        </action>
-
         <action name="upload-mixed" class="DataUploadAction"  method="uploadMixed">
             <result name="success" type="stream">
                 <param name="contentType">text/html</param>
@@ -112,43 +68,6 @@
         <action name="remove-all-mixed-uploaded" class="DataUploadAction" method="removeAllUploaded">
             <result name="success" type="json"/>
         </action>
-
-
-        <!--Services-->
-        <action name="send-custom-mail" class="MailAction" method="execute">
-            <result name="success" type="json"/>
-        </action>
-
-        <action name="send-custom-sms" class="SmsAction" method="execute">
-            <result name="success" type="json"/>
-        </action>
-
-
-
-
-
-        <!--
-        CompanyFormRequestAction
-        -->
-        <!--<action name="company-info" >
-            <result name="success" type="tiles">company-info</result>
-            <result name="error" type="tiles">company-info</result>
-        </action>
-
-        <action name="do-company-form-request" class="CompanyFormRequestAction" method="clientSendRequest">
-            <result name="success">index.jsp</result>
-            <result name="error">index.jsp</result>
-        </action>
-
-        <action name="admin-company-form-request-load" class="CompanyFormRequestAction" method="adminLoadAllRequest">
-            <result name="success" type="tiles" >admin-company-form-request-load</result>
-            <result name="error">index.jsp</result>
-        </action>
-
-        <action name="admin-company-form-request-change-status" class="CompanyFormRequestAction" method="adminCompanyRequestChangeStatus">
-            <result name="success" type="redirect" >admin-company-form-request-load.htm</result>
-            <result name="error">index.jsp</result>
-        </action>-->
 
 
     </package>

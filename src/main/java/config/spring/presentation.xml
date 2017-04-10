@@ -8,7 +8,6 @@
 
 
     <bean id="BaseAction" class="com.kovka.web.action.BaseAction" scope="prototype">
-        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
     </bean>
 
     <bean id="ExceptionHandlerAction" class="com.kovka.web.action.ExceptionHandlerAction" scope="prototype">

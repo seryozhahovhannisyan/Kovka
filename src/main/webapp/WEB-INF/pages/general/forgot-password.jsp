@@ -8,13 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<link href="<%=request.getContextPath()%>/css/general/cashier-entry.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/general/user-entry.css" rel="stylesheet">
 
 <script type="text/javascript">
     merchantApp = angular.module('merchantApp', []);
 </script>
 
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/general/cashier-entry-controller.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/general/user-entry-controller.js"></script>
 
 <div ng-controller="loginFormCtrl as login">
     <div class="login_forward">

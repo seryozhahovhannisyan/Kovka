@@ -2,8 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<link href="<%=request.getContextPath()%>/css/general/cashier-entry.css" rel="stylesheet">
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/general/cashier-entry-controller.js"></script>
+<link href="<%=request.getContextPath()%>/css/general/user-entry.css" rel="stylesheet">
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/general/user-entry-controller.js"></script>
 
 <div ng-controller="loginFormCtrl as loginForm">
 
@@ -19,7 +19,7 @@
             <%--</div>--%>
         <%--</div>--%>
 
-        <form action="cashier-entry.htm" method="post" autocomplete="off" >
+        <form action="user-entry.htm" method="post" autocomplete="off" >
             <input type="password" style="display: none;" />
             <div class="form-login-message"></div>
             <div class="login-form col-lg-4 col-md-6 col-sm-6 col-xs-8" >

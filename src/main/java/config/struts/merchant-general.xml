@@ -25,48 +25,29 @@
         <global-results>
             <!--<result name="error" type="redirect">error.action</result>-->
             <result name="login" type="redirect">entry-view.htm</result>
-            <result name="cashier-home" type="redirect">cashier-home.htm</result>
-            <result name="cashier-exception" type="chain">cashier-exception</result>
+            <result name="user-home" type="redirect">user-home.htm</result>
+            <result name="user-exception" type="chain">user-exception</result>
         </global-results>
 
         <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="cashier-exception"/>
+            <exception-mapping exception="java.lang.Exception" result="user-exception"/>
         </global-exception-mappings>
 
         <action name="entry-view" class="Login" method="view">
-            <result name="success" type="tiles">cashier-entry</result>
+            <result name="success" type="tiles">user-entry</result>
         </action>
 
         <action name="forgot-password" class="Login" method="view">
             <result name="success" type="tiles">forgot-password</result>
         </action>
 
-        <action name="cashier-entry" class="Login" method="authenticate">
+        <action name="user-entry" class="Login" method="authenticate">
             <result name="input" type="tiles">start</result>
             <result name="error" type="tiles">start</result>
-            <result name="success" type="redirect">cashier-home.htm</result>
+            <result name="success" type="redirect">user-home.htm</result>
         </action>
 
-        <action name="company-signup" class="Registration" method="companyView">
-            <result name="success" type="tiles">signup</result>
-        </action>
 
-        <action name="branch-signup" class="Registration" method="branchView">
-            <result name="success" type="tiles">signup</result>
-        </action>
-
-        <action name="cashier-signup" class="Registration"  method="cashierView">
-            <result name="success" type="tiles">signup</result>
-        </action>
-
-        <action name="signup" class="Registration" method="cashierSimpleView">
-            <result name="success" type="tiles">signup</result>
-        </action>
-
-        <action name="do-signup" class="Registration" method="doRegistration">
-            <result name="success" type="redirect">unverified.htm</result>
-            <result name="input" type="tiles">signup</result>
-        </action>
 
         <action name="unverified" >
             <result name="success" type="tiles">unverified</result>
