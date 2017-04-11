@@ -17,8 +17,6 @@
 
 <script type="text/javascript">
 
-    var time_to_check_notification = <%=Initializer.NOTIFICATION_DURATION_SECOND%>;
-
     function cashier_search_wallet(state) {
         window.location = "cashier-search-wallet.htm?state=" + state;
     }

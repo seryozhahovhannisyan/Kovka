@@ -33,15 +33,6 @@ public class UserManager implements IUserManager {
     }
 
     @Override
-    public User getById(Long id) throws InternalErrorException, EntityNotFoundException {
-        try {
-            return dao.getById(id);
-        } catch (DatabaseException e) {
-            throw new InternalErrorException(e);
-        }
-    }
-
-    @Override
     public User login(String username, String password) throws InternalErrorException, EntityNotFoundException {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("username", username);
@@ -54,42 +45,4 @@ public class UserManager implements IUserManager {
         }
     }
 
-    @Override
-    public List<User> getByParams(Map<String, Object> params) throws InternalErrorException {
-        try {
-            return dao.getByParams(params);
-        } catch (DatabaseException e) {
-            throw new InternalErrorException(e);
-        }
-    }
-
-    @Override
-    @Transactional(readOnly = false, rollbackFor = Exception.class)
-    public void update(User data) throws InternalErrorException, EntityNotFoundException {
-        try {
-            dao.update(data);
-        } catch (DatabaseException e) {
-            throw new InternalErrorException(e);
-        }
-    }
-
-    @Override
-    @Transactional(readOnly = false, rollbackFor = Exception.class)
-    public void delete(User data) throws InternalErrorException, EntityNotFoundException {
-        try {
-            dao.delete(data);
-        } catch (DatabaseException e) {
-            throw new InternalErrorException(e);
-        }
-    }
-
-    @Override
-    @Transactional(readOnly = false, rollbackFor = Exception.class)
-    public void forceDelete(Long id) throws InternalErrorException, EntityNotFoundException {
-        try {
-            dao.forceDelete(id);
-        } catch (DatabaseException e) {
-            throw new InternalErrorException(e);
-        }
-    }
 }

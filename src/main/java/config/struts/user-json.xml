@@ -5,7 +5,7 @@
 
 <struts>
 
-    <package name="merchant-json" namespace="/" extends="json-default">
+    <package name="user-json" namespace="/" extends="json-default">
 
         <interceptors>
             <interceptor name="authenticateInterceptor" class="com.kovka.web.interceptor.JSONAuthenticationInterceptor"/>
@@ -19,7 +19,6 @@
 
         <global-results>
             <result name="login" type="redirect">entry-view.htm</result>
-            <result name="pending" type="redirect">transaction-pending.htm</result>
             <result name="user-exception" type="chain">user-exception</result>
         </global-results>
 

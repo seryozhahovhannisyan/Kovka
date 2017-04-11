@@ -39,6 +39,7 @@
 
     <mappers>
         <!--<mapper resource="com/kovka/dataaccess/mapper/FileDataMap.xml"/>-->
+        <mapper resource="com/kovka/dataaccess/mapper/UserMap.xml"/>
     </mappers>
 
 </configuration>

@@ -1,103 +1,56 @@
-
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.kovka.dataaccess.mapper.namespace.FileDataMap">
+<mapper namespace="com.kovka.dataaccess.mapper.namespace.UserMap">
 
-
-    <resultMap id="rmFileDataSimple" type="FileData">
+    <resultMap id="rmUser" type="User">
         <id property="id" column="id"/>
-        <result property="fileName" column="file_name"/>
-        <result property="contentType" column="content_type"/>
-        <result property="size" column="size"/>
-        <result property="creationDate" column="creation_date"/>
-        <result property="status" column="status"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="surname" column="surname"/>
+        <result property="email" column="email"/>
+        <result property="phoneCode" column="phone_code"/>
+        <result property="phone" column="phone"/>
     </resultMap>
 
-    <!--
-    ###################################################################################################################
-    ################################################    Create     ####################################################
-    ###################################################################################################################
-    -->
-
-    <insert id="add" parameterType="FileData">
+    <insert id="add" parameterType="User">
 
         INSERT INTO c_data(
-        `file_name`,
-        `content_type`,
-        `size`,
-        `creation_date`,
-        `status`,
-        `company_id`,
-        `branch_id`,
-        `cashier_id`
+            `username`,
+            `password`,
+            `name`,
+            `surname`,
+            `email`,
+            `phone_code`,
+            `phone`
         ) VALUES (
-        #{fileName},
-        #{contentType},
-        #{size},
-        #{creationDate},
-        #{status},
-        #{companyId},
-        #{branchId},
-        #{cashierId}
+            #{username},
+            #{password},
+            #{name},
+            #{surname},
+            #{email},
+            #{phoneCode},
+            #{phone}
         )
 
-        <selectKey keyProperty="id" resultType="_long">
+        <selectKey keyProperty="id" resultType="_int">
             SELECT LAST_INSERT_ID() AS `id`
         </selectKey>
 
     </insert>
 
-    <!--
-   ###################################################################################################################
-   ################################################    Read     ####################################################
-   ###################################################################################################################
-   -->
-    <select id="getById"
-            resultMap="rmFileDataSimple"
-            parameterType="_long">
 
-        SELECT * FROM c_data
-        WHERE id = #{id}
-        AND status = 1
-
-    </select>
-
-    <select id="getByParams"
-            resultMap="rmFileDataSimple"
+    <select id="login"
+            resultMap="rmUser"
             parameterType="map">
 
-        SELECT * FROM c_data
-
+        SELECT * FROM a_user  WHERE
+        `password` = #{password} AND (LOWER(`email`) like LOWER(#{username}) OR `username` like #{username})
     </select>
-    <!--
-   ###################################################################################################################
-   ################################################    Update     ####################################################
-   ###################################################################################################################
-   -->
-    <update id="update" parameterType="FileData">
-        UPDATE c_data
-        SET status = #{status}
-        WHERE id = #{id}
-    </update>
-
-    <update id="delete" parameterType="FileData">
-        UPDATE c_data
-        SET status = #{status}
-        WHERE id = #{id}
-    </update>
-    <!--
-   ###################################################################################################################
-   ################################################    Delete     ####################################################
-   ###################################################################################################################
-   -->
-
-    <delete id="forceDelete" parameterType="_long">
-        DELETE FROM c_data WHERE id = #{id}
-    </delete>
 
 
 </mapper>

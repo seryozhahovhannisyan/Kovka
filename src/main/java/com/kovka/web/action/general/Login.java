@@ -33,12 +33,11 @@ public class Login extends BaseAction {
     public String authenticate() {
         try {
             User user = userManager.login(username, password);
-            if (user.getStatus() == Status.ACTIVE) {
+            if (user != null) {
                 // stores last activity time via cookie
                 Cookie cookie = new Cookie(COOKIE_MODERATOR_LAST_ACTIVITY, String.valueOf(System.currentTimeMillis()));
                 cookie.setMaxAge(DEFAULT_TIMEOUT_MODERATOR);
                 ServletActionContext.getResponse().addCookie(cookie);
-
 
                 logger.info(String.format("User Logged In :[ %s, %s ]", user.getName(), user.getEmail()));
             } else {

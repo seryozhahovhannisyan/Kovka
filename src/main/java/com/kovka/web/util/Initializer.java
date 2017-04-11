@@ -3,8 +3,6 @@ package com.kovka.web.util;
 import com.kovka.common.util.SetupInfo;
 import com.kovka.common.util.Utils;
 import org.apache.log4j.Logger;
-import org.apache.velocity.app.Velocity;
-import org.apache.velocity.runtime.RuntimeConstants;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -34,22 +32,11 @@ public class Initializer implements ServletContextListener {
      *
      */
 
-    public static String MERCHANT_DATA_FOLDER = "merchantData";
-    public static String AGREEMENT_DOCUMENT_FOLDER = "agreementDocument";
-    public static String COMPANY_FOLDER = "company";
+    public static String DATA_FOLDER = "data";
 
 
     public static ServletContext context;
     private static String dataPath;
-
-    //private static final String RECAPTCHA_SECRET_KEY = "6Ldf0hETAAAAAP94esg5vk5ch2K19_0khG6HFw8v";
-    //private static final String RECAPTCHA_CLIENT_KEY = "6Ldf0hETAAAAAKRPDJYZ-rnVHGI8bQyWPeyN7eiM";
-
-
-    private final static String VELOCITY_INPUT_ENCODING = "UTF-8";
-    private final static String VELOCITY_OUTPUT_ENCODING = "UTF-8";
-
-    public final static long NOTIFICATION_DURATION_SECOND = 300;
 
     public Initializer() {
     }
@@ -93,16 +80,12 @@ public class Initializer implements ServletContextListener {
             logger.info(String.format("Application %s intitilize params [imagePath:%s]", setupInfo.getVersion(), dataPath));
 
             initFolders(dataPath);
-            initFolders(dataPath + File.separator + MERCHANT_DATA_FOLDER);
-            initFolders(dataPath + File.separator + MERCHANT_DATA_FOLDER +  File.separator + AGREEMENT_DOCUMENT_FOLDER);
-            initFolders(dataPath + File.separator + MERCHANT_DATA_FOLDER +  File.separator + COMPANY_FOLDER);
+            initFolders(dataPath + File.separator +DATA_FOLDER);
 
 
             //set tmp dir
             File tempDir = (File) context.getAttribute("javax.servlet.context.tempdir");
             ImageIO.setCacheDirectory(tempDir);
-
-            initVelocity();
 
             logger.info("-- application started -- ");
         } catch (Exception e) {
@@ -131,48 +114,6 @@ public class Initializer implements ServletContextListener {
 
     public static ApplicationContext getApplicationContext() {
         return applicationContext;
-    }
-
-    public void initVelocity() {
-        try {
-            //classpath config
-            //Velocity.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-            //Velocity.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-
-            //file config
-            /*String vmPath = context.getRealPath("template");
-            Velocity.setProperty("resource.loader","file");
-            Velocity.setProperty("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.FileResourceLoader");
-            Velocity.setProperty("file.resource.loader.path", vmPath);
-            Velocity.setProperty("file.resource.loader.cache", "false");
-            Velocity.setProperty("file.resource.loader.modificationCheckInterval", "0");*/
-
-            //webapp config
-
-            Velocity.setProperty("resource.loader", "webapp");
-            Velocity.setProperty("webapp.resource.loader.class", "org.apache.velocity.tools.view.WebappResourceLoader");
-            Velocity.setProperty("webapp.resource.loader.path", "/WEB-INF/webapptemplate/");
-            Velocity.setApplicationAttribute("javax.servlet.ServletContext", context);
-
-            //disable template file cache
-            //Velocity.setProperty(RuntimeConstants.VM_LIBRARY_AUTORELOAD, true);
-            //Velocity.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_CACHE, false);
-            //Velocity.setProperty(RuntimeConstants.VM_PERM_ALLOW_INLINE_REPLACE_GLOBAL, true);
-
-            Velocity.setProperty(RuntimeConstants.INPUT_ENCODING, VELOCITY_INPUT_ENCODING);
-            Velocity.setProperty(RuntimeConstants.OUTPUT_ENCODING, VELOCITY_OUTPUT_ENCODING);
-
-            //VelocityLogger vLogger = new VelocityLogger(this.getClass());
-            //Velocity.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM, vLogger);
-            Velocity.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
-                    "org.apache.velocity.runtime.log.Log4JLogChute");
-
-            Velocity.setProperty("runtime.log.logsystem.log4j.logger", "VLOG");
-
-            Velocity.init();
-        } catch (Exception e) {
-            logger.error(e);
-        }
     }
 
     public static SetupInfo getSetupInfo() {
@@ -219,14 +160,6 @@ public class Initializer implements ServletContextListener {
         }
 
         return true;
-    }
-
-    public static String getAgreementDocumentUploadDir() {
-        return File.separator + MERCHANT_DATA_FOLDER + File.separator + AGREEMENT_DOCUMENT_FOLDER;
-    }
-
-    public static String getCompanyDocumentUploadDir() {
-        return File.separator + MERCHANT_DATA_FOLDER + File.separator + COMPANY_FOLDER;
     }
 
 }

@@ -11,16 +11,6 @@ public interface IUserManager {
 
     public void add(User data) throws InternalErrorException;
 
-    public User getById(Long id) throws InternalErrorException, EntityNotFoundException;
-
     public User login(String username, String password) throws InternalErrorException, EntityNotFoundException;
-
-    public List<User> getByParams(Map<String, Object> params) throws InternalErrorException;
-
-    public void update(User data) throws InternalErrorException, EntityNotFoundException;
-
-    public void delete(User data) throws InternalErrorException, EntityNotFoundException;
-
-    public void forceDelete(Long id) throws InternalErrorException, EntityNotFoundException;
 
 }

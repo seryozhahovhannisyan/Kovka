@@ -4,7 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 
-    <package name="merchant-general" namespace="/" extends="struts-default">
+    <package name="user-general" namespace="/" extends="struts-default">
 
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
@@ -37,22 +37,11 @@
             <result name="success" type="tiles">user-entry</result>
         </action>
 
-        <action name="forgot-password" class="Login" method="view">
-            <result name="success" type="tiles">forgot-password</result>
-        </action>
-
         <action name="user-entry" class="Login" method="authenticate">
             <result name="input" type="tiles">start</result>
             <result name="error" type="tiles">start</result>
             <result name="success" type="redirect">user-home.htm</result>
         </action>
-
-
-
-        <action name="unverified" >
-            <result name="success" type="tiles">unverified</result>
-        </action>
-
 
     </package>
 

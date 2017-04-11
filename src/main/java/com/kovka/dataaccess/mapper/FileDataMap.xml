@@ -29,19 +29,13 @@
         `content_type`,
         `size`,
         `creation_date`,
-        `status`,
-        `company_id`,
-        `branch_id`,
-        `cashier_id`
+        `status`
         ) VALUES (
         #{fileName},
         #{contentType},
         #{size},
         #{creationDate},
-        #{status},
-        #{companyId},
-        #{branchId},
-        #{cashierId}
+        #{status}
         )
 
         <selectKey keyProperty="id" resultType="_long">

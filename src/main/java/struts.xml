@@ -34,12 +34,10 @@
     <include file="config/struts/guest.xml"/>
 
     <!-- User package -->
-    <include file="config/struts/merchant-general.xml"/>
+    <include file="config/struts/user-general.xml"/>
 
-    <include file="config/struts/merchant.xml"/>
+    <include file="config/struts/user.xml"/>
 
-    <include file="config/struts/merchant-json.xml"/>
-
-    <include file="config/struts/transaction-json.xml"/>
+    <include file="config/struts/user-json.xml"/>
 
 </struts>

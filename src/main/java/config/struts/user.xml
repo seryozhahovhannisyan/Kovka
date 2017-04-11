@@ -5,7 +5,7 @@
 
 <struts>
 
-    <package name="merchant-action" namespace="/" extends="struts-default">
+    <package name="user-action" namespace="/" extends="struts-default">
 
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
@@ -41,6 +41,10 @@
 
         <action name="error">
             <result>/WEB-INF/pages/error/500.jsp</result>
+        </action>
+
+        <action name="user-home">
+            <result name="success" type="tiles">user-home</result>
         </action>
 
         <action name="user-logout" class="Logout">
