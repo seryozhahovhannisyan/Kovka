@@ -3,39 +3,20 @@
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 
-    <definition name="web-general" template="/WEB-INF/pages/layout/main-general.jsp">
-        <put-attribute name="header-area" value="/WEB-INF/pages/layout/header-area.jsp"/>
-        <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
+    <definition name="web-general" template="/WEB-INF/pages/layout/guest/main-general.jsp">
+        <put-attribute name="header-area" value="/WEB-INF/pages/layout/guest/header-area.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/layout/guest/footer.jsp"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="banner" value=""/>
     </definition>
 
-    <definition name="web" template="/WEB-INF/pages/layout/main.jsp">
-        <put-attribute name="header" value="/WEB-INF/pages/layout/header.jsp"/>
-        <put-attribute name="menu" value="/WEB-INF/pages/layout/menu.jsp"/>
-        <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
+    <definition name="web-general-user" template="/WEB-INF/pages/layout/user/main-general.jsp">
+        <put-attribute name="header-area" value="/WEB-INF/pages/layout/user/header-area.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/layout/user/footer.jsp"/>
         <put-attribute name="content" value=""/>
-
-        <put-attribute name="add" value=""/>
-        <put-attribute name="detail" value=""/>
-        <put-attribute name="edit" value=""/>
-        <put-attribute name="upload" value=""/>
-        <put-attribute name="message" value="/WEB-INF/pages/layout/message.jsp"/>
     </definition>
 
-
-    <!-- for mobile-->
-    <!--<definition name="mobile" template="/WEB-INF/pages/demo/layout/main-mobile.jsp">-->
-    <!--<put-attribute name="header" value="/WEB-INF/pages/demo/layout/header.jsp"/>-->
-    <!--<put-attribute name="footer" value="/WEB-INF/pages/demo/layout/footer.jsp"/>-->
-    <!--<put-attribute name="content" value=" "/>-->
-    <!--</definition>-->
-
-    <!--<definition name="guest.view" extends="web">-->
-    <!--<put-attribute name="content" value="/WEB-INF/pages/demo/general/home.jsp"/>-->
-    <!--</definition>-->
-
-    <definition name="general-internal-error" extends="web">
+    <definition name="general-internal-error" extends="web-general">
         <put-attribute name="content" value="/WEB-INF/pages/error/internal.jsp"/>
     </definition>
 
@@ -43,13 +24,13 @@
         <put-attribute name="content" value="/WEB-INF/pages/general/home.jsp"/>
     </definition>
 
-    <definition name="user-entry" extends="web-general">
+    <definition name="user-entry" extends="web-general-user">
         <put-attribute name="content" value="/WEB-INF/pages/general/user-entry.jsp"/>
     </definition>
 
     <!--cashier-->
 
-    <definition name="user-home" extends="web">
+    <definition name="user-home" extends="web-general-user">
         <put-attribute name="content" value="/WEB-INF/pages/user/home.jsp"/>
         <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
     </definition>

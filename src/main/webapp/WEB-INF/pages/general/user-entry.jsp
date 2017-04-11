@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<link href="<%=request.getContextPath()%>/css/general/cashier-entry.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/user/user-entry.css" rel="stylesheet">
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/cashier-entry-controller.js"></script>
 
 <div ng-controller="loginFormCtrl as loginForm">
