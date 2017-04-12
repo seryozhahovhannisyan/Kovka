@@ -17,6 +17,4 @@ public interface FileDataMap {
 
     public void delete(FileData data);
 
-    public void forceDelete(Long id);
-
 }

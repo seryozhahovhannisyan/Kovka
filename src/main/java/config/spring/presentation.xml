@@ -14,6 +14,7 @@
     </bean>
 
     <bean id="Login" class="com.kovka.web.action.general.Login" scope="prototype">
+        <property name="userManager" ref="UserManager"/>
     </bean>
 
     <bean id="Logout" class="com.kovka.web.action.general.Logout" scope="prototype">

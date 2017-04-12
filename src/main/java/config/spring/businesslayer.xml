@@ -4,9 +4,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-    <!--<bean id="WalletManagerImpl" class="com.kovka.business.wallet.impl.WalletManagerImpl">
-        <property name="companyCashBoxDao" ref="CompanyCashBoxDao"/>
-        <property name="companyDao" ref="CompanyDao"/>
-    </bean>-->
+    <bean id="UserManager" class="com.kovka.business.impl.UserManager">
+        <property name="dao" ref="UserDao"/>
+    </bean>
 
 </beans>

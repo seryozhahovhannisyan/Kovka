@@ -27,7 +27,7 @@
         <default-interceptor-ref name="userStack"/>
 
         <global-results>
-            <result name="login" type="redirect">entry-view.htm</result>
+            <result name="login" type="redirect">admin.htm</result>
             <result name="user-exception" type="chain">user-exception</result>
         </global-results>
 
@@ -44,12 +44,12 @@
         </action>
 
         <action name="user-home">
-            <result name="success" type="tiles">user-home</result>
+            <result name="success" type="tiles">admin-home</result>
         </action>
 
         <action name="user-logout" class="Logout">
             <interceptor-ref name="defaultStack"/>
-            <result type="redirect">entry-view.htm</result>
+            <result type="redirect">admin.htm</result>
         </action>
 
 

@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.form_parent_div {
+    float: none;
+    margin: 0 auto;
+}
+
+.input_parent_div {
+    padding: 10px 0;
+    position: relative;
+}
+
+.input_parent_div input {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.error_div {
+    text-align: center;
+    color: red;
+}
+
+.main_text_editor {
+    overflow: auto;
+    min-height: 200px;
+    width: 100%;
+}
+
+.footer_fixed footer {
+    position: relative!important;
+}
+.note-editable {
+    min-height: 100px !important;;
+    height: 200px !important;
+}
+
+.plus_button {
+    position: absolute;
+    right: 5px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+
+}
+.added_input,.add_input{
+    margin-top:10px;
+}

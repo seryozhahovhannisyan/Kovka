@@ -1,7 +1,12 @@
 package com.kovka.web.util;
 
+import com.kovka.business.IUserManager;
+import com.kovka.common.data.User;
+import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.SetupInfo;
 import com.kovka.common.util.Utils;
+import com.kovka.web.util.encryption.EncryptException;
+import com.kovka.web.util.encryption.SHAHashEnrypt;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
@@ -15,6 +20,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Enumeration;
+import java.util.List;
 
 
 public class Initializer implements ServletContextListener {
@@ -86,10 +92,27 @@ public class Initializer implements ServletContextListener {
             //set tmp dir
             File tempDir = (File) context.getAttribute("javax.servlet.context.tempdir");
             ImageIO.setCacheDirectory(tempDir);
-
+            init();
             logger.info("-- application started -- ");
         } catch (Exception e) {
+            logger.error(e);
             throw new RuntimeException("unable intitilize application");
+        }
+    }
+
+    private void init() throws InternalErrorException, EncryptException {
+        IUserManager userManager = BeanProvider.getUserManager();
+        List<User> users =  userManager.getAll();
+        if(Utils.isEmpty(users)){
+            User user = new User();
+            user.setUsername("admin");
+            user.setPassword(SHAHashEnrypt.get_MD5_SecurePassword("1"));
+            user.setName("Seryozha");
+            user.setSurname("Hovhannisyan");
+            user.setEmail("seryozha.hovhannisyan@gmail.com");
+            user.setPhone("93787377");
+            user.setPhoneCode("374");
+            userManager.add(user);
         }
     }
 

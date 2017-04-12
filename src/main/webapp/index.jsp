@@ -15,7 +15,7 @@
             right: 0;
             left: 0;
             margin: auto;
-            background-image: url("img/main/merchant_main_logo.png");
+            background-image: url("img/main/logo-16.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: 80%;

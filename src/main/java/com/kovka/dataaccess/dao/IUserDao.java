@@ -13,4 +13,6 @@ public interface IUserDao {
 
     public User login(Map<String, Object> params) throws DatabaseException, EntityNotFoundException;
 
+    public List<User> getAll() throws DatabaseException;
+
 }

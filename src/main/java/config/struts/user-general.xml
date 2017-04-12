@@ -24,7 +24,7 @@
 
         <global-results>
             <!--<result name="error" type="redirect">error.action</result>-->
-            <result name="login" type="redirect">entry-view.htm</result>
+            <result name="login" type="redirect">admin.htm</result>
             <result name="user-home" type="redirect">user-home.htm</result>
             <result name="user-exception" type="chain">user-exception</result>
         </global-results>
@@ -33,13 +33,13 @@
             <exception-mapping exception="java.lang.Exception" result="user-exception"/>
         </global-exception-mappings>
 
-        <action name="entry-view" class="Login" method="view">
-            <result name="success" type="tiles">user-entry</result>
+        <action name="admin" class="Login" method="view">
+            <result name="success" type="tiles">admin-entry</result>
         </action>
 
-        <action name="user-entry" class="Login" method="authenticate">
-            <result name="input" type="tiles">start</result>
-            <result name="error" type="tiles">start</result>
+        <action name="admin-entry" class="Login" method="authenticate">
+            <result name="input" type="tiles">admin-entry</result>
+            <result name="error" type="tiles">admin-entry</result>
             <result name="success" type="redirect">user-home.htm</result>
         </action>
 

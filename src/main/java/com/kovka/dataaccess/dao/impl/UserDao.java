@@ -42,4 +42,13 @@ public class UserDao implements IUserDao {
         }
     }
 
+    @Override
+    public List<User> getAll() throws DatabaseException {
+        try {
+            return map.getAll();
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
 }

@@ -1,0 +1,1 @@
+INSERT  INTO `g_language_lcp`(`value`,`key`,`title`,`locale`) VALUES (1,'hy','Armenian','hy'),(2,'en','English','en'),(3,'ru','Russian','ru'),(4,'fr','France','fr'),(5,'es','Spanish','es'),(6,'fa','Persian','fa');

@@ -18,7 +18,7 @@
         <default-interceptor-ref name="userStack"/>
 
         <global-results>
-            <result name="login" type="redirect">entry-view.htm</result>
+            <result name="login" type="redirect">admin.htm</result>
             <result name="user-exception" type="chain">user-exception</result>
         </global-results>
 

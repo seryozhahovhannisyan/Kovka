@@ -20,6 +20,11 @@ public class FileData {
     private File file;
     private byte[] data;
 
+    private Long sketchId;
+
+    private int order;
+
+
     /*##################################################################################################################
      *                                  GETTERS & SETTERS
      *##################################################################################################################
@@ -87,5 +92,21 @@ public class FileData {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public Long getSketchId() {
+        return sketchId;
+    }
+
+    public void setSketchId(Long sketchId) {
+        this.sketchId = sketchId;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 }

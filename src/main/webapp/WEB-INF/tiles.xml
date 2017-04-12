@@ -3,36 +3,70 @@
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 
-    <definition name="web-general" template="/WEB-INF/pages/layout/guest/main-general.jsp">
-        <put-attribute name="header-area" value="/WEB-INF/pages/layout/guest/header-area.jsp"/>
-        <put-attribute name="footer" value="/WEB-INF/pages/layout/guest/footer.jsp"/>
+    <definition name="web-general" template="/WEB-INF/pages/layout/main-general.jsp">
+        <put-attribute name="header-area" value="/WEB-INF/pages/layout/header-area.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
+        <put-attribute name="content" value=""/>
+    </definition>
+
+    <definition name="web" template="/WEB-INF/pages/layout/main.jsp">
+        <put-attribute name="header" value="/WEB-INF/pages/layout/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/pages/layout/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
+        <put-attribute name="content" value=""/>
+
+        <put-attribute name="add" value=""/>
+        <put-attribute name="detail" value=""/>
+        <put-attribute name="edit" value=""/>
+        <put-attribute name="upload" value=""/>
+        <put-attribute name="message" value="/WEB-INF/pages/layout/message.jsp"/>
+    </definition>
+
+    <definition name="admin-entry" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/admin-entry.jsp"/>
+    </definition>
+
+    <definition name="admin-home" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/home.jsp"/>
+    </definition>
+
+    <definition name="admin-help" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/help.jsp"/>
+    </definition>
+
+    <definition name="company" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/request/company-list.jsp"/>
+    </definition>
+
+    <definition name="company-form-request" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/request/company-form-request.jsp"/>
+    </definition>
+
+    <definition name="provider-offer" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/request/provider-offer.jsp"/>
+    </definition>
+
+
+
+    <definition name="branch-request" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/request/branch-request.jsp"/>
+    </definition>
+
+    <!--Guest-->
+
+    <definition name="web-guest" template="/WEB-INF/guest/layout/main-general.jsp">
+        <put-attribute name="header-area" value="/WEB-INF/guest/layout/header-area.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/guest/layout/footer.jsp"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="banner" value=""/>
     </definition>
 
-    <definition name="web-general-user" template="/WEB-INF/pages/layout/user/main-general.jsp">
-        <put-attribute name="header-area" value="/WEB-INF/pages/layout/user/header-area.jsp"/>
-        <put-attribute name="footer" value="/WEB-INF/pages/layout/user/footer.jsp"/>
-        <put-attribute name="content" value=""/>
-    </definition>
-
-    <definition name="general-internal-error" extends="web-general">
+    <definition name="general-internal-error" extends="web-guest">
         <put-attribute name="content" value="/WEB-INF/pages/error/internal.jsp"/>
     </definition>
 
-    <definition name="start" extends="web-general">
-        <put-attribute name="content" value="/WEB-INF/pages/general/home.jsp"/>
-    </definition>
-
-    <definition name="user-entry" extends="web-general-user">
-        <put-attribute name="content" value="/WEB-INF/pages/general/user-entry.jsp"/>
-    </definition>
-
-    <!--cashier-->
-
-    <definition name="user-home" extends="web-general-user">
-        <put-attribute name="content" value="/WEB-INF/pages/user/home.jsp"/>
-        <put-attribute name="detail" value="/WEB-INF/pages/general/banner.jsp"/>
+    <definition name="start" extends="web-guest">
+        <put-attribute name="content" value="/WEB-INF/guest/home.jsp"/>
     </definition>
 
 </tiles-definitions>

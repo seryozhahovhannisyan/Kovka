@@ -5,6 +5,7 @@ import com.kovka.common.data.User;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
+import com.kovka.web.util.encryption.SHAHashEnrypt;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -32,6 +33,7 @@ public class Login extends BaseAction {
 
     public String authenticate() {
         try {
+            password = SHAHashEnrypt.get_MD5_SecurePassword(password);
             User user = userManager.login(username, password);
             if (user != null) {
                 // stores last activity time via cookie
@@ -40,6 +42,8 @@ public class Login extends BaseAction {
                 ServletActionContext.getResponse().addCookie(cookie);
 
                 logger.info(String.format("User Logged In :[ %s, %s ]", user.getName(), user.getEmail()));
+
+                session.put(SESSION_USER, user);
             } else {
                 String message = String.format("User %s account is disabled", username);
                 addActionError(message);
@@ -48,7 +52,7 @@ public class Login extends BaseAction {
             }
 
 
-            session.put(SESSION_USER, user);
+
         } catch (Exception e) {
             logger.error(e);
             session.put(MESSAGE, "Internal Server Exception");

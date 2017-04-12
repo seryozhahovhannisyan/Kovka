@@ -46,10 +46,6 @@
             <result name="success" type="tiles">start</result>
         </action>
 
-        <action name="company-area">
-            <result name="success" type="tiles">company-area</result>
-        </action>
-
         <action name="upload-mixed" class="DataUploadAction"  method="uploadMixed">
             <result name="success" type="stream">
                 <param name="contentType">text/html</param>

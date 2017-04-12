@@ -11,4 +11,6 @@ public interface UserMap {
 
     public User login(Map<String, Object> params);
 
+    public List<User> getAll();
+
 }
