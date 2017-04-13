@@ -19,6 +19,4 @@ public interface IFileDataManager {
 
     public void delete(FileData data) throws InternalErrorException, EntityNotFoundException;
 
-    public void forceDelete(Long id) throws InternalErrorException, EntityNotFoundException;
-
 }

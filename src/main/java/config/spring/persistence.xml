@@ -26,4 +26,24 @@
           p:mapperInterface="com.kovka.dataaccess.mapper.namespace.UserMap"
           p:sqlSessionFactory-ref="sqlSessionFactory"/>
 
+    <bean id="SketchInfoMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplate"
+          p:mapperInterface="com.kovka.dataaccess.mapper.namespace.SketchInfoMap"
+          p:sqlSessionFactory-ref="sqlSessionFactory"/>
+
+    <bean id="SketchMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplate"
+          p:mapperInterface="com.kovka.dataaccess.mapper.namespace.SketchMap"
+          p:sqlSessionFactory-ref="sqlSessionFactory"/>
+
+    <bean id="SketchProductMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplate"
+          p:mapperInterface="com.kovka.dataaccess.mapper.namespace.SketchProductMap"
+          p:sqlSessionFactory-ref="sqlSessionFactory"/>
+
+
+
 </beans>

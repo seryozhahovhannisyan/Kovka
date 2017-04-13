@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.kovka.dataaccess.mapper.namespace.SketchMap">
+
+    <resultMap id="rmSketch" type="Sketch">
+
+        <id property="id" column="id"/>
+        <result property="order" column="order"/>
+        <result property="status" column="status"/>
+
+        <association property="currentInfo"  column="id" javaType="SketchInfo">
+            <result property="id" column="id"/>
+            <result property="sketchId" column="sketch_id"/>
+            <result property="language" column="lang"/>
+            <result property="name" column="name"/>
+            <result property="shortDesc" column="short_desc"/>
+            <result property="title" column="title"/>
+            <result property="description" column="description"/>
+        </association>
+        <association property="mainImage" column="id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getDefaultSketchImg"/>
+
+    </resultMap>
+
+    <resultMap id="rmSketchFull" type="Sketch">
+        <id property="id" column="id"/>
+        <result property="order" column="order"/>
+        <result property="status" column="status"/>
+        <association property="infos" column="id" select="com.kovka.dataaccess.mapper.namespace.SketchMap.getInfoById"/>
+    </resultMap>
+
+    <resultMap id="rmSketchFullCurrentLang" type="Sketch">
+        <id property="id" column="id"/>
+        <result property="order" column="order"/>
+        <result property="status" column="status"/>
+        <association property="currentInfo"  column="id" javaType="SketchInfo">
+            <result property="id" column="id"/>
+            <result property="sketchId" column="sketch_id"/>
+            <result property="language" column="lang"/>
+            <result property="name" column="name"/>
+            <result property="shortDesc" column="short_desc"/>
+            <result property="title" column="title"/>
+            <result property="description" column="description"/>
+        </association>
+        <association property="images" column="id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getSketchImg"/>
+    </resultMap>
+
+    <resultMap id="rmSketchInfo" type="SketchInfo">
+        <result property="id" column="id"/>
+        <result property="sketchId" column="sketch_id"/>
+        <result property="language" column="lang"/>
+        <result property="name" column="name"/>
+        <result property="shortDesc" column="short_desc"/>
+        <result property="title" column="title"/>
+        <result property="description" column="description"/>
+    </resultMap>
+
+    <insert id="add" parameterType="Sketch">
+
+        INSERT INTO sketch(
+            `order`,
+            `status`
+        ) VALUES (
+            #{order},
+            #{status}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <select id="getInfoById"
+            resultMap="rmSketchInfo"
+            parameterType="_long">
+
+        SELECT * FROM sketch_info WHERE sketch_id = #{id}
+
+    </select>
+
+    <select id="getPreview"
+            resultType="long"
+            parameterType="long">
+
+        SELECT id FROM sketch WHERE id &lt; #{id} ORDER BY id DESC LIMIT 1
+
+    </select>
+
+    <select id="getNext"
+            resultType="long"
+            parameterType="long">
+
+        SELECT id FROM sketch WHERE id &gt; #{id} LIMIT 1
+
+    </select>
+
+    <select id="getFullById"
+            resultMap="rmSketchFull"
+            parameterType="long">
+
+        SELECT * FROM sketch
+        WHERE id = #{id}
+
+    </select>
+    
+    <select id="getFullCurrentLangById"
+            resultMap="rmSketchFullCurrentLang"
+            parameterType="long">
+
+        SELECT * FROM sketch
+        WHERE id = #{id}
+
+    </select>
+    
+    <select id="getSampleByParams"
+            resultMap="rmSketch"
+            parameterType="long">
+
+        SELECT * FROM sketch
+        WHERE 1
+        <if test="filter != null">             AND (
+            OR `status` = #{filter}
+            )
+        </if>
+        <if test="except != null">
+            AND id != #{except}
+        </if>
+
+    </select>
+    
+    <select id="getCountByParams"
+            resultType="long"
+            parameterType="map">
+
+        SELECT count(`id`) FROM sketch WHERE 1 
+        <if test="filter != null">             AND ( 
+            OR `status` = #{filter}
+            )
+        </if>
+        <if test="except != null">
+            AND id != #{except}
+        </if> 
+
+
+    </select>
+
+    <update id="update" parameterType="Sketch">
+        UPDATE sketch
+        SET status = #{status} , `order` = #{order}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete" parameterType="Sketch">
+        UPDATE sketch
+        SET status = 3
+        WHERE id = #{id}
+    </update>
+
+</mapper>

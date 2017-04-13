@@ -19,6 +19,4 @@ public interface IFileDataDao {
 
     public void delete(FileData data) throws DatabaseException, EntityNotFoundException;
 
-    public void forceDelete(Long id) throws DatabaseException, EntityNotFoundException;
-
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.kovka.dataaccess.mapper.namespace.UserMap">
+
+    <resultMap id="rmUser" type="User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="surname" column="surname"/>
+        <result property="email" column="email"/>
+        <result property="phoneCode" column="phone_code"/>
+        <result property="phone" column="phone"/>
+    </resultMap>
+
+    <insert id="add" parameterType="User">
+
+        INSERT INTO a_user(
+            `username`,
+            `password`,
+            `name`,
+            `surname`,
+            `email`,
+            `phone_code`,
+            `phone`
+        ) VALUES (
+            #{username},
+            #{password},
+            #{name},
+            #{surname},
+            #{email},
+            #{phoneCode},
+            #{phone}
+        )
+
+        <selectKey keyProperty="id" resultType="_int">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <select id="login"
+            resultMap="rmUser"
+            parameterType="map">
+
+        SELECT * FROM a_user  WHERE
+        `password` = #{password} AND (LOWER(`email`) like LOWER(#{username}) OR `username` like #{username})
+    </select>
+
+    <select id="getAll"
+            resultMap="rmUser" >
+
+        SELECT * FROM a_user
+    </select>
+
+
+</mapper>

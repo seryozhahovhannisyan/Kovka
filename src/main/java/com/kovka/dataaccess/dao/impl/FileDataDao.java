@@ -69,13 +69,4 @@ public class FileDataDao implements IFileDataDao {
         }
     }
 
-    @Override
-    public void forceDelete(Long id) throws DatabaseException, EntityNotFoundException {
-        try {
-            map.forceDelete(id);
-        } catch (RuntimeException e) {
-            throw new DatabaseException(e);
-        }
-    }
-
 }

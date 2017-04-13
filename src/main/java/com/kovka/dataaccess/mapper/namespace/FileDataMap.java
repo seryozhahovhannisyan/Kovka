@@ -11,6 +11,10 @@ public interface FileDataMap {
 
     public FileData getById(Long id);
 
+    public FileData getDefaultSketchImg(Long sketchId);
+
+    public FileData getSketchImg(Long sketchId);
+
     public List<FileData> getByParams(Map<String, Object> params);
 
     public void update(FileData data);

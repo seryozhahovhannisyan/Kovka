@@ -11,6 +11,7 @@ public class Sketch {
 
     private Long id;
 
+    private FileData mainImage;
     private SketchInfo currentInfo;
     private List<SketchInfo> infos;
 
@@ -18,7 +19,6 @@ public class Sketch {
     private List<SketchProduct> products;
 
     private Status status;
-    private Long imageId;
     private int order;
 
     /*##################################################################################################################
@@ -74,19 +74,19 @@ public class Sketch {
         this.status = status;
     }
 
-    public Long getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(Long imageId) {
-        this.imageId = imageId;
-    }
-
     public int getOrder() {
         return order;
     }
 
     public void setOrder(int order) {
         this.order = order;
+    }
+
+    public FileData getMainImage() {
+        return mainImage;
+    }
+
+    public void setMainImage(FileData mainImage) {
+        this.mainImage = mainImage;
     }
 }

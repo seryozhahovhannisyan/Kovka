@@ -6,6 +6,7 @@ package com.kovka.common.data.lcp;
 public enum Status {
 
     ACTIVE          (1, "active"),
+    DEFAULT         (2, "default"),
     DELETED         (3, "deleted"),
     HIDDEN          (4, "hidden"),
     BLOCKED         (5, "blocked"),

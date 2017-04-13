@@ -31,6 +31,10 @@ CREATE TABLE `a_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+/*Data for the table `a_user` */
+
+insert  into `a_user`(`id`,`username`,`name`,`surname`,`password`,`email`,`phone_code`,`phone`) values (1,'admin','Seryozha','Hovhannisyan','c4ca4238a0b923820dcc509a6f75849b','seryozha.hovhannisyan@gmail.com','374','93787377');
+
 /*Table structure for table `f_data` */
 
 DROP TABLE IF EXISTS `f_data`;
@@ -49,6 +53,8 @@ CREATE TABLE `f_data` (
   CONSTRAINT `FK_f_data_s` FOREIGN KEY (`sketch_id`) REFERENCES `sketch` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+/*Data for the table `f_data` */
+
 /*Table structure for table `g_language_lcp` */
 
 DROP TABLE IF EXISTS `g_language_lcp`;
@@ -61,6 +67,10 @@ CREATE TABLE `g_language_lcp` (
   PRIMARY KEY (`value`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+/*Data for the table `g_language_lcp` */
+
+insert  into `g_language_lcp`(`value`,`key`,`title`,`locale`) values (1,'hy','Armenian','hy'),(2,'en','English','en'),(3,'ru','Russian','ru'),(4,'fr','France','fr'),(5,'es','Spanish','es'),(6,'fa','Persian','fa');
+
 /*Table structure for table `sketch` */
 
 DROP TABLE IF EXISTS `sketch`;
@@ -69,11 +79,10 @@ CREATE TABLE `sketch` (
   `id` int(15) unsigned NOT NULL AUTO_INCREMENT,
   `status` int(1) unsigned NOT NULL,
   `order` int(8) unsigned NOT NULL,
-  `image_id` int(15) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_sketch_f_d` (`image_id`),
-  CONSTRAINT `FK_sketch_f_d` FOREIGN KEY (`image_id`) REFERENCES `f_data` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sketch` */
 
 /*Table structure for table `sketch_info` */
 
@@ -94,6 +103,8 @@ CREATE TABLE `sketch_info` (
   CONSTRAINT `FK_sketch_info_l` FOREIGN KEY (`lang`) REFERENCES `g_language_lcp` (`value`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+/*Data for the table `sketch_info` */
+
 /*Table structure for table `sketch_product` */
 
 DROP TABLE IF EXISTS `sketch_product`;
@@ -110,6 +121,8 @@ CREATE TABLE `sketch_product` (
   CONSTRAINT `FK_sketch_product` FOREIGN KEY (`sketch_id`) REFERENCES `sketch` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_sketch_product_f` FOREIGN KEY (`image_id`) REFERENCES `f_data` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sketch_product` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

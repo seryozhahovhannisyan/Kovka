@@ -6,7 +6,16 @@
 
 <mapper namespace="com.kovka.dataaccess.mapper.namespace.FileDataMap">
 
-
+<!--
+`id` int(15) unsigned NOT NULL AUTO_INCREMENT,
+          `file_name` varchar(256) COLLATE utf8_bin NOT NULL,
+          `content_type` varchar(256) COLLATE utf8_bin NOT NULL,
+          `size` int(15) unsigned NOT NULL,
+          `creation_date` datetime NOT NULL,
+          `status` int(1) unsigned NOT NULL,
+          `order` int(8) unsigned NOT NULL,
+          `sketch_id` int(15) unsigned NOT NULL,   
+-->
     <resultMap id="rmFileDataSimple" type="FileData">
         <id property="id" column="id"/>
         <result property="fileName" column="file_name"/>
@@ -14,6 +23,8 @@
         <result property="size" column="size"/>
         <result property="creationDate" column="creation_date"/>
         <result property="status" column="status"/>
+        <result property="order" column="order"/>
+        <result property="sketchId" column="sketch_id"/>
     </resultMap>
 
     <!--
@@ -24,18 +35,22 @@
 
     <insert id="add" parameterType="FileData">
 
-        INSERT INTO c_data(
+        INSERT INTO f_data(
         `file_name`,
         `content_type`,
         `size`,
         `creation_date`,
-        `status`
+        `status`,
+        `order`,
+        `sketch_id`
         ) VALUES (
         #{fileName},
         #{contentType},
         #{size},
         #{creationDate},
         #{status}
+        ,#{order},
+        #{sketchId}
         )
 
         <selectKey keyProperty="id" resultType="_long">
@@ -53,9 +68,26 @@
             resultMap="rmFileDataSimple"
             parameterType="_long">
 
-        SELECT * FROM c_data
+        SELECT * FROM f_data
         WHERE id = #{id}
-        AND status = 1
+
+    </select>
+
+    <select id="getDefaultSketchImg"
+            resultMap="rmFileDataSimple"
+            parameterType="_long">
+
+        SELECT * FROM f_data
+        WHERE sketch_id = #{sketchId} and `status` = 2
+
+    </select>
+
+    <select id="getSketchImg"
+            resultMap="rmFileDataSimple"
+            parameterType="_long">
+
+        SELECT * FROM f_data
+        WHERE sketch_id = #{sketchId} and `status` != 2
 
     </select>
 
@@ -63,7 +95,7 @@
             resultMap="rmFileDataSimple"
             parameterType="map">
 
-        SELECT * FROM c_data
+        SELECT * FROM f_data
 
     </select>
     <!--
@@ -72,13 +104,13 @@
    ###################################################################################################################
    -->
     <update id="update" parameterType="FileData">
-        UPDATE c_data
+        UPDATE f_data
         SET status = #{status}
         WHERE id = #{id}
     </update>
 
     <update id="delete" parameterType="FileData">
-        UPDATE c_data
+        UPDATE f_data
         SET status = #{status}
         WHERE id = #{id}
     </update>

@@ -30,6 +30,10 @@
 
         <typeAlias type="com.kovka.common.data.FileData" alias="FileData"/>
         <typeAlias type="com.kovka.common.data.User" alias="User"/>
+
+        <typeAlias type="com.kovka.common.data.SketchInfo" alias="SketchInfo"/>
+        <typeAlias type="com.kovka.common.data.Sketch" alias="Sketch"/>
+        <typeAlias type="com.kovka.common.data.SketchProduct" alias="SketchProduct"/>
     </typeAliases>
 
     <typeHandlers>
@@ -38,8 +42,9 @@
     </typeHandlers>
 
     <mappers>
-        <!--<mapper resource="com/kovka/dataaccess/mapper/FileDataMap.xml"/>-->
+        <mapper resource="com/kovka/dataaccess/mapper/FileDataMap.xml"/>
         <mapper resource="com/kovka/dataaccess/mapper/UserMap.xml"/>
+        <mapper resource="com/kovka/dataaccess/mapper/SketchMap.xml"/>
     </mappers>
 
 </configuration>

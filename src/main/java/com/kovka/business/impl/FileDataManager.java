@@ -68,14 +68,4 @@ public class FileDataManager implements IFileDataManager {
             throw new InternalErrorException(e);
         }
     }
-
-    @Override
-    @Transactional(readOnly = false, rollbackFor = Exception.class, value = "MerchantTM")
-    public void forceDelete(Long id) throws InternalErrorException, EntityNotFoundException {
-        try {
-            dao.forceDelete(id);
-        } catch (DatabaseException e) {
-            throw new InternalErrorException(e);
-        }
-    }
 }
