@@ -86,6 +86,10 @@
             <result name="success" type="tiles">sketch</result>
         </action>
 
+        <action name="sketch-add-view"  >
+            <result name="success" type="tiles">sketch-add-view</result>
+        </action>
+
         <action name="sketch-add" class="SketchAction" method="add">
             <result name="success" type="redirect">sketch.htm</result>
             <result name="error" type="tiles">sketches</result>

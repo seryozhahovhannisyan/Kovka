@@ -45,7 +45,7 @@
     <!-- ng-droplet -->
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/ng-droplet.js"></script>
     
-    <script src="<%=request.getContextPath()%>/js/cashier/main.js" type="text/javascript" ></script>
+    <script src="<%=request.getContextPath()%>/js/sketch/main.js" type="text/javascript" ></script>
 
 
 

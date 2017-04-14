@@ -17,7 +17,7 @@ public class DataConverter {
         Map<String, Object> params = new HashMap<String, Object>();
 
         if (Utils.isEmpty(request)) {
-            throw new DataParseException("Empty list");
+            return params;
         }
 
         JSONParser parser = new JSONParser();

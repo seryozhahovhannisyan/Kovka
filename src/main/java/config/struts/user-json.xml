@@ -45,7 +45,7 @@
 
         <!--SketchAction-->
 
-        <action name="branch-list" class="SketchAction" method="list">
+        <action name="sketch-list" class="SketchAction" method="list">
             <result name="success" type="json"/>
         </action>
 

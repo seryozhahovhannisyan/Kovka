@@ -1,178 +1,232 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Serozh
-  Date: 7/29/2016
-  Time: 4:58 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-
-<script src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js" ></script>
-<script src="<%=request.getContextPath()%>/libs/js/angular/ng-table.min.js" type="text/javascript" ></script>
-<script src="<%=request.getContextPath()%>/js/cashier/object-list.js" type="text/javascript"></script>
-
-<link href="<%=request.getContextPath()%>/css/template/cashier.css" type="text/css" rel="stylesheet">
-
+<link  href="<%=request.getContextPath()%>/css/template/companies.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/summernote/summernote/v0.8.1/dist/summernote.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/summernote.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-summernote.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/template/companies.js"></script>
 
 
-<script type="text/javascript"  >
-    var contextPath = '<%=request.getContextPath()%>';
-    var object = 'company_form_request';
-    var itemsCount = '<s:property value="dataCount"/>';
-    var columns = [
-        {title: 'companyName', field: 'companyName', visible : true},
-        {title: 'companyAddress', field: 'companyAddress', visible : true},
-        {title: 'companyEmail', field: 'companyEmail', visible : true},
-        {title: 'companyPhoneCode', field: 'companyPhoneCode', visible : true},
-        {title: 'companyPhone', field: 'companyPhone', visible : true},
-        {title: 'countOfBranches', field: 'countOfBranches', visible : true},
-        {title: 'countOfWorkers', field: 'countOfWorkers', visible : true},
-        {title: 'contactName', field: 'contactName', visible : true},
-        {title: 'contactLastName', field: 'contactLastName', visible : true},
-        {title: 'contactEmail', field: 'contactEmail', visible : true},
-        {title: 'contactPhoneCode', field: 'contactPhoneCode', visible : true},
-        {title: 'contactPhone', field: 'contactPhone', visible : true},
-        {title: 'message', field: 'message', visible : true},
-        {title: 'status', field: 'status', visible : true},
-        {title: 'requestedAt', field: 'status', requestedAt : true}
-    ];
-</script>
-
-<div class="right_col" role="main" style="min-height: 2519px;" ng-controller="listController">
+<div class="right_col" role="main" style="min-height: 2519px;">
     <div class="clearfix"></div>
-    <div class="row"   >
+    <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2>
-                        sketch
+                        <s:text name="sketches.title.add">Sketch Add</s:text>
                     </h2>
 
                     <div class="clearfix"></div>
                 </div>
-                <div class="x_content">
-
-                        <div class="row">
-                            <div  id="listContent">
-                                <s:if test="%{dataCount != 0}">
-                                    <%--<form action="#" method="post">--%>
-                                    <div class="btn-group">
-                                        <label class="btn btn-primary"
-                                               ng-repeat="column in columns"
-                                               <%--ng-class="column.visible ? 'btn btn-primary ng-scope ng-binding' : 'btn btn-primary ng-scope ng-binding column-unchecked'"--%>
-                                        >
-                                            <input type="checkbox"  ng-model="column.visible" ng-disabled="disable_labels($index)"  />
-
-                                            <span>{{column.title}}</span>
-                                        </label>
-                                    </div>
-                                    <div class="table_parent_div">
-                                        <table ng-table="tableParams"  show-filter="true" class="table table_br_csh  table-bordered table-striped listItems">
-                                            <div class="form-group pull-right">
-                                                <input type="text" class="form-control breanch_search"
-                                                       ng-model="serch_val"
-                                                       placeholder="<s:text  name="page.login.bracnh.search"> Search for...</s:text>">
-                                                <buutton class="btn btn-default branch_search_button" ng-click=tableParams.filter(serch_val)>
-                                                    <s:text name="page.branches.main.list.table.go">GO</s:text>
-                                                </buutton>
-                                            </div>
-                                            <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th ng-repeat="column in columns" ng-show="column.visible"
-                                                    ng-bind-html="column.title"
-                                                    class="text-center sortable"  ng-class="{
-                                            'sort-asc': tableParams.isSortBy(column.field, 'asc'),
-                                            'sort-desc': tableParams.isSortBy(column.field, 'desc')
-                                          }" style="vertical-align: top; text-align: center; min-width: 90px;"
-                                                    ng-click="tableParams.sorting(column.field, tableParams.isSortBy(column.field, 'asc') ? 'desc' : 'asc')">
-
-                                                </th>
-                                                <th>Editing</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="item in $data" ng-class-even="'tbl-row-even'"
-                                                    ng-class="{'tbl_row_even': $even, 'tbl_row_odd': $odd }">
-                                                    <td>
-                                                        <input type="checkbox" name="id" />
-                                                    </td>
-                                                    <td ng-show="columns[0].visible" sortable="columns[0].field">
-                                                        {{item.companyName ? item.companyName : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[1].visible" sortable="columns[1].field">
-                                                        {{item.companyAddress ? item.companyAddress : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[2].visible" sortable="columns[2].field">
-                                                        {{item.companyEmail ? item.companyEmail : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[3].visible" sortable="columns[3].field">
-                                                        {{item.companyPhoneCode ? item.companyPhoneCode : '-'}}&nbsp;{{item.phone ? item.phone : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[4].visible" sortable="columns[4].field">
-                                                        {{item.companyPhone ? item.companyPhone : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[5].visible" sortable="columns[5].field">
-                                                        {{item.countOfBranches ? item.countOfBranches : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[6].visible" sortable="columns[6].field">
-                                                        {{item.contactName ? item.contactName : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[7].visible" sortable="columns[7].field">
-                                                        {{item.contactLastName ? item.contactLastName : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[8].visible" sortable="columns[8].field">
-                                                        {{item.contactEmail ? item.contactEmail : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[9].visible" sortable="columns[9].field">
-                                                        {{item.contactPhoneCode ? item.contactPhoneCode : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[10].visible" sortable="columns[10].field">
-                                                        {{item.contactPhone ? item.contactPhone : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[11].visible" sortable="columns[11].field">
-                                                        {{item.message ? item.message : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[12].visible" sortable="columns[12].field">
-                                                        {{item.status ? item.status : '-'}}
-                                                    </td>
-                                                    <td ng-show="columns[13].visible" sortable="columns[13].field">
-                                                        {{item.requestedAt ? item.requestedAt : '-'}}
-                                                    </td>
-
-                                                    <td class="edit_td" ng-click="dropdown_tds($event)">
-                                                        <span>EDIT <i class="fa fa-sort-desc" aria-hidden="true"></i></span>
-                                                        <ul class="branches_crud_ul">
-                                                            <li   data-id = "{{item.id}}" ng-click = "verify($event)">
-                                                                <i  class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
-                                                                Verify
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-
-
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <input type="hidden" ng-model="itemsCount" ng-init='itemsCount=${dataCount}'  />
-                                    <input type="hidden" ng-model="actionPath" ng-init="actionPath='company-form-request-list.htm'"/>
-                                    <input type="hidden" ng-model="actionVerifyPath" ng-init="actionVerifyPath='pre-company-form-request-verify.htm'"/>
-
-                                </s:if>
-                                <s:else>
-                                    <s:text name="page.branches.info.list.data.found">Data not found</s:text>
-                                </s:else>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+    <div class="row"  ng-cloak>
+        <div class="form_parent_div col-lg-4 col-md-4 col-sm-6 col-xs-10" ng-controller = "adminCompanies">
+
+            <form action="company-form-request-verify.htm" name=companyInfoEditAdmin method="post" novalidate="novalidate"  >
+                <input type="hidden" name="formRequestId" value="<s:property value="formRequestId"/>">
+
+                <div class="input_parent_div">
+                    <input type="text" placeholder="response title" name="title" required="required" ng-model = "company.title">
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.title.$touched && companyInfoEditAdmin.title.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+
+                    <div ng-controller="callbacksCtrl" class="main_text_editor ">
+                        <input type="hidden" ng-value ="summer_value" name="message">
+                        <summernote name="message_summer" config="optionsSummernote"
+                                    on-init="init()" on-enter="enter()" on-focus="focus(evt)"
+                                    on-blur="blur(evt)" on-paste="paste(evt)" on-keyup="keyup(evt)"
+                                    on-keydown="keydown(evt)"
+                                    on-change="change(contents)"
+                                    on-image-upload="imageUpload(files)"
+                                    editable="editable" editor="editor">
+                        </summernote>
+                    </div>
+                </div>
+                <div class="input_parent_div">
+                    <input type="file" file-model="fileInfo">
+                </div>
+
+                <div class="input_parent_div">
+                    <button type="button" class="plus_button" ng-click = plus()>+</button>
+                    <input type="text"  class="add_input" placeholder="response remote addresses" ng-model = 'res_address'  ng-blur = 'blur_input_addres()' required   >
+                    <input type="hidden"    name="allowedRemoteAddressValues" ng-value = 'addres_string'>
+                    <div class="error_div" ng-show = "companyInfoEditAdmin.allowedRemoteAddressValues.$touched && companyInfoEditAdmin.allowedRemoteAddressValues.$error.required">
+                        <span>This field is required</span>
+                    </div>
+                </div>
+
+                <div class="input_parent_div">
+                    <div class="request-form-group ">
+                        <div class="ist_mult" on-item-click="addPartition()"
+                             isteven-multi-select
+                             input-model="partitionType"
+                             output-model="partitionTypeOut"
+                             button-label="name"
+                             item-label="name"
+                             tick-property="ticked"
+                             selection-mode="multiple"
+                             helper-elements="filter"
+                             translation="select_partition"
+                        >
+                        </div>
+                    </div>
+                    <input type="hidden" name="allowedPartitionValues" ng-value="partition">
+                </div>
+
+
+                <div class="input_parent_div">
+                    <input type="number" placeholder="balance provided by merchant" name="balanceProvidedByMerchant" ng-model = 'company.balanceProvidedByMerchant' required >
+
+                    <div class="error_div" ng-show = "companyInfoEditAdmin.balanceProvidedByMerchant.$touched && companyInfoEditAdmin.balanceProvidedByMerchant.$error.required">
+                        <span>This field is required</span>
+                    </div>
+                </div>
+
+
+                <div class="input_parent_div">
+                    <input type="number" placeholder="accepted overpayment" name="acceptedOverpayment" required ng-model = 'company.acceptedOverpayment' >
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.acceptedOverpayment.$touched && companyInfoEditAdmin.acceptedOverpayment.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="maximum limit of transaction" name="maximumLimitOfTransaction" required ng-model = 'company.maximumLimitOfTransaction'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.maximumLimitOfTransaction.$touched && companyInfoEditAdmin.maximumLimitOfTransaction.$error.required">
+                    <span>This field is required</span>
+                </div>
+
+
+                <div class="input_parent_div">
+                    <div class="request-form-group ">
+                        <div class="ist_mult" on-item-click="addCurrency()"
+                             isteven-multi-select
+                             input-model="cuerencyType"
+                             output-model="cuerencyTypeOut"
+                             button-label="name"
+                             item-label="name"
+                             tick-property="ticked"
+                             selection-mode="single"
+                             helper-elements="none"
+                             translation="select_currency"
+                        >
+                        </div>
+                    </div>
+                    <input type="hidden" name="currencyType" ng-value="currency">
+                </div>
+
+
+                <div class="input_parent_div">
+
+
+                    <div class="request-form-group ">
+                        <div class="ist_mult" on-item-click="addRatevalue()"
+                             isteven-multi-select
+                             input-model="availableRateValues"
+                             output-model="availableRateValuesOut"
+                             button-label="name"
+                             item-label="name"
+                             tick-property="ticked"
+                             selection-mode="multiple"
+                             helper-elements="filter"
+                             translation="select_rate"
+                        >
+                        </div>
+                    </div>
+                    <input type="hidden" name="availableRateValues" ng-value="rate">
+                </div>
+
+
+
+
+
+
+                <div class="input_parent_div">
+                    <input type="number" placeholder="deposit fee percent" name="depositFeePercent" required ng-model = 'company.depositFeePercent'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.depositFeePercent.$touched && companyInfoEditAdmin.depositFeePercent.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="deposit minimum fee" name="depositMinFee" required ng-model = 'company.depositMinFee'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.depositMinFee.$touched && companyInfoEditAdmin.depositMinFee.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="deposit maximum fee" name="depositMaxFee" required ng-model = 'company.depositMaxFee'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.depositMaxFee.$touched && companyInfoEditAdmin.depositMaxFee.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="withdraw fee percent" name="withdrawFeePercent" required ng-model = 'company.withdrawFeePercent'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.withdrawFeePercent.$touched && companyInfoEditAdmin.withdrawFeePercent.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="withdraw minimum fee" name="withdrawMinFee" required ng-model = 'company.withdrawMinFee'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.withdrawMinFee.$touched && companyInfoEditAdmin.withdrawMinFee.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="withdraw maximum fee" name="withdrawMaxFee" required ng-model = 'company.withdrawMaxFee'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.withdrawMaxFee.$touched && companyInfoEditAdmin.withdrawMaxFee.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="exchange deposit fee percent" name="exchangeDepositFeePercent" required ng-model = 'company.exchangeDepositFeePercent'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.exchangeDepositFeePercent.$touched && companyInfoEditAdmin.exchangeDepositFeePercent.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="exchange deposit minimum fee" name="exchangeDepositMinFee" required ng-model = 'company.exchangeDepositMinFee'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.exchangeDepositMinFee.$touched && companyInfoEditAdmin.exchangeDepositMinFee.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="exchange deposit maximum fee" name="exchangeDepositMaxFee" required ng-model = 'company.exchangeDepositMaxFee'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.exchangeDepositMaxFee.$touched && companyInfoEditAdmin.exchangeDepositMaxFee.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="exchange withdraw fee percent" name="exchangeWithdrawFeePercent" required ng-model = 'company.exchangeWithdrawFeePercent'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.exchangeWithdrawFeePercent.$touched && companyInfoEditAdmin.exchangeWithdrawFeePercent.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="exchange withdraw min fee" name="exchangeWithdrawMinFee" required ng-model = 'company.exchangeWithdrawMinFee'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.exchangeWithdrawMinFee.$touched && companyInfoEditAdmin.exchangeWithdrawMinFee.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div class="input_parent_div">
+                    <input type="number" placeholder="exchange withdraw max fee" name="exchangeWithdrawMaxFee" required ng-model = 'company.exchangeWithdrawMaxFee'>
+                </div>
+                <div class="error_div" ng-show = "companyInfoEditAdmin.exchangeWithdrawMaxFee.$touched && companyInfoEditAdmin.exchangeWithdrawMaxFee.$error.required">
+                    <span>This field is required</span>
+                </div>
+                <div align="center">
+                    <button class="btn btn-success" >submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>

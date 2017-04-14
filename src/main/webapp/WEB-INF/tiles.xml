@@ -42,6 +42,10 @@
         <put-attribute name="content" value="/WEB-INF/pages/sketch/sketch.jsp"/>
     </definition>
 
+    <definition name="sketch-add-view" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/sketch/add.jsp"/>
+    </definition>
+
     <!--
     ####################################################################################################################
     ####################################################################################################################

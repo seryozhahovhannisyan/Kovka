@@ -117,120 +117,37 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
         }
     );
 
-    $scope.viewDetail = function(item) {
-        var path = $scope.actionPathLoad;
-        var id = item.currentTarget.getAttribute("data-id");
-        var target = item.currentTarget.getAttribute("data-target");
-
-        $http({
-            method: 'post',
-            url: path,
-            data :  {
-                id : id
-            },
-            dataType: 'json'
-        }).then(
-            function(response) {
-
-                var result = response.data.dto;
-
-
-                if (result.responseStatus == 'SUCCESS') {
-
-                    var item = result.response.item;
-                    console.log('item', item)
-                    $scope.item = item;
-                }
-            })
-
-        //$('#dlgItemDetail').modal('show');
-    };
-
-    $scope.edit_row = function () {
-     $timeout(function () {
-         $scope.show_loader();
-     }, 1000);
-     $timeout(function () {
-         $scope.hide_loader();
-     }, 3000);
-
-     // alert(4)
-     // $('.modal').on('shown', function() {
-     //     alert(45)
-     // });
-    };
-    $scope.dropdown_tds = function ($event) {
-        // $(".branches_crud_ul").hide();
-        var current_element =angular.element($event.currentTarget);
-        var top= current_element.outerHeight(true);
-        var width= current_element.outerWidth(true);
-        current_element.find("ul").css({"top":top, "width": width}).toggle(500);
-    };
-
-    $scope.disable_labels = function (index) {
-        if(index == 0 || index == 1 ||  index == 2){
-            return true
+    $scope.add_new_records = function (id_type) {
+        var href = "#";
+        if(id_type == "sketch"){
+            href = "/sketch-add-view.htm";
         }
+        window.location = href;
     };
 
-    /*Wallet*/
-    $scope.verify = function(item) {
-        var path = $scope.actionVerifyPath;
-        var id = item.currentTarget.getAttribute("data-id");
-        var target = item.currentTarget.getAttribute("data-target");
+    $scope.deleteSelectedRow = function (id_type) {
 
-        window.location = path + "?formRequestId="+id;
+        document.getElementById("delete-form").remove();
+
+        var form = document.createElement("form");
+        form.id = "delete-form";
+        form.method = "POST";
+
+        var ides =  $scope.selected.join();
+        var element = document.createElement("input");
+
+        if(id_type == "sketch"){
+            form.action = "sketch-delete.htm";
+            element.value=ides;
+            element.name="sketchIdes";
+        }
+
+        form.appendChild(element);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
     };
-    $scope.reject_offer = function(item) {
-        var path = $scope.actionOfferRejectPath;
-        var id = item.currentTarget.getAttribute("data-id");
-        var target = item.currentTarget.getAttribute("data-target");
-        $http({
-            method: 'post',
-            url: path,
-            data :  {
-                id : id
-            },
-            dataType: 'json'
-        }).then(
-            function(response) {
-
-                var result = response.data.dto;
-                if (result.responseStatus == 'SUCCESS') {
-
-                    var item = result.response.item;
-                    console.log('item', item);
-                    $scope.item = item;
-                }
-            })
-
-        $('#dlgItemDetail').modal('show');
-    };
-    $scope.accept_offer = function(item) {
-        var path = $scope.actionOfferAcceptPath;
-        var id = item.currentTarget.getAttribute("data-id");
-        var target = item.currentTarget.getAttribute("data-target");
-        $http({
-            method: 'post',
-            url: path,
-            data :  {
-                id : id
-            },
-            dataType: 'json'
-        }).then(
-            function(response) {
-
-                var result = response.data.dto;
-                if (result.responseStatus == 'SUCCESS') {
-
-                    var item = result.response.item;
-                    console.log('item', item);
-                    $scope.item = item;
-                }
-            })
-
-        $('#dlgItemDetail').modal('show');
-    };
-
 
 }]
