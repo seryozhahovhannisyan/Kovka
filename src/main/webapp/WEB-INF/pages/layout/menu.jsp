@@ -33,9 +33,7 @@
                 <ul style="" class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="provider-offer.htm">Offers to provide</a></li>
-                            <li><a href="company-form-request.htm">Requests</a></li>
-                            <li><a href="branch-request.htm">Branch</a></li>
+                            <li><a href="sketches.htm"><s:text name="menu.sketches">Sketches</s:text></a></li>
                         </ul>
                     </li>
                 </ul>

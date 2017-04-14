@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+
+    <bean id="FileDataManager" class="com.kovka.business.impl.FileDataManager">
+        <property name="dao" ref="FileDataDao"/>
+    </bean>
+
+    <bean id="SketchInfoManager" class="com.kovka.business.impl.SketchInfoManager">
+        <property name="dao" ref="SketchInfoDao"/>
+    </bean>
+
+    <bean id="SketchManager" class="com.kovka.business.impl.SketchManager">
+        <property name="dao" ref="SketchDao"/>
+        <property name="fileDataDao" ref="FileDataDao"/>
+        <property name="infoDao" ref="SketchInfoDao"/>
+        <property name="productDao" ref="SketchProductDao"/>
+    </bean>
+
+    <bean id="SketchProductManager" class="com.kovka.business.impl.SketchProductManager">
+        <property name="dao" ref="SketchProductDao"/>
+    </bean>
 
     <bean id="UserManager" class="com.kovka.business.impl.UserManager">
         <property name="dao" ref="UserDao"/>
     </bean>
+
 
 </beans>

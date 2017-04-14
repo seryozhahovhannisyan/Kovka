@@ -33,5 +33,11 @@
           scope="prototype">
     </bean>
 
+    <bean id="SketchAction" class="com.kovka.web.action.sketch.SketchAction" scope="prototype">
+        <property name="dto" ref="ResponseDto"/>
+        <property name="sketchManager" ref="SketchManager"/>
+    </bean>
+
+
 
 </beans>

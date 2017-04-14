@@ -1,5 +1,7 @@
 package com.kovka.common.data;
 
+import com.kovka.common.data.lcp.Status;
+
 /**
  * Created by Serozh on 4/12/2017.
  */
@@ -13,6 +15,7 @@ public class SketchProduct {
     private Long imageId;
 
     private int order;
+    private Status status;
 
     /*##################################################################################################################
      *                                  GETTERS & SETTERS
@@ -65,5 +68,13 @@ public class SketchProduct {
 
     public void setOrder(int order) {
         this.order = order;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

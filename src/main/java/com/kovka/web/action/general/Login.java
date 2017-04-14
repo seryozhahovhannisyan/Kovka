@@ -2,7 +2,6 @@ package com.kovka.web.action.general;
 
 import com.kovka.business.IUserManager;
 import com.kovka.common.data.User;
-import com.kovka.common.data.lcp.Status;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
 import com.kovka.web.util.encryption.SHAHashEnrypt;

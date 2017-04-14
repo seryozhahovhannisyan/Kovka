@@ -76,7 +76,25 @@
             <result name="start" type="redirect">start.htm</result>
         </action>
 
+        <!--SketchAction-->
 
+        <action name="sketches" class="SketchAction" method="listView">
+            <result name="success" type="tiles">sketches</result>
+        </action>
+
+        <action name="sketch" class="SketchAction" method="view">
+            <result name="success" type="tiles">sketch</result>
+        </action>
+
+        <action name="sketch-add" class="SketchAction" method="add">
+            <result name="success" type="redirect">sketch.htm</result>
+            <result name="error" type="tiles">sketches</result>
+        </action>
+
+        <action name="sketch-delete" class="SketchAction" method="delete">
+            <result name="success" type="redirect">sketches.htm</result>
+            <result name="error" type="tiles">sketches</result>
+        </action>
 
 
     </package>

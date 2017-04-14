@@ -18,79 +18,26 @@
 
 
 <script type="text/javascript"  >
-
     var contextPath = '<%=request.getContextPath()%>';
     var object = 'company_form_request';
     var itemsCount = '<s:property value="dataCount"/>';
     var columns = [
-        {title: 'title', field: 'title', visible : true},
-        {title: 'reason', field: 'reason', visible : true},
-        {title: 'amount', field: 'amount', visible : true},
-        {title: 'currencyType', field: 'currencyType', visible : true},
-        {title: 'offeredAt', field: 'offeredAt', visible : true},
+        {title: 'companyName', field: 'companyName', visible : true},
+        {title: 'companyAddress', field: 'companyAddress', visible : true},
+        {title: 'companyEmail', field: 'companyEmail', visible : true},
+        {title: 'companyPhoneCode', field: 'companyPhoneCode', visible : true},
+        {title: 'companyPhone', field: 'companyPhone', visible : true},
+        {title: 'countOfBranches', field: 'countOfBranches', visible : true},
+        {title: 'countOfWorkers', field: 'countOfWorkers', visible : true},
+        {title: 'contactName', field: 'contactName', visible : true},
+        {title: 'contactLastName', field: 'contactLastName', visible : true},
+        {title: 'contactEmail', field: 'contactEmail', visible : true},
+        {title: 'contactPhoneCode', field: 'contactPhoneCode', visible : true},
+        {title: 'contactPhone', field: 'contactPhone', visible : true},
+        {title: 'message', field: 'message', visible : true},
         {title: 'status', field: 'status', visible : true},
-        {title: 'company name', field: 'company.name', visible : true},
-        {title: 'company address', field: 'company.address', visible : true},
-        {title: 'company city', field: 'company.city', visible : true},
-        {title: 'company street', field: 'company.street', visible : true}
+        {title: 'requestedAt', field: 'status', requestedAt : true}
     ];
-
-    /*function testOk(){
-        $.ajax({
-            url: "offer-to-provide.htm",
-            type: "post",
-            dataType: "json",
-            async: true,
-            data: {
-                secretKey: '6rtiwkjxhpyx6hu8sjgslql1i4yygb186yk9du7a3ckcr43llakfugxqyvh8ysjn',
-                clientKey: 'mwh2j580rytap024tiv8u9diap18n9aa3r4za10nc750aflh7be9gple5wticnuq',
-                title: 'title',
-                reason: 'reason',
-                amount: '1666666666060656BDDDDDDDDDFDFDFD9555555555F5F5550666666666060616B888888888F8F8E8F444444444F4F4D4266666666606069637777777770707D710000000000000401999999999090969EDDDDDDDDDFDFDBD2777777777070797B888888888F8F8E829999999990909A93FFFFFFFFF0F0FFFB333333333F3F3C3',
-                currencyType: '1444444444040454D444444444F4F454AAAAAAAAAAFAFAAA2DDDDDDDDD0D0DBDCFFFFFFFFFFFFF3F0DDDDDDDDD0D0D3DBFFFFFFFFFFFFFFF6EEEEEEEEE0E0EBE29999999990909A9499999999909092939999999990909E99444444444F4F454266666666606069633333333330303C3B999999999F9F9E90CCCCCCCCC0C0C3C'
-            },
-            success: function (data) {
-                if (data != null && data.dto.responseStatus == "SUCCESS") {
-                    //lastScrollTop = 0 ;
-                    alert('success');
-                }
-                else {
-                    alert('error');
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert('error');
-            }
-        })
-    }
-
-    function test(){
-        $.ajax({
-            url: "check-company-balance-provided-by-merchant.htm",
-            type: "post",
-            dataType: "json",
-            async: true,
-            data: {
-                secretKey: '6rtiwkjxhpyx6hu8sjgslql1i4yygb186yk9du7a3ckcr43llakfugxqyvh8ysjn',
-                clientKey: 'mwh2j580rytap024tiv8u9diap18n9aa3r4za10nc750aflh7be9gple5wticnuq'
-            },
-            success: function (data) {
-                console.log('data',data)
-                if (data != null && data.dto.responseStatus == "SUCCESS") {
-                    //lastScrollTop = 0 ;
-
-                    alert('success');
-                }
-                else {
-                    alert('error');
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert('error');
-            }
-        })
-    }*/
-
 </script>
 
 <div class="right_col" role="main" style="min-height: 2519px;" ng-controller="listController">
@@ -100,9 +47,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>
-                       Provider Offers
-                        <%--<a onclick="testOk()">Test Ok</a>
-                        <a onclick="test()">Test</a>--%>
+                        sketch
                     </h2>
 
                     <div class="clearfix"></div>
@@ -156,39 +101,56 @@
                                                         <input type="checkbox" name="id" />
                                                     </td>
                                                     <td ng-show="columns[0].visible" sortable="columns[0].field">
-                                                        {{item.title ? item.title : '-'}}
+                                                        {{item.companyName ? item.companyName : '-'}}
                                                     </td>
                                                     <td ng-show="columns[1].visible" sortable="columns[1].field">
-                                                        {{item.reason ? item.reason : '-'}}
+                                                        {{item.companyAddress ? item.companyAddress : '-'}}
                                                     </td>
                                                     <td ng-show="columns[2].visible" sortable="columns[2].field">
-                                                        {{item.amount ? item.amount : '-'}}
+                                                        {{item.companyEmail ? item.companyEmail : '-'}}
                                                     </td>
                                                     <td ng-show="columns[3].visible" sortable="columns[3].field">
-                                                        {{item.currencyType ? item.currencyType : '-'}}&nbsp;{{item.phone ? item.phone : '-'}}
+                                                        {{item.companyPhoneCode ? item.companyPhoneCode : '-'}}&nbsp;{{item.phone ? item.phone : '-'}}
                                                     </td>
                                                     <td ng-show="columns[4].visible" sortable="columns[4].field">
-                                                        {{item.offeredAt ? item.offeredAt : '-'}}
+                                                        {{item.companyPhone ? item.companyPhone : '-'}}
                                                     </td>
                                                     <td ng-show="columns[5].visible" sortable="columns[5].field">
-                                                        {{item.status ? item.status : '-'}}
+                                                        {{item.countOfBranches ? item.countOfBranches : '-'}}
                                                     </td>
                                                     <td ng-show="columns[6].visible" sortable="columns[6].field">
-                                                        {{item.company.name ? item.company.name : '-'}}
+                                                        {{item.contactName ? item.contactName : '-'}}
                                                     </td>
                                                     <td ng-show="columns[7].visible" sortable="columns[7].field">
-                                                        {{item.company.address ? item.company.address : '-'}}
+                                                        {{item.contactLastName ? item.contactLastName : '-'}}
                                                     </td>
                                                     <td ng-show="columns[8].visible" sortable="columns[8].field">
-                                                        {{item.company.city ? item.company.city : '-'}}
+                                                        {{item.contactEmail ? item.contactEmail : '-'}}
                                                     </td>
                                                     <td ng-show="columns[9].visible" sortable="columns[9].field">
-                                                        {{item.company.street ? item.company.street : '-'}}
+                                                        {{item.contactPhoneCode ? item.contactPhoneCode : '-'}}
+                                                    </td>
+                                                    <td ng-show="columns[10].visible" sortable="columns[10].field">
+                                                        {{item.contactPhone ? item.contactPhone : '-'}}
+                                                    </td>
+                                                    <td ng-show="columns[11].visible" sortable="columns[11].field">
+                                                        {{item.message ? item.message : '-'}}
+                                                    </td>
+                                                    <td ng-show="columns[12].visible" sortable="columns[12].field">
+                                                        {{item.status ? item.status : '-'}}
+                                                    </td>
+                                                    <td ng-show="columns[13].visible" sortable="columns[13].field">
+                                                        {{item.requestedAt ? item.requestedAt : '-'}}
                                                     </td>
 
                                                     <td class="edit_td" ng-click="dropdown_tds($event)">
-                                                        <button ng-if='item.status == "PENDING"' data-id = "{{item.id}}"  ng-click = "reject_offer($event)" class="btn btn-danger"  type="button">Reject</button>
-                                                        <button ng-if='item.status == "PENDING"' data-id = "{{item.id}}"  ng-click = "accept_offer($event)" class="btn btn-success" type="button">Accept</button>
+                                                        <span>EDIT <i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+                                                        <ul class="branches_crud_ul">
+                                                            <li   data-id = "{{item.id}}" ng-click = "verify($event)">
+                                                                <i  class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                                Verify
+                                                            </li>
+                                                        </ul>
                                                     </td>
 
 
@@ -198,9 +160,8 @@
                                     </div>
 
                                     <input type="hidden" ng-model="itemsCount" ng-init='itemsCount=${dataCount}'  />
-                                    <input type="hidden" ng-model="actionPath" ng-init="actionPath='offer-list.htm'"/>
-                                    <input type="hidden" ng-model="actionOfferRejectPath" ng-init="actionOfferRejectPath='reject-offer.htm'"/>
-                                    <input type="hidden" ng-model="actionOfferAcceptPath" ng-init="actionOfferAcceptPath='accept-offer.htm'"/>
+                                    <input type="hidden" ng-model="actionPath" ng-init="actionPath='company-form-request-list.htm'"/>
+                                    <input type="hidden" ng-model="actionVerifyPath" ng-init="actionVerifyPath='pre-company-form-request-verify.htm'"/>
 
                                 </s:if>
                                 <s:else>

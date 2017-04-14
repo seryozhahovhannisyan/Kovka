@@ -8,6 +8,18 @@
         <property name="map" ref="FileDataMap"/>
     </bean>
 
+    <bean id="SketchDao" class="com.kovka.dataaccess.dao.impl.SketchDao">
+        <property name="map" ref="SketchMap"/>
+    </bean>
+
+    <bean id="SketchInfoDao" class="com.kovka.dataaccess.dao.impl.SketchInfoDao">
+        <property name="map" ref="SketchInfoMap"/>
+    </bean>
+
+    <bean id="SketchProductDao" class="com.kovka.dataaccess.dao.impl.SketchProductDao">
+        <property name="map" ref="SketchProductMap"/>
+    </bean>
+
     <bean id="UserDao" class="com.kovka.dataaccess.dao.impl.UserDao">
         <property name="map" ref="UserMap"/>
     </bean>

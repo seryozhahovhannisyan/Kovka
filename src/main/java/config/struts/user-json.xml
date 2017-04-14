@@ -43,6 +43,20 @@
         </action>
 
 
+        <!--SketchAction-->
+
+        <action name="branch-list" class="SketchAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="branch-view" class="SketchAction" method="view">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="branch-edit-view" class="SketchAction" method="view">
+            <result name="success" type="json"/>
+        </action>
+
     </package>
 
 </struts>

@@ -11,18 +11,22 @@ public interface ISketchManager {
 
     public void add(Sketch data) throws InternalErrorException;
 
-    public Sketch getById(Long id) throws InternalErrorException, EntityNotFoundException;
+    public Sketch getSampleById(Long id) throws InternalErrorException, EntityNotFoundException;
 
-    public List<Sketch> getByParams(Map<String, Object> params) throws InternalErrorException;
+    public Sketch getFullById(Long id) throws InternalErrorException, EntityNotFoundException;
 
-    public List<Sketch> getFullByParams(Map<String, Object> params) throws InternalErrorException;
+    public Sketch getFullCurrentLangById(Long id) throws InternalErrorException, EntityNotFoundException;
 
-    public int getCountByParams(Map<String, Object> params) throws InternalErrorException;
+    public Long getPreview(Long id) throws InternalErrorException;
+
+    public Long getNext(Long id) throws InternalErrorException;
+
+    public List<Sketch> getSampleByParams(Map<String, Object> params) throws InternalErrorException;
+
+    public long getCountByParams(Map<String, Object> params) throws InternalErrorException;
 
     public void update(Sketch data) throws InternalErrorException, EntityNotFoundException;
 
     public void delete(Sketch data) throws InternalErrorException, EntityNotFoundException;
-
-    public void forceDelete(Long id) throws InternalErrorException, EntityNotFoundException;
 
 }

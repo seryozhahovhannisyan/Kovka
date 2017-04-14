@@ -1,7 +1,5 @@
 package com.kovka.common.data;
 
-import com.kovka.common.data.lcp.Status;
-
 /**
  * Created by User on 10.04.2017.
  */

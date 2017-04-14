@@ -22,7 +22,7 @@ public class FileDataManager implements IFileDataManager {
     }
 
     @Override
-    @Transactional(readOnly = false, rollbackFor = Exception.class, value = "MerchantTM")
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void add(FileData data) throws InternalErrorException {
         try {
             dao.add(data);
@@ -50,7 +50,7 @@ public class FileDataManager implements IFileDataManager {
     }
 
     @Override
-    @Transactional(readOnly = false, rollbackFor = Exception.class, value = "MerchantTM")
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void update(FileData data) throws InternalErrorException, EntityNotFoundException {
         try {
             dao.update(data);
@@ -60,7 +60,7 @@ public class FileDataManager implements IFileDataManager {
     }
 
     @Override
-    @Transactional(readOnly = false, rollbackFor = Exception.class, value = "MerchantTM")
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void delete(FileData data) throws InternalErrorException, EntityNotFoundException {
         try {
             dao.delete(data);

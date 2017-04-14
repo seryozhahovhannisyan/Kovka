@@ -34,25 +34,21 @@
         <put-attribute name="content" value="/WEB-INF/pages/admin/help.jsp"/>
     </definition>
 
-    <definition name="company" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/request/company-list.jsp"/>
+    <definition name="sketches" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/sketch/sketches.jsp"/>
     </definition>
 
-    <definition name="company-form-request" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/request/company-form-request.jsp"/>
+    <definition name="sketch" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/sketch/sketch.jsp"/>
     </definition>
 
-    <definition name="provider-offer" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/request/provider-offer.jsp"/>
-    </definition>
-
-
-
-    <definition name="branch-request" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/request/branch-request.jsp"/>
-    </definition>
-
-    <!--Guest-->
+    <!--
+    ####################################################################################################################
+    ####################################################################################################################
+                                                    Guest
+    ####################################################################################################################
+    ####################################################################################################################
+    -->
 
     <definition name="web-guest" template="/WEB-INF/guest/layout/main-general.jsp">
         <put-attribute name="header-area" value="/WEB-INF/guest/layout/header-area.jsp"/>
