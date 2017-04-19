@@ -13,6 +13,15 @@
                 <interceptor-ref name="jsonValidationWorkflowStack"/>
                 <interceptor-ref name="authenticateInterceptor"/>
             </interceptor-stack>
+
+            <interceptor-stack name="fileUploadStack">
+                <interceptor-ref name="fileUpload">
+                    <param name="maximumSize">1024000</param>
+                    <param name="allowedTypes"> image/jpeg,image/gif,image/png</param>
+                </interceptor-ref>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
         </interceptors>
 
         <default-interceptor-ref name="userStack"/>
@@ -34,19 +43,35 @@
             <result>/WEB-INF/pages/error/500.jsp</result>
         </action>-->
 
-        <action name="remove-uploaded" class="DataUploadAction" method="removeUploaded">
-            <result name="success" type="json"/>
-        </action>
-
-        <action name="remove-all-uploaded" class="DataUploadAction" method="removeAllUploaded">
-            <result name="success" type="json"/>
-        </action>
-
 
         <!--SketchAction-->
 
         <action name="sketch-list" class="SketchAction" method="list">
             <result name="success" type="json"/>
+        </action>
+
+        <action name="upload-mixed" class="SketchUploadAction" method="upload">
+            <interceptor-ref name="fileUploadStack"/>
+            <result name="success" type="stream">
+                <param name="contentType">text/html</param>
+                <param name="inputName">result</param>
+            </result>
+            <result name="input" type="stream">
+                <param name="contentType">text/html</param>
+                <param name="inputName">result</param>
+            </result>
+        </action>
+
+        <action name="upload-product" class="SketchProductUploadAction" method="upload">
+            <interceptor-ref name="fileUploadStack"/>
+            <result name="success" type="stream">
+                <param name="contentType">text/html</param>
+                <param name="inputName">result</param>
+            </result>
+            <result name="input" type="stream">
+                <param name="contentType">text/html</param>
+                <param name="inputName">result</param>
+            </result>
         </action>
 
         <action name="branch-view" class="SketchAction" method="view">

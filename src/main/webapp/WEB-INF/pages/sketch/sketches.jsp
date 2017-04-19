@@ -48,9 +48,17 @@
                             <div class="add_div_brch"  ></div>
                             <div ><s:text name="page.branches.main.add.record" >Add new record</s:text></div>
                         </div>
+                        <div class="add_div_brch_parent"  ng-click =add_new_product('sketch') >
+                            <div class="add_div_brch"  ></div>
+                            <div >Add new product</div>
+                        </div>
                         <div class="add_div_brch_parent" ng-click =deleteSelectedRow('sketch')>
                             <div class="delete_div_brch" ></div>
                             <div><s:text name="page.branches.main.delete.marked">Delete marked</s:text></div>
+                        </div>
+                        <div class="add_div_brch_parent" ng-click =add_new_image('sketch') >
+                            <div class="add_div_brch" ></div>
+                            Add new Image
                         </div>
                     </div>
 
@@ -101,7 +109,9 @@
                                         <tr ng-repeat="item in $data" ng-class-even="'tbl-row-even'"
                                             ng-class="{'tbl_row_even': $even, 'tbl_row_odd': $odd }">
                                             <td>
-                                                <input type="checkbox" name="id"/>
+                                                <input type="checkbox" name="checkbox_{{item.id}}"
+                                                       ng-click="updateSelection($event, item.id)"
+                                                       ng-checked="checked.checked_all"/>
                                             </td>
                                             <td ng-show="columns[0].visible" sortable="columns[0].field">
                                                 {{item.currentInfo.name ? item.currentInfo.name : '-'}}
@@ -109,15 +119,15 @@
                                             <td ng-show="columns[1].visible" sortable="columns[1].field">
                                                 {{item.currentInfo.shortDesc ? item.currentInfo.shortDesc : '-'}}
                                             </td>
-                                            <td ng-show="columns[1].visible" sortable="columns[1].field">
+                                            <td ng-show="columns[2].visible" sortable="columns[2].field">
                                                 {{item.currentInfo.title ? item.currentInfo.title : '-'}}
                                             </td>
 
-                                            <td ng-show="columns[1].visible" sortable="columns[1].field">
+                                            <td ng-show="columns[3].visible" sortable="columns[3].field">
                                                 {{item.status ? item.status : '-'}}
                                             </td>
 
-                                            <td ng-show="columns[1].visible" sortable="columns[1].field">
+                                            <td ng-show="columns[4].visible" sortable="columns[4].field">
                                                 {{item.order ? item.order : '-'}}
                                             </td>
 

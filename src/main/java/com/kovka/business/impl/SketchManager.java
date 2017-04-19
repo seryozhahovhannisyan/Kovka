@@ -50,7 +50,7 @@ public class SketchManager implements ISketchManager {
                 info.setSketchId(data.getId());
                 infoDao.add(info);
             }
-        } catch (DatabaseException e) {
+        } catch (DatabaseException e) {e.printStackTrace();
             throw new InternalErrorException(e);
         }
     }

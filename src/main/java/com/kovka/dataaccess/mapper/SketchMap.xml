@@ -13,7 +13,7 @@
         <result property="status" column="status"/>
 
         <association property="currentInfo"  column="id" javaType="SketchInfo">
-            <result property="id" column="id"/>
+            <result property="id" column="info_id"/>
             <result property="sketchId" column="sketch_id"/>
             <result property="language" column="lang"/>
             <result property="name" column="name"/>
@@ -21,7 +21,7 @@
             <result property="title" column="title"/>
             <result property="description" column="description"/>
         </association>
-        <association property="mainImage" column="id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getDefaultSketchImg"/>
+        <association property="mainImage" column="main_image_id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getById"/>
 
     </resultMap>
 
@@ -37,7 +37,7 @@
         <result property="order" column="order"/>
         <result property="status" column="status"/>
         <association property="currentInfo"  column="id" javaType="SketchInfo">
-            <result property="id" column="id"/>
+            <result property="id" column="info_id"/>
             <result property="sketchId" column="sketch_id"/>
             <result property="language" column="lang"/>
             <result property="name" column="name"/>
@@ -85,8 +85,16 @@
             resultMap="rmSketch"
             parameterType="long">
 
-        SELECT * FROM sketch
-        WHERE id = #{id}
+        SELECT s.*,
+            si.`id` `info_id`,
+            si.`sketch_id` `sketch_id`,
+            si.`lang` `lang`,
+            si.`name` `name`,
+            si.`short_desc` `short_desc`,
+            si.`title` `title`,
+            si.`description` `description`
+        FROM sketch s, sketch_info si
+        WHERE si.sketch_id = s.id and s.id = #{id}
 
     </select>
     
@@ -103,8 +111,16 @@
             resultMap="rmSketchFullCurrentLang"
             parameterType="long">
 
-        SELECT * FROM sketch
-        WHERE id = #{id}
+        SELECT s.*,
+            si.`id` `info_id`,
+            si.`sketch_id` `sketch_id`,
+            si.`lang` `lang`,
+            si.`name` `name`,
+            si.`short_desc` `short_desc`,
+            si.`title` `title`,
+            si.`description` `description`
+        FROM sketch s, sketch_info si
+        WHERE si.sketch_id = s.id and  s.id = #{id}
 
     </select>
     
@@ -112,8 +128,16 @@
             resultMap="rmSketch"
             parameterType="long">
 
-        SELECT * FROM sketch
-        WHERE 1
+        SELECT s.*,
+            si.`id` `info_id`,
+            si.`sketch_id` `sketch_id`,
+            si.`lang` `lang`,
+            si.`name` `name`,
+            si.`short_desc` `short_desc`,
+            si.`title` `title`,
+            si.`description` `description`
+        FROM sketch s, sketch_info si
+        WHERE si.sketch_id = s.id
         <if test="filter != null">             AND (
             OR `status` = #{filter}
             )
@@ -142,7 +166,7 @@
 
     <update id="update" parameterType="Sketch">
         UPDATE sketch
-        SET status = #{status} , `order` = #{order}
+        SET status = #{status} , `order` = #{order}, `main_image_id` = #{mainImageId}
         WHERE id = #{id}
     </update>
 

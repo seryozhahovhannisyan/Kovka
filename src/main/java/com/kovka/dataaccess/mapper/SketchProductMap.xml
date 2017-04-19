@@ -13,6 +13,7 @@
         <result property="imageId" column="image_id"/>
         <result property="status" column="status"/>
         <result property="order" column="order"/>
+        <association property="image" column="image_id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getById"/>
     </resultMap>
 
     <insert id="add" parameterType="SketchProduct">
@@ -50,7 +51,6 @@
         SET   `price` = #{price},`image_id` = #{imageId},`order` = #{order},`status` = #{status}
         WHERE sketch_info = #{sketchId}
     </update>
-
 
     <update id="delete" parameterType="SketchProduct">
         UPDATE sketch_product

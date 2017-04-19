@@ -86,7 +86,9 @@ public class Initializer implements ServletContextListener {
             logger.info(String.format("Application %s intitilize params [imagePath:%s]", setupInfo.getVersion(), dataPath));
 
             initFolders(dataPath);
-            initFolders(dataPath + File.separator +DATA_FOLDER);
+            initFolders(dataPath + File.separator + DATA_FOLDER);
+            initFolders(dataPath + File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_SKETCH);
+            initFolders(dataPath + File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_PRODUCT);
 
 
             //set tmp dir
@@ -102,8 +104,8 @@ public class Initializer implements ServletContextListener {
 
     private void init() throws InternalErrorException, EncryptException {
         IUserManager userManager = BeanProvider.getUserManager();
-        List<User> users =  userManager.getAll();
-        if(Utils.isEmpty(users)){
+        List<User> users = userManager.getAll();
+        if (Utils.isEmpty(users)) {
             User user = new User();
             user.setUsername("admin");
             user.setPassword(SHAHashEnrypt.get_MD5_SecurePassword("1"));
@@ -185,4 +187,11 @@ public class Initializer implements ServletContextListener {
         return true;
     }
 
+    public static String getSketchUploadDir() {
+        return File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_SKETCH;
+    }
+
+    public static String getProductUploadDir() {
+        return File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_PRODUCT;
+    }
 }

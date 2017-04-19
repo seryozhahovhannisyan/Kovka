@@ -45,6 +45,8 @@
         <mapper resource="com/kovka/dataaccess/mapper/FileDataMap.xml"/>
         <mapper resource="com/kovka/dataaccess/mapper/UserMap.xml"/>
         <mapper resource="com/kovka/dataaccess/mapper/SketchMap.xml"/>
+        <mapper resource="com/kovka/dataaccess/mapper/SketchInfoMap.xml"/>
+        <mapper resource="com/kovka/dataaccess/mapper/SketchProductMap.xml"/>
     </mappers>
 
 </configuration>

@@ -6,6 +6,8 @@ import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.dataaccess.dao.ISketchProductDao;
 import com.kovka.dataaccess.mapper.namespace.SketchProductMap;
 
+import java.util.List;
+
 /**
  * Created by Serozh on 6/21/2016.
  */
@@ -21,6 +23,15 @@ public class SketchProductDao implements ISketchProductDao {
     public void add(SketchProduct data) throws DatabaseException {
         try {
             map.add(data);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
+    public List<SketchProduct> getBySketchId(Long sketchId) throws DatabaseException {
+        try {
+           return map.getBySketchId(sketchId);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }

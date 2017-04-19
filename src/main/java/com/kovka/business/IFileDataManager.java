@@ -13,6 +13,8 @@ public interface IFileDataManager {
 
     public FileData getById(Long id) throws InternalErrorException, EntityNotFoundException;
 
+    public List<FileData> getBySketchId(Long sketchId) throws InternalErrorException;
+
     public List<FileData> getByParams(Map<String, Object> params) throws InternalErrorException;
 
     public void update(FileData data) throws InternalErrorException, EntityNotFoundException;

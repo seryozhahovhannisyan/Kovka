@@ -8,6 +8,8 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
 
     $scope.item = [];
     $scope.image = [];
+    $scope.checked={};
+    $scope.selected = [];
     $scope.columns = columns;
     $scope.isteven_branches = typeof isteven_branches === 'undefined' ? null : isteven_branches;
 
@@ -125,10 +127,37 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
         window.location = href;
     };
 
+    $scope.add_new_image = function (id_type) {
+        var href = "#";
+        //
+        if(id_type == "sketch"){
+            var ides =  $scope.selected.join();
+            if(ides.split(",").length > 1){
+                alert("Need select one");
+                return
+            }
+            href = "/sketch-images-add-view.htm?sketchId="+ides;
+        }
+        window.location = href;
+    };
+
+    $scope.add_new_product = function (id_type) {
+        var href = "#";
+        //
+        if(id_type == "sketch"){
+            var ides =  $scope.selected.join();
+            if(ides.split(",").length > 1){
+                alert("Need select one");
+                return
+            }
+            href = "/sketch-product-add-view.htm?sketchId="+ides;
+        }
+        window.location = href;
+    };
+
     $scope.deleteSelectedRow = function (id_type) {
 
-        document.getElementById("delete-form").remove();
-
+        //document.getElementById("delete-form").remove();
         var form = document.createElement("form");
         form.id = "delete-form";
         form.method = "POST";
@@ -149,5 +178,34 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
         form.submit();
 
     };
+
+    $scope.updateSelection = function ($event, id,all) {
+        if(all== undefined) {
+            var checkbox = $event.currentTarget;
+            var action = checkbox.checked ? 'add' : 'remove';
+            if (action == 'add' & $scope.selected.indexOf(id) == -1) {
+                $scope.selected.push(id);
+            }
+            if (action == 'remove' && $scope.selected.indexOf(id) != -1) {
+                $scope.selected.splice($scope.selected.indexOf(id), 1);
+            }
+        }
+        else{
+            $scope.selected = [];
+            var checkbox = $event.currentTarget;
+            var action = checkbox.checked ? 'add' : 'remove';
+            if (action == 'add' & $scope.selected.indexOf(id) == -1) {
+                angular.forEach($scope.arraytems, function (value, key) {
+                    $scope.selected.push(value.id)
+                })
+            }
+            if (action == 'remove' && $scope.selected.indexOf(id) != -1) {
+                $scope.selected = [];
+            }
+
+        }
+        console.log("$scope.selected",$scope.selected)
+    };
+
 
 }]

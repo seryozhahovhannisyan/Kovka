@@ -46,6 +46,14 @@
         <put-attribute name="content" value="/WEB-INF/pages/sketch/add.jsp"/>
     </definition>
 
+    <definition name="sketch-images-add-view" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/sketch/images-add.jsp"/>
+    </definition>
+
+    <definition name="sketch-product-add-view" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/sketch/product-add.jsp"/>
+    </definition>
+
     <!--
     ####################################################################################################################
     ####################################################################################################################

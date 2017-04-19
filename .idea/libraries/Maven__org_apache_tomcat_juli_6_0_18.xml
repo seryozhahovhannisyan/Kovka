@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/juli/6.0.18/juli-6.0.18.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/juli/6.0.18/juli-6.0.18-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/juli/6.0.18/juli-6.0.18-sources.jar!/" />
     </SOURCES>

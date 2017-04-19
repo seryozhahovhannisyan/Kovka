@@ -23,9 +23,9 @@
             `lang`,
             `name`,
             `short_desc`,
-            `title,
+            `title`,
             `description`
-        ) VALUES (
+        ) VALUE (
             #{sketchId},
             #{language},
             #{name},

@@ -48,8 +48,8 @@
         #{contentType},
         #{size},
         #{creationDate},
-        #{status}
-        ,#{order},
+        #{status},
+        #{order},
         #{sketchId}
         )
 
@@ -70,6 +70,15 @@
 
         SELECT * FROM f_data
         WHERE id = #{id}
+
+    </select>
+
+    <select id="getBySketchId"
+            resultMap="rmFileDataSimple"
+            parameterType="_long">
+
+        SELECT * FROM f_data
+        WHERE sketch_id = #{sketchId}
 
     </select>
 
@@ -105,7 +114,7 @@
    -->
     <update id="update" parameterType="FileData">
         UPDATE f_data
-        SET status = #{status}
+        SET status = #{status}, file_name = #{fileName}
         WHERE id = #{id}
     </update>
 

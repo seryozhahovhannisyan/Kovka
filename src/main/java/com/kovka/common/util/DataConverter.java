@@ -46,4 +46,15 @@ public class DataConverter {
         }
     }
 
+    public static Long convertToLong(String str) throws DataParseException {
+        if (Utils.isEmpty(str)) {
+            return null;
+        }
+        try {
+            return Long.parseLong(str);
+        } catch (Exception e) {
+            throw new DataParseException(e);
+        }
+    }
+
 }

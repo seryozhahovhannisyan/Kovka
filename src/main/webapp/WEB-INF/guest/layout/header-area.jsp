@@ -8,7 +8,7 @@
         <div id="sg-site-header" class="sg-site-header sticky-menu">
             <div class="logo-block">
                 <a class="logo-section" href="http://zheldor-kovka.ru/" title="Художественная ковка" rel="home">
-                    <img src="http://zheldor-kovka.ru/wp-content/uploads/2016/12/654987.png" class="logo" alt="Художественная ковка">
+                    <img  height="128px" width="128px" src="<%=request.getContextPath()%>/img/main/logo-32.jpg" class="logo" alt="Художественная ковка">
                 </a><!-- .logo-section -->
             </div><!-- .logo-block -->
 
@@ -25,7 +25,7 @@
     <div id="sg-site-header" class="sg-site-header sticky-menu">
         <div class="logo-block">
             <a class="logo-section" href="http://zheldor-kovka.ru/" title="Художественная ковка" rel="home">
-                <img src="http://zheldor-kovka.ru/wp-content/uploads/2016/12/654987.png" class="logo" alt="Художественная ковка">
+                <img height="128px" width="128px" src="<%=request.getContextPath()%>/img/main/logo-32.jpg" class="logo" alt="Художественная ковка">
             </a><!-- .logo-section -->
         </div><!-- .logo-block -->
 
@@ -47,7 +47,7 @@
         <div class="image-wrapper">
 
             <a href="http://zheldor-kovka.ru/">
-                <img src="http://zheldor-kovka.ru/wp-content/uploads/2017/01/DSC6263-1-3.jpg" class="header-image" alt="" height="510" width="1600">
+                <img src="<%=request.getContextPath()%>/img/main/logo-32.jpg" class="header-image" alt="" height="510" width="1600">
             </a>
 
             <div class="element-wrap">

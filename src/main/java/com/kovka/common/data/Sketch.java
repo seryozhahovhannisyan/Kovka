@@ -20,6 +20,7 @@ public class Sketch {
 
     private Status status;
     private int order;
+    private Long mainImageId;
 
     /*##################################################################################################################
      *                                  GETTERS & SETTERS
@@ -88,5 +89,13 @@ public class Sketch {
 
     public void setMainImage(FileData mainImage) {
         this.mainImage = mainImage;
+    }
+
+    public Long getMainImageId() {
+        return mainImageId;
+    }
+
+    public void setMainImageId(Long mainImageId) {
+        this.mainImageId = mainImageId;
     }
 }

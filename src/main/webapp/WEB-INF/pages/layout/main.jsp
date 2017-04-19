@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Merchant </title>
+    <title>Kovka</title>
 
 
     <link href="<%=request.getContextPath()%>/libs/css/bootstrap.css" rel="stylesheet">
@@ -75,6 +75,15 @@
             reset           : '<s:text name="label.reset">Reset</s:text>',
             search          : '<s:text name="label.search">Search</s:text>',
             nothingSelected : '<s:text name="label.nothingSelected">Nothing Selected</s:text>'
+        }
+        function goTo(href){
+            window.open(href,'_blank');
+        }
+        function goToAction(href){
+            if(context != null && context.length > 1){
+                href = context + href;
+            }
+            window.location = href;
         }
     </script>
 

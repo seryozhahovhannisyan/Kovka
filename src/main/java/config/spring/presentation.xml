@@ -20,9 +20,14 @@
     <bean id="Logout" class="com.kovka.web.action.general.Logout" scope="prototype">
     </bean>
 
-    <bean id="DataUploadAction" class="com.kovka.web.action.general.DataUploadAction"
-          scope="prototype">
+    <bean id="SketchUploadAction" class="com.kovka.web.action.sketch.SketchUploadAction" scope="prototype">
         <property name="responseDto" ref="ResponseDto"/>
+        <property name="dataManager" ref="FileDataManager"/>
+    </bean>
+
+    <bean id="SketchProductUploadAction" class="com.kovka.web.action.sketch.SketchProductUploadAction" scope="prototype">
+        <property name="responseDto" ref="ResponseDto"/>
+        <property name="productManager" ref="SketchProductManager"/>
     </bean>
 
     <bean id="LocaleAction" class="com.kovka.web.action.general.LocaleAction"

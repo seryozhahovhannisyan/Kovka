@@ -11,6 +11,8 @@ public interface FileDataMap {
 
     public FileData getById(Long id);
 
+    public List<FileData> getBySketchId(Long sketchId);
+
     public FileData getDefaultSketchImg(Long sketchId);
 
     public FileData getSketchImg(Long sketchId);

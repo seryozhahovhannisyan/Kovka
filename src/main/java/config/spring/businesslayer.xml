@@ -6,6 +6,7 @@
 
     <bean id="FileDataManager" class="com.kovka.business.impl.FileDataManager">
         <property name="dao" ref="FileDataDao"/>
+        <property name="sketchDao" ref="SketchDao"/>
     </bean>
 
     <bean id="SketchInfoManager" class="com.kovka.business.impl.SketchInfoManager">
@@ -21,6 +22,7 @@
 
     <bean id="SketchProductManager" class="com.kovka.business.impl.SketchProductManager">
         <property name="dao" ref="SketchProductDao"/>
+        <property name="fileDataDao" ref="FileDataDao"/>
     </bean>
 
     <bean id="UserManager" class="com.kovka.business.impl.UserManager">

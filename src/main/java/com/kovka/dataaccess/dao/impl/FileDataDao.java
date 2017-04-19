@@ -43,6 +43,11 @@ public class FileDataDao implements IFileDataDao {
     }
 
     @Override
+    public List<FileData> getBySketchId(Long sketchId) throws DatabaseException {
+        return map.getBySketchId(sketchId);
+    }
+
+    @Override
     public List<FileData> getByParams(Map<String, Object> params) throws DatabaseException {
         try {
             return map.getByParams(params);

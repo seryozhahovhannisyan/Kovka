@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -6,60 +5,75 @@
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/summernote.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-summernote.min.js"></script>
-<script src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js"></script>
-<script src="<%=request.getContextPath()%>/libs/js/angular/ng-table.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/sketch/object-list.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/sketch/add-controller.js" type="text/javascript"></script>
-
-<link href="<%=request.getContextPath()%>/css/template/cashier.css" type="text/css" rel="stylesheet">
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.summernote').summernote();
     });
+    function submitForm(){
+        $("#descriptionVal").val($('.summernote').summernote('code'));
+        $('#sketchInfoForm').submit()
+    }
 </script>
 
 
-<div class="right_col" role="main" style="min-height: 2519px;" ng-controller="listController">
+<div class="right_col" role="main" style="min-height: 2519px;">
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2>
-                        <s:text name="sketches.title.add">Sketch  Add</s:text>
+                        <s:text name="sketches.title.add">Sketch Add</s:text>
                     </h2>
 
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
 
-                    <div class="row">
-                        <div class="add_div_brch_parent" ng-click=add_new_records('sketch')>
-                            <div class="add_div_brch"></div>
-                            <div><s:text name="page.branches.main.add.record">Add new record</s:text></div>
-                        </div>
-                        <div class="add_div_brch_parent" ng-click=deleteSelectedRow('sketch')>
-                            <div class="delete_div_brch"></div>
-                            <div><s:text name="page.branches.main.delete.marked">Delete marked</s:text></div>
-                        </div>
-                    </div>
+                    <form id="sketchInfoForm" action="sketch-add.htm" method="post" data-parsley-validate="" class="form-horizontal form-label-left"
+                          novalidate="">
 
-                    <div class="row">
-                        http://summernote.org/examples/
-                        <div class="summernote">summernote 1</div>
-
-                        <div id="listContent" ng-controller="CallbacksCtrl">
-                            AAAAAA
-                            <summernote name="message_summer" config="optionsSummernote"
-                                        on-init="init()" on-enter="enter()" on-focus="focus(evt)"
-                                        on-blur="blur(evt)" on-paste="paste(evt)" on-keyup="keyup(evt)"
-                                        on-keydown="keydown(evt)"
-                                        on-change="change(contents)"
-                                        on-image-upload="imageUpload(files)"
-                                        editable="editable" editor="editor">
-                            </summernote>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input name="name" id="name" required="required" class="form-control col-md-7 col-xs-12" type="text">
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="shortDesc">Short Desc <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input name="shortDesc" id="shortDesc" required="required" class="form-control col-md-7 col-xs-12" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input name="title" id="title" required="required" class="form-control col-md-7 col-xs-12" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description <span class="required">*</span>
+                            </label>
+                            <input name="description" id="descriptionVal"  class="form-control col-md-7 col-xs-12" type="hidden">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div id="description" class="summernote">summernote 1</div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button class="btn btn-primary" type="button" onclick="goToAction('/sketches.htm')">Back</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="button" class="btn btn-success" onclick="submitForm()">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
 
                 </div>
             </div>
