@@ -6,6 +6,9 @@
 
 <%--main header start--%>
 <div class="main-area">
+    <boxes box-page="-1" box-url='load-partners.action' page-type="partners"  more-info="false" book="false" >
+        <box-item  ng-repeat="partner in partners" content="partner" box-type="partner"><img width="100px" src="<%=request.getContextPath()%>/images/ajax-loader2.gif"/></box-item>
+    </boxes>
     <div class="main-wrapper right-sidebar ">
 
         <div class="site-content">
