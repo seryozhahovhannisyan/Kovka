@@ -47,7 +47,7 @@
         <div class="image-wrapper">
 
             <a href="http://zheldor-kovka.ru/">
-                <img src="<%=request.getContextPath()%>/img/main/logo-32.jpg" class="header-image" alt="" height="510" width="1600">
+                <img src="http://zheldor-kovka.ru/wp-content/uploads/2017/01/kuz_mol-3.jpg" class="header-image" alt="" height="510" width="1600">
             </a>
 
             <div class="element-wrap">
@@ -370,7 +370,7 @@
                                     <div class="hover">
 
                                         <header>
-                                            <h2 class="entry-title">Мебель</h2>
+                                            <h2 class="entry-title">Мебель1111111</h2>
                                         </header><!-- header -->
 
                                         <p>Кованые кровати, стулья, и предметы интерьера, и другая мебель</p>

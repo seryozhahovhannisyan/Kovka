@@ -25,7 +25,7 @@
     <script type="text/javascript">
 
         window.onload = function () {
-            window.location = "<%=request.getContextPath()%>/start.htm";
+            window.location = "<%=request.getContextPath()%>/home.htm";
         }
     </script>
 </head>
