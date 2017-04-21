@@ -42,8 +42,8 @@
             <result name="success" type="redirect">${url}</result>
         </action>
 
-        <action name="start">
-            <result name="success" type="tiles">start</result>
+        <action name="home">
+            <result name="success" type="tiles">home</result>
         </action>
 
 

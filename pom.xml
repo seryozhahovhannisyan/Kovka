@@ -559,6 +559,19 @@
             <version>1.4.6-rc1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.jboss.spec/jboss-javaee-7.0 -->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.spec</groupId>-->
+            <!--<artifactId>jboss-javaee-7.0</artifactId>-->
+            <!--<version>1.0.2.Final</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.jboss.spec/jboss-javaee-6.0 -->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.spec</groupId>-->
+            <!--<artifactId>jboss-javaee-6.0</artifactId>-->
+            <!--<version>3.0.3.Final</version>-->
+        <!--</dependency>-->
 
 
     </dependencies>

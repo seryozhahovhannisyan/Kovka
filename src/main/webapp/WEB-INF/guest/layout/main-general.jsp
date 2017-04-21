@@ -32,46 +32,7 @@
           href="http://zheldor-kovka.ru/feed/">
     <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"
           href="http://zheldor-kovka.ru/comments/feed/">
-    <script type="text/javascript">
-        window._wpemojiSettings = {
-            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/",
-            "ext": ".png",
-            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/",
-            "svgExt": ".svg",
-            "source": {"concatemoji": "http:\/\/zheldor-kovka.ru\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.3"}
-        };
-        !function (a, b, c) {
-            function d(a) {
-                var b, c, d, e, f = String.fromCharCode;
-                if (!k || !k.fillText)return !1;
-                switch (k.clearRect(0, 0, j.width, j.height), k.textBaseline = "top", k.font = "600 32px Arial", a) {
-                    case"flag":
-                        return k.fillText(f(55356, 56826, 55356, 56819), 0, 0), !(j.toDataURL().length < 3e3) && (k.clearRect(0, 0, j.width, j.height), k.fillText(f(55356, 57331, 65039, 8205, 55356, 57096), 0, 0), b = j.toDataURL(), k.clearRect(0, 0, j.width, j.height), k.fillText(f(55356, 57331, 55356, 57096), 0, 0), c = j.toDataURL(), b !== c);
-                    case"emoji4":
-                        return k.fillText(f(55357, 56425, 55356, 57341, 8205, 55357, 56507), 0, 0), d = j.toDataURL(), k.clearRect(0, 0, j.width, j.height), k.fillText(f(55357, 56425, 55356, 57341, 55357, 56507), 0, 0), e = j.toDataURL(), d !== e
-                }
-                return !1
-            }
 
-            function e(a) {
-                var c = b.createElement("script");
-                c.src = a, c.defer = c.type = "text/javascript", b.getElementsByTagName("head")[0].appendChild(c)
-            }
-
-            var f, g, h, i, j = b.createElement("canvas"), k = j.getContext && j.getContext("2d");
-            for (i = Array("flag", "emoji4"), c.supports = {
-                everything: !0,
-                everythingExceptFlag: !0
-            }, h = 0; h < i.length; h++)c.supports[i[h]] = d(i[h]), c.supports.everything = c.supports.everything && c.supports[i[h]], "flag" !== i[h] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && c.supports[i[h]]);
-            c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1, c.readyCallback = function () {
-                c.DOMReady = !0
-            }, c.supports.everything || (g = function () {
-                c.readyCallback()
-            }, b.addEventListener ? (b.addEventListener("DOMContentLoaded", g, !1), a.addEventListener("load", g, !1)) : (a.attachEvent("onload", g), b.attachEvent("onreadystatechange", function () {
-                "complete" === b.readyState && c.readyCallback()
-            })), f = c.source || {}, f.concatemoji ? e(f.concatemoji) : f.wpemoji && f.twemoji && (e(f.twemoji), e(f.wpemoji)))
-        }(window, document, window._wpemojiSettings);
-    </script>
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -86,38 +47,110 @@
             padding: 0 !important;
         }
     </style>
-    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/mock/s_files/styles.css" type="text/css" media="all">
-    <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/mock/s_files/dcjq-mega-menu.css" type="text/css" media="all">
-    <link rel="stylesheet" id="mbpro-font-awesome-css" href="<%=request.getContextPath()%>/mock/s_files/font-awesome.css" type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-genericons-css" href="<%=request.getContextPath()%>/mock/s_files/genericons.css" type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-fonts-css" href="<%=request.getContextPath()%>/mock/s_files/css.css" type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-style-css" href="<%=request.getContextPath()%>/mock/s_files/style.css" type="text/css" media="all">
+    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/mock/s_files/styles.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/mock/s_files/dcjq-mega-menu.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="mbpro-font-awesome-css"
+          href="<%=request.getContextPath()%>/mock/s_files/font-awesome.css" type="text/css" media="all">
+    <link rel="stylesheet" id="stainedglass-genericons-css"
+          href="<%=request.getContextPath()%>/mock/s_files/genericons.css" type="text/css" media="all">
+    <link rel="stylesheet" id="stainedglass-fonts-css" href="<%=request.getContextPath()%>/mock/s_files/css.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="stainedglass-style-css" href="<%=request.getContextPath()%>/mock/s_files/style.css"
+          type="text/css" media="all">
     <!--[if lt IE 9]>
     <link rel='stylesheet' id='stainedglass-ie-css'
           href='http://zheldor-kovka.ru/wp-content/themes/stained-glass/css/ie.css?ver=20141210' type='text/css'
           media='all'/>
     <![endif]-->
-    <link rel="stylesheet" id="stainedglass-page-css" href="<%=request.getContextPath()%>/mock/s_files/page.css" type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-image-css" href="<%=request.getContextPath()%>/mock/s_files/image.css" type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-button-css" href="<%=request.getContextPath()%>/mock/s_files/button.css" type="text/css" media="all">
-    <link rel="stylesheet" id="tablepress-default-css" href="<%=request.getContextPath()%>/mock/s_files/default.css" type="text/css" media="all">
-    <link rel="stylesheet" id="js_composer_front-css" href="<%=request.getContextPath()%>/mock/s_files/js_composer.css" type="text/css" media="all">
-    <link rel="stylesheet" id="ubermenu-css" href="<%=request.getContextPath()%>/mock/s_files/ubermenu.css" type="text/css" media="all">
-    <link rel="stylesheet" id="ubermenu-black-white-2-css" href="<%=request.getContextPath()%>/mock/s_files/blackwhite2.css" type="text/css" media="all">
-    <link rel="stylesheet" id="ubermenu-font-awesome-css" href="<%=request.getContextPath()%>/mock/s_files/font-awesome_002.css" type="text/css"
+    <link rel="stylesheet" id="stainedglass-page-css" href="<%=request.getContextPath()%>/mock/s_files/page.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="stainedglass-image-css" href="<%=request.getContextPath()%>/mock/s_files/image.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="stainedglass-button-css" href="<%=request.getContextPath()%>/mock/s_files/button.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="tablepress-default-css" href="<%=request.getContextPath()%>/mock/s_files/default.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="js_composer_front-css" href="<%=request.getContextPath()%>/mock/s_files/js_composer.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="ubermenu-css" href="<%=request.getContextPath()%>/mock/s_files/ubermenu.css"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="ubermenu-black-white-2-css"
+          href="<%=request.getContextPath()%>/mock/s_files/blackwhite2.css" type="text/css" media="all">
+    <link rel="stylesheet" id="ubermenu-font-awesome-css"
+          href="<%=request.getContextPath()%>/mock/s_files/font-awesome_002.css" type="text/css"
           media="all">
-    <script type="text/javascript" src="<%=request.getContextPath()%>/mock/s_files/jquery_004.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/mock/s_files/jquery-migrate.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/mock/s_files/jquery.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/mock/s_files/jquery_006.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/mock/s_files/jquery_007.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/mock/s_files/jquery_002.js"></script>
+
+
+    <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/slick-1.5.0.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/script.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
+
+    <script type="text/javascript"
+            src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.value"/>.js'></script>
+    <s:if test="%{toLang.id != toLang.default.id}">
+        <script type="text/javascript"
+                src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.default.value"/>.js'></script>
+    </s:if>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/ng-controller.js"></script>
+
     <script type="text/javascript">
-        /* <![CDATA[ */
-        var mb_ajax = {"ajaxurl": "http:\/\/zheldor-kovka.ru\/wp-admin\/admin-ajax.php"};
-        /* ]]> */
+
+        $(document).ready(function () {
+            // No right click
+            $('img').bind('contextmenu', function (e) {
+                return false;
+            });
+        });
+
+        function doModal(identifier) {
+            var id = $(identifier).data('id');
+            $("#post_id").val(id);
+            $('#hidCaptchaId').val('<%=session.getId()%>');
+            $(".booking-modal").modal();
+            booking_default_date();
+        }
+
+        function closeModal() {
+            $("#post_id").val("");
+            $(".booking-modal").modal('hide');
+        }
+
+        function book_button_target(identifier, type) {
+            //onmouseover
+            if (type == 1) {
+                if ($(identifier).hasClass('blue')) {
+                    $(identifier).removeClass('blue');
+                    $(identifier).addClass('red');
+                }
+            } else if (type == 2) {
+                //onmouseout
+                if ($(identifier).hasClass('red')) {
+                    $(identifier).removeClass('red');
+                    $(identifier).addClass('blue');
+                }
+            }
+        }
+
+        function more_info_button_target(identifier, type) {
+            //onmouseover
+            if (type == 1) {
+                $(identifier).css("background", " none repeat scroll 0 0 red");
+            } else if (type == 2) {
+                //onmouseout
+                $(identifier).css("background", " none repeat scroll 0 0 #84a5b1");
+            }
+        }
+
+        function more_info_country(target) {
+            var redirect = $(target).attr("data-redirect");
+            window.location = redirect;
+        }
+
     </script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/mock/s_files/front.js"></script>
     <link rel="https://api.w.org/" href="http://zheldor-kovka.ru/wp-json/">
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zheldor-kovka.ru/xmlrpc.php?rsd">
     <link rel="wlwmanifest" type="application/wlwmanifest+xml"
@@ -433,7 +466,8 @@
     </style>
 
     <link rel="stylesheet" href="<%=request.getContextPath()%>/mock/s_files/skin.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/mock/s_files/skin_002.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/mock/s_files/skin_002.css" type="text/css"
+          media="screen">
     <meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress.">
     <!--[if lte IE 9]>
     <link rel="stylesheet" type="text/css"
