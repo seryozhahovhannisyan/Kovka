@@ -77,4 +77,10 @@
         <put-attribute name="content" value="/WEB-INF/guest/home.jsp"/>
     </definition>
 
+    <definition name="guest-sketch" extends="web-guest">
+        <put-attribute name="content" value="/WEB-INF/guest/sketch.jsp"/>
+    </definition>
+
+
+
 </tiles-definitions>

@@ -1,9 +1,8 @@
-
-$(document).ready(function(){
+$(document).ready(function () {
     booking_default_date();
 })
 
-function booking_default_date(){
+function booking_default_date() {
     // Return today's date and time
     var currentTime = new Date();
     // returns the month (from 0 to 11)
@@ -13,21 +12,33 @@ function booking_default_date(){
     // returns the year (four digits)
     var year = currentTime.getFullYear();
 
-    $('.s-day option').filter(function () { return $(this).val() == day; }).prop({selected: true});
-    $('.s-month option').filter(function () { return $(this).val() == month; }).prop({selected: true});
-    $('.s-year option').filter(function () { return $(this).val() == year; }).prop({selected: true});
+    $('.s-day option').filter(function () {
+        return $(this).val() == day;
+    }).prop({selected: true});
+    $('.s-month option').filter(function () {
+        return $(this).val() == month;
+    }).prop({selected: true});
+    $('.s-year option').filter(function () {
+        return $(this).val() == year;
+    }).prop({selected: true});
 
-    $('.s-day[name=arrivalDay]').on('change', function(){
+    $('.s-day[name=arrivalDay]').on('change', function () {
         var val = $(this).val();
-        $('.s-day option').filter(function () { return $(this).val() == val; }).prop({selected: true});
+        $('.s-day option').filter(function () {
+            return $(this).val() == val;
+        }).prop({selected: true});
     })
-    $('.s-month[name=arrivalMonth]').on('change', function(){
+    $('.s-month[name=arrivalMonth]').on('change', function () {
         var val = $(this).val();
-        $('.s-month option').filter(function () { return $(this).val() == val; }).prop({selected: true});
+        $('.s-month option').filter(function () {
+            return $(this).val() == val;
+        }).prop({selected: true});
     })
-    $('.s-year[name=arrivalYear]').on('change', function(){
+    $('.s-year[name=arrivalYear]').on('change', function () {
         var val = $(this).val();
-        $('.s-year option').filter(function () { return $(this).val() == val; }).prop({selected: true});
+        $('.s-year option').filter(function () {
+            return $(this).val() == val;
+        }).prop({selected: true});
     })
 
 }
@@ -434,7 +445,7 @@ tourAgencyApp.directive('pageFilter', function ($http, HttpRequest) {
                                 for (var r = 0; r < rowCount; r++) {
                                     // if there are empty data break iteration
                                     if (dtos[index] == null) {
-                                       continue;
+                                        continue;
                                     }
 
                                     var c = dtos[index];
@@ -615,6 +626,7 @@ tourAgencyApp.directive('placehold', function () {
 });
 tourAgencyApp.directive('boxes', function (HttpRequest) {
 
+    alert('boxes')
     var directive = {};
     directive.restrict = 'E';
     directive.compile = function (element, attributes) {
@@ -706,8 +718,8 @@ tourAgencyApp.directive('boxes', function (HttpRequest) {
                     var dtos = actionDto.response.dtos;
                     var load_more = actionDto.response.loadMore;
                     var pagination_page = dtos.length / 4;
-                    console.log('dests.load_more',load_more);
-                    console.log('dests.pagination_page',pagination_page);
+                    console.log('dests.load_more', load_more);
+                    console.log('dests.pagination_page', pagination_page);
                     if (page_type == "searches") {
                         for (var i = 0; i < dtos.length; i++) {
                             var t = dtos[i];
@@ -718,7 +730,7 @@ tourAgencyApp.directive('boxes', function (HttpRequest) {
                                 url_ = '/hotel-single.action?postId=' + t.id;
                             } else if (page_type == "tours" || page_type == 'packages') {
                                 url_ = '/tour-single.action?postId=' + t.id;
-                            }  else if (page_type == "halls") {
+                            } else if (page_type == "halls") {
                                 url_ = '/conference-hall-single.action?postId=' + t.id;
                             } else if (page_type == "republics") {
                                 url_ = '/republic.action?postId=' + t.id;
@@ -759,7 +771,7 @@ tourAgencyApp.directive('boxes', function (HttpRequest) {
                         }
 
                         pagination_page = count / box_limit;
-                        console.log('pagination_page',pagination_page);
+                        console.log('pagination_page', pagination_page);
                     }
                     else {
                         for (var i = 0; i < dtos.length; i++) {
@@ -772,7 +784,7 @@ tourAgencyApp.directive('boxes', function (HttpRequest) {
                             else if (page_type == "tours" || page_type == 'packages') {
                                 url_ = '/tour-single.action?postId=' + t.id;
                             }
-                            else if (page_type == "halls"  ) {
+                            else if (page_type == "halls") {
                                 url_ = '/conference-hall-single.action?postId=' + t.id;
                             }
                             else if (page_type == "republics") {
@@ -833,7 +845,7 @@ tourAgencyApp.directive('boxItem', function (Template) {
         templateUrl: function (element, attrs) {
             var box_type = attrs.boxType;
             box_id = attrs.boxId;
-            return  Template.getTemplate(box_type);
+            return Template.getTemplate(box_type);
         }
     };
 })
@@ -1061,22 +1073,22 @@ tourAgencyApp.directive('loadMore', function ($http, $compile, HttpRequest) {
                         var add_trip = boxes.attributes["add-trip"].value;
                         for (var index  in dtos) {
 
-                            var scoped_customdestinations =  $scope[page_type];
+                            var scoped_customdestinations = $scope[page_type];
                             var customdestination = null;
                             lab:
-                            for(var sc in scoped_customdestinations){
-                                if(scoped_customdestinations[sc].day_count == index){
-                                    customdestination = scoped_customdestinations[sc];
-                                    break lab;
+                                for (var sc in scoped_customdestinations) {
+                                    if (scoped_customdestinations[sc].day_count == index) {
+                                        customdestination = scoped_customdestinations[sc];
+                                        break lab;
+                                    }
                                 }
-                            }
 
-                            if(customdestination == null){
+                            if (customdestination == null) {
                                 customdestination = {};
                                 customdestination.day_count = index;
                                 customdestination.destinations = [];
-                                for(var sc in scoped_customdestinations){
-                                    if(scoped_customdestinations[sc].day_count > index){
+                                for (var sc in scoped_customdestinations) {
+                                    if (scoped_customdestinations[sc].day_count > index) {
                                         $scope[page_type].splice(sc, 0, customdestination);
                                     }
                                 }
@@ -1131,7 +1143,7 @@ tourAgencyApp.directive('boxBooking', function ($compile, Template) {
         restrict: 'E',
         templateUrl: function (element, attrs) {
             var box_type = attrs.boxType;
-            return  Template.getTemplate(box_type);
+            return Template.getTemplate(box_type);
         }
     };
 })
@@ -1293,7 +1305,7 @@ tourAgencyApp.directive('boxSelectedItem', function ($http, $compile, HttpReques
             selectedId = attrs.selectedId;
             add_trip = attrs.addTrip;
             has_more_info = attrs.moreInfo;
-            return  Template.getTemplate("selected_page");
+            return Template.getTemplate("selected_page");
         },
         controller: function ($scope) {
             var box = null;
@@ -1301,24 +1313,24 @@ tourAgencyApp.directive('boxSelectedItem', function ($http, $compile, HttpReques
                 //there are not selected item
                 if (pageType == 'customdestinations') {
                     //check if customdestinations first element has destinasions
-                   /* if ($scope[pageType] != null && $scope[pageType][0] != null && $scope[pageType][0].destinations != null) {
-                        var dests = $scope[pageType][0].destinations[0].destinations;
-                        for (var d in dests) {
-                            //check if destinations element is valid
-                            if (dests[d] != null) {
-                                var j = 0;
-                                while (dests[d][j] == null) {
-                                    j++;
-                                }
-                                selectedId = dests[d][0].id;
-                                selected_title = dests[d][0].title;
-                                selected_img = dests[d][0].postImage;
-                                selected_content = '<p style="text-align:justify">' + dests[d][0].content.replace(/<[^>]*>/g, "") + '</p>';
-                                box = new SelectedPage(selectedId, selected_img, selected_title, selected_content);
-                            }
-                            break;
-                        }
-                    }*/
+                    /* if ($scope[pageType] != null && $scope[pageType][0] != null && $scope[pageType][0].destinations != null) {
+                     var dests = $scope[pageType][0].destinations[0].destinations;
+                     for (var d in dests) {
+                     //check if destinations element is valid
+                     if (dests[d] != null) {
+                     var j = 0;
+                     while (dests[d][j] == null) {
+                     j++;
+                     }
+                     selectedId = dests[d][0].id;
+                     selected_title = dests[d][0].title;
+                     selected_img = dests[d][0].postImage;
+                     selected_content = '<p style="text-align:justify">' + dests[d][0].content.replace(/<[^>]*>/g, "") + '</p>';
+                     box = new SelectedPage(selectedId, selected_img, selected_title, selected_content);
+                     }
+                     break;
+                     }
+                     }*/
                 } else {
                     selectedId = $scope[pageType][0].id;
                     selected_title = $scope[pageType][0].title;

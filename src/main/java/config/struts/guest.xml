@@ -42,8 +42,12 @@
             <result name="success" type="redirect">${url}</result>
         </action>
 
-        <action name="home">
+        <action name="home" class="HomeAction" method="go">
             <result name="success" type="tiles">home</result>
+        </action>
+
+        <action name="guest-sketch" class="HomeAction" method="go">
+            <result name="success" type="tiles">guest-sketch</result>
         </action>
 
 

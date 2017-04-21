@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="guest-json" namespace="/" extends="json-default">
+
+        <interceptors>
+            <interceptor-stack name="guestStack">
+                <interceptor-ref name="jsonValidationWorkflowStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="guestStack"/>
+
+        <global-results>
+            <result name="user-exception" type="chain">user-exception</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="user-exception"/>
+        </global-exception-mappings>
+
+
+        <!--SketchAction-->
+
+        <action name="sketch-load" class="SketchAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+    </package>
+
+</struts>

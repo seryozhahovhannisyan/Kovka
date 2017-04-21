@@ -11,7 +11,7 @@
 <html class="ie ie8" lang="ru-RU">
 <![endif]-->
 <!--[if !(IE 7) | !(IE 8) ]><!-->
-<html lang="ru-RU"><!--<![endif]-->
+<html lang="ru-RU" ng-app="tourAgencyApp"><!--<![endif]-->
 <head>
     <%--<meta http-equiv="content-type" content="text/html; charset=UTF-8">--%>
     <%--<meta charset="UTF-8">--%>
@@ -51,8 +51,7 @@
           type="text/css" media="all">
     <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/mock/s_files/dcjq-mega-menu.css"
           type="text/css" media="all">
-    <link rel="stylesheet" id="mbpro-font-awesome-css"
-          href="<%=request.getContextPath()%>/mock/s_files/font-awesome.css" type="text/css" media="all">
+    <link href="<%=request.getContextPath()%>/libs/css/font-awesome.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" id="stainedglass-genericons-css"
           href="<%=request.getContextPath()%>/mock/s_files/genericons.css" type="text/css" media="all">
     <link rel="stylesheet" id="stainedglass-fonts-css" href="<%=request.getContextPath()%>/mock/s_files/css.css"
@@ -501,7 +500,7 @@
 </head>
 
 
-<body class="home page-template-default page page-id-36 custom-background header-text-is-on google-fonts-on logo-is-on wpb-js-composer js-comp-ver-4.11.2 vc_responsive">
+<body ng-controller="homeCtrl" class="home page-template-default page page-id-36 custom-background header-text-is-on google-fonts-on logo-is-on wpb-js-composer js-comp-ver-4.11.2 vc_responsive">
 <div id="page" class="hfeed site">
 
     <tiles:insertAttribute name="header-area"/>

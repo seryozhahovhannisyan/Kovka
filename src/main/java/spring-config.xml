@@ -16,6 +16,9 @@
     <!-- presentation configuration -->
     <import resource="classpath:config/spring/presentation.xml"/>
 
+    <!-- presentation configuration -->
+    <import resource="classpath:config/spring/presentation-guest.xml"/>
+
     <!-- persistence configuration -->
     <import resource="classpath:config/spring/persistence.xml"/>
 

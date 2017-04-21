@@ -33,6 +33,9 @@
     <!--New Design-->
     <include file="config/struts/guest.xml"/>
 
+    <!--New Design-->
+    <include file="config/struts/guest-json.xml"/>
+
     <!-- User package -->
     <include file="config/struts/user-general.xml"/>
 
