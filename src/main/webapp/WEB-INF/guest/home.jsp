@@ -10,7 +10,7 @@
                         <div class="wrapper-image column-4 all margin-0">
 
                             <boxes box-page="0" box-url='sketch-load.htm' page-type="tours" more-info="true" book="true" box-type="small" >
-                                <box-item  ng-repeat="page in tours" content="page" box-id="{{page.id}}" box-type="small"><img width="100px" src="<%=request.getContextPath()%>/images/ajax-loader2.gif"/></box-item>
+                                <box-item  ng-repeat="page in tours" content="page" box-id="{{page.id}}" box-type="small"><img width="100px" src="<%=request.getContextPath()%>/img/ajax-loader2.gif"/></box-item>
                             </boxes>
 
                             <%--<div class="element effect-1 once">
