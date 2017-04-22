@@ -8,6 +8,8 @@ public interface BaseActionConstants {
     public static final String MESSAGE = "message";
     public static final String INFO = "info";
 
+    public static final int ELEMENT_COUNT_PER_PAGE_SMALL = 4;
+
     public static final int DEFAULT_TIMEOUT_CRM = 36000;
     public static final int DEFAULT_TIMEOUT_MODERATOR = 36000;
 
