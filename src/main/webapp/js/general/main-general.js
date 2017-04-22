@@ -1,13 +1,11 @@
 var generalControllers = {};
 var generalModuls_array = [ ];
-var merchantApp = angular.module('merchantApp', generalModuls_array);
-merchantApp.config(['$httpProvider', function ($httpProvider) {
-
+var kovkaApp = angular.module('kovkaApp', generalModuls_array);
+kovkaApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
     var param = function (obj) {
         var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
-        console.log('param ==>',obj);
         for (name in obj) {
             value = obj[name];
 
@@ -32,7 +30,7 @@ merchantApp.config(['$httpProvider', function ($httpProvider) {
             else if (value !== undefined && value !== null)
                 query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
         }
-        console.log('query ==>',query);
+
         return query.length ? query.substr(0, query.length - 1) : query;
     };
     $httpProvider.defaults.transformRequest = [function (data) {
@@ -41,7 +39,7 @@ merchantApp.config(['$httpProvider', function ($httpProvider) {
 
 }]);
 
-merchantApp .directive('onlyDigits', function () {
+kovkaApp .directive('onlyDigits', function () {
     return {
         require: 'ngModel',
         restrict: 'A',
@@ -62,7 +60,7 @@ merchantApp .directive('onlyDigits', function () {
         }
     };
 });
-merchantApp.controller(generalControllers);
+kovkaApp.controller(generalControllers);
 
 generalControllers.mainCtrlGeneral = function ($scope) {
 

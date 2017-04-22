@@ -26,7 +26,7 @@
 
         <!--SketchAction-->
 
-        <action name="sketch-load" class="SketchAction" method="list">
+        <action name="sketch-load" class="HomeAction" method="loadSketches">
             <result name="success" type="json"/>
         </action>
 

@@ -7,10 +7,12 @@
 
                 <aside id="stainedglass_items_widget-4" class="widget stainedglass_items">
                     <div class="main-wrapper-image " style="padding:0px 0% 0px 0%">
-                        <div class="wrapper-image column-4 all margin-0">
+                        <%--<div class="wrapper-image column-4 all margin-0">--%>
 
-                            <boxes box-page="0" box-url='sketch-load.htm' page-type="tours" more-info="true" book="true" box-type="small" >
-                                <box-item  ng-repeat="page in tours" content="page" box-id="{{page.id}}" box-type="small"><img width="100px" src="<%=request.getContextPath()%>/img/ajax-loader2.gif"/></box-item>
+                            <boxes box-page="0" box-count="4" box-url='/sketch-load.htm' page-type="sketches" more-info="true" book="true" box-type="small" class="wrapper-image column-4 all margin-0">
+                                <box-item  ng-repeat="page in sketches" content="page" box-id="{{page.id}}" box-type="small" class="element effect-1 once">
+                                    <img width="100px" src="<%=request.getContextPath()%>/img/ajax-loader2.gif"/>
+                                </box-item>
                             </boxes>
 
                             <%--<div class="element effect-1 once">
@@ -202,7 +204,7 @@
                             </div><!-- .element -->
 
                             --%><div class="clear"></div>
-                        </div><!-- .wrapper -->
+                        <%--</div><!-- .wrapper -->--%>
                         <div class="hide-element" style="z-index: -1;"></div>
                     </div><!-- .main-wrapper -->
                 </aside>

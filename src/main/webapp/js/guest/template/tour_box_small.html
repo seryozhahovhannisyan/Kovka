@@ -1,39 +1,24 @@
+<!--<div class="element effect-1 once">-->
+    <article>
 
-    <div class="tour-box" >
-
-        <a href="{{page.url_}}" style="text-decoration: inherit;font-style: inherit; color: inherit;">
-            <div class="tour-img">
-                <box-more-info page-id='{{page.id}}' page-type="{{page.page_type}}">
-                    <img style="cursor:pointer" id="img_{{page.id}}" ng-src="{{page.img}}"/>
-                </box-more-info>
-            </div>
-            <div class="info" >
-
-                <div class="tour-title" id = "page_title_{{page.id}}">
-                    {{page.title}}
-                </div>
-                <div class="tour-info" id = "page_info_{{page.id}}" ng-bind-html="deliberatelyTrustAsHtml(page.info)" > </div>
-
-            </div>
-        </a>
-
-        <div class="tour-buttons">
-            <div class="btn-group btn-group-justified">
-                <div class="btn-group more-info" ng-if="page.has_more_info">
-                    <box-more-info page-id='{{page.id}}' page-type="{{page.page_type}}">
-                        <button onmouseover="more_info_button_target(this, 1)" onmouseout="more_info_button_target(this, 2)"  selected-id="{{page.id}}" type="button" class="btn btn-default">
-                            <ng-locale name="more.info.button"></ng-locale><!--More Info-->
-                        </button>
-                    </box-more-info>
-                </div>
-                <div class="btn-group book"  ng-if="page.has_book">
-                    <button onmouseover="book_button_target(this, 1)" onmouseout="book_button_target(this, 2)"  data-id="{{page.id}}" onclick="doModal(this);" type="button" class="btn btn-default blue">
-                        <ng-locale name="book.button"></ng-locale><!--Book-->
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </div> 
+        <img class="image-item"
+             width="400px"
+             height="300px"
+             ng-src="{{page.img}}"
+             alt="{{page.title}}">
 
 
+        <div class="hover">
+
+            <header>
+                <h2 class="entry-title">{{page.name}}</h2>
+            </header><!-- header -->
+
+            <p>{{page.shortDesc}}</p>
+
+            <a href="{{page.url_}}" class="link"><ng-locale name="more.info.button"></ng-locale></a>
+
+        </div><!-- .hover -->
+
+    </article>
+<!--</div>&lt;!&ndash; .element &ndash;&gt;-->

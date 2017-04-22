@@ -11,7 +11,7 @@
 <html class="ie ie8" lang="ru-RU">
 <![endif]-->
 <!--[if !(IE 7) | !(IE 8) ]><!-->
-<html lang="ru-RU" ng-app="tourAgencyApp"><!--<![endif]-->
+<html lang="ru-RU" ng-app="kovkaApp"><!--<![endif]-->
 <head>
     <%--<meta http-equiv="content-type" content="text/html; charset=UTF-8">--%>
     <%--<meta charset="UTF-8">--%>
@@ -94,7 +94,9 @@
         <script type="text/javascript"
                 src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.default.value"/>.js'></script>
     </s:if>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/ng-controller.js"></script>
+
 
     <script type="text/javascript">
 
@@ -110,7 +112,6 @@
             $("#post_id").val(id);
             $('#hidCaptchaId').val('<%=session.getId()%>');
             $(".booking-modal").modal();
-            booking_default_date();
         }
 
         function closeModal() {
@@ -498,8 +499,6 @@
         }</style>
     </noscript>
 </head>
-
-
 <body ng-controller="homeCtrl" class="home page-template-default page page-id-36 custom-background header-text-is-on google-fonts-on logo-is-on wpb-js-composer js-comp-ver-4.11.2 vc_responsive">
 <div id="page" class="hfeed site">
 
@@ -507,7 +506,7 @@
     <tiles:insertAttribute name="content"/>
     <tiles:insertAttribute name="footer"/>
     <tiles:insertAttribute name="banner"/>
-
+    <input id="current_lang" type="hidden" value='<s:property value="toLang.value"/>'>
     <div class="loader" ng-show="loadergif"></div>
 </div>
 </body>

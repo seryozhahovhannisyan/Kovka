@@ -108,8 +108,8 @@ public class SketchAction extends BaseAction {
             Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
             dataCount = sketchManager.getCountByParams(params);
 
-            long page = (Long) params.get("page");
-            long count = (Long) params.get("count");
+            long page = Long.valueOf(params.get("page").toString());
+            long count = Long.valueOf(params.get("count").toString());
             params.put("page", (page - 1) * count);
 
             List<Sketch> sketches = sketchManager.getSampleByParams(params);

@@ -7,7 +7,7 @@
     <package name="guest" extends="json-default" namespace="/">
 
         <result-types>
-            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
         </result-types>
 
         <!--The filtering language data-->
@@ -50,7 +50,13 @@
             <result name="success" type="tiles">guest-sketch</result>
         </action>
 
+        <action name="sketch-single" class="HomeAction" method="go">
+            <result name="success" type="tiles">guest-sketch</result>
+        </action>
 
+        <action name="article-single" class="HomeAction" method="go">
+            <result name="success" type="tiles">guest-sketch</result>
+        </action>
 
 
     </package>

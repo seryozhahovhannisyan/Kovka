@@ -1,131 +1,17 @@
 $(document).ready(function () {
-    booking_default_date();
+
 })
-
-function booking_default_date() {
-    // Return today's date and time
-    var currentTime = new Date();
-    // returns the month (from 0 to 11)
-    var month = currentTime.getMonth() + 1;
-    // returns the day of the month (from 1 to 31);
-    var day = currentTime.getDate();
-    // returns the year (four digits)
-    var year = currentTime.getFullYear();
-
-    $('.s-day option').filter(function () {
-        return $(this).val() == day;
-    }).prop({selected: true});
-    $('.s-month option').filter(function () {
-        return $(this).val() == month;
-    }).prop({selected: true});
-    $('.s-year option').filter(function () {
-        return $(this).val() == year;
-    }).prop({selected: true});
-
-    $('.s-day[name=arrivalDay]').on('change', function () {
-        var val = $(this).val();
-        $('.s-day option').filter(function () {
-            return $(this).val() == val;
-        }).prop({selected: true});
-    })
-    $('.s-month[name=arrivalMonth]').on('change', function () {
-        var val = $(this).val();
-        $('.s-month option').filter(function () {
-            return $(this).val() == val;
-        }).prop({selected: true});
-    })
-    $('.s-year[name=arrivalYear]').on('change', function () {
-        var val = $(this).val();
-        $('.s-year option').filter(function () {
-            return $(this).val() == val;
-        }).prop({selected: true});
-    })
-
-}
 
 var TEMPLATE_ROOT_DIRECTORY = '/js/guest/template';
 var IMAGE_ROOT_DIRECTORY = '/images';
-var ACTION_LOAD_PARENT_CATEGORIES = "load-parent-categories.action";
-var ACTION_LOAD_COUNTRIES = "load-countries.action";
-var ACTION_DESTINATION = "/destination.action";
-var ACTION_DESTINATIONS = "/destinations.action";
-var DESTINATION_FILTER_NAMES_AVAILABLE_COLUMNS = 6;
 
 
-var ACTION_CATEGORIES = [];
-ACTION_CATEGORIES[1] = "/packages.action";
-ACTION_CATEGORIES[22] = "/packages.action";
-ACTION_CATEGORIES[7] = "/hotels.action";
-ACTION_CATEGORIES[35] = "/mice.action";
+// kovkaApp = angular.module('kovkaApp', []);
 
+generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http',function ($rootScope, $scope, $sce, $http) {
 
-var ACTION_FILTER = [];
-ACTION_FILTER["regions"] = "/load-regions.action";
-ACTION_FILTER["cities"] = "/load-cities.action";
-ACTION_FILTER["prices"] = "/load-hotel-price-ranges.action";
-ACTION_FILTER["countries"] = "/load-countries.action";
-ACTION_FILTER["markedcountries"] = "/load-marked-countries.action";
-ACTION_FILTER["tour_types"] = "/load-tour-types.action";
-ACTION_FILTER["tour_durations"] = "/load-tour-durations.action";
-ACTION_FILTER["rates"] = "/load-rates.action";
-ACTION_FILTER["destination"] = "/load-filter-destinations.action";
-/**@Deprecated*/
-ACTION_FILTER["locations"] = "/load-locations.action";
-
-
-tourAgencyApp = angular.module('tourAgencyApp', []);
-tourAgencyApp.config(['$httpProvider', function ($httpProvider) {
-
-    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
-    var param = function (obj) {
-        var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
-
-        for (name in obj) {
-            value = obj[name];
-
-            if (value instanceof Array) {
-                for (i = 0; i < value.length; ++i) {
-                    subValue = value[i];
-                    fullSubName = name + '[' + i + ']';
-                    innerObj = {};
-                    innerObj[fullSubName] = subValue;
-                    query += param(innerObj) + '&';
-                }
-            }
-            else if (value instanceof Object) {
-                for (subName in value) {
-                    subValue = value[subName];
-                    fullSubName = name + '[' + subName + ']';
-                    innerObj = {};
-                    innerObj[fullSubName] = subValue;
-                    query += param(innerObj) + '&';
-                }
-            }
-            else if (value !== undefined && value !== null)
-                query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
-        }
-
-        return query.length ? query.substr(0, query.length - 1) : query;
-    };
-    $httpProvider.defaults.transformRequest = [function (data) {
-        return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
-    }];
-
-}]);
-tourAgencyApp.controller('homeCtrl', function ($scope, $sce) {
-
-    $scope.tours = [];
-    $scope.hotels = [];
-    $scope.packages = [];
-    $scope.destinations = [];
-    $scope.customdestinations = [];
-    $scope.underconst = [];
+    $scope.sketches = [];
     $scope.searches = [];
-    $scope.pagination = {};
-    $scope.republics = [];
-    $scope.partners = [];
-    $scope.halls = [];
 
     $scope.deliberatelyTrustAsHtml = function (param) {
         return $sce.trustAsHtml(param);
@@ -276,83 +162,18 @@ tourAgencyApp.controller('homeCtrl', function ($scope, $sce) {
             $scope.date = new Date($scope.departure_year, $scope.departure_month - 1, $scope.departure_day);
         }
     };
-})
-tourAgencyApp.factory('HttpRequest', function () {
+}]
 
-    var loadData = {};
-
-    loadData.getResponse = function (param, url) {
-
-        var data;
-
-        var toRequestParam = function (obj) {
-            var query = '', name, value;
-
-            for (name in obj) {
-                value = obj[name];
-
-                if (value !== undefined && value !== null)
-                    query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
-            }
-
-            return query.length ? query.substr(0, query.length - 1) : query;
-        };
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', url, false);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.setRequestHeader('Accept', 'application/json, text/javascript');
-        xhr.onreadystatechange = function (response) {
-
-            if (xhr.readyState == 4 && xhr.status == 200) {
-
-                var json = eval("(" + xhr.responseText + ")");
-
-                var resp = json.actionDto;
-
-                if (resp != null) {
-                    if (resp.responseStatus == "SUCCESS") {
-                        data = json.actionDto;
-                    } else if (resp.responseStatus == "INTERNAL_ERROR") {
-                        console.warn("empty INTERNAL_ERROR");
-                        data = json.actionDto;
-                    } else if (resp.responseStatus == "INVALID_PARAMETER") {
-                        console.warn("empty INVALID_PARAMETER");
-                        data = json.actionDto;
-                    } else {
-                        console.warn("empty");
-                    }
-                } else {
-                    //todo
-                    console.error("empty resp");
-                }
-
-            }
-        };
-        xhr.send(toRequestParam(param));
-        return data;
-    }
-
-    return loadData;
-})
-tourAgencyApp.factory('Template', function () {
-
+kovkaApp.factory('Template', function () {
     var template = {};
 
     template.getTemplate = function (contentType) {
 
         var small = TEMPLATE_ROOT_DIRECTORY + '/tour_box_small.html';
         var search = TEMPLATE_ROOT_DIRECTORY + '/search-box.html';
-        var destination = TEMPLATE_ROOT_DIRECTORY + '/destination.html';
-        var custom_destination = TEMPLATE_ROOT_DIRECTORY + '/custom_destination-new.html';
-        var large = TEMPLATE_ROOT_DIRECTORY + '/home-republic.html';
-        var selected_destination = TEMPLATE_ROOT_DIRECTORY + '/selected_destination.html';
-        var booking = TEMPLATE_ROOT_DIRECTORY + '/booking.html';
-        var bookingtransportation = TEMPLATE_ROOT_DIRECTORY + '/bookingtransport.html';
-        var partner = TEMPLATE_ROOT_DIRECTORY + '/partner.html';
+        var selected = TEMPLATE_ROOT_DIRECTORY + '/selected.html';
 
         var template = '';
-
         switch (contentType) {
             case 'small':
                 template = small;
@@ -360,26 +181,8 @@ tourAgencyApp.factory('Template', function () {
             case 'search':
                 template = search;
                 break;
-            case 'destination':
-                template = destination;
-                break;
-            case 'custom-destination':
-                template = custom_destination;
-                break;
-            case 'large':
-                template = large;
-                break;
             case 'selected_page':
-                template = selected_destination;
-                break;
-            case 'booking':
-                template = booking;
-                break;
-            case 'bookingtransportation':
-                template = bookingtransportation;
-                break;
-            case 'partner':
-                template = partner;
+                template = selected;
                 break;
         }
         return template;
@@ -387,7 +190,7 @@ tourAgencyApp.factory('Template', function () {
 
     return template;
 })
-tourAgencyApp.directive('pageFilter', function ($http, HttpRequest) {
+kovkaApp.directive('pageFilter', function ($http, HttpRequest) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -485,7 +288,7 @@ tourAgencyApp.directive('pageFilter', function ($http, HttpRequest) {
         }
     };
 })
-tourAgencyApp.directive('pageFilterImage', function ($http, HttpRequest) {
+kovkaApp.directive('pageFilterImage', function ($http, HttpRequest) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -527,7 +330,7 @@ tourAgencyApp.directive('pageFilterImage', function ($http, HttpRequest) {
         }
     };
 })
-tourAgencyApp.directive('pageFilterRate', function ($http, HttpRequest) {
+kovkaApp.directive('pageFilterRate', function ($http, HttpRequest) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -559,7 +362,7 @@ tourAgencyApp.directive('pageFilterRate', function ($http, HttpRequest) {
         }
     };
 })
-tourAgencyApp.directive('countries', function ($http, HttpRequest) {
+kovkaApp.directive('countries', function ($http, HttpRequest) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -581,7 +384,7 @@ tourAgencyApp.directive('countries', function ($http, HttpRequest) {
         }
     };
 })
-tourAgencyApp.directive('ngLocale', function () {
+kovkaApp.directive('ngLocale', function () {
     return {
         restrict: 'EA',
         link: function (scope, element, attrs) {
@@ -606,7 +409,7 @@ tourAgencyApp.directive('ngLocale', function () {
         }
     };
 })
-tourAgencyApp.directive('placehold', function () {
+kovkaApp.directive('placehold', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
@@ -624,9 +427,7 @@ tourAgencyApp.directive('placehold', function () {
         }
     };
 });
-tourAgencyApp.directive('boxes', function (HttpRequest) {
-
-    alert('boxes')
+kovkaApp.directive('boxes', function ($http) {
     var directive = {};
     directive.restrict = 'E';
     directive.compile = function (element, attributes) {
@@ -649,177 +450,76 @@ tourAgencyApp.directive('boxes', function (HttpRequest) {
                 var has_more_info = attr.moreInfo;
                 var has_book = attr.book;
 
-                var param = [];
+                var requestJson = {};
                 if (box_page != null && box_page > -1) {
-                    param['page'] = box_page;
-                }
-
-                var page_category = attr.pageCategory;
-                if (page_category != null) {
-                    param['categoryId'] = page_category;
-                }
-
-                /*hotels filtering start if exists attach to request params*/
-
-                var page_region = attr.pageRegion;
-                if (page_region != null) {
-                    param['regionId'] = page_region;
-                    document.getElementById("region").innerHTML = $scope.selectHotelRegion(page_region) + ' <span class="caret"></span>';
-                }
-
-                var page_city = attr.pageCity;
-                if (page_city != null) {
-                    param['cityId'] = page_city;
-                    document.getElementById("city").innerHTML = $scope.selectHotelCity(page_city) + ' <span class="caret"></span>';
-                }
-
-                var page_price = attr.pagePrice;
-                if (page_price != null) {
-                    param['priceId'] = page_price;
-                    document.getElementById("price").innerHTML = $scope.selectHotelPrice(page_price) + ' <span class="caret"></span>';
-                }
-                /*hotels filtering end*/
-
-                /*tours filtering start if exists attach to request params*/
-                var page_country_id = attr.pageCountryid;
-                if (page_country_id != null) {
-                    param['countryId'] = page_country_id;
-                    document.getElementById("country").innerHTML = $scope.selectMarkedCountry(page_country_id) + ' <span class="caret"></span>';
-                }
-
-                var page_tour_type = attr.pageTourtype;
-                if (page_tour_type != null) {
-                    param['tourType'] = page_tour_type;
-                    document.getElementById("type").innerHTML = $scope.selectTourTypes(page_tour_type) + ' <span class="caret"></span>';
-                }
-
-                var page_duration = attr.pageDuration;
-                if (page_duration != null) {
-                    param['duration'] = page_duration;
-                    document.getElementById("duration").innerHTML = $scope.selectTourDurations(page_duration) + ' <span class="caret"></span>';
+                    requestJson.page = box_page;
                 }
 
                 /*tours filtering end*/
 
-                var box_limit = attr.boxLimit;
-                if (box_limit != null) {
-                    param['limit'] = box_limit;
+                var box_count = attr.boxCount;
+                if (box_count != null) {
+                    requestJson.count  = box_count;
                 }
 
                 var box_search = attr.boxSearch;
                 if (box_search != null) {
-                    param['search'] = box_search;
+                    requestJson.search = box_search;
                 }
+                requestJson = JSON.stringify(requestJson);
+                $http({
+                    method: 'post',
+                    url: box_url,
+                    data: {
+                        requestJson: requestJson
+                    },
+                    dataType: 'json'
+                }).then(
+                    function (response) {
+                        var result = response.data.dto;
+                        if (result.responseStatus == 'SUCCESS') {
+                            var dtos = result.response.data;
+                            var load_more = result.loadMore;
+                            var pagination_page = dtos.length / 4;
+                            if (page_type == "searches") {
+                                for (var i = 0; i < dtos.length; i++) {
+                                    var t = dtos[i];
 
-                var actionDto = HttpRequest.getResponse(param, box_url);
-
-                if (actionDto != null && actionDto.response != null && actionDto.response.dtos != null && actionDto.response.dtos.length != 0) {
-
-                    var dtos = actionDto.response.dtos;
-                    var load_more = actionDto.response.loadMore;
-                    var pagination_page = dtos.length / 4;
-                    console.log('dests.load_more', load_more);
-                    console.log('dests.pagination_page', pagination_page);
-                    if (page_type == "searches") {
-                        for (var i = 0; i < dtos.length; i++) {
-                            var t = dtos[i];
-                            var content = t.shortContent;
-                            page_type = t.pageType;
-                            var url_ = "#";
-                            if (page_type == "hotels") {
-                                url_ = '/hotel-single.action?postId=' + t.id;
-                            } else if (page_type == "tours" || page_type == 'packages') {
-                                url_ = '/tour-single.action?postId=' + t.id;
-                            } else if (page_type == "halls") {
-                                url_ = '/conference-hall-single.action?postId=' + t.id;
-                            } else if (page_type == "republics") {
-                                url_ = '/republic.action?postId=' + t.id;
-                                has_book = false;
-                            } else if (page_type == "destinations") {
-                                url_ = '/destinations.action?postId=' + t.id;
-                                has_book = false;
+                                    var url_ = "#";
+                                    if (page_type == "sketch") {
+                                        url_ = '/sketch-single.thm?id=' + t.id;
+                                    } else if (page_type == "article") {
+                                        url_ = '/article-single.thm?id=' + t.id;
+                                    }
+                                    var box = new Box(t.id, t.postImage, t.title, content, page_type, has_more_info, has_book, url_);
+                                    $scope[page_type].push(box);
+                                }
                             }
-                            var box = new Box(t.id, t.postImage, t.title, content, page_type, has_more_info, has_book, url_);
-                            $scope[page_type].push(box);
+                            else {
+                                for (var i = 0; i < dtos.length; i++) {
+                                    var t = dtos[i];
+                                    var url_ = "#";
+                                    if (page_type == "sketches") {
+                                        url_ = '/sketch-single.thm?id=' + t.id;
+                                    }
+                                    else if (page_type == "articles") {
+                                        url_ = '/article-single.thm?id=' + t.id;
+                                    }
+                                    var box = new Box(t.id, t.postImage, t.name, t.shortDesc, null , null, page_type, has_more_info, has_book, url_);
+
+                                    $scope[page_type][i] = box;
+                                }
+                            }
+
+
+                        } else {
+                            $("#emptydata").show();
                         }
                     }
-                    else if (page_type == "destinations") {
-                        var add_trip = attr.addTrip;
-                        for (var i = 0; i < dtos.length; i++) {
-                            var t = dtos[i];
-                            var content = t.shortContent;
-                            var destination = new Destination(t.id, t.postImage, t.title, content, '', page_type, has_more_info, add_trip);
-                            $scope[page_type].push(destination);
-                        }
-                    }
-                    else if (page_type == "customdestinations") {
-                        var add_trip = attr.addTrip;
-                        var count = 0;
-                        for (var index  in dtos) {
+                ).finally(function () {
+                    //$scope.hide_loader();
+                });
 
-                            var customdestination = {};
-                            customdestination.day_count = index;
-                            customdestination.destinations = [];
-                            var dests = dtos[index];
-                            for (var i = 0; i < dests.length; i++) {
-                                count++;
-                                var t = dests[i];
-                                var destination = new Destination(t.id, t.tripImage, t.title, '', t.destinations, page_type, has_more_info, add_trip);
-                                customdestination.destinations.push(destination);
-                            }
-                            $scope[page_type].push(customdestination);
-                        }
-
-                        pagination_page = count / box_limit;
-                        console.log('pagination_page', pagination_page);
-                    }
-                    else {
-                        for (var i = 0; i < dtos.length; i++) {
-                            var t = dtos[i];
-                            var content = t.shortContent;
-                            var url_ = "#";
-                            if (page_type == "hotels") {
-                                url_ = '/hotel-single.action?postId=' + t.id;
-                            }
-                            else if (page_type == "tours" || page_type == 'packages') {
-                                url_ = '/tour-single.action?postId=' + t.id;
-                            }
-                            else if (page_type == "halls") {
-                                url_ = '/conference-hall-single.action?postId=' + t.id;
-                            }
-                            else if (page_type == "republics") {
-                                url_ = '/republic.action?postId=' + t.id;
-                                has_book = false;
-                            }
-                            else if (page_type == "destinations") {
-                                url_ = '/destinations.action?postId=' + t.id;
-                                has_book = false;
-                                content = '';
-                            }
-                            else if (page_type == "customdestinations") {
-                                url_ = '/make-your-own-trip.action?postId=' + t.id;
-                                has_book = false;
-                                content = '';
-                            }
-                            else if (page_type == "partners") {
-                                //url_='/contact.action#contactId=' + t.id;
-                                url_ = t.content;
-                            }
-                            var box = new Box(t.id, t.postImage, t.title, content, page_type, has_more_info, has_book, url_);
-                            $scope[page_type][i] = box;
-                        }
-                    }
-
-                    $scope.pagination = {
-                        "type": page_type,
-                        "page": pagination_page,
-                        "more": load_more
-                    };
-
-
-                } else {
-                    $("#emptydata").show();
-                }
             } catch (e) {
                 console.log(e);
                 $("#emptydata").show();
@@ -838,7 +538,7 @@ tourAgencyApp.directive('boxes', function (HttpRequest) {
 
     return directive;
 })
-tourAgencyApp.directive('boxItem', function (Template) {
+kovkaApp.directive('boxItem', function (Template) {
     var box_id = 0;
     return {
         restrict: 'E',
@@ -849,7 +549,7 @@ tourAgencyApp.directive('boxItem', function (Template) {
         }
     };
 })
-tourAgencyApp.directive('boxMoreInfo', function ($http, $compile, HttpRequest) {
+kovkaApp.directive('boxMoreInfo', function ($http, $compile, HttpRequest) {
 
     return {
         restrict: 'E',
@@ -940,7 +640,7 @@ tourAgencyApp.directive('boxMoreInfo', function ($http, $compile, HttpRequest) {
         }
     };
 })
-tourAgencyApp.directive('loadMore', function ($http, $compile, HttpRequest) {
+kovkaApp.directive('loadMore', function ($http, $compile, HttpRequest) {
     return {
         restrict: 'E',
         link: function ($scope, element, attrs) {
@@ -1138,7 +838,7 @@ tourAgencyApp.directive('loadMore', function ($http, $compile, HttpRequest) {
         }
     };
 })
-tourAgencyApp.directive('boxBooking', function ($compile, Template) {
+kovkaApp.directive('boxBooking', function ($compile, Template) {
     return {
         restrict: 'E',
         templateUrl: function (element, attrs) {
@@ -1147,7 +847,7 @@ tourAgencyApp.directive('boxBooking', function ($compile, Template) {
         }
     };
 })
-tourAgencyApp.directive('formButton', function (HttpRequest) {
+kovkaApp.directive('formButton', function (HttpRequest) {
     return {
         restrict: 'E',
         link: function ($scope, element, attrs) {
@@ -1204,7 +904,7 @@ tourAgencyApp.directive('formButton', function (HttpRequest) {
         }
     };
 })
-tourAgencyApp.directive('bookButton', function (HttpRequest) {
+kovkaApp.directive('bookButton', function (HttpRequest) {
     return {
         restrict: 'E',
         link: function ($scope, element, attrs) {
@@ -1294,7 +994,7 @@ tourAgencyApp.directive('bookButton', function (HttpRequest) {
         }
     };
 })
-tourAgencyApp.directive('boxSelectedItem', function ($http, $compile, HttpRequest, Template) {
+kovkaApp.directive('boxSelectedItem', function ($http, $compile, HttpRequest, Template) {
 
     var pageType, selectedId = 0, selected_title, selected_img, selected_content, add_trip, has_more_info;
 

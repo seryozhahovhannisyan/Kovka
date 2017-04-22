@@ -27,8 +27,11 @@ public class DataConverter {
             JSONObject responseMessage = (JSONObject) unitsObj;
             if (responseMessage != null) {
 
-                params.put("count", responseMessage.get("count"));
-                params.put("page", responseMessage.get("page"));
+                Object count = responseMessage.get("count");
+                Object page = responseMessage.get("page");
+
+                params.put("count", count != null ? count : 10);
+                params.put("page", page != null ? page : 1);
 
                 if (responseMessage.get("filter") != null) {
                     params.put("filter", responseMessage.get("filter").toString());
