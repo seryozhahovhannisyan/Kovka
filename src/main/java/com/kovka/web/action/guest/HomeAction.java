@@ -2,14 +2,19 @@
 package com.kovka.web.action.guest;
 
 import com.kovka.business.ISketchManager;
+import com.kovka.common.data.FileData;
 import com.kovka.common.data.Sketch;
 import com.kovka.common.data.SketchInfo;
+import com.kovka.common.data.SketchProduct;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
+import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.DataConverter;
+import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
 import com.kovka.web.action.dto.BoxDto;
+import com.kovka.web.action.dto.ProductDto;
 import com.kovka.web.action.dto.ResponseDto;
 import com.kovka.web.action.dto.ResponseStatus;
 import org.apache.log4j.Logger;
@@ -30,6 +35,8 @@ public class HomeAction extends BaseAction {
     private ISketchManager sketchManager;
 
     private String requestJson;
+
+    private String id;
 
     public String go() {
         return SUCCESS;
@@ -57,14 +64,15 @@ public class HomeAction extends BaseAction {
 
                     dto.setName(currentInfo.getName());
                     dto.setShortDesc(currentInfo.getShortDesc());
+                    dto.setTitle(currentInfo.getTitle());
 
                     if (sketch.getMainImage() != null) {
                         String path = sketch.getMainImage().getFileName();
-                        if (isLogoExist( path)) {
-                            path = getLogo( path);
+                        if (isLogoExist(path)) {
+                            path = getLogo(path);
                             path.replaceAll("\\\\", "/");
                             path.replaceAll("//", "/");
-                            dto.setPostImage(path);
+                            dto.setimage(path);
                         }
                     }
 
@@ -91,6 +99,79 @@ public class HomeAction extends BaseAction {
         return SUCCESS;
     }
 
+    public String loadSketch() {
+
+        try {
+
+            Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
+
+            long id = Long.valueOf(params.get("id").toString());
+
+            Sketch sketch = sketchManager.getFullCurrentLangById(id);
+
+            BoxDto boxDto = new BoxDto();
+            if (sketch.getStatus().getKey() == Status.ACTIVE.getKey()) {
+                SketchInfo currentInfo = sketch.getCurrentInfo();
+
+                boxDto.setId("" + sketch.getId());
+
+                boxDto.setName(currentInfo.getName());
+                boxDto.setShortDesc(currentInfo.getShortDesc());
+                boxDto.setTitle(currentInfo.getTitle());
+                boxDto.setDescription(currentInfo.getDescription());
+
+                List<FileData> images = sketch.getImages();
+                if (!Utils.isEmpty(images)) {
+                    for (FileData fileData : images) {
+                        String path = fileData.getFileName();
+                        if (fileData.getStatus().getKey() == Status.ACTIVE.getKey() && isLogoExist(path)) {
+                            path = getLogo(path);
+                            path.replaceAll("\\\\", "/");
+                            path.replaceAll("//", "/");
+                            boxDto.addImage(path);
+                        }
+                    }
+                }
+
+                List<SketchProduct> products = sketch.getProducts();
+                if (!Utils.isEmpty(products)) {
+                    for (SketchProduct product : products) {
+                        String path = product.getImage().getFileName();
+                        if (product.getStatus().getKey() == Status.ACTIVE.getKey() &&
+                                product.getImage().getStatus().getKey() == Status.ACTIVE.getKey() &&
+                                isProductImageExist(path)) {
+                            path = getProductImage(path);
+                            path.replaceAll("\\\\", "/");
+                            path.replaceAll("//", "/");
+                            boxDto.addProduct(new ProductDto(product.getPrice(), path));
+                        }
+                    }
+                }
+            }
+
+            dto.addResponse("data", boxDto);
+            dto.setResponseStatus(ResponseStatus.SUCCESS);
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
+        } catch (DataParseException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.INVALID_PARAMETER);
+        } catch (EntityNotFoundException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.RESOURCE_NOT_FOUND);
+        }
+        return SUCCESS;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public ResponseDto getDto() {
         return dto;
     }
@@ -106,4 +187,6 @@ public class HomeAction extends BaseAction {
     public void setRequestJson(String requestJson) {
         this.requestJson = requestJson;
     }
+
+
 }

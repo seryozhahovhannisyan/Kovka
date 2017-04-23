@@ -19,7 +19,6 @@
             <result property="name" column="name"/>
             <result property="shortDesc" column="short_desc"/>
             <result property="title" column="title"/>
-            <result property="description" column="description"/>
         </association>
         <association property="mainImage" column="main_image_id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getById"/>
 

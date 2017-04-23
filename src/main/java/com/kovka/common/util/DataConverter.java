@@ -33,6 +33,10 @@ public class DataConverter {
                 params.put("count", count != null ? count : 10);
                 params.put("page", page != null ? page : 1);
 
+                if (responseMessage.get("id") != null) {
+                    params.put("id", responseMessage.get("id"));
+                }
+
                 if (responseMessage.get("filter") != null) {
                     params.put("filter", responseMessage.get("filter").toString());
                 }

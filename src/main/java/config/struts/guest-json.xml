@@ -26,9 +26,15 @@
 
         <!--SketchAction-->
 
-        <action name="sketch-load" class="HomeAction" method="loadSketches">
+        <action name="load-sketches" class="HomeAction" method="loadSketches">
             <result name="success" type="json"/>
         </action>
+
+        <action name="load-sketch" class="HomeAction" method="loadSketch">
+            <result name="success" type="json"/>
+        </action>
+
+
 
     </package>
 

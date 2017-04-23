@@ -89,10 +89,10 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
 
     <script type="text/javascript"
-            src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.value"/>.js'></script>
+            src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.key"/>.js'></script>
     <s:if test="%{toLang.id != toLang.default.id}">
         <script type="text/javascript"
-                src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.default.value"/>.js'></script>
+                src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.default.key"/>.js'></script>
     </s:if>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/ng-controller.js"></script>
@@ -506,7 +506,7 @@
     <tiles:insertAttribute name="content"/>
     <tiles:insertAttribute name="footer"/>
     <tiles:insertAttribute name="banner"/>
-    <input id="current_lang" type="hidden" value='<s:property value="toLang.value"/>'>
+    <input id="current_lang" type="hidden" value='<s:property value="toLang.key"/>'>
     <div class="loader" ng-show="loadergif"></div>
 </div>
 </body>

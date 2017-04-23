@@ -16,17 +16,26 @@ public class BoxDto {
     private String title;
     private String description;
 
-    private String postImage;
+    private String image;
 
-    private List<String> postImages;
+    private List<String> images;
+
+    private List<ProductDto> products;
 
     private String pageType;
 
     public void addImage(String img){
-        if(postImages == null){
-            postImages = new ArrayList<String>();
+        if(images == null){
+            images = new ArrayList<String>();
         }
-        postImages.add(img);
+        images.add(img);
+    }
+
+    public void addProduct(ProductDto product){
+        if(products == null){
+            products = new ArrayList<ProductDto>();
+        }
+        products.add(product);
     }
 
     public String getId() {
@@ -45,20 +54,20 @@ public class BoxDto {
         this.title = title;
     }
 
-    public String getPostImage() {
-        return postImage;
+    public String getimage() {
+        return image;
     }
 
-    public void setPostImage(String postImage) {
-        this.postImage = postImage;
+    public void setimage(String image) {
+        this.image = image;
     }
 
-    public List<String> getPostImages() {
-        return postImages;
+    public List<String> getImages() {
+        return images;
     }
 
-    public void setPostImages(List<String> postImages) {
-        this.postImages = postImages;
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public String getPageType() {
@@ -91,5 +100,13 @@ public class BoxDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<ProductDto> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductDto> products) {
+        this.products = products;
     }
 }

@@ -46,16 +46,12 @@
             <result name="success" type="tiles">home</result>
         </action>
 
-        <action name="guest-sketch" class="HomeAction" method="go">
-            <result name="success" type="tiles">guest-sketch</result>
-        </action>
-
         <action name="sketch-single" class="HomeAction" method="go">
-            <result name="success" type="tiles">guest-sketch</result>
+            <result name="success" type="tiles">sketch-single</result>
         </action>
 
         <action name="article-single" class="HomeAction" method="go">
-            <result name="success" type="tiles">guest-sketch</result>
+            <result name="success" type="tiles">sketch-single</result>
         </action>
 
 

@@ -3,15 +3,12 @@ $(document).ready(function () {
 })
 
 var TEMPLATE_ROOT_DIRECTORY = '/js/guest/template';
-var IMAGE_ROOT_DIRECTORY = '/images';
-
-
-// kovkaApp = angular.module('kovkaApp', []);
 
 generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http',function ($rootScope, $scope, $sce, $http) {
 
     $scope.sketches = [];
     $scope.searches = [];
+    $scope.selectedPage = {};
 
     $scope.deliberatelyTrustAsHtml = function (param) {
         return $sce.trustAsHtml(param);
@@ -59,7 +56,7 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http',function 
                                     if (des != null && desItem[d].id == data) {
                                         var selectedId = desItem[d].id;
                                         var selected_title = desItem[d].title;
-                                        var selected_img = desItem[d].postImage;
+                                        var selected_img = desItem[d].image;
                                         var selected_content = '<p style="text-align:justify">' + desItem[d].content.replace(/<[^>]*>/g, "") + '</p>';
                                         box = new SelectedPage(selectedId, selected_img, selected_title, selected_content);
                                         break dest_label;
@@ -97,8 +94,6 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http',function 
         }
         return input;
     };
-
-
     //
     //Hotel filtering exists values
     //
@@ -162,14 +157,14 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http',function 
             $scope.date = new Date($scope.departure_year, $scope.departure_month - 1, $scope.departure_day);
         }
     };
-}]
+}];
 
 kovkaApp.factory('Template', function () {
     var template = {};
 
     template.getTemplate = function (contentType) {
 
-        var small = TEMPLATE_ROOT_DIRECTORY + '/tour_box_small.html';
+        var small = TEMPLATE_ROOT_DIRECTORY + '/sketch_box_small.html';
         var search = TEMPLATE_ROOT_DIRECTORY + '/search-box.html';
         var selected = TEMPLATE_ROOT_DIRECTORY + '/selected.html';
 
@@ -185,11 +180,13 @@ kovkaApp.factory('Template', function () {
                 template = selected;
                 break;
         }
+        console.log('template',template)
         return template;
     }
 
     return template;
-})
+});
+
 kovkaApp.directive('pageFilter', function ($http, HttpRequest) {
     return {
         restrict: 'A',
@@ -287,103 +284,7 @@ kovkaApp.directive('pageFilter', function ($http, HttpRequest) {
             element.append(ul);
         }
     };
-})
-kovkaApp.directive('pageFilterImage', function ($http, HttpRequest) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-
-            var filter = attrs.pageFilterImage;
-            var mark = attrs.pageFilterMark;
-            var action = ACTION_FILTER[filter];
-
-            var params = [];
-            if (mark != null && mark.length != 0) {
-                params['mark'] = mark;
-            }
-
-            var actionDto = HttpRequest.getResponse(params, action);
-            var dtos = actionDto.response.dtos;
-
-            var ul = '';
-            if (dtos != null) {
-                for (var i = 0; i < dtos.length; i++) {
-                    var c = dtos[i];
-                    var name = c.name;
-                    if (filter == 'prices') {
-                        var img = '<img src="' + IMAGE_ROOT_DIRECTORY + '/AMD.png"/>';
-                        //name = name.replace('img',img);
-                        if (i == dtos.length - 1) {
-                            var array = name.split(":");
-                            if (array != undefined && array.length == 2) {
-                                name = array[0] + img + '&nbsp;' + array[1];
-                            }
-                        } else {
-                            name += '&nbsp;' + img;
-                        }
-                    }
-
-                    ul += '<li><a href="#" onclick="' + filter + '(' + c.id + ')" id="id_' + filter + '_' + c.id + '" >' + name + '</a></li>';
-                }
-            }
-            element.append(ul);
-        }
-    };
-})
-kovkaApp.directive('pageFilterRate', function ($http, HttpRequest) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-
-            var filter = attrs.pageFilterRate;
-            var action = ACTION_FILTER[filter];
-
-            var params = [];
-
-            var actionDto = HttpRequest.getResponse(params, action);
-            var dtos = actionDto.response.dtos;
-
-            var ul = '';
-            if (dtos != null) {
-
-                for (var i = 0; i < dtos.length; i++) {
-                    var rate = dtos[i];
-                    var rate_id = rate.id;
-
-                    var currencyType = rate.currencyType;
-                    var currentRate = rate.currentRate;
-                    var lastUpdated = rate.lastUpdated;
-                    /*todo ask aper*/
-                    var scopeRate = new Rate(rate_id, currencyType, currentRate, lastUpdated);
-                    ul += '<li><a href="javascript:void(0);" onclick="exchangeRate(\'' + currentRate + '\',\'' + currencyType + '\')"><span class="flag ' + currencyType.toLowerCase() + '"></span> <span>' + currencyType + '</span></a></li>';
-                }
-            }
-            element.append(ul);
-        }
-    };
-})
-kovkaApp.directive('countries', function ($http, HttpRequest) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            var actionDto = HttpRequest.getResponse([], ACTION_LOAD_COUNTRIES);
-            var dtos = actionDto.response.dtos;
-            var select = '';
-            if (dtos != null) {
-
-                for (var i = 0; i < dtos.length; i++) {
-                    var c = dtos[i];
-                    var selected = '';
-                    if (c.id == 10) {
-                        selected += ' selected = "selected" ';
-                    }
-                    select += '<option ' + selected + ' value="' + c.id + '">' + c.name + '</option>';
-                }
-            }
-            element.append(select);
-        }
-    };
-})
+});
 kovkaApp.directive('ngLocale', function () {
     return {
         restrict: 'EA',
@@ -408,7 +309,7 @@ kovkaApp.directive('ngLocale', function () {
             }
         }
     };
-})
+});
 kovkaApp.directive('placehold', function () {
     return {
         restrict: 'A',
@@ -429,7 +330,7 @@ kovkaApp.directive('placehold', function () {
 });
 kovkaApp.directive('boxes', function ($http) {
     var directive = {};
-    directive.restrict = 'E';
+    directive.restrict = 'EA';
     directive.compile = function (element, attributes) {
         var linkFunction = function ($scope, element, attr) {
 
@@ -446,6 +347,7 @@ kovkaApp.directive('boxes', function ($http) {
                 var box_url = attr.boxUrl;
 
                 var page_type = attr.pageType;
+                var box_type = attr.boxType;
 
                 var has_more_info = attr.moreInfo;
                 var has_book = attr.book;
@@ -481,37 +383,26 @@ kovkaApp.directive('boxes', function ($http) {
                             var dtos = result.response.data;
                             var load_more = result.loadMore;
                             var pagination_page = dtos.length / 4;
-                            if (page_type == "searches") {
-                                for (var i = 0; i < dtos.length; i++) {
-                                    var t = dtos[i];
-
-                                    var url_ = "#";
-                                    if (page_type == "sketch") {
-                                        url_ = '/sketch-single.thm?id=' + t.id;
-                                    } else if (page_type == "article") {
-                                        url_ = '/article-single.thm?id=' + t.id;
-                                    }
-                                    var box = new Box(t.id, t.postImage, t.title, content, page_type, has_more_info, has_book, url_);
-                                    $scope[page_type].push(box);
+                            
+                            for (var i = 0; i < dtos.length; i++) {
+                                var t = dtos[i];
+                                var url_ = "#";
+                                if (page_type == "sketches") {
+                                    url_ = '/sketch-single.htm?id=' + t.id;
                                 }
-                            }
-                            else {
-                                for (var i = 0; i < dtos.length; i++) {
-                                    var t = dtos[i];
-                                    var url_ = "#";
-                                    if (page_type == "sketches") {
-                                        url_ = '/sketch-single.thm?id=' + t.id;
-                                    }
-                                    else if (page_type == "articles") {
-                                        url_ = '/article-single.thm?id=' + t.id;
-                                    }
-                                    var box = new Box(t.id, t.postImage, t.name, t.shortDesc, null , null, page_type, has_more_info, has_book, url_);
 
-                                    $scope[page_type][i] = box;
+                                var box = null;
+                                var id = t.id;
+                                if(box_type == "small"){
+                                    box = new Box(id, t.image, t.name, t.shortDesc, null , null, page_type, has_more_info, has_book, url_);
+                                } else if(box_type == "link"){
+                                    box = new Box(id,  null, null, null, t.title, null, null, null, null, null);
                                 }
+                                $scope[page_type].push(box);
+                                console.log('$scope[page_type]', $scope[page_type].length)
                             }
-
-
+                            console.log('$scope[page_type]', $scope[page_type])
+                            console.log('$scope[page_type]', $scope[page_type].length)
                         } else {
                             $("#emptydata").show();
                         }
@@ -537,7 +428,7 @@ kovkaApp.directive('boxes', function ($http) {
     }
 
     return directive;
-})
+});
 kovkaApp.directive('boxItem', function (Template) {
     var box_id = 0;
     return {
@@ -548,7 +439,7 @@ kovkaApp.directive('boxItem', function (Template) {
             return Template.getTemplate(box_type);
         }
     };
-})
+});
 kovkaApp.directive('boxMoreInfo', function ($http, $compile, HttpRequest) {
 
     return {
@@ -639,7 +530,7 @@ kovkaApp.directive('boxMoreInfo', function ($http, $compile, HttpRequest) {
             });
         }
     };
-})
+});
 kovkaApp.directive('loadMore', function ($http, $compile, HttpRequest) {
     return {
         restrict: 'E',
@@ -756,7 +647,7 @@ kovkaApp.directive('loadMore', function ($http, $compile, HttpRequest) {
                                 has_book = false;
                                 content = '';
                             }
-                            var box = new Box(t.id, t.postImage, t.title, content, page_type, has_more_info, has_book, url_);
+                            var box = new Box(t.id, t.image, t.title, content, page_type, has_more_info, has_book, url_);
                             $scope[page_type].push(box);
                         }
                     }
@@ -765,7 +656,7 @@ kovkaApp.directive('loadMore', function ($http, $compile, HttpRequest) {
                         for (var i = 0; i < dtos.length; i++) {
                             var t = dtos[i];
                             var content = t.shortContent;
-                            var box = new Destination(t.id, t.postImage, t.title, content, '', page_type, has_more_info, add_trip);
+                            var box = new Destination(t.id, t.image, t.title, content, '', page_type, has_more_info, add_trip);
                             $scope[page_type].push(box);
                         }
                     }
@@ -823,7 +714,7 @@ kovkaApp.directive('loadMore', function ($http, $compile, HttpRequest) {
                                 has_book = false;
                                 content = '';
                             }
-                            var box = new Box(t.id, t.postImage, t.title, content, page_type, has_more_info, has_book, url_);
+                            var box = new Box(t.id, t.image, t.title, content, page_type, has_more_info, has_book, url_);
                             $scope[page_type].push(box);
                         }
                     }
@@ -837,7 +728,7 @@ kovkaApp.directive('loadMore', function ($http, $compile, HttpRequest) {
             });
         }
     };
-})
+});
 kovkaApp.directive('boxBooking', function ($compile, Template) {
     return {
         restrict: 'E',
@@ -846,7 +737,7 @@ kovkaApp.directive('boxBooking', function ($compile, Template) {
             return Template.getTemplate(box_type);
         }
     };
-})
+});
 kovkaApp.directive('formButton', function (HttpRequest) {
     return {
         restrict: 'E',
@@ -903,7 +794,7 @@ kovkaApp.directive('formButton', function (HttpRequest) {
             })
         }
     };
-})
+});
 kovkaApp.directive('bookButton', function (HttpRequest) {
     return {
         restrict: 'E',
@@ -993,99 +884,88 @@ kovkaApp.directive('bookButton', function (HttpRequest) {
             })
         }
     };
-})
-kovkaApp.directive('boxSelectedItem', function ($http, $compile, HttpRequest, Template) {
+});
+kovkaApp.directive('boxSelectedItem', function ( $http, $compile, Template) {
 
-    var pageType, selectedId = 0, selected_title, selected_img, selected_content, add_trip, has_more_info;
+    var selectedItem, pageType, boxUrl, selectedId = 0;
 
     return {
         restrict: 'E',
         templateUrl: function (element, attrs) {
             pageType = attrs.pageType;
             selectedId = attrs.selectedId;
-            add_trip = attrs.addTrip;
-            has_more_info = attrs.moreInfo;
+            boxUrl = attrs.boxUrl;
             return Template.getTemplate("selected_page");
         },
-        controller: function ($scope) {
-            var box = null;
-            if (selectedId == null || selectedId == 0 || selectedId.length == 0) {
-                //there are not selected item
-                if (pageType == 'customdestinations') {
-                    //check if customdestinations first element has destinasions
-                    /* if ($scope[pageType] != null && $scope[pageType][0] != null && $scope[pageType][0].destinations != null) {
-                     var dests = $scope[pageType][0].destinations[0].destinations;
-                     for (var d in dests) {
-                     //check if destinations element is valid
-                     if (dests[d] != null) {
-                     var j = 0;
-                     while (dests[d][j] == null) {
-                     j++;
-                     }
-                     selectedId = dests[d][0].id;
-                     selected_title = dests[d][0].title;
-                     selected_img = dests[d][0].postImage;
-                     selected_content = '<p style="text-align:justify">' + dests[d][0].content.replace(/<[^>]*>/g, "") + '</p>';
-                     box = new SelectedPage(selectedId, selected_img, selected_title, selected_content);
-                     }
-                     break;
-                     }
-                     }*/
-                } else {
-                    selectedId = $scope[pageType][0].id;
-                    selected_title = $scope[pageType][0].title;
-                    selected_img = $scope[pageType][0].img;
-                    selected_content = '<p style="text-align:justify">' + $scope[pageType][0].info.replace(/<[^>]*>/g, "") + '</p>';
-                    box = new SelectedPage(selectedId, selected_img, selected_title, selected_content);
-                }
+        controller: function ($rootScope, $scope) {
 
+            //find selected destination on destinations
+            var destinations = $scope[pageType]; 
+            if (destinations != null && destinations.length != 0) {
+                label:
+                    for (var i = 0; i < destinations.length; i++) {
+                        var dest = destinations[i];
+                        if (dest.id == selectedId && dest.title != null  ) {
+                            selectedItem = dest;
+                            break label;
+                        }
+                    }
             }
-            else {
-                //find selected destination on destinations
-                var destinations = $scope[pageType];
-                var selectedItem = null;
-                if (destinations != null && destinations.length != 0) {
-                    label:
-                        for (var i = 0; i < destinations.length; i++) {
-                            var dest = destinations[i];
-                            if (dest.id == selectedId) {
-                                selectedItem = dest;
-                                break label;
+
+            if (selectedItem == null) {
+
+                try {
+                    var requestJson = {id: selectedId};
+                    requestJson = JSON.stringify(requestJson);
+                    $http({
+                        method: 'post',
+                        url: boxUrl,
+                        data: {
+                            requestJson: requestJson
+                        },
+                        dataType: 'json'
+                    }).then(
+                        function (response) {
+                            var result = response.data.dto;
+                            if (result.responseStatus == 'SUCCESS') {
+                                var t = result.response.data;
+
+                                if (t != null) {
+
+                                    var id = t.id;
+                                    var selectedItem = new Box(id, null, t.name, t.shortDesc, t.title , t.description, pageType, null, null, null);
+
+                                    if(t.images != null){
+                                        for (var i = 0; i < t.images.length; i++) {
+                                            selectedItem.addImg(t.images[i]);
+                                        }
+                                    }
+                                    
+                                    if(t.products != null){
+                                        for (var i = 0; i < t.products.length; i++) {
+                                            selectedItem.addProduct(new Product(t.products[i].price, t.products[i].image));
+                                        }
+                                        selectedItem.initViewProducts(6);
+                                    } 
+                                    
+                                    //$scope[pageType][id] = selectedItem;
+                                    $scope.selectedPage = selectedItem;
+                                }
+
+                            } else {
+                                $("#emptydata").show();
                             }
                         }
-                    //found selected destination on page                     
-                    if (selectedItem != null) {
-                        selected_title = selectedItem.title;
-                        selected_img = selectedItem.img;
-                        selected_content = '<p style="text-align:justify">' + selectedItem.info.replace(/<[^>]*>/g, "") + '</p>';
-                        box = new SelectedPage(selectedId, selected_img, selected_title, selected_content);
-                    }
-                    //not found selected destination on page
-                    // the case usually will be after searching, when  chosen a destination , this case will try to find on server
-                    else {
-                        var param = [];
-                        param['postId'] = selectedId;
-                        var actionDto = HttpRequest.getResponse(param, ACTION_DESTINATION);
-                        if (actionDto != null && actionDto.response != null && actionDto.response.dto != null) {
-                            var dto = actionDto.response.dto;
-                            var content = '<p style="text-align:justify">' + dto.shortContent.replace(/<[^>]*>/g, "") + '</p>';
-                            box = new SelectedPage(selectedId, dto.postImage, dto.title, content);
-                        }
-                        //the case when not found any destination destinations.action?postId=2300
-                        /*else {
-                         selectedId = $scope[pageType][0].id;
-                         selected_title = $scope[pageType][0].title;
-                         selected_img = $scope[pageType][0].img;
-                         selected_content = $scope[pageType][0].info;
-                         box  = new SelectedPage (selectedId, selected_img, selected_title, selected_content);
-                         }*/
-                    }
+                    ).finally(function () {
+                        //$scope.hide_loader();
+                    });
+                } catch(e){
+
                 }
             }
 
             /*if($scope[pageType]!= null && box != null){*/
-            if ($scope[pageType] != null) {
-                $scope.selectedPage = box;
+            if ($scope[pageType] != null) {                
                 $scope.$on('BOX_ITEM_UPDATED', function (e, data) {
                     $scope.selectedPage = data;
                 });
@@ -1094,4 +974,4 @@ kovkaApp.directive('boxSelectedItem', function ($http, $compile, HttpRequest, Te
             }
         }
     };
-})
+});
