@@ -12,7 +12,7 @@
 
             <div class="header_logo_block" >
                 <a href="admin-home.htm" class="site_title">
-                    <img  src="<%=request.getContextPath()%>/img/main/logo-16.jpg" alt="<s:text name="alt.main.Logo">Logo</s:text>" />
+                    <img src="<%=request.getContextPath()%>/img/guest/logo-16.jpg" alt="<s:text name="alt.main.Logo">Logo</s:text>" />
                 </a>
             </div>
 

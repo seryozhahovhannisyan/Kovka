@@ -7,7 +7,7 @@
     <div class="main-header-padding-top">
         <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <a href="start.htm">
-                <img src="<%=request.getContextPath()%>/img/main/logo-16.jpg" alt="<s:text name="alt.main.Logo">Logo</s:text>" />
+                <img src="<%=request.getContextPath()%>/img/guest/logo-16.jpg" alt="<s:text name="alt.main.Logo">Logo</s:text>" />
             </a>
         </div>
         <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right main_header_right_block">

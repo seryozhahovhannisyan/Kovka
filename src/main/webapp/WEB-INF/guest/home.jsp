@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/model/Box.js"></script>
+
 
 
                 <aside id="stainedglass_items_widget-4" class="widget stainedglass_items">
@@ -22,7 +21,11 @@
         </div><!-- .sidebar-top-full -->
     </div><!-- .header-wrap -->
 </div>
-<%--<div class="main-area">
+
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/model/Box.js"></script>
+
+<div class="main-area">
     <div class="main-wrapper front_page no-sidebar ">
         <div class="site-content">
 
@@ -90,7 +93,7 @@
                                                                                data-vc-gitem-zone="prettyphotoLink"
                                                                                class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
                                                                             <img src="home_files/1.jpg"
-                                                                                 class="vc_gitem-zone-img"
+                                                                                 class="list-slider vc_gitem-zone-img"
                                                                                  alt="Собственное производство по Художественной ковке">
                                                                             <div class="vc_gitem-zone-mini">
                                                                             </div>
@@ -110,7 +113,7 @@
                                                                                data-vc-gitem-zone="prettyphotoLink"
                                                                                class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
                                                                             <img src="home_files/20160203_161158-1024x614.jpg"
-                                                                                 class="vc_gitem-zone-img"
+                                                                                 class="list-slider vc_gitem-zone-img"
                                                                                  alt="Собственное производство по Ковке">
                                                                             <div class="vc_gitem-zone-mini">
                                                                             </div>
@@ -130,7 +133,7 @@
                                                                                data-vc-gitem-zone="prettyphotoLink"
                                                                                class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
                                                                             <img src="home_files/20160203_161708-1024x614.jpg"
-                                                                                 class="vc_gitem-zone-img"
+                                                                                 class="list-slider vc_gitem-zone-img"
                                                                                  alt="Собственное производство по Ковке">
                                                                             <div class="vc_gitem-zone-mini">
                                                                             </div>
@@ -150,7 +153,7 @@
                                                                                data-vc-gitem-zone="prettyphotoLink"
                                                                                class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
                                                                             <img src="home_files/20160212_165903-1024x614.jpg"
-                                                                                 class="vc_gitem-zone-img"
+                                                                                 class="list-slider vc_gitem-zone-img"
                                                                                  alt="Собственное производство по Ковке">
                                                                             <div class="vc_gitem-zone-mini">
                                                                             </div>
@@ -254,7 +257,7 @@
                                                                                                        data-vc-gitem-zone="prettyphotoLink"
                                                                                                        class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
                                                                                                     <img src="home_files/IMG_0218-1024x768.jpg"
-                                                                                                         class="vc_gitem-zone-img"
+                                                                                                         class="list-slider vc_gitem-zone-img"
                                                                                                          alt="Оборудование для художественной ковки">
                                                                                                     <div class="vc_gitem-zone-mini">
                                                                                                     </div>
@@ -274,7 +277,7 @@
                                                                                                        data-vc-gitem-zone="prettyphotoLink"
                                                                                                        class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
                                                                                                     <img src="home_files/IMG_0219-e1483634868213-768x1024.jpg"
-                                                                                                         class="vc_gitem-zone-img"
+                                                                                                         class="list-slider vc_gitem-zone-img"
                                                                                                          alt="Оборудование для художественной ковки">
                                                                                                     <div class="vc_gitem-zone-mini">
                                                                                                     </div>
@@ -294,7 +297,7 @@
                                                                                                        data-vc-gitem-zone="prettyphotoLink"
                                                                                                        class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
                                                                                                     <img src="home_files/IMG_0221-1024x768.jpg"
-                                                                                                         class="vc_gitem-zone-img"
+                                                                                                         class="list-slider vc_gitem-zone-img"
                                                                                                          alt="Оборудование для художественной ковки">
                                                                                                     <div class="vc_gitem-zone-mini">
                                                                                                     </div>
@@ -314,7 +317,7 @@
                                                                                                        data-vc-gitem-zone="prettyphotoLink"
                                                                                                        class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
                                                                                                     <img src="home_files/IMG_0217-1024x768.jpg"
-                                                                                                         class="vc_gitem-zone-img"
+                                                                                                         class="list-slider vc_gitem-zone-img"
                                                                                                          alt="Оборудование для художественной ковки">
                                                                                                     <div class="vc_gitem-zone-mini">
                                                                                                     </div>
@@ -496,4 +499,4 @@
 
         </div><!-- .site-content -->
     </div> <!-- .main-wrapper -->
-</div>--%> <!-- .main-area -->
+</div> <!-- .main-area -->

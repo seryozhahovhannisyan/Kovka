@@ -4,9 +4,10 @@ $(document).ready(function () {
 
 var TEMPLATE_ROOT_DIRECTORY = '/js/guest/template';
 
-generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http',function ($rootScope, $scope, $sce, $http) {
+generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http', function ($rootScope, $scope, $sce, $http) {
 
     $scope.sketches = [];
+    $scope.articles = [];
     $scope.searches = [];
     $scope.selectedPage = {};
 
@@ -157,6 +158,8 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http',function 
             $scope.date = new Date($scope.departure_year, $scope.departure_month - 1, $scope.departure_day);
         }
     };
+
+    
 }];
 
 kovkaApp.factory('Template', function () {
@@ -356,7 +359,7 @@ kovkaApp.directive('boxes', function ($http) {
                 if (box_page != null && box_page > -1) {
                     requestJson.page = box_page;
                 }
-
+                requestJson.type = page_type;
                 /*tours filtering end*/
 
                 var box_count = attr.boxCount;
@@ -383,11 +386,13 @@ kovkaApp.directive('boxes', function ($http) {
                             var dtos = result.response.data;
                             var load_more = result.loadMore;
                             var pagination_page = dtos.length / 4;
-                            
+                            console.log('dtos.length', dtos.length)
+                            console.log('page_type', page_type)
+                            console.log('box_type', box_type)
                             for (var i = 0; i < dtos.length; i++) {
                                 var t = dtos[i];
                                 var url_ = "#";
-                                if (page_type == "sketches") {
+                                if (page_type == "sketches" || page_type == "articles") {
                                     url_ = '/sketch-single.htm?id=' + t.id;
                                 }
 
@@ -395,14 +400,13 @@ kovkaApp.directive('boxes', function ($http) {
                                 var id = t.id;
                                 if(box_type == "small"){
                                     box = new Box(id, t.image, t.name, t.shortDesc, null , null, page_type, has_more_info, has_book, url_);
+                                } else if(box_type == "search"){
+                                    box = new Box(id, t.image, t.name, null, null , null, page_type, has_more_info, has_book, url_);
                                 } else if(box_type == "link"){
                                     box = new Box(id,  null, null, null, t.title, null, null, null, null, null);
                                 }
                                 $scope[page_type].push(box);
-                                console.log('$scope[page_type]', $scope[page_type].length)
                             }
-                            console.log('$scope[page_type]', $scope[page_type])
-                            console.log('$scope[page_type]', $scope[page_type].length)
                         } else {
                             $("#emptydata").show();
                         }

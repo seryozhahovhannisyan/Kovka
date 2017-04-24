@@ -13,10 +13,7 @@
 <!--[if !(IE 7) | !(IE 8) ]><!-->
 <html lang="ru-RU" ng-app="kovkaApp"><!--<![endif]-->
 <head>
-    <%--<meta http-equiv="content-type" content="text/html; charset=UTF-8">--%>
-    <%--<meta charset="UTF-8">--%>
     <meta name="viewport" content="width=device-width">
-    <link rel="pingback" href="http://zheldor-kovka.ru/xmlrpc.php">
     <title>Художественная (холодная) ковка в Железнодорожном, Балашихе</title>
 
     <!-- All in One SEO Pack 2.3.11.1 by Michael Torbert of Semper Fi Web Design[377,593] -->
@@ -25,15 +22,12 @@
 
     <link rel="canonical" href="http://zheldor-kovka.ru/">
     <!-- /all in one seo pack -->
-    <link rel="dns-prefetch" href="http://maps.googleapis.com/">
-    <link rel="dns-prefetch" href="http://fonts.googleapis.com/">
-    <link rel="dns-prefetch" href="http://s.w.org/">
     <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента"
           href="http://zheldor-kovka.ru/feed/">
     <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"
           href="http://zheldor-kovka.ru/comments/feed/">
 
-    <style type="text/css">
+    <%--<style type="text/css">
         img.wp-smiley,
         img.emoji {
             display: inline !important;
@@ -46,14 +40,14 @@
             background: none !important;
             padding: 0 !important;
         }
-    </style>
+    </style>--%>
     <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/mock/s_files/styles.css"
           type="text/css" media="all">
     <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/mock/s_files/dcjq-mega-menu.css"
           type="text/css" media="all">
     <link href="<%=request.getContextPath()%>/libs/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" id="stainedglass-genericons-css"
-          href="<%=request.getContextPath()%>/mock/s_files/genericons.css" type="text/css" media="all">
+    <%--<link rel="stylesheet" id="stainedglass-genericons-css"
+          href="<%=request.getContextPath()%>/mock/s_files/genericons.css" type="text/css" media="all">--%>
     <link rel="stylesheet" id="stainedglass-fonts-css" href="<%=request.getContextPath()%>/mock/s_files/css.css"
           type="text/css" media="all">
     <link rel="stylesheet" id="stainedglass-style-css" href="<%=request.getContextPath()%>/mock/s_files/style.css"
@@ -67,12 +61,14 @@
           type="text/css" media="all">
     <link rel="stylesheet" id="stainedglass-image-css" href="<%=request.getContextPath()%>/mock/s_files/image.css"
           type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-button-css" href="<%=request.getContextPath()%>/mock/s_files/button.css"
+    <%--<link rel="stylesheet" id="stainedglass-button-css" href="<%=request.getContextPath()%>/mock/s_files/button.css"
           type="text/css" media="all">
-    <link rel="stylesheet" id="tablepress-default-css" href="<%=request.getContextPath()%>/mock/s_files/default.css"
+    --%>
+    <%--<link rel="stylesheet" id="tablepress-default-css" href="<%=request.getContextPath()%>/mock/s_files/default.css"
           type="text/css" media="all">
+    --%>
     <link rel="stylesheet" id="js_composer_front-css" href="<%=request.getContextPath()%>/mock/s_files/js_composer.css"
-          type="text/css" media="all">
+              type="text/css" media="all">
     <link rel="stylesheet" id="ubermenu-css" href="<%=request.getContextPath()%>/mock/s_files/ubermenu.css"
           type="text/css" media="all">
     <link rel="stylesheet" id="ubermenu-black-white-2-css"
@@ -81,10 +77,13 @@
           href="<%=request.getContextPath()%>/mock/s_files/font-awesome_002.css" type="text/css"
           media="all">
 
+    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/js/guest/lib/colorbox.css"
+          type="text/css" media="all">
 
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-2.2.4.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/bootstrap.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/slick-1.5.0.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/jquery.colorbox-min.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/script.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
 
@@ -97,107 +96,6 @@
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/ng-controller.js"></script>
 
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            // No right click
-            $('img').bind('contextmenu', function (e) {
-                return false;
-            });
-        });
-
-        function doModal(identifier) {
-            var id = $(identifier).data('id');
-            $("#post_id").val(id);
-            $('#hidCaptchaId').val('<%=session.getId()%>');
-            $(".booking-modal").modal();
-        }
-
-        function closeModal() {
-            $("#post_id").val("");
-            $(".booking-modal").modal('hide');
-        }
-
-        function book_button_target(identifier, type) {
-            //onmouseover
-            if (type == 1) {
-                if ($(identifier).hasClass('blue')) {
-                    $(identifier).removeClass('blue');
-                    $(identifier).addClass('red');
-                }
-            } else if (type == 2) {
-                //onmouseout
-                if ($(identifier).hasClass('red')) {
-                    $(identifier).removeClass('red');
-                    $(identifier).addClass('blue');
-                }
-            }
-        }
-
-        function more_info_button_target(identifier, type) {
-            //onmouseover
-            if (type == 1) {
-                $(identifier).css("background", " none repeat scroll 0 0 red");
-            } else if (type == 2) {
-                //onmouseout
-                $(identifier).css("background", " none repeat scroll 0 0 #84a5b1");
-            }
-        }
-
-        function more_info_country(target) {
-            var redirect = $(target).attr("data-redirect");
-            window.location = redirect;
-        }
-
-    </script>
-    <link rel="https://api.w.org/" href="http://zheldor-kovka.ru/wp-json/">
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zheldor-kovka.ru/xmlrpc.php?rsd">
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml"
-          href="http://zheldor-kovka.ru/wp-includes/wlwmanifest.xml">
-    <meta name="generator" content="WordPress 4.7.3">
-    <link rel="shortlink" href="http://zheldor-kovka.ru/">
-    <link rel="alternate" type="application/json+oembed"
-          href="http://zheldor-kovka.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fzheldor-kovka.ru%2F">
-    <link rel="alternate" type="text/xml+oembed"
-          href="http://zheldor-kovka.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fzheldor-kovka.ru%2F&amp;format=xml">
-    <style id="ubermenu-custom-generated-css">
-        /** UberMenu Custom Menu Styles (Customizer) **/
-        /* main */
-        .ubermenu.ubermenu-main:not(.ubermenu-responsive-collapse) {
-            max-height: 600px;
-        }
-
-        .ubermenu-main .ubermenu-item-level-0 > .ubermenu-target {
-            font-size: 14px;
-            color: #ffffff;
-        }
-
-        .ubermenu.ubermenu-main .ubermenu-item-level-0:hover > .ubermenu-target, .ubermenu-main .ubermenu-item-level-0.ubermenu-active > .ubermenu-target {
-            color: #ff3a3a;
-        }
-
-        .ubermenu.ubermenu-main .ubermenu-item-level-0 {
-            margin: 5px;
-        }
-
-        .ubermenu-main .ubermenu-submenu.ubermenu-submenu-drop {
-            background-color: #ffffff;
-            border: 1px solid #0a0a0a;
-        }
-
-        .ubermenu-main .ubermenu-item-normal > .ubermenu-target {
-            color: #0a0000;
-            font-size: 14px;
-        }
-
-        .ubermenu.ubermenu-main .ubermenu-item-normal > .ubermenu-target:hover, .ubermenu.ubermenu-main .ubermenu-item-normal:hover > .ubermenu-target, .ubermenu.ubermenu-main .ubermenu-item-normal.ubermenu-active > .ubermenu-target {
-            color: #dd3333;
-        }
-
-        /* Status: Loaded from Transient */
-
-    </style>
     <link rel="shortcut icon" href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/anvil-impact_38471.png">
 
     <style type="text/css">
@@ -465,10 +363,8 @@
 
     </style>
 
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/mock/s_files/skin.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/mock/s_files/skin_002.css" type="text/css"
-          media="screen">
-    <meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress.">
+    <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/mock/s_files/skin.css" type="text/css" media="screen">
+    --%>
     <!--[if lte IE 9]>
     <link rel="stylesheet" type="text/css"
           href="http://zheldor-kovka.ru/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen">
@@ -478,7 +374,7 @@
     <![endif]-->
     <style type="text/css" id="custom-background-css">
         body.custom-background {
-            background-image: url("http://zheldor-kovka.ru/wp-content/uploads/2017/01/multi1638-1-1.jpg");
+            background-image: url("../../../img/guest/8.jpg");
             background-position: center center;
             background-size: auto;
             background-repeat: repeat;
@@ -510,4 +406,61 @@
     <div class="loader" ng-show="loadergif"></div>
 </div>
 </body>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        // No right click
+        $('img').bind('contextmenu', function (e) {
+            return false;
+        });
+        $(".prettyphoto").colorbox({rel:'prettyphoto'});
+
+    });
+
+    function doModal(identifier) {
+        var id = $(identifier).data('id');
+        $("#post_id").val(id);
+        $('#hidCaptchaId').val('<%=session.getId()%>');
+        $(".booking-modal").modal();
+    }
+
+    function closeModal() {
+        $("#post_id").val("");
+        $(".booking-modal").modal('hide');
+    }
+
+    function book_button_target(identifier, type) {
+        //onmouseover
+        if (type == 1) {
+            if ($(identifier).hasClass('blue')) {
+                $(identifier).removeClass('blue');
+                $(identifier).addClass('red');
+            }
+        } else if (type == 2) {
+            //onmouseout
+            if ($(identifier).hasClass('red')) {
+                $(identifier).removeClass('red');
+                $(identifier).addClass('blue');
+            }
+        }
+    }
+
+    function more_info_button_target(identifier, type) {
+        //onmouseover
+        if (type == 1) {
+            $(identifier).css("background", " none repeat scroll 0 0 red");
+        } else if (type == 2) {
+            //onmouseout
+            $(identifier).css("background", " none repeat scroll 0 0 #84a5b1");
+        }
+    }
+
+    function more_info_country(target) {
+        var redirect = $(target).attr("data-redirect");
+        window.location = redirect;
+    }
+
+</script>
+
 </html>

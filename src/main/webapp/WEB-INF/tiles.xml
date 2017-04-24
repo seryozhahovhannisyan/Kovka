@@ -62,6 +62,10 @@
     ####################################################################################################################
     -->
 
+    <definition name="general-internal-error" extends="web-guest">
+        <put-attribute name="content" value="/WEB-INF/pages/error/internal.jsp"/>
+    </definition>
+
     <definition name="web-guest" template="/WEB-INF/guest/layout/main-general.jsp">
         <put-attribute name="header-area" value="/WEB-INF/guest/layout/header-area.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/guest/layout/footer.jsp"/>
@@ -69,16 +73,24 @@
         <put-attribute name="banner" value=""/>
     </definition>
 
-    <definition name="general-internal-error" extends="web-guest">
-        <put-attribute name="content" value="/WEB-INF/pages/error/internal.jsp"/>
-    </definition>
-
     <definition name="home" extends="web-guest">
         <put-attribute name="content" value="/WEB-INF/guest/home.jsp"/>
     </definition>
 
+    <definition name="content-sketch" template="/WEB-INF/guest/sketch.jsp">
+        <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
+    </definition>
+
     <definition name="sketch-single" extends="web-guest">
-        <put-attribute name="content" value="/WEB-INF/guest/sketch.jsp"/>
+        <put-attribute name="content" value="content-sketch" type="definition"/>
+    </definition>
+
+    <definition name="content-search" template="/WEB-INF/guest/search.jsp">
+        <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
+    </definition>
+
+    <definition name="search" extends="web-guest">
+        <put-attribute name="content" value="content-search" type="definition"/>
     </definition>
 
 

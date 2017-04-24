@@ -38,6 +38,8 @@ public class HomeAction extends BaseAction {
 
     private String id;
 
+    private String search;
+
     public String go() {
         return SUCCESS;
     }
@@ -172,6 +174,14 @@ public class HomeAction extends BaseAction {
         this.id = id;
     }
 
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
     public ResponseDto getDto() {
         return dto;
     }
@@ -187,6 +197,5 @@ public class HomeAction extends BaseAction {
     public void setRequestJson(String requestJson) {
         this.requestJson = requestJson;
     }
-
 
 }

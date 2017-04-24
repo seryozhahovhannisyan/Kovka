@@ -1,7 +1,8 @@
+
 <div ng-model="selectedPage" id="selectedPage" ng-show="selectedPage != null"
      class="tour-box-large-description col-md-12"><!--ng-if="selectedPage != null"-->
 
-    <article id="post-89" class="post-89 page type-page status-publish hentry">
+    <article id="post-{{page.id}}" class="post-89 page type-page status-publish hentry">
 
         <header class="entry-header">
 
@@ -13,7 +14,7 @@
         <div class="entry-content">
             <div class="vc_row wpb_row vc_row-fluid">
                 <div ng-bind-html="deliberatelyTrustAsHtml(selectedPage.description)"></div>
-                <div class="wpb_column vc_column_container vc_col-sm-2">
+                <!--<div class="wpb_column vc_column_container vc_col-sm-2">
                     <div class="vc_column-inner ">
                         <div class="wpb_wrapper">
                             <div class="wpb_single_image wpb_content_element vc_align_left">
@@ -23,13 +24,12 @@
                                        href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_d95372117cfa45629d69e9425008cbe7-mv2.jpg"
                                        target="_self"
                                        class="vc_single_image-wrapper   vc_box_border_grey prettyphoto">
-                                        <img
-                                                src="kovanye-vorota_files/894023_d95372117cfa45629d69e9425008cbe7-mv2-300x225.jpg"
-                                                class="vc_single_image-img attachment-medium"
-                                                alt="Кованые ворота и калитка"
-                                                srcset="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_d95372117cfa45629d69e9425008cbe7-mv2-300x225.jpg 300w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_d95372117cfa45629d69e9425008cbe7-mv2-400x300.jpg 400w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_d95372117cfa45629d69e9425008cbe7-mv2.jpg 640w"
-                                                sizes="(max-width: 300px) 100vw, 300px" height="225"
-                                                width="300">
+                                        <img src="kovanye-vorota_files/894023_d95372117cfa45629d69e9425008cbe7-mv2-300x225.jpg"
+                                             class="list-slider vc_single_image-img attachment-medium"
+                                             alt="Кованые ворота и калитка"
+                                             srcset="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_d95372117cfa45629d69e9425008cbe7-mv2-300x225.jpg 300w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_d95372117cfa45629d69e9425008cbe7-mv2-400x300.jpg 400w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_d95372117cfa45629d69e9425008cbe7-mv2.jpg 640w"
+                                             sizes="(max-width: 300px) 100vw, 300px" height="225"
+                                             width="300">
                                     </a>
                                 </figure>
                             </div>
@@ -157,13 +157,13 @@
                                     <a data-rel="prettyPhoto[rel-89-1351244260]"
                                        href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_04579450dedd458186a2e24a079657cf-mv2.jpg"
                                        target="_self"
-                                       class="vc_single_image-wrapper   vc_box_border_grey prettyphoto"><img
-                                            src="kovanye-vorota_files/894023_04579450dedd458186a2e24a079657cf-mv2-300x217.jpg"
-                                            class="vc_single_image-img attachment-medium"
-                                            alt="Кованые ворота"
-                                            srcset="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_04579450dedd458186a2e24a079657cf-mv2-300x217.jpg 300w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_04579450dedd458186a2e24a079657cf-mv2-400x289.jpg 400w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_04579450dedd458186a2e24a079657cf-mv2.jpg 640w"
-                                            sizes="(max-width: 300px) 100vw, 300px" height="217"
-                                            width="300"></a>
+                                       class="vc_single_image-wrapper   vc_box_border_grey prettyphoto">
+                                        <img ng-src="{{p.image}}"
+                                             class="list-slider vc_single_image-img attachment-medium"
+                                             alt="Кованые ворота"
+                                             srcset="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_04579450dedd458186a2e24a079657cf-mv2-300x217.jpg 300w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_04579450dedd458186a2e24a079657cf-mv2-400x289.jpg 400w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_04579450dedd458186a2e24a079657cf-mv2.jpg 640w"
+                                             sizes="(max-width: 300px) 100vw, 300px" height="217"
+                                             width="300"></a>
                                 </figure>
                             </div>
 
@@ -173,18 +173,18 @@
                                     <a data-rel="prettyPhoto[rel-89-114365701]"
                                        href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_338a114c1bf44456897f4b43d8bb9fd4-mv2.jpg"
                                        target="_self"
-                                       class="vc_single_image-wrapper   vc_box_border_grey prettyphoto"><img
-                                            src="kovanye-vorota_files/894023_338a114c1bf44456897f4b43d8bb9fd4-mv2-300x225.jpg"
-                                            class="vc_single_image-img attachment-medium"
-                                            alt="Кованые ворота"
-                                            srcset="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_338a114c1bf44456897f4b43d8bb9fd4-mv2-300x225.jpg 300w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_338a114c1bf44456897f4b43d8bb9fd4-mv2-400x300.jpg 400w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_338a114c1bf44456897f4b43d8bb9fd4-mv2.jpg 640w"
-                                            sizes="(max-width: 300px) 100vw, 300px" height="225"
-                                            width="300"></a>
+                                       class="vc_single_image-wrapper   vc_box_border_grey prettyphoto">
+                                        <img ng-src="{{p.image}}"
+                                             class="list-slider vc_single_image-img attachment-medium"
+                                             alt="Кованые ворота"
+                                             srcset="http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_338a114c1bf44456897f4b43d8bb9fd4-mv2-300x225.jpg 300w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_338a114c1bf44456897f4b43d8bb9fd4-mv2-400x300.jpg 400w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/894023_338a114c1bf44456897f4b43d8bb9fd4-mv2.jpg 640w"
+                                             sizes="(max-width: 300px) 100vw, 300px" height="225"
+                                             width="300"></a>
                                 </figure>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="vc_row wpb_row vc_row-fluid">
                 <div class="wpb_column vc_column_container vc_col-sm-12">
@@ -211,24 +211,19 @@
             </div>
 
             <div class="vc_row wpb_row vc_row-fluid"
-                 ng-repeat="row in selectedPage.viewProducts" ng-init="sectionIndex = $index">
+                 ng-repeat="row in selectedPage.viewProducts" ng-init="sectionIndex = $index * 6">
                 <div class="wpb_column vc_column_container vc_col-sm-2" ng-repeat="p in row">
                     <div class="vc_column-inner ">
                         <div class="wpb_wrapper">
                             <div class="wpb_single_image wpb_content_element vc_align_center">
-                                <h2 class="wpb_heading wpb_singleimage_heading" ng-if="p.price == null">Эскиз №{{$index+1 +sectionIndex}}</h2>
-                                <h2 class="wpb_heading wpb_singleimage_heading" ng-if="p.price != null"> Эскиз №{{$index+1 +sectionIndex}} &nbsp; {{p.price}} р/кв.м.</h2>
+                                <h2 class="wpb_heading wpb_singleimage_heading" ng-if="p.price == null">Эскиз
+                                    №{{$index+1 + sectionIndex}}</h2>
+                                <h2 class="wpb_heading wpb_singleimage_heading" ng-if="p.price != null"> Эскиз
+                                    №{{$index+1 + sectionIndex}} &nbsp; {{p.price}} р/кв.м.</h2>
                                 <figure class="wpb_wrapper vc_figure">
-                                    <a data-rel="prettyPhoto[rel-89-1030825807]"
-                                       href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/vke-001.jpg"
-                                       target="_self"
-                                       class="vc_single_image-wrapper   vc_box_border_grey prettyphoto">
-                                        <img ng-src="{{p.image}}"
-                                            class="vc_single_image-img attachment-medium"
-                                            alt="Кованые ворота"
-                                            srcset="{{p.image}} 300w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/vke-001-400x269.jpg 400w, http://zheldor-kovka.ru/wp-content/uploads/2016/12/vke-001.jpg 640w"
-                                            sizes="(max-width: 300px) 100vw, 300px" height="202"
-                                            width="300">
+                                    <a  href="{{p.image}}" title="№{{$index+1 + sectionIndex}}"
+                                       class="vc_single_image-wrapper vc_box_border_grey test">
+                                        <img src="{{p.image}}" class="vc_single_image-img attachment-medium" height="202"  width="300"/>
                                     </a>
                                 </figure>
                             </div>
@@ -244,7 +239,9 @@
             </footer><!-- .entry-footer -->
         </div><!-- .entry-content -->
     </article><!-- #post-## -->
-
-    <!--<a ng-href="#" ng-repeat="path in selectedPage.images"><img ng-src="{{path}}"></a>-->
-    <!--<a ng-href="#" ng-repeat="product in selectedPage.products"><img ng-src="{{product.image}}"></a>-->
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".test").colorbox({rel:'test'});
+    });
+</script>

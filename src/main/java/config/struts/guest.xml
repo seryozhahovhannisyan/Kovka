@@ -46,6 +46,10 @@
             <result name="success" type="tiles">home</result>
         </action>
 
+        <action name="search" class="HomeAction" method="go">
+            <result name="success" type="tiles">search</result>
+        </action>
+
         <action name="sketch-single" class="HomeAction" method="go">
             <result name="success" type="tiles">sketch-single</result>
         </action>

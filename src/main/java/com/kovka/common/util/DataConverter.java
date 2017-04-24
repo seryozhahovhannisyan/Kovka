@@ -41,6 +41,14 @@ public class DataConverter {
                     params.put("filter", responseMessage.get("filter").toString());
                 }
 
+                if (responseMessage.get("search") != null) {
+                    params.put("search", responseMessage.get("search").toString());
+                }
+                //sketches/articles/searches/
+                if (responseMessage.get("type") != null) {
+                    params.put("type", responseMessage.get("type").toString());
+                }
+
                 if (responseMessage.get("orderBy") != null && responseMessage.get("orderType") != null) {
                     params.put("orderBy", responseMessage.get("orderBy"));
                     params.put("orderType", responseMessage.get("orderType"));

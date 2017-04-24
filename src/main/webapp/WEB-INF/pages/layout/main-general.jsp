@@ -13,7 +13,7 @@
         }
     </style>
 
-    <link rel="icon" href="<%=request.getContextPath()%>/img/main/logo-16.jpg" type="image/x-icon" />
+    <link rel="icon" href="<%=request.getContextPath()%>/img/guest/logo-16.jpg" type="image/x-icon" />
     <link href="<%=request.getContextPath()%>/libs/css/bootstrap.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/libs/css/font-awesome.min.css" type="text/css" rel="stylesheet">
 

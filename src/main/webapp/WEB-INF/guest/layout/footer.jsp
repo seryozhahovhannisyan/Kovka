@@ -5,11 +5,15 @@
     <div class="sidebar-before-footer wide">
         <div class="widget-area">
 
-            <aside id="text-9" class="widget widget_text"><h3 class="widget-title">
-                tel: 8 (495) 642-40-66 e-mail: Kovka@Zheldor-Kovka.ru</h3>			<div class="textwidget"><span style="color: #000000;"><center>&copy;
-                2007-2017 Студия художественной ковки в Железнодорожном. Кованые и сварные изделия на заказ в Москве и Московской области. <p>ИНН 7723383020 ОГРН  1157746241267</p>
-            </center></span></div>
-            </aside>
+            <aside id="search-7" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://zheldor-kovka.ru/">
+                <label>
+                    <span class="screen-reader-text">Найти:</span>
+                    <input class="search-field" placeholder="Поиск…" value="" name="s" type="search">
+                </label>
+                <input class="search-submit" value="Поиск" type="submit">
+            </form></aside><aside id="text-13" class="widget widget_text"><h3 class="widget-title">Tel: 8 (495) 642-40-66 e-mail: Kovka@Zheldor-Kovka.ru</h3>			<div class="textwidget"><span style="color: #000000;"><center>© 2007-2017 Студия художественной ковки в Железнодорожном. Кованые и сварные изделия на заказ в Москве и Московской области.
+ИНН 7723383020 ОГРН 1157746241267</center></span></div>
+        </aside>
         </div><!-- .widget-area -->
     </div><!-- .sidebar-before-footer .wide -->
 </div>
