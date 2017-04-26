@@ -29,5 +29,19 @@
         <property name="dao" ref="UserDao"/>
     </bean>
 
+    <bean id="AboutManager" class="com.kovka.business.impl.AboutManager">
+        <property name="dao" ref="AboutDao"/>
+        <property name="infoDao" ref="AboutInfoDao"/>
+    </bean>
+
+    <bean id="PriceListInfoManager" class="com.kovka.business.impl.PriceListInfoManager">
+        <property name="dao" ref="PriceListInfoDao"/>
+    </bean>
+
+    <bean id="WorkSchemeInfoManager" class="com.kovka.business.impl.WorkSchemeInfoManager">
+        <property name="dao" ref="WorkSchemeInfoDao"/>
+    </bean>
+
+
 
 </beans>

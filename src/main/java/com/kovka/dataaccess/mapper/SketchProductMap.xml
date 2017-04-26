@@ -49,7 +49,7 @@
     <update id="update" parameterType="SketchProduct">
         UPDATE sketch_product
         SET   `price` = #{price},`image_id` = #{imageId},`order` = #{order},`status` = #{status}
-        WHERE sketch_info = #{sketchId}
+        WHERE sketch_id = #{sketchId}
     </update>
 
     <update id="delete" parameterType="SketchProduct">

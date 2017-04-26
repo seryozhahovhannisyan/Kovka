@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.kovka.dataaccess.mapper.namespace.PriceListInfoMap">
+
+    <resultMap id="rmPriceListInfo" type="PriceListInfo">
+        <id property="id" column="id"/> 
+        <result property="language" column="lang"/>
+
+        <result property="name" column="name"/>
+        <result property="budgetary" column="budgetary"/>
+        <result property="standard" column="standard"/>
+        <result property="premium" column="premium"/>
+        <result property="productionTime" column="production_time"/>
+        
+    </resultMap>
+
+    <insert id="add" parameterType="PriceListInfo">
+
+        INSERT INTO price_list_info(
+        `lang`,
+        `name`,
+        `budgetary`,
+        `standard`,
+        `premium`,
+        `production_time`
+        ) VALUE (
+        #{language},
+        #{name},
+        #{budgetary},
+        #{standard},
+        #{premium},
+        #{productionTime}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <select id="getAll"
+            resultMap="rmPriceListInfo"
+            parameterType="_long">
+
+        SELECT * FROM price_list_info
+
+    </select>
+
+    <select id="getByLanguage"
+            resultMap="rmPriceListInfo"
+            parameterType="Language">
+
+        SELECT * FROM price_list_info WHERE lang = #{language}
+
+    </select>
+
+    <update id="update" parameterType="PriceListInfo">
+        UPDATE price_list_info
+        SET   `name` = #{name},
+              `budgetary` = #{budgetary},
+              `standard` = #{standard},
+              `premium` = #{premium},
+              `production_time` = #{productionTime}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="PriceListInfo">
+        DELETE FROM price_list_info
+        WHERE id =  #{id}
+    </delete>
+
+</mapper>

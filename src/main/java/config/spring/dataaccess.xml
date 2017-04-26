@@ -24,4 +24,20 @@
         <property name="map" ref="UserMap"/>
     </bean>
 
+    <bean id="AboutDao" class="com.kovka.dataaccess.dao.impl.AboutDao">
+        <property name="map" ref="AboutMap"/>
+    </bean>
+
+    <bean id="AboutInfoDao" class="com.kovka.dataaccess.dao.impl.AboutInfoDao">
+        <property name="map" ref="AboutInfoMap"/>
+    </bean>
+
+    <bean id="PriceListInfoDao" class="com.kovka.dataaccess.dao.impl.PriceListInfoDao">
+        <property name="map" ref="PriceListInfoMap"/>
+    </bean>
+
+    <bean id="WorkSchemeInfoDao" class="com.kovka.dataaccess.dao.impl.WorkSchemeInfoDao">
+        <property name="map" ref="WorkSchemeInfoMap"/>
+    </bean>
+
 </beans>

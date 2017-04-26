@@ -22,6 +22,8 @@ public class FileData {
 
     private Long sketchId;
 
+    private Long productionId;
+
     private int order;
 
 
@@ -108,5 +110,13 @@ public class FileData {
 
     public void setOrder(int order) {
         this.order = order;
+    }
+
+    public Long getProductionId() {
+        return productionId;
+    }
+
+    public void setProductionId(Long productionId) {
+        this.productionId = productionId;
     }
 }

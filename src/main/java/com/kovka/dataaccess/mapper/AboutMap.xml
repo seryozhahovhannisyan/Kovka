@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.kovka.dataaccess.mapper.namespace.AboutMap">
+
+    <resultMap id="rmAbout" type="About">
+
+        <id property="id" column="id"/>
+        <result property="coords" column="coords"/>
+        <result property="emailValues" column="emails"/>
+        <result property="phoneValues" column="phones"/>
+
+        <association property="currentInfo" column="id" javaType="AboutInfo">
+            <result property="id" column="info_id"/>
+            <result property="aboutId" column="about_id"/>
+            <result property="language" column="lang"/>
+
+            <result property="title" column="title"/>
+            <result property="address" column="address"/>
+            <result property="shortDesc" column="short_desc"/>
+            <result property="description" column="description"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="rmAboutFull" type="About">
+        <id property="id" column="id"/>
+        <result property="coords" column="coords"/>
+        <result property="emailValues" column="emails"/>
+        <result property="phoneValues" column="phones"/>
+        <association property="infos" column="id"
+                     select="com.kovka.dataaccess.mapper.namespace.AboutInfoMap.getByAboutId"/>
+    </resultMap>
+
+    <resultMap id="rmAboutFullCurrentLang" type="About">
+        <id property="id" column="id"/>
+        <result property="coords" column="coords"/>
+        <result property="emailValues" column="emails"/>
+        <result property="phoneValues" column="phones"/>
+        <association property="currentInfo" column="id" javaType="AboutInfo">
+            <result property="id" column="info_id"/>
+            <result property="aboutId" column="about_id"/>
+            <result property="language" column="lang"/>
+
+            <result property="title" column="title"/>
+            <result property="address" column="address"/>
+            <result property="shortDesc" column="short_desc"/>
+            <result property="description" column="description"/>
+        </association>
+    </resultMap>
+
+    <insert id="add" parameterType="About">
+
+        INSERT INTO about(
+        `coords`,
+        `emails`,
+        `phones`
+        ) VALUES (
+        #{coords},
+        #{emailValues},
+        #{phoneValues}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>  
+
+    <select id="getById"
+            resultMap="rmAboutFull"
+            parameterType="long">
+
+        SELECT * FROM about
+        WHERE id = #{id}
+
+    </select>
+
+    <select id="getFullCurrentLangById"
+            resultMap="rmAboutFullCurrentLang"
+            parameterType="long">
+
+        SELECT a.*,
+            ai.`id` `info_id`,
+            ai.`about_id` `about_id`,
+            ai.`lang` `lang`,
+            ai.`address` `address`,
+            ai.`short_desc` `short_desc`,
+            ai.`title` `title`,
+            ai.`description` `description`
+        FROM about a, about_info ai
+        WHERE ai.about_id = a.id and  a.id = #{id}
+
+    </select> 
+
+    <update id="update" parameterType="About">
+        UPDATE about
+        SET coords = #{coords} , `emails` = #{emailValues}, `phones` = #{phoneValues}
+        WHERE id = #{id}
+    </update> 
+
+</mapper>

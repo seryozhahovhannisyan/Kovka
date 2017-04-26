@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.kovka.dataaccess.mapper.namespace.WorkSchemeInfoMap">
+
+    <resultMap id="rmWorkSchemeInfo" type="WorkSchemeInfo">
+        <id property="id" column="id"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="language" column="lang"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <association property="children" column="parent_id" select="com.kovka.dataaccess.mapper.namespace.WorkSchemeInfoMap.getById"/>
+    </resultMap>
+
+    <insert id="add" parameterType="WorkSchemeInfo">
+
+        INSERT INTO work_scheme_info(
+            `parent_id`,
+            `lang`,
+            `name`,
+            `description`
+        ) VALUE (
+            #{parentId},
+            #{language},
+            #{name},
+            #{description}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <select id="getAll"
+            resultMap="rmWorkSchemeInfo"
+            parameterType="_long">
+
+        SELECT * FROM work_scheme_info
+
+    </select>
+
+    <select id="getByLanguage"
+            resultMap="rmWorkSchemeInfo"
+            parameterType="Language">
+
+        SELECT * FROM work_scheme_info WHERE lang = #{language}
+
+    </select>
+
+    <select id="getById"
+            resultMap="rmWorkSchemeInfo"
+            parameterType="_long">
+
+        SELECT * FROM work_scheme_info WHERE id = #{id}
+
+    </select>
+
+    <update id="update" parameterType="WorkSchemeInfo">
+        UPDATE work_scheme_info
+        SET   `name` = #{name}, `description` = #{description}, `parent_id` = #{parentId}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="WorkSchemeInfo">
+        DELETE FROM work_scheme_info
+        WHERE id =  #{id}
+    </delete>
+
+</mapper>

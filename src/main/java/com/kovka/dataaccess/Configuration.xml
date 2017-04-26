@@ -34,6 +34,15 @@
         <typeAlias type="com.kovka.common.data.SketchInfo" alias="SketchInfo"/>
         <typeAlias type="com.kovka.common.data.Sketch" alias="Sketch"/>
         <typeAlias type="com.kovka.common.data.SketchProduct" alias="SketchProduct"/>
+
+        <typeAlias type="com.kovka.common.data.About" alias="About"/>
+        <typeAlias type="com.kovka.common.data.AboutInfo" alias="AboutInfo"/>
+        <typeAlias type="com.kovka.common.data.PriceListInfo" alias="PriceListInfo"/>
+        <typeAlias type="com.kovka.common.data.WorkSchemeInfo" alias="WorkSchemeInfo"/>
+
+        <typeAlias type="com.kovka.common.data.lcp.Language" alias="Language"/>
+
+
     </typeAliases>
 
     <typeHandlers>
@@ -47,6 +56,13 @@
         <mapper resource="com/kovka/dataaccess/mapper/SketchMap.xml"/>
         <mapper resource="com/kovka/dataaccess/mapper/SketchInfoMap.xml"/>
         <mapper resource="com/kovka/dataaccess/mapper/SketchProductMap.xml"/>
+
+        <mapper resource="com/kovka/dataaccess/mapper/AboutMap.xml"/>
+        <mapper resource="com/kovka/dataaccess/mapper/AboutInfoMap.xml"/>
+        <mapper resource="com/kovka/dataaccess/mapper/PriceListInfoMap.xml"/>
+        <mapper resource="com/kovka/dataaccess/mapper/WorkSchemeInfoMap.xml"/>
+
+
     </mappers>
 
 </configuration>

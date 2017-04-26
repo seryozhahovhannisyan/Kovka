@@ -1,0 +1,21 @@
+package com.kovka.dataaccess.dao;
+
+import com.kovka.common.data.About;
+import com.kovka.common.data.lcp.Language;
+import com.kovka.common.exception.DatabaseException;
+import com.kovka.common.exception.EntityNotFoundException;
+
+import java.util.List;
+import java.util.Map;
+
+public interface IAboutDao {
+
+    public void add(About data)throws DatabaseException;
+
+    public About getById(Long id)throws DatabaseException, EntityNotFoundException;
+
+    public About getFullCurrentLangById(Language language)throws DatabaseException, EntityNotFoundException;
+
+    public void update(About data)throws DatabaseException, EntityNotFoundException;
+
+}

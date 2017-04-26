@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.kovka.dataaccess.mapper.namespace.AboutInfoMap">
+
+    <resultMap id="rmAboutInfo" type="AboutInfo">
+        <id property="id" column="id"/>
+        <result property="aboutId" column="about_id"/>
+        <result property="language" column="lang"/>
+
+        <result property="title" column="title"/>
+        <result property="address" column="address"/>
+        <result property="shortDesc" column="short_desc"/>
+        <result property="description" column="description"/>
+    </resultMap>
+
+    <insert id="add" parameterType="AboutInfo">
+
+        INSERT INTO about_info(
+            `about_id`,
+            `lang`,
+            `address`,
+            `short_desc`,
+            `title`,
+            `description`
+        ) VALUE (
+            #{aboutId},
+            #{language},
+            #{address},
+            #{shortDesc},
+            #{title},
+            #{description}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <select id="getByAboutId"
+            resultMap="rmAboutInfo"
+            parameterType="_long">
+
+        SELECT * FROM about_info WHERE about_id = #{aboutId}
+
+    </select>
+
+    <select id="getByLanguage"
+            resultMap="rmAboutInfo"
+            parameterType="Language">
+
+        SELECT * FROM about_info WHERE lang = #{language}
+
+    </select>
+
+    <update id="update" parameterType="AboutInfo">
+        UPDATE about_info
+        SET   `address` = #{address},`short_desc` = #{shortDesc},`title` = #{title},`description` = #{description}
+        WHERE about_id = #{aboutId}
+    </update>
+
+</mapper>
