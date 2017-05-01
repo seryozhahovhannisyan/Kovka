@@ -14,7 +14,7 @@ public interface IAboutDao {
 
     public About getById(Long id)throws DatabaseException, EntityNotFoundException;
 
-    public About getFullCurrentLangById(Language language)throws DatabaseException, EntityNotFoundException;
+    public List<About> getAll(Language language) throws DatabaseException;
 
     public void update(About data)throws DatabaseException, EntityNotFoundException;
 

@@ -4,10 +4,9 @@ import java.util.Locale;
 
 public enum Language {
 
-    ARMENIAN(1, "hy", "Armenian", new Locale("hy")),
-    ENGLISH(2, "en", "English", Locale.ENGLISH),
-    RUSSIAN(3, "ru", "Russian", new Locale("ru")),
-    PERSIAN(6, "fa", "Persian", new Locale("fa"));
+    RUSSIAN(1, "ru", "Russian", new Locale("ru")),
+    ARMENIAN(2, "hy", "Armenian", new Locale("hy")),
+    ENGLISH(3, "en", "English", Locale.ENGLISH);
 
     Language(final int value, final String key, final String title, final Locale locale) {
         this.value = value;
@@ -17,7 +16,7 @@ public enum Language {
     }
 
     public static Language getDefault() {
-        return ENGLISH;
+        return RUSSIAN;
     }
 
     public static synchronized Language valueOf(final int value) {

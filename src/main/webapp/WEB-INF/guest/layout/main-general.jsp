@@ -14,67 +14,41 @@
 <html lang="ru-RU" ng-app="kovkaApp"><!--<![endif]-->
 <head>
     <meta name="viewport" content="width=device-width">
-    <title>Художественная (холодная) ковка в Железнодорожном, Балашихе</title>
+    <title><s:text name="title.home">Художественная ковка</s:text></title>
 
     <!-- All in One SEO Pack 2.3.11.1 by Michael Torbert of Semper Fi Web Design[377,593] -->
     <meta name="description"
           content="Художественная ковка, холодная ковка, декоративная ковка в Железнодорожном, Балашихе. Собственное производство, изготовление для Москвы и Московской области">
 
-    <link rel="canonical" href="http://zheldor-kovka.ru/">
+    <link rel="canonical" href="http://nmgkovka.ru/">
     <!-- /all in one seo pack -->
-    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента"
-          href="http://zheldor-kovka.ru/feed/">
-    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"
-          href="http://zheldor-kovka.ru/comments/feed/">
-
-    <%--<style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>--%>
-    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/mock/s_files/styles.css"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/mock/s_files/dcjq-mega-menu.css"
+    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента" href="http://nmgkovka.ru/feed/">
+    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев" href="http://nmgkovka.ru/comments/feed/">
+    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/css/guest/styles.css" type="text/css" media="all">
+    <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/css/guest/dcjq-mega-menu.css"
           type="text/css" media="all">
     <link href="<%=request.getContextPath()%>/libs/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <%--<link rel="stylesheet" id="stainedglass-genericons-css"
-          href="<%=request.getContextPath()%>/mock/s_files/genericons.css" type="text/css" media="all">--%>
-    <link rel="stylesheet" id="stainedglass-fonts-css" href="<%=request.getContextPath()%>/mock/s_files/css.css"
+    <link rel="stylesheet" id="stainedglass-fonts-css" href="<%=request.getContextPath()%>/css/guest/css.css"
           type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-style-css" href="<%=request.getContextPath()%>/mock/s_files/style.css"
+    <link rel="stylesheet" id="stainedglass-style-css" href="<%=request.getContextPath()%>/css/guest/style.css"
           type="text/css" media="all">
     <!--[if lt IE 9]>
     <link rel='stylesheet' id='stainedglass-ie-css'
-          href='http://zheldor-kovka.ru/wp-content/themes/stained-glass/css/ie.css?ver=20141210' type='text/css'
+          href='<%=request.getContextPath()%>/css/guest/ie.css?ver=20141210' type='text/css'
           media='all'/>
     <![endif]-->
-    <link rel="stylesheet" id="stainedglass-page-css" href="<%=request.getContextPath()%>/mock/s_files/page.css"
+    <link rel="stylesheet" id="stainedglass-page-css" href="<%=request.getContextPath()%>/css/guest/page.css"
           type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-image-css" href="<%=request.getContextPath()%>/mock/s_files/image.css"
+    <link rel="stylesheet" id="stainedglass-image-css" href="<%=request.getContextPath()%>/css/guest/image.css"
           type="text/css" media="all">
-    <%--<link rel="stylesheet" id="stainedglass-button-css" href="<%=request.getContextPath()%>/mock/s_files/button.css"
-          type="text/css" media="all">
-    --%>
-    <%--<link rel="stylesheet" id="tablepress-default-css" href="<%=request.getContextPath()%>/mock/s_files/default.css"
-          type="text/css" media="all">
-    --%>
-    <link rel="stylesheet" id="js_composer_front-css" href="<%=request.getContextPath()%>/mock/s_files/js_composer.css"
+    <link rel="stylesheet" id="js_composer_front-css" href="<%=request.getContextPath()%>/css/guest/js_composer.css"
               type="text/css" media="all">
-    <link rel="stylesheet" id="ubermenu-css" href="<%=request.getContextPath()%>/mock/s_files/ubermenu.css"
+    <link rel="stylesheet" id="ubermenu-css" href="<%=request.getContextPath()%>/css/guest/ubermenu.css"
           type="text/css" media="all">
     <link rel="stylesheet" id="ubermenu-black-white-2-css"
-          href="<%=request.getContextPath()%>/mock/s_files/blackwhite2.css" type="text/css" media="all">
+          href="<%=request.getContextPath()%>/css/guest/blackwhite2.css" type="text/css" media="all">
     <link rel="stylesheet" id="ubermenu-font-awesome-css"
-          href="<%=request.getContextPath()%>/mock/s_files/font-awesome_002.css" type="text/css"
+          href="<%=request.getContextPath()%>/css/guest/font-awesome_002.css" type="text/css"
           media="all">
 
     <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/js/guest/lib/colorbox.css"
@@ -96,7 +70,7 @@
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/ng-controller.js"></script>
 
-    <link rel="shortcut icon" href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/anvil-impact_38471.png">
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/img/guest/logo-32.jpg">
 
     <style type="text/css">
 
@@ -362,33 +336,24 @@
         }
 
     </style>
-
-    <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/mock/s_files/skin.css" type="text/css" media="screen">
-    --%>
     <!--[if lte IE 9]>
-    <link rel="stylesheet" type="text/css"
-          href="http://zheldor-kovka.ru/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/vc_lte_ie9.min.css" media="screen">
     <![endif]--><!--[if IE  8]>
-    <link rel="stylesheet" type="text/css"
-          href="http://zheldor-kovka.ru/wp-content/plugins/js_composer/assets/css/vc-ie8.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/vc-ie8.min.css" media="screen">
     <![endif]-->
     <style type="text/css" id="custom-background-css">
         body.custom-background {
-            background-image: url("../../../img/guest/8.jpg");
+            background-image: url("<%=request.getContextPath()%>/img/guest/bg.jpg");
             background-position: center center;
             background-size: auto;
             background-repeat: repeat;
             background-attachment: fixed;
         }
     </style>
-    <link rel="icon" href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/cropped-anvil-impact_38471-32x32.png"
-          sizes="32x32">
-    <link rel="icon" href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/cropped-anvil-impact_38471-192x192.png"
-          sizes="192x192">
-    <link rel="apple-touch-icon-precomposed"
-          href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/cropped-anvil-impact_38471-180x180.png">
-    <meta name="msapplication-TileImage"
-          content="http://zheldor-kovka.ru/wp-content/uploads/2016/12/cropped-anvil-impact_38471-270x270.png">
+    <link rel="icon" href="<%=request.getContextPath()%>/img/guest/logo-16.jpg" sizes="32x32">
+    <link rel="icon" href="<%=request.getContextPath()%>/img/guest/logo-32.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/img/guest/logo-32.jpg">
+    <meta name="msapplication-TileImage" content="<%=request.getContextPath()%>/img/guest/logo-32.jpg">
     <noscript>
         <style type="text/css"> .wpb_animate_when_almost_visible {
             opacity: 1;

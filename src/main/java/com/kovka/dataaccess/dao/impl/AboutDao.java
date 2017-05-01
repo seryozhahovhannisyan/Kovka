@@ -40,9 +40,9 @@ public class AboutDao implements IAboutDao {
     }
 
     @Override
-    public About getFullCurrentLangById(Language language) throws DatabaseException, EntityNotFoundException {
+    public List<About> getAll(Language language) throws DatabaseException {
         try {
-            return map.getFullCurrentLangById(language);
+            return map.getAll(language);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }

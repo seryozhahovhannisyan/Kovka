@@ -9,6 +9,10 @@
         <property name="sketchManager" ref="SketchManager"/>
     </bean>
 
+    <bean id="GuestAboutAction" class="com.kovka.web.action.guest.GuestAboutAction" scope="prototype">
+        <property name="aboutManager" ref="AboutManager"/>
+    </bean>
+
 
 
 </beans>

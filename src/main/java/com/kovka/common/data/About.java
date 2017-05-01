@@ -5,6 +5,7 @@ import com.kovka.common.data.SketchInfo;
 import com.kovka.common.data.SketchProduct;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
+import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
 
 import java.util.HashSet;
@@ -27,6 +28,8 @@ public class About {
     private Set<String> phones;
 
     private List<AboutInfo> infos;
+
+    private AboutInfo currentInfo;
 
     public Set<String> parseEmails() throws DataParseException {
         if (!Utils.isEmpty(this.emailValues)) {
@@ -72,6 +75,40 @@ public class About {
         }
 
         return null;
+    }
+
+    public String convertEmails() throws DataParseException {
+        this.emailValues = null;
+        if (!Utils.isEmpty(this.emails)) {
+            this.emailValues  = DataConverter.join(this.emails,",");
+        }
+
+        return this.emailValues;
+    }
+
+    public String convertPhones() throws DataParseException {
+        this.phoneValues = null;
+        if (!Utils.isEmpty(this.phones)) {
+            this.phoneValues  = DataConverter.join(this.phones,",");
+        }
+
+        return this.phoneValues;
+    }
+
+
+
+    public void addEmail(String email){
+        if(Utils.isEmpty(emails)){
+            emails = new HashSet<String>();
+        }
+        emails.add(email);
+    }
+
+    public void addPhone(String phone) {
+        if (Utils.isEmpty(phones)) {
+            phones = new HashSet<String>();
+        }
+        phones.add(phone);
     }
 
 
@@ -134,5 +171,13 @@ public class About {
 
     public void setInfos(List<AboutInfo> infos) {
         this.infos = infos;
+    }
+
+    public AboutInfo getCurrentInfo() {
+        return currentInfo;
+    }
+
+    public void setCurrentInfo(AboutInfo currentInfo) {
+        this.currentInfo = currentInfo;
     }
 }

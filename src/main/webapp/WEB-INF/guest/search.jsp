@@ -8,7 +8,7 @@
 </div>
 
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/mock/s_files/skin_002.css" type="text/css"
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/guest/skin_002.css" type="text/css"
       media="screen">
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js"></script>

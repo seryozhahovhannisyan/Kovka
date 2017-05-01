@@ -1,5 +1,6 @@
 package com.kovka.web.util;
 
+import com.kovka.business.IAboutManager;
 import com.kovka.business.IUserManager;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -19,5 +20,11 @@ public class BeanProvider {
     public static IUserManager getUserManager() throws BeansException {
         return (IUserManager) context.getBean("UserManager");
     }
+
+    public static IAboutManager getAboutManager() throws BeansException {
+        return (IAboutManager) context.getBean("AboutManager");
+    }
+
+
 
 }

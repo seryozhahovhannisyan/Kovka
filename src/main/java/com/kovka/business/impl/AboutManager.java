@@ -7,6 +7,7 @@ import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.DatabaseException;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
+import com.kovka.common.util.Utils;
 import com.kovka.dataaccess.dao.IAboutDao;
 import com.kovka.dataaccess.dao.IAboutInfoDao;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,9 +54,22 @@ public class AboutManager implements IAboutManager {
     }
 
     @Override
-    public About getFullCurrentLangById(Language language) throws InternalErrorException, EntityNotFoundException {
+    public About getByLang(Language language) throws InternalErrorException, EntityNotFoundException {
         try {
-            return dao.getFullCurrentLangById(language);
+            List<About> abouts = dao.getAll(Language.getDefault());
+            if (Utils.isEmpty(abouts)) {
+                throw new EntityNotFoundException("Could not found about by lang, language="+language);
+            }
+            return abouts.get(0);
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+
+    @Override
+    public List<About> getAll(Language language) throws InternalErrorException {
+        try {
+            return dao.getAll(language);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

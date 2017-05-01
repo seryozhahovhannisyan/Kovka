@@ -1,7 +1,12 @@
 package com.kovka.web.util;
 
+import com.kovka.business.IAboutManager;
 import com.kovka.business.IUserManager;
+import com.kovka.common.data.About;
+import com.kovka.common.data.AboutInfo;
 import com.kovka.common.data.User;
+import com.kovka.common.data.lcp.Language;
+import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.SetupInfo;
 import com.kovka.common.util.Utils;
@@ -19,6 +24,7 @@ import java.io.File;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -102,7 +108,12 @@ public class Initializer implements ServletContextListener {
         }
     }
 
-    private void init() throws InternalErrorException, EncryptException {
+    private void init() throws InternalErrorException, EncryptException, DataParseException {
+        initUser();
+        initAbout();
+    }
+
+    private void initUser() throws InternalErrorException, EncryptException {
         IUserManager userManager = BeanProvider.getUserManager();
         List<User> users = userManager.getAll();
         if (Utils.isEmpty(users)) {
@@ -115,6 +126,64 @@ public class Initializer implements ServletContextListener {
             user.setPhone("93787377");
             user.setPhoneCode("374");
             userManager.add(user);
+        }
+    }
+
+    private void initAbout() throws InternalErrorException, EncryptException, DataParseException {
+        IAboutManager aboutManager = BeanProvider.getAboutManager();
+        List<About> abouts = aboutManager.getAll(Language.getDefault());
+        if (Utils.isEmpty(abouts)) {
+            About about = new About();
+            about.addEmail("seryozha.hovhannisyan@gmail.com");
+            about.addPhone("37493787377");
+            about.addPhone("37441658595");
+            about.setCoords("40.177200,44.503490");
+
+            about.convertEmails();
+            about.convertPhones();
+
+            List<AboutInfo> infos = new ArrayList<AboutInfo>();
+            for (Language language : Language.values()) {
+                AboutInfo aboutInfo = new AboutInfo();
+                aboutInfo.setLanguage(language);
+
+                aboutInfo.setTitle("Общество с ограниченной ответственностью «Техпромстрой»");
+                aboutInfo.setAddress("109390 г.Москва, ул. 1-я Текстильщиков д. 12/9 офис 2");
+                aboutInfo.setDescription("«Желдор Ковка» была организована в 2007 году и располагает собственными мощностями, строительными материалами и оборудованием в Железнодорожном Московской области, а так же высококвалифицированными как ИТР, так и рабочими для производства работ. Основная специализация нашего производства —  ковка различных художественных изделий, комплексный капитальный ремонт и реконструкция многоквартирных жилых домов, детских дошкольных учреждений, общеобразовательных школ, больниц и поликлиник.");
+
+                infos.add(aboutInfo);
+            }
+            about.setInfos(infos);
+            aboutManager.add(about);
+        }
+    }
+
+    private void initPriceListInfo() throws InternalErrorException, EncryptException, DataParseException {
+        IAboutManager aboutManager = BeanProvider.getAboutManager();
+        List<About> abouts = aboutManager.getAll(Language.getDefault());
+        if (Utils.isEmpty(abouts)) {
+            About about = new About();
+            about.addEmail("seryozha.hovhannisyan@gmail.com");
+            about.addPhone("37493787377");
+            about.addPhone("37441658595");
+            about.setCoords("40.177200,44.503490");
+
+            about.convertEmails();
+            about.convertPhones();
+
+            List<AboutInfo> infos = new ArrayList<AboutInfo>();
+            for (Language language : Language.values()) {
+                AboutInfo aboutInfo = new AboutInfo();
+                aboutInfo.setLanguage(language);
+
+                aboutInfo.setTitle("Общество с ограниченной ответственностью «Техпромстрой»");
+                aboutInfo.setAddress("109390 г.Москва, ул. 1-я Текстильщиков д. 12/9 офис 2");
+                aboutInfo.setDescription("«Желдор Ковка» была организована в 2007 году и располагает собственными мощностями, строительными материалами и оборудованием в Железнодорожном Московской области, а так же высококвалифицированными как ИТР, так и рабочими для производства работ. Основная специализация нашего производства —  ковка различных художественных изделий, комплексный капитальный ремонт и реконструкция многоквартирных жилых домов, детских дошкольных учреждений, общеобразовательных школ, больниц и поликлиник.");
+
+                infos.add(aboutInfo);
+            }
+            about.setInfos(infos);
+            aboutManager.add(about);
         }
     }
 

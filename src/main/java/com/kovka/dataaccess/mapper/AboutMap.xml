@@ -78,9 +78,9 @@
 
     </select>
 
-    <select id="getFullCurrentLangById"
+    <select id="getAll"
             resultMap="rmAboutFullCurrentLang"
-            parameterType="long">
+            parameterType="Language">
 
         SELECT a.*,
             ai.`id` `info_id`,
@@ -91,9 +91,9 @@
             ai.`title` `title`,
             ai.`description` `description`
         FROM about a, about_info ai
-        WHERE ai.about_id = a.id and  a.id = #{id}
+        WHERE ai.about_id = a.id and  ai.`lang` = #{language}
 
-    </select> 
+    </select>
 
     <update id="update" parameterType="About">
         UPDATE about

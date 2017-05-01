@@ -93,6 +93,15 @@
         <put-attribute name="content" value="content-search" type="definition"/>
     </definition>
 
+    <definition name="content-about" template="/WEB-INF/guest/about.jsp">
+        <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
+    </definition>
+
+    <definition name="about" extends="web-guest">
+        <put-attribute name="content" value="content-about" type="definition"/>
+    </definition>
+
+    <definition name="test" template="/WEB-INF/guest/layout/test.jsp"></definition>
 
 
 </tiles-definitions>

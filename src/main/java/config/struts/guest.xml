@@ -58,6 +58,31 @@
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
+        <action name="services" class="GuestAboutAction" method="view">
+            <result name="success" type="tiles">sketch-single</result>
+        </action>
+
+        <action name="how-we-work" class="GuestAboutAction" method="view">
+            <result name="success" type="tiles">sketch-single</result>
+        </action>
+
+        <action name="our-works" class="GuestAboutAction" method="view">
+            <result name="success" type="tiles">sketch-single</result>
+        </action>
+
+        <action name="prices" class="GuestAboutAction" method="view">
+            <result name="success" type="tiles">sketch-single</result>
+        </action>
+
+        <action name="about" class="GuestAboutAction" method="view">
+            <result name="success" type="tiles">about</result>
+        </action>
+
+        <action name="test" class="GuestAboutAction" method="view">
+            <result name="success" type="tiles">test</result>
+        </action>
+
+
 
     </package>
 

@@ -5,6 +5,7 @@ import com.kovka.common.exception.DataParseException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,4 +73,20 @@ public class DataConverter {
         }
     }
 
+    public static String join(Collection<String> collection, String delim) {
+
+        StringBuilder sb = new StringBuilder();
+
+        String loopDelim = "";
+
+        for(String s : collection) {
+
+            sb.append(loopDelim);
+            sb.append(s);
+
+            loopDelim = delim;
+        }
+
+        return sb.toString();
+    }
 }
