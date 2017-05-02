@@ -127,55 +127,51 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
         window.location = href;
     };
 
-    $scope.add_new_image = function (id_type) {
+    $scope.add_new_image = function (item) {
+
+        var id = item.currentTarget.getAttribute("data-id");
+        var id_type = item.currentTarget.getAttribute("data-type");
         var href = "#";
         //
         if(id_type == "sketch"){
-            var ides =  $scope.selected.join();
-            if(ides.split(",").length > 1){
-                alert("Need select one");
-                return
-            }
-            href = "/sketch-images-add-view.htm?sketchId="+ides;
+            href = "/sketch-images-add-view.htm?sketchId="+id;
         }
         window.location = href;
     };
 
-    $scope.add_new_product = function (id_type) {
+    $scope.add_new_product = function (item) {
+        var id = item.currentTarget.getAttribute("data-id");
+        var id_type = item.currentTarget.getAttribute("data-type");
         var href = "#";
-        //
         if(id_type == "sketch"){
-            var ides =  $scope.selected.join();
-            if(ides.split(",").length > 1){
-                alert("Need select one");
-                return
-            }
-            href = "/sketch-product-add-view.htm?sketchId="+ides;
+            href = "/sketch-product-add-view.htm?sketchId="+id;
         }
         window.location = href;
     };
 
-    $scope.deleteSelectedRow = function (id_type) {
+    $scope.deleteSelectedRow = function (item) {
 
-        //document.getElementById("delete-form").remove();
-        var form = document.createElement("form");
-        form.id = "delete-form";
-        form.method = "POST";
+        var id = item.currentTarget.getAttribute("data-id");
+        var id_type = item.currentTarget.getAttribute("data-type");
 
-        var ides =  $scope.selected.join();
-        var element = document.createElement("input");
-
+        var href = "#";
         if(id_type == "sketch"){
-            form.action = "sketch-delete.htm";
-            element.value=ides;
-            element.name="sketchIdes";
+            href = "/sketch-delete.htm?sketchIdes="+id;
         }
+        window.location = href;
 
-        form.appendChild(element);
+    };
 
-        document.body.appendChild(form);
+    $scope.editSelectedRow = function (item) {
 
-        form.submit();
+        var id = item.currentTarget.getAttribute("data-id");
+        var id_type = item.currentTarget.getAttribute("data-type");
+
+        var href = "#";
+        if(id_type == "sketch"){
+            href = "/sketch-edit.htm?sketchIdes="+id;
+        }
+        window.location = href;
 
     };
 

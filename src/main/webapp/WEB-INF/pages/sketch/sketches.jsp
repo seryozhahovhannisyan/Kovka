@@ -25,8 +25,45 @@
         {title: 'shortDesc', field: 'shortDesc', visible: true},
         {title: 'title', field: 'title', visible: true},
         {title: 'status', field: 'status', visible: true},
-        {title: 'order', field: 'order', requestedAt: true}
+        {title: 'order', field: 'order', visible: true}
     ];
+
+    function insRow()
+    {
+        var x=document.getElementById('tableId');
+        // deep clone the targeted row
+        var new_row = x.rows[1].cloneNode(true);
+        var new_cells = new_row.cells;
+        // get the total number of rows
+        var len = x.rows.length;
+        // set the innerHTML of the first row
+        new_row.cells[0].innerHTML = len;
+
+        new_row.cells[1].innerHTML = "<input type='text' name='1' value='1'/>";
+        new_row.cells[2].innerHTML = "<input type='text' name='2' value='2'/>";
+        new_row.cells[3].innerHTML = "<input type='text' name='3' value='3'/>";
+        new_row.cells[4].innerHTML = "<input type='text' name='4' value='4'/>";
+        new_row.cells[5].innerHTML = "<input type='text' name='5' value='5'/>";
+
+        new_row.cells[6].innerHTML = "";
+        new_row.cells[7].innerHTML = "";
+        new_row.cells[8].innerHTML = "";
+        new_row.cells[9].innerHTML = "";
+
+
+//        // grab the input from the first cell and update its ID and value
+//        var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+//        inp1.id += len;
+//        inp1.value = '';
+//
+//        // grab the input from the first cell and update its ID and value
+//        var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+//        inp2.id += len;
+//        inp2.value = '';
+
+        // append the new row to the table
+        x.appendChild( new_row );
+    }
 </script>
 
 <div class="right_col" role="main" style="min-height: 2519px;" ng-controller="listController">
@@ -48,17 +85,9 @@
                             <div class="add_div_brch"  ></div>
                             <div ><s:text name="page.branches.main.add.record" >Add new record</s:text></div>
                         </div>
-                        <div class="add_div_brch_parent"  ng-click =add_new_product('sketch') >
+                        <div class="add_div_brch_parent"  onclick="insRow()">
                             <div class="add_div_brch"  ></div>
-                            <div >Add new product</div>
-                        </div>
-                        <div class="add_div_brch_parent" ng-click =deleteSelectedRow('sketch')>
-                            <div class="delete_div_brch" ></div>
-                            <div><s:text name="page.branches.main.delete.marked">Delete marked</s:text></div>
-                        </div>
-                        <div class="add_div_brch_parent" ng-click =add_new_image('sketch') >
-                            <div class="add_div_brch" ></div>
-                            Add new Image
+                            Add Row
                         </div>
                     </div>
 
@@ -78,7 +107,7 @@
                                     </label>
                                 </div>
                                 <div class="table_parent_div">
-                                    <table ng-table="tableParams" show-filter="true"
+                                    <table id="tableId" ng-table="tableParams" show-filter="true"
                                            class="table table_br_csh  table-bordered table-striped listItems">
                                         <div class="form-group pull-right">
                                             <input type="text" class="form-control breanch_search"
@@ -101,7 +130,10 @@
                                                 ng-click="tableParams.sorting(column.field, tableParams.isSortBy(column.field, 'asc') ? 'desc' : 'asc')">
 
                                             </th>
+                                            <th>Image</th>
+                                            <th>Product</th>
                                             <th>Editing</th>
+                                            <th>Deleting</th>
 
                                         </tr>
                                         </thead>
@@ -130,16 +162,31 @@
                                             <td ng-show="columns[4].visible" sortable="columns[4].field">
                                                 {{item.order ? item.order : '-'}}
                                             </td>
-
-                                            <td class="edit_td" ng-click="dropdown_tds($event)">
-                                                <span>EDIT <i class="fa fa-sort-desc" aria-hidden="true"></i></span>
-                                                <ul class="branches_crud_ul">
-                                                    <li data-id="{{item.id}}" ng-click="verify($event)">
-                                                        <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
-                                                        Verify
-                                                    </li>
-                                                </ul>
+                                            <td class="edit_td" >
+                                                <a data-type="sketch" data-id="{{item.id}}" ng-click="add_new_image($event)">
+                                                    <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                    Image
+                                                </a>
                                             </td>
+                                            <td class="edit_td" >
+                                                <a data-type="sketch" data-id="{{item.id}}" ng-click="add_new_product($event)">
+                                                    <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                    Product
+                                                </a>
+                                            </td>
+                                            <td class="edit_td"Deleting>
+                                                <a data-type="sketch" data-id="{{item.id}}" ng-click="deleteSelectedRow($event)">
+                                                    <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                    Editing
+                                                </a>
+                                            </td>
+                                            <td class="edit_td" >
+                                                <a data-type="sketch" data-id="{{item.id}}" ng-click="editSelectedRow($event)">
+                                                    <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                    Deleting
+                                                </a>
+                                            </td>
+
 
 
                                         </tr>
