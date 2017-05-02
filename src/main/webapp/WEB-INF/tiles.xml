@@ -101,7 +101,5 @@
         <put-attribute name="content" value="content-about" type="definition"/>
     </definition>
 
-    <definition name="test" template="/WEB-INF/guest/layout/test.jsp"></definition>
-
 
 </tiles-definitions>

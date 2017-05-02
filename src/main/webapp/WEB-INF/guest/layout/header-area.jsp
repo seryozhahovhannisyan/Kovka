@@ -1,6 +1,47 @@
+<%@ page import="com.kovka.common.data.lcp.Language" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        jQuery('#dc_jqmegamenu_widget-2-item .menu').dcMegaMenu({
+            rowItems: 1,
+            subMenuWidth: '',
+            speed: 0,
+            effect: 'fade',
+            event: 'hover'
+        });
+    });
+</script>
 
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        jQuery('#dc_jqmegamenu_widget-14-item .menu').dcMegaMenu({
+            subMenuWidth: '',
+            speed: '',
+            effect: 'fade',
+            event: 'hover'
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        jQuery('#dc_jqaccordion_widget-3-item .menu').dcAccordion({
+            eventType: 'click',
+            hoverDelay: 0,
+            menuClose: false,
+            autoClose: true,
+            saveState: false,
+            autoExpand: false,
+            classExpand: 'current-menu-item',
+            classDisable: '',
+            showCount: false,
+            disableLink: false,
+            cookie: 'dc_jqaccordion_widget-3',
+            speed: 'normal'
+        });
+    });
+</script>
 
 <header id="masthead" class="site-header" role="banner">
 
@@ -83,27 +124,35 @@
                     <nav id="ubermenu-main-2"
                          class="ubermenu ubermenu-main ubermenu-menu-2 ubermenu-responsive ubermenu-responsive-single-column ubermenu-responsive-default ubermenu-responsive-collapse ubermenu-horizontal ubermenu-transition-shift ubermenu-trigger-hover_intent ubermenu-skin-black-white-2 ubermenu-has-border ubermenu-bar-align-full ubermenu-items-align-center ubermenu-bound ubermenu-disable-submenu-scroll ubermenu-sub-indicators ubermenu-retractors-responsive ubermenu-notouch">
                         <ul id="ubermenu-nav-main-2" class="ubermenu-nav">
-                            <li id="menu-item-51" class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-home ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-36 ubermenu-current_page_item ubermenu-item-51 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
+                            <li id="menu-item-51"
+                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-home ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-36 ubermenu-current_page_item ubermenu-item-51 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
                                 <a class="ubermenu-target ubermenu-target-with-icon ubermenu-item-layout-default ubermenu-item-layout-icon_left"
                                    href="home.htm" tabindex="0">
                                     <i class="ubermenu-icon fa fa-home"></i>
-                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text name="menu.home">Главная</s:text></span></a></li>
-                            <li id="menu-item-146" class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
+                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text
+                                            name="menu.home">Главная</s:text></span></a></li>
+                            <li id="menu-item-146"
+                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="services.htm" tabindex="0">
-                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text name="menu.services">Услуги</s:text></span>
+                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text
+                                            name="menu.services">Услуги</s:text></span>
                                 </a>
                             </li>
-                            <li id="menu-item-145" class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-145 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
+                            <li id="menu-item-145"
+                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-145 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="how-we-work.htm" tabindex="0">
-                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text name="menu.how.we.work">Как мы работаем</s:text></span>
+                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text
+                                            name="menu.how.we.work">Как мы работаем</s:text></span>
                                 </a>
                             </li>
-                            <li id="menu-item-144" class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-144 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
+                            <li id="menu-item-144"
+                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-144 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="our-works.htm" tabindex="0">
-                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text name="menu.our.works">Наши работы</s:text></span>
+                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text
+                                            name="menu.our.works">Наши работы</s:text></span>
                                 </a>
                             </li>
                             <li id="menu-item-147"
@@ -111,15 +160,40 @@
                                 <a class="ubermenu-target ubermenu-target-with-icon ubermenu-item-layout-default ubermenu-item-layout-icon_left"
                                    href="prices.htm" tabindex="0">
                                     <i class="ubermenu-icon fa fa-shopping-cart"></i>
-                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text name="menu.price">Цены</s:text></span>
+                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text
+                                            name="menu.price">Цены</s:text></span>
                                 </a>
                             </li>
-                            <li id="menu-item-482" class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-482 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
+                            <li id="menu-item-482"
+                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-482 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="about.htm" tabindex="0">
-                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text name="menu.about">О Нас</s:text></span>
+                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text
+                                            name="menu.about">О Нас</s:text></span>
                                 </a>
                             </li>
+
+
+                            <li style="float: right;margin-right: 50px" id="menu-item-149"
+                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-135 ubermenu-current_page_item ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
+                                <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
+                                   href="#" tabindex="0"><span
+                                        class="ubermenu-target-title ubermenu-target-text"><s:property value="getToLang().getTitle()"/></span></a>
+                                <ul class="ubermenu-submenu ubermenu-submenu-id-146 ubermenu-submenu-type-flyout ubermenu-submenu-drop ubermenu-submenu-align-left_edge_item">
+
+                                    <%for(Language language : Language.values()){%>
+                                    <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-109 ubermenu-item-auto ubermenu-item-normal ubermenu-item-level-1">
+                                        <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
+                                           href="#">
+                                            <span class="ubermenu-target-title ubermenu-target-text">
+                                                <%=language.getTitle()%></span>
+                                        </a>
+                                    </li>
+                                    <%}%>
+                                </ul>
+                            </li>
+
+
                         </ul>
                     </nav>
                     <!-- End UberMenu -->
@@ -127,6 +201,7 @@
                 <aside id="text-20" class="widget widget_text">
                     <h3 class="widget-title"><s:text name="header.banner"></s:text></h3>
                     <div class="textwidget">
-                        <center><input value='<s:text name="header.promotions">Специальные АКЦИИ</s:text>' type="button"></center>
+                        <center><input value='<s:text name="header.promotions">Специальные АКЦИИ</s:text>'
+                                       type="button"></center>
                     </div>
                 </aside>

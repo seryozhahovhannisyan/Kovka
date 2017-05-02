@@ -78,11 +78,6 @@
             <result name="success" type="tiles">about</result>
         </action>
 
-        <action name="test" class="GuestAboutAction" method="view">
-            <result name="success" type="tiles">test</result>
-        </action>
-
-
 
     </package>
 

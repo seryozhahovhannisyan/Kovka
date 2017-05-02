@@ -61,6 +61,14 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/script.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
 
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.dcjqaccordion.2.9.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.dcmegamenu.1.3.4.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.hoverIntent.minified.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/ubermenu.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/navigation.js"></script>
+
+
     <script type="text/javascript"
             src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.key"/>.js'></script>
     <s:if test="%{toLang.id != toLang.default.id}">
