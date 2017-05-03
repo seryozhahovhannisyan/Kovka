@@ -15,6 +15,6 @@ public interface PriceListInfoMap {
 
     public void update(PriceListInfo data);
 
-    public void delete(PriceListInfo data);
+    public void delete(long id);
 
 }

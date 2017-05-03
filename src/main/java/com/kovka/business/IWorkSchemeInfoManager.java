@@ -19,5 +19,5 @@ public interface IWorkSchemeInfoManager {
 
     public void update(WorkSchemeInfo data)throws InternalErrorException, EntityNotFoundException;
 
-    public void delete(WorkSchemeInfo data)throws InternalErrorException, EntityNotFoundException;
+    public void delete(long id)throws InternalErrorException, EntityNotFoundException;
 }

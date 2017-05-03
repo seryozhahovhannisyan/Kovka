@@ -15,6 +15,8 @@ public interface IFileDataDao {
 
     public List<FileData> getBySketchId(Long sketchId) throws DatabaseException;
 
+    public List<FileData> getMachineData() throws DatabaseException;
+
     public List<FileData> getByParams(Map<String, Object> params) throws DatabaseException;
 
     public void update(FileData data) throws DatabaseException, EntityNotFoundException;

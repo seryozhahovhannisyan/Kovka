@@ -17,6 +17,6 @@ public interface IPriceListInfoDao {
 
     public void update(PriceListInfo data)throws DatabaseException, EntityNotFoundException;
 
-    public void delete(PriceListInfo data)throws DatabaseException, EntityNotFoundException;
+    public void delete(long id)throws DatabaseException, EntityNotFoundException;
 
 }

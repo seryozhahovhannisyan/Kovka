@@ -34,23 +34,23 @@
         <put-attribute name="content" value="/WEB-INF/pages/admin/help.jsp"/>
     </definition>
 
-    <definition name="sketches" extends="web">
+    <definition name="admin-sketches" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/sketch/sketches.jsp"/>
     </definition>
 
-    <definition name="sketch" extends="web">
+    <definition name="admin-sketch" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/sketch/sketch.jsp"/>
     </definition>
 
-    <definition name="sketch-add-view" extends="web">
+    <definition name="admin-sketch-add-view" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/sketch/add.jsp"/>
     </definition>
 
-    <definition name="sketch-images-add-view" extends="web">
+    <definition name="admin-sketch-images-add-view" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/sketch/images-add.jsp"/>
     </definition>
 
-    <definition name="sketch-product-add-view" extends="web">
+    <definition name="admin-sketch-product-add-view" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/sketch/product-add.jsp"/>
     </definition>
 

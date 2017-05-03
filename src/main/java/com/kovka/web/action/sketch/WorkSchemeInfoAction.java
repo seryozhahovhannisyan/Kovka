@@ -1,8 +1,9 @@
 package com.kovka.web.action.sketch;
 
-import com.kovka.business.ISketchManager;
+import com.kovka.business.IWorkSchemeInfoManager;
 import com.kovka.common.data.Sketch;
 import com.kovka.common.data.SketchInfo;
+import com.kovka.common.data.WorkSchemeInfo;
 import com.kovka.common.data.lcp.Language;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
@@ -26,102 +27,77 @@ public class WorkSchemeInfoAction extends BaseAction {
 
     private static final Logger logger = Logger.getLogger(WorkSchemeInfoAction.class.getSimpleName());
 
-    private ResponseDto dto;
+    private IWorkSchemeInfoManager workSchemeInfoManager;
 
-    private ISketchManager sketchManager;
+    public List<WorkSchemeInfo> workSchemeInfos;
 
-    private Sketch sketch;
-    // for delete
-    private Long id;
-    private String sketchIdes;
-    // for add
+    //add
     private String name;
-    private String shortDesc;
-    private String title;
     private String description;
-
-    // for search
-    private String requestJson;
-    private long dataCount;
+    //update
+    private String id;
 
     public String add() {
 
-        if (Utils.isEmpty(name) ||
-                Utils.isEmpty(shortDesc) ||
-                Utils.isEmpty(title) ||
-                Utils.isEmpty(description)) {
-            logger.info("Empty incoming data");
-            return INPUT;
+        if (Utils.isEmpty(name)) {
+            logger.info("name is  required");
+            session.put(MESSAGE, "name is requeired");
+            return ERROR;
+
         }
 
-        Sketch sketch = new Sketch();
-        sketch.setStatus(Status.ACTIVE);
-
-        List<SketchInfo> infos = new ArrayList<SketchInfo>();
+        List<WorkSchemeInfo> infos = new ArrayList<WorkSchemeInfo>();
         for (Language language : Language.values()) {
-            SketchInfo info = new SketchInfo();
+            WorkSchemeInfo info = new WorkSchemeInfo();
             info.setLanguage(language);
             info.setName(name.trim());
-            info.setShortDesc(shortDesc.trim());
-            info.setTitle(title.trim());
             info.setDescription(description.trim());
+
             infos.add(info);
         }
-        sketch.setInfos(infos);
         try {
-            sketchManager.add(sketch);
+            workSchemeInfoManager.add(infos);
         } catch (InternalErrorException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
             return ERROR;
         }
         return SUCCESS;
     }
 
-    public String view() {
+    public String list() {
         try {
-            sketch = sketchManager.getFullById(id);
+            workSchemeInfos = workSchemeInfoManager.getAll();
         } catch (InternalErrorException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+
+    public String update() {
+
+        WorkSchemeInfo info = new WorkSchemeInfo();
+
+        info.setName(name.trim());
+        info.setDescription(description.trim());
+
+        try {
+            info.setId(DataConverter.convertToLong(id));
+            workSchemeInfoManager.update(info);
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         } catch (EntityNotFoundException e) {
             logger.error(e);
-        }
-        return SUCCESS;
-    }
-
-    public String listView() {
-
-        try {
-            Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
-            dataCount = sketchManager.getCountByParams(params);
-        } catch (InternalErrorException e) {
-            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         } catch (DataParseException e) {
             logger.error(e);
-        }
-        return SUCCESS;
-    }
-
-    public String list() {
-
-        try {
-
-            Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
-            dataCount = sketchManager.getCountByParams(params);
-
-            long page = Long.valueOf(params.get("page").toString());
-            long count = Long.valueOf(params.get("count").toString());
-            params.put("page", (page - 1) * count);
-
-            List<Sketch> sketches = sketchManager.getSampleByParams(params);
-            dto.addResponse("data", sketches);
-            dto.addResponse("dataCount", dataCount);
-            dto.setResponseStatus(ResponseStatus.SUCCESS);
-        } catch (InternalErrorException e) {
-            logger.error(e);
-            dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
-        } catch (DataParseException e) {
-            logger.error(e);
-            dto.setResponseStatus(ResponseStatus.INVALID_PARAMETER);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         }
         return SUCCESS;
     }
@@ -129,12 +105,19 @@ public class WorkSchemeInfoAction extends BaseAction {
     public String delete() {
 
         try {
-            Sketch sketch = sketchManager.getSampleById(id);
-            sketchManager.delete(sketch);
+            workSchemeInfoManager.delete(DataConverter.convertToLong(id));
         } catch (InternalErrorException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         } catch (EntityNotFoundException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (DataParseException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         }
         return SUCCESS;
     }
@@ -145,79 +128,8 @@ public class WorkSchemeInfoAction extends BaseAction {
      *##################################################################################################################
      */
 
-    public Sketch getSketch() {
-        return sketch;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getShortDesc() {
-        return shortDesc;
-    }
-
-    public void setShortDesc(String shortDesc) {
-        this.shortDesc = shortDesc;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDataCount(long dataCount) {
-        this.dataCount = dataCount;
-    }
-
-    public long getDataCount() {
-        return dataCount;
-    }
-
-    public void setId(String id) {
-        try {
-            this.id = Long.parseLong(id);
-        } catch (Exception e) {
-            this.id = -1L;
-        }
-    }
-
-    public String getRequestJson() {
-        return requestJson;
-    }
-
-    public void setRequestJson(String requestJson) {
-        this.requestJson = requestJson;
-    }
-
-    public ResponseDto getDto() {
-        return dto;
-    }
-
-    public void setDto(ResponseDto dto) {
-        this.dto = dto;
-    }
-
-    public void setSketchManager(ISketchManager sketchManager) {
-        this.sketchManager = sketchManager;
-    }
-
-    public void setSketchIdes(String sketchIdes) {
-        this.sketchIdes = sketchIdes;
+    public void setWorkSchemeInfoManager(IWorkSchemeInfoManager workSchemeInfoManager) {
+        this.workSchemeInfoManager = workSchemeInfoManager;
     }
 }

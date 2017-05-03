@@ -33,7 +33,6 @@ public class SketchUploadAction extends BaseAction {
     private InputStream result = new ByteArrayInputStream(INPUT.getBytes());
     private static final String RESP_SUCCESS = "success";//"{\"jsonrpc\" : \"2.0\", \"result\" : \"success\", \"id\" : \"id\"}";
     private static final String RESP_ERROR = "error";//"{\"jsonrpc\" : \"2.0\", \"error\" : {\"code\": 101, \"message\": \"Failed to open input stream.\"}, \"id\" : \"id\"}";
-    private ResponseDto responseDto;
 
     private List<FileData> datas;
 
@@ -102,10 +101,6 @@ public class SketchUploadAction extends BaseAction {
         return result;
     }
 
-    public ResponseDto getResponseDto() {
-        return responseDto;
-    }
-
     public List<FileData> getDatas() {
         return datas;
     }
@@ -128,10 +123,6 @@ public class SketchUploadAction extends BaseAction {
 
     public String getSketchId() {
         return sketchId;
-    }
-
-    public void setResponseDto(ResponseDto responseDto) {
-        this.responseDto = responseDto;
     }
 
     public void setDataManager(IFileDataManager dataManager) {

@@ -68,7 +68,7 @@
         WHERE id = #{id}
     </update>
 
-    <delete id="delete" parameterType="PriceListInfo">
+    <delete id="delete"  parameterType="_long">
         DELETE FROM price_list_info
         WHERE id =  #{id}
     </delete>

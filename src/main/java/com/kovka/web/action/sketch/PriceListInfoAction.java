@@ -1,23 +1,18 @@
 package com.kovka.web.action.sketch;
 
 import com.kovka.business.IPriceListInfoManager;
-import com.kovka.business.ISketchManager;
 import com.kovka.common.data.PriceListInfo;
 import com.kovka.common.data.lcp.Language;
-import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
-import com.kovka.web.action.dto.ResponseDto;
-import com.kovka.web.action.dto.ResponseStatus;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Serozh on 6/26/2016.
@@ -26,32 +21,26 @@ public class PriceListInfoAction extends BaseAction {
 
     private static final Logger logger = Logger.getLogger(PriceListInfoAction.class.getSimpleName());
 
-    private ResponseDto dto;
-
     private IPriceListInfoManager priceListInfoManager;
 
-    private PriceListInfo priceListInfo;
-    // for delete
-    private Long id;
-    private String ides;
-    // for add
-    private String name;
-    private String shortDesc;
-    private String title;
-    private String description;
+    public List<PriceListInfo> priceListInfos;
 
-    // for search
-    private String requestJson;
-    private long dataCount;
+    //add
+    private String name;
+    private String budgetary;
+    private String standard;
+    private String premium;
+    private String productionTime;
+    //update
+    private String id;
 
     public String add() {
 
-        if (Utils.isEmpty(name) ||
-                Utils.isEmpty(shortDesc) ||
-                Utils.isEmpty(title) ||
-                Utils.isEmpty(description)) {
-            logger.info("Empty incoming data");
-            return INPUT;
+        if (Utils.isEmpty(name)) {
+            logger.info("name is  required");
+            session.put(MESSAGE, "name is requeired");
+            return ERROR;
+
         }
 
         List<PriceListInfo> infos = new ArrayList<PriceListInfo>();
@@ -59,47 +48,59 @@ public class PriceListInfoAction extends BaseAction {
             PriceListInfo info = new PriceListInfo();
             info.setLanguage(language);
             info.setName(name.trim());
-//            info.setShortDesc(shortDesc.trim());
-//            info.setTitle(title.trim());
-//            info.setDescription(description.trim());
+            info.setBudgetary(budgetary.trim());
+            info.setStandard(standard.trim());
+            info.setPremium(premium.trim());
+            info.setProductionTime(productionTime.trim());
+
             infos.add(info);
         }
         try {
             priceListInfoManager.add(infos);
         } catch (InternalErrorException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
             return ERROR;
         }
         return SUCCESS;
     }
 
-    public String view() {
+    public String list() {
         try {
-              priceListInfoManager.getAll();
+            priceListInfos = priceListInfoManager.getAll();
         } catch (InternalErrorException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         }
         return SUCCESS;
     }
 
-    public String list() {
+    public String update() {
+
+        PriceListInfo info = new PriceListInfo();
+
+        info.setName(name.trim());
+        info.setBudgetary(budgetary.trim());
+        info.setStandard(standard.trim());
+        info.setPremium(premium.trim());
+        info.setProductionTime(productionTime.trim());
 
         try {
-
-//            Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
-//            dataCount = priceListInfoManager.getCountByParams(params);
-//
-//            long page = Long.valueOf(params.get("page").toString());
-//            long count = Long.valueOf(params.get("count").toString());
-//            params.put("page", (page - 1) * count);
-
-            List<PriceListInfo> sketches = priceListInfoManager.getAll();
-            dto.addResponse("data", sketches);
-            dto.addResponse("dataCount", dataCount);
-            dto.setResponseStatus(ResponseStatus.SUCCESS);
+            info.setId(DataConverter.convertToLong(id));
+            priceListInfoManager.update(info);
         } catch (InternalErrorException e) {
             logger.error(e);
-            dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (EntityNotFoundException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (DataParseException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         }
         return SUCCESS;
     }
@@ -107,12 +108,19 @@ public class PriceListInfoAction extends BaseAction {
     public String delete() {
 
         try {
-            PriceListInfo priceListInfo = null;//priceListInfoManager.getBy(Language.RUSSIAN);
-            priceListInfoManager.delete(priceListInfo);
+            priceListInfoManager.delete(DataConverter.convertToLong(id));
         } catch (InternalErrorException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         } catch (EntityNotFoundException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (DataParseException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         }
         return SUCCESS;
     }
@@ -123,6 +131,13 @@ public class PriceListInfoAction extends BaseAction {
      *##################################################################################################################
      */
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<PriceListInfo> getPriceListInfos() {
+        return priceListInfos;
+    }
 
     public String getName() {
         return name;
@@ -132,59 +147,39 @@ public class PriceListInfoAction extends BaseAction {
         this.name = name;
     }
 
-    public String getShortDesc() {
-        return shortDesc;
+    public String getBudgetary() {
+        return budgetary;
     }
 
-    public void setShortDesc(String shortDesc) {
-        this.shortDesc = shortDesc;
+    public void setBudgetary(String budgetary) {
+        this.budgetary = budgetary;
     }
 
-    public String getTitle() {
-        return title;
+    public String getStandard() {
+        return standard;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setStandard(String standard) {
+        this.standard = standard;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPremium() {
+        return premium;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPremium(String premium) {
+        this.premium = premium;
     }
 
-    public void setDataCount(long dataCount) {
-        this.dataCount = dataCount;
+    public String getProductionTime() {
+        return productionTime;
     }
 
-    public long getDataCount() {
-        return dataCount;
+    public void setProductionTime(String productionTime) {
+        this.productionTime = productionTime;
     }
 
-    public void setId(String id) {
-        try {
-            this.id = Long.parseLong(id);
-        } catch (Exception e) {
-            this.id = -1L;
-        }
-    }
-
-    public String getRequestJson() {
-        return requestJson;
-    }
-
-    public void setRequestJson(String requestJson) {
-        this.requestJson = requestJson;
-    }
-
-    public ResponseDto getDto() {
-        return dto;
-    }
-
-    public void setDto(ResponseDto dto) {
-        this.dto = dto;
+    public void setPriceListInfoManager(IPriceListInfoManager priceListInfoManager) {
+        this.priceListInfoManager = priceListInfoManager;
     }
 }

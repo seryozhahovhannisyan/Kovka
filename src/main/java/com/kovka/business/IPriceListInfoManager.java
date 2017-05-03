@@ -19,5 +19,5 @@ public interface IPriceListInfoManager {
 
     public void update(PriceListInfo data)throws InternalErrorException, EntityNotFoundException;
 
-    public void delete(PriceListInfo data)throws InternalErrorException, EntityNotFoundException;
+    public void delete(long id)throws InternalErrorException, EntityNotFoundException;
 }

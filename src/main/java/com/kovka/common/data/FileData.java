@@ -22,7 +22,7 @@ public class FileData {
 
     private Long sketchId;
 
-    private Long productionId;
+    private boolean isMachine;
 
     private int order;
 
@@ -112,11 +112,12 @@ public class FileData {
         this.order = order;
     }
 
-    public Long getProductionId() {
-        return productionId;
+    public boolean getIsMachine() {
+        return isMachine;
     }
 
-    public void setProductionId(Long productionId) {
-        this.productionId = productionId;
+    public FileData setIsMachine(boolean machine) {
+        isMachine = machine;
+        return this;
     }
 }

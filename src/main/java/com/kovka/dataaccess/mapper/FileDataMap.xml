@@ -6,16 +6,6 @@
 
 <mapper namespace="com.kovka.dataaccess.mapper.namespace.FileDataMap">
 
-<!--
-`id` int(15) unsigned NOT NULL AUTO_INCREMENT,
-          `file_name` varchar(256) COLLATE utf8_bin NOT NULL,
-          `content_type` varchar(256) COLLATE utf8_bin NOT NULL,
-          `size` int(15) unsigned NOT NULL,
-          `creation_date` datetime NOT NULL,
-          `status` int(1) unsigned NOT NULL,
-          `order` int(8) unsigned NOT NULL,
-          `sketch_id` int(15) unsigned NOT NULL,   
--->
     <resultMap id="rmFileDataSimple" type="FileData">
         <id property="id" column="id"/>
         <result property="fileName" column="file_name"/>
@@ -25,6 +15,7 @@
         <result property="status" column="status"/>
         <result property="order" column="order"/>
         <result property="sketchId" column="sketch_id"/>
+        <result property="isMachine" column="is_machine"/>
     </resultMap>
 
     <!--
@@ -36,21 +27,23 @@
     <insert id="add" parameterType="FileData">
 
         INSERT INTO f_data(
-        `file_name`,
-        `content_type`,
-        `size`,
-        `creation_date`,
-        `status`,
-        `order`,
-        `sketch_id`
+            `file_name`,
+            `content_type`,
+            `size`,
+            `creation_date`,
+            `status`,
+            `order`,
+            `sketch_id`,
+            `is_machine`
         ) VALUES (
-        #{fileName},
-        #{contentType},
-        #{size},
-        #{creationDate},
-        #{status},
-        #{order},
-        #{sketchId}
+            #{fileName},
+            #{contentType},
+            #{size},
+            #{creationDate},
+            #{status},
+            #{order},
+            #{sketchId},
+            #{isMachine}
         )
 
         <selectKey keyProperty="id" resultType="_long">
@@ -79,6 +72,14 @@
 
         SELECT * FROM f_data
         WHERE sketch_id = #{sketchId}
+
+    </select>
+
+    <select id="getMachineData"
+            resultMap="rmFileDataSimple" >
+
+        SELECT * FROM f_data
+        WHERE is_machine = 1
 
     </select>
 

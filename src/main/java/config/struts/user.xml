@@ -52,52 +52,41 @@
             <result type="redirect">admin.htm</result>
         </action>
 
+        <!--admin SketchAction-->
 
-        <!--Data upload/download-->
-
-        <action name="data-download" class="DataDownloadAction">
-            <result name="success" type="stream">
-                <param name="contentType">application/octet-stream</param>
-                <param name="inputName">inputStream</param>
-                <param name="contentDisposition">attachment;filename="${dataFileName}"</param>
-                <param name="bufferSize">4096</param>
-            </result>
-            <result name="start" type="redirect">start.htm</result>
+        <action name="admin-sketches" class="SketchAction" method="listView">
+            <result name="success" type="tiles">admin-sketches</result>
         </action>
 
-        <!--SketchAction-->
-
-        <action name="sketches" class="SketchAction" method="listView">
-            <result name="success" type="tiles">sketches</result>
+        <action name="admin-sketch" class="SketchAction" method="view">
+            <result name="success" type="tiles">admin-sketch</result>
         </action>
 
-        <action name="sketch" class="SketchAction" method="view">
-            <result name="success" type="tiles">sketch</result>
+        <action name="admin-sketch-add-view"  >
+            <result name="success" type="tiles">admin-sketch-add-view</result>
         </action>
 
-        <action name="sketch-add-view"  >
-            <result name="success" type="tiles">sketch-add-view</result>
+        <action name="admin-sketch-images-add-view"  class="SketchUploadAction" method="view">
+            <result name="success" type="tiles">admin-sketch-images-add-view</result>
+            <result name="input" type="tiles">admin-sketches</result>
         </action>
 
-        <action name="sketch-images-add-view"  class="SketchUploadAction" method="view">
-            <result name="success" type="tiles">sketch-images-add-view</result>
-            <result name="input" type="tiles">sketches</result>
+        <action name="admin-sketch-product-add-view"  class="SketchProductUploadAction" method="view">
+            <result name="success" type="tiles">admin-sketch-product-add-view</result>
+            <result name="input" type="tiles">admin-sketches</result>
         </action>
 
-        <action name="sketch-product-add-view"  class="SketchProductUploadAction" method="view">
-            <result name="success" type="tiles">sketch-product-add-view</result>
-            <result name="input" type="tiles">sketches</result>
+        <action name="admin-sketch-add" class="SketchAction" method="add">
+            <result name="success" type="redirect">admin-sketch.htm</result>
+            <result name="error" type="tiles">admin-sketches</result>
         </action>
 
-        <action name="sketch-add" class="SketchAction" method="add">
-            <result name="success" type="redirect">sketch.htm</result>
-            <result name="error" type="tiles">sketches</result>
+        <action name="admin-sketch-delete" class="SketchAction" method="delete">
+            <result name="success" type="redirect">admin-sketches.htm</result>
+            <result name="error" type="tiles">admin-sketches</result>
         </action>
 
-        <action name="sketch-delete" class="SketchAction" method="delete">
-            <result name="success" type="redirect">sketches.htm</result>
-            <result name="error" type="tiles">sketches</result>
-        </action>
+        <!--admin-->
 
 
     </package>

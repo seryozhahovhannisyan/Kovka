@@ -17,6 +17,6 @@ public interface IWorkSchemeInfoDao {
 
     public void update(WorkSchemeInfo data)throws DatabaseException, EntityNotFoundException;
 
-    public void delete(WorkSchemeInfo data)throws DatabaseException, EntityNotFoundException;
+    public void delete(long id)throws DatabaseException, EntityNotFoundException;
 
 }

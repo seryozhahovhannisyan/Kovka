@@ -72,9 +72,9 @@ public class PriceListInfoManager implements IPriceListInfoManager {
 
     @Override
     @Transactional(readOnly = false, rollbackFor = Exception.class)
-    public void delete(PriceListInfo data) throws InternalErrorException, EntityNotFoundException {
+    public void delete(long id) throws InternalErrorException, EntityNotFoundException {
         try {
-            dao.delete(data);
+            dao.delete(id);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

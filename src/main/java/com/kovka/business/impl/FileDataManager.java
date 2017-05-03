@@ -37,7 +37,7 @@ public class FileDataManager implements IFileDataManager {
         try {
             dao.add(data);
             Sketch sketch = sketchDao.getSampleById(data.getSketchId());
-            if(sketch.getMainImage() == null){
+            if (sketch.getMainImage() == null) {
                 sketch.setMainImageId(data.getId());
                 sketchDao.update(sketch);
             }
@@ -50,7 +50,7 @@ public class FileDataManager implements IFileDataManager {
 
             dao.update(data);
 
-            FileDataUtil.createFileSketch(fileName,  data.getData());
+            FileDataUtil.createFileSketch(fileName, data.getData());
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         } catch (IOException e) {
@@ -73,6 +73,15 @@ public class FileDataManager implements IFileDataManager {
     public List<FileData> getBySketchId(Long sketchId) throws InternalErrorException {
         try {
             return dao.getBySketchId(sketchId);
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+
+    @Override
+    public List<FileData> getMachineData() throws InternalErrorException {
+        try {
+            return dao.getMachineData();
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

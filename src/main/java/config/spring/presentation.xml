@@ -21,12 +21,11 @@
     </bean>
 
     <bean id="SketchUploadAction" class="com.kovka.web.action.sketch.SketchUploadAction" scope="prototype">
-        <property name="responseDto" ref="ResponseDto"/>
         <property name="dataManager" ref="FileDataManager"/>
     </bean>
 
-    <bean id="SketchProductUploadAction" class="com.kovka.web.action.sketch.SketchProductUploadAction" scope="prototype">
-        <property name="responseDto" ref="ResponseDto"/>
+    <bean id="SketchProductUploadAction" class="com.kovka.web.action.sketch.SketchProductUploadAction"
+          scope="prototype">
         <property name="productManager" ref="SketchProductManager"/>
     </bean>
 
@@ -41,6 +40,24 @@
     <bean id="SketchAction" class="com.kovka.web.action.sketch.SketchAction" scope="prototype">
         <property name="dto" ref="ResponseDto"/>
         <property name="sketchManager" ref="SketchManager"/>
+    </bean>
+
+    <bean id="AboutAction" class="com.kovka.web.action.sketch.AboutAction" scope="prototype">
+        <property name="dto" ref="ResponseDto"/>
+        <property name="aboutManager" ref="AboutManager"/>
+    </bean>
+
+    <bean id="MachineUploadAction" class="com.kovka.web.action.sketch.MachineUploadAction" scope="prototype">
+        <property name="dataManager" ref="FileDataManager"/>
+    </bean>
+
+
+    <bean id="PriceListInfoAction" class="com.kovka.web.action.sketch.PriceListInfoAction" scope="prototype">
+        <property name="priceListInfoManager" ref="PriceListInfoManager"/>
+    </bean>
+
+    <bean id="WorkSchemeInfoAction" class="com.kovka.web.action.sketch.WorkSchemeInfoAction" scope="prototype">
+        <property name="workSchemeInfoManager" ref="WorkSchemeInfoManager"/>
     </bean>
 
 

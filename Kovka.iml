@@ -197,6 +197,5 @@
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: javax.mail:mail:1.4.6-rc1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.35" level="application_server_libraries" />
-    <orderEntry type="library" name="Kovka node_modules" level="project" />
   </component>
 </module>

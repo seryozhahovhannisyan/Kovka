@@ -15,6 +15,8 @@ public interface IFileDataManager {
 
     public List<FileData> getBySketchId(Long sketchId) throws InternalErrorException;
 
+    public List<FileData> getMachineData() throws InternalErrorException;
+
     public List<FileData> getByParams(Map<String, Object> params) throws InternalErrorException;
 
     public void update(FileData data) throws InternalErrorException, EntityNotFoundException;

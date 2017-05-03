@@ -48,6 +48,11 @@ public class FileDataDao implements IFileDataDao {
     }
 
     @Override
+    public List<FileData> getMachineData() throws DatabaseException {
+        return map.getMachineData();
+    }
+
+    @Override
     public List<FileData> getByParams(Map<String, Object> params) throws DatabaseException {
         try {
             return map.getByParams(params);

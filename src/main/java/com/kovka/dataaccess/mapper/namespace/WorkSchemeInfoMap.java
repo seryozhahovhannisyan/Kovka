@@ -17,6 +17,6 @@ public interface WorkSchemeInfoMap {
 
     public void update(WorkSchemeInfo data);
 
-    public void delete(WorkSchemeInfo data);
+    public void delete(long id);
 
 }

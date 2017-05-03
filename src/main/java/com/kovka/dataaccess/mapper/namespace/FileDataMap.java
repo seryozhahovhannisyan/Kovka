@@ -13,6 +13,8 @@ public interface FileDataMap {
 
     public List<FileData> getBySketchId(Long sketchId);
 
+    public List<FileData> getMachineData();
+
     public FileData getDefaultSketchImg(Long sketchId);
 
     public FileData getSketchImg(Long sketchId);

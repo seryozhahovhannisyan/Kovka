@@ -1,9 +1,7 @@
 package com.kovka.web.action.sketch;
 
 import com.kovka.business.IFileDataManager;
-import com.kovka.business.ISketchProductManager;
 import com.kovka.common.data.FileData;
-import com.kovka.common.data.SketchProduct;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.InternalErrorException;
@@ -26,31 +24,26 @@ import java.util.List;
 /**
  * Created by htdev001 on 3/5/14.
  */
-public class SketchProductUploadAction extends BaseAction {
+public class MachineUploadAction extends BaseAction {
 
-    private static final Logger logger = Logger.getLogger(SketchProductUploadAction.class.getSimpleName());
+    private static final Logger logger = Logger.getLogger(MachineUploadAction.class.getSimpleName());
 
-    private ISketchProductManager productManager;
+    private IFileDataManager dataManager;
 
     private InputStream result = new ByteArrayInputStream(INPUT.getBytes());
     private static final String RESP_SUCCESS = "success";//"{\"jsonrpc\" : \"2.0\", \"result\" : \"success\", \"id\" : \"id\"}";
     private static final String RESP_ERROR = "error";//"{\"jsonrpc\" : \"2.0\", \"error\" : {\"code\": 101, \"message\": \"Failed to open input stream.\"}, \"id\" : \"id\"}";
 
-    private List<SketchProduct> products;
+    private List<FileData> datas;
 
     private File file;
     private String fileFileName;
     private String fileContentType;
 
-    private String sketchId;
-
     public String view() {
         try {
-            products = productManager.getBySketchId(DataConverter.convertToLong(sketchId));
+            datas = dataManager.getMachineData();
         } catch (InternalErrorException e) {
-            logger.error(e);
-            return INPUT;
-        } catch (DataParseException e) {
             logger.error(e);
             return INPUT;
         }
@@ -59,7 +52,7 @@ public class SketchProductUploadAction extends BaseAction {
 
     public String upload() {
 
-        if (file == null || Utils.isEmpty(fileFileName) || Utils.isEmpty(sketchId)) {
+        if (file == null || Utils.isEmpty(fileFileName)) {
             logger.error("SketchUploadAction, data or dataFileName is null");
             result = new ByteArrayInputStream(RESP_ERROR.getBytes());
             session.put(MESSAGE, getText("error.internal"));
@@ -83,12 +76,8 @@ public class SketchProductUploadAction extends BaseAction {
             d.setSize(fileData.length);
             d.setCreationDate(new Date(System.currentTimeMillis()));
             d.setStatus(Status.ACTIVE);
-
-            SketchProduct sketchProduct = new SketchProduct();
-            sketchProduct.setSketchId(DataConverter.convertToLong(sketchId));
-            sketchProduct.setImage(d);
-            sketchProduct.setStatus(Status.ACTIVE);
-            productManager.add(sketchProduct);
+            d.setIsMachine(true);
+            dataManager.add(d);
         } catch (IOException e) {
             result = new ByteArrayInputStream(RESP_ERROR.getBytes());
             logger.error(e);
@@ -107,12 +96,8 @@ public class SketchProductUploadAction extends BaseAction {
         return result;
     }
 
-    public List<SketchProduct> getProducts() {
-        return products;
-    }
-
-    public void setSketchId(String sketchId) {
-        this.sketchId = sketchId;
+    public List<FileData> getDatas() {
+        return datas;
     }
 
     public void setFile(File file) {
@@ -127,11 +112,7 @@ public class SketchProductUploadAction extends BaseAction {
         this.fileContentType = fileContentType;
     }
 
-    public String getSketchId() {
-        return sketchId;
-    }
-
-    public void setProductManager(ISketchProductManager productManager) {
-        this.productManager = productManager;
+    public void setDataManager(IFileDataManager dataManager) {
+        this.dataManager = dataManager;
     }
 }
