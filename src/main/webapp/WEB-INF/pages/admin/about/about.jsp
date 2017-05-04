@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<div class="right_col" role="main" style="min-height: 2519px;" ng-controller="listController">
+<div class="right_col" role="main" style="min-height: 2519px;"  >
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -40,7 +40,7 @@
 
                     <div class="row">
                         <div id="listContent">
-                            <div id="googleMap" style="width:100%;height:600px;"></div>
+                            <div id="map" style="width:100%;height:600px;"></div>
                         </div>
                     </div>
 
@@ -113,9 +113,11 @@
 </div>
 
 <script>
-
+    var marker;
     function submitForm(){
-        $('#aboutForm').submit()
+        var coord = marker.position;
+        alert(coord)
+//        $('#aboutForm').submit();
     }
     function addEmail(){
         $('#email').append('<input name="emailValues"  required="required" class="form-control col-md-7 col-xs-12" type="text"/>');
@@ -123,25 +125,41 @@
     function addPhone(){
         $('#phone').append('<input name="phoneValues"  required="required" class="form-control col-md-7 col-xs-12" type="text"/>');
     }
-    function myMap() {
+
+    function initMap() {
 
         var latitude='<s:property value="latitude"/>';
         var longitude='<s:property value="longitude"/>';
 
+        var myLatLng = {lat: Number(latitude), lng: Number(longitude)};
 
-        var mapProp= {
-            center:new google.maps.LatLng(latitude,longitude),
+
+        var map = new google.maps.Map(document.getElementById('map'), {
             zoom:16,
-        };
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-        var marker = new google.maps.Marker({
-            position: {lat: latitude, longitude},
-            map: map,
-            title: 'Hello World!'
+            center: myLatLng
         });
+
+        marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: 'Hello World!',
+            draggable:true,
+        });
+        marker.addListener('click', toggleBounce);
+    }
+
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
     }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1ju2JGoRHLOsDZQTktv6J8zLa6XrvUXA&callback=myMap&zoom=16&format=png&maptype=roadmap&size=480x360"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1ju2JGoRHLOsDZQTktv6J8zLa6XrvUXA&callback=initMap">
+</script>
 
 
