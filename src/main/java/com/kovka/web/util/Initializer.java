@@ -8,6 +8,7 @@ import com.kovka.common.data.User;
 import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.InternalErrorException;
+import com.kovka.common.util.ImageSizeLoader;
 import com.kovka.common.util.SetupInfo;
 import com.kovka.common.util.Utils;
 import com.kovka.web.util.encryption.EncryptException;
@@ -40,6 +41,8 @@ public class Initializer implements ServletContextListener {
 
     private static SetupInfo setupInfo;
 
+    private static ImageSizeLoader imageSizeLoader;
+
     /**
      *
      */
@@ -69,6 +72,8 @@ public class Initializer implements ServletContextListener {
 
             applicationContext = (ApplicationContext) context.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
             setupInfo = (SetupInfo) applicationContext.getBean("setupInfo");
+            imageSizeLoader = (ImageSizeLoader) applicationContext.getBean("imageSizeLoader");
+
 
             if (setupInfo.getSetup().equals(DEV)) {
 

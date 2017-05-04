@@ -54,7 +54,7 @@
 
     <update id="delete" parameterType="SketchProduct">
         UPDATE sketch_product
-        SET status = 3
+        SET status = 2
         WHERE id = #{id}
     </update>
 

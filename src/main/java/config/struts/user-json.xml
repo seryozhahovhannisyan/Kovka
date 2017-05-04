@@ -50,7 +50,7 @@
             <result name="success" type="json"/>
         </action>
 
-        <action name="admin-upload-mixed" class="SketchUploadAction" method="upload">
+        <action name="admin-upload-sketch" class="SketchUploadAction" method="upload">
             <interceptor-ref name="fileUploadStack"/>
             <result name="success" type="stream">
                 <param name="contentType">text/html</param>

@@ -16,7 +16,7 @@
     <div class="">
         <div class="row">
             <div class="hello_div_parent">
-                <s:text name="page.cashier.home.title">Welcome</s:text>
+                <s:text name="page.home.title">Welcome</s:text>
                 <div class="name_div">
                     <s:property value="#session.cashier.name"/>&nbsp; <s:property value="#session.cashier.surname"/>
                 </div>
@@ -24,9 +24,17 @@
         </div>
         <div class="row">
             <div class="user_text_div col-lg-6 col-md-6 col-sm-6 col-xs-8">
-                <s:text name="page.cashier.home.content">
-                    Welcome to ConnectToMerchant. With the help of this site you can easily turn cash into online money and online money into cash.
-                </s:text>
+                <!-- message box -->
+                <div class="box-info" <s:if test="%{#session.info == null || #session.info == ''}">style="display: none"</s:if>>
+                    <s:property value="#session.info"/>
+                    <s:set var="info" scope="session" value=""/>
+                </div>
+
+                <div class="box-hint" <s:if test="%{#session.message == null || #session.message == ''}">style="display: none"</s:if>>
+                    <s:property value="#session.message"/>
+                    <s:set var="message" scope="session" value=""/>
+                </div>
+                <!-- message box -->
             </div>
         </div>
     </div>

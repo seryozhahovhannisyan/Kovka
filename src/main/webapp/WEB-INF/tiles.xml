@@ -35,23 +35,42 @@
     </definition>
 
     <definition name="admin-sketches" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/sketch/sketches.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/admin/sketch/sketches.jsp"/>
     </definition>
 
     <definition name="admin-sketch" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/sketch/sketch.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/admin/sketch/sketch.jsp"/>
     </definition>
 
     <definition name="admin-sketch-add-view" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/sketch/add.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/admin/sketch/add.jsp"/>
     </definition>
 
     <definition name="admin-sketch-images-add-view" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/sketch/images-add.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/admin/sketch/images-add.jsp"/>
     </definition>
 
+    <definition name="admin-about" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/about/about.jsp"/>
+    </definition>
+
+    <definition name="admin-machine" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/machine/images-add.jsp"/>
+    </definition>
+
+    <definition name="admin-price-list" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/price_list/list.jsp"/>
+    </definition>
+
+    <definition name="admin-work-scheme" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/work_scheme/list.jsp"/>
+    </definition>
+
+
+
+
     <definition name="admin-sketch-product-add-view" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/sketch/product-add.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/admin/sketch/product-add.jsp"/>
     </definition>
 
     <!--

@@ -5,6 +5,7 @@ import com.kovka.business.ISketchManager;
 import com.kovka.common.data.About;
 import com.kovka.common.data.AboutInfo;
 import com.kovka.common.data.lcp.Language;
+import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.Utils;
@@ -21,14 +22,12 @@ import java.util.List;
 public class AboutAction extends BaseAction {
 
     private static final Logger logger = Logger.getLogger(AboutAction.class.getSimpleName());
-
-    private ResponseDto dto;
-
     private IAboutManager aboutManager;
 
     private About about;
-    // for delete
-    private Long id;
+     private List<AboutInfo> infosForEdit ;
+    private String latitude;
+    private String longitude;
     // for add
     private String coords;
     private String emailValues;
@@ -39,11 +38,7 @@ public class AboutAction extends BaseAction {
     private String shortDesc;
     private String description;
 
-    // for search
-    private String requestJson;
-    private long dataCount;
-
-    public String add() {
+    public String edit() {
 
         if (Utils.isEmpty(address) ||
                 Utils.isEmpty(shortDesc) ||
@@ -72,11 +67,24 @@ public class AboutAction extends BaseAction {
 
     public String view() {
         try {
-            about = aboutManager.getById(id);
+            about = aboutManager.getById(1L);
+            about.parseEmails();
+            about.parsePhones();
+            String coords = about.getCoords();
+            latitude = coords.split(",")[0];
+            longitude = coords.split(",")[1];
         } catch (InternalErrorException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         } catch (EntityNotFoundException e) {
             logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (DataParseException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
         }
         return SUCCESS;
     }
@@ -89,6 +97,14 @@ public class AboutAction extends BaseAction {
 
     public About getAbout() {
         return about;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
     }
 
     public String getCoords() {
@@ -147,36 +163,12 @@ public class AboutAction extends BaseAction {
         this.description = description;
     }
 
-    public void setDataCount(long dataCount) {
-        this.dataCount = dataCount;
+    public List<AboutInfo> getInfosForEdit() {
+        return infosForEdit;
     }
 
-    public long getDataCount() {
-        return dataCount;
-    }
-
-    public void setId(String id) {
-        try {
-            this.id = Long.parseLong(id);
-        } catch (Exception e) {
-            this.id = -1L;
-        }
-    }
-
-    public String getRequestJson() {
-        return requestJson;
-    }
-
-    public void setRequestJson(String requestJson) {
-        this.requestJson = requestJson;
-    }
-
-    public ResponseDto getDto() {
-        return dto;
-    }
-
-    public void setDto(ResponseDto dto) {
-        this.dto = dto;
+    public void setInfosForEdit(List<AboutInfo> infosForEdit) {
+        this.infosForEdit = infosForEdit;
     }
 
     public void setAboutManager(IAboutManager aboutManager) {

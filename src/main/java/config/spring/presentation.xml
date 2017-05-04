@@ -43,7 +43,6 @@
     </bean>
 
     <bean id="AboutAction" class="com.kovka.web.action.sketch.AboutAction" scope="prototype">
-        <property name="dto" ref="ResponseDto"/>
         <property name="aboutManager" ref="AboutManager"/>
     </bean>
 

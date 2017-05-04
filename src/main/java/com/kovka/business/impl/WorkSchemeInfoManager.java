@@ -72,9 +72,9 @@ public class WorkSchemeInfoManager implements IWorkSchemeInfoManager {
 
     @Override
     @Transactional(readOnly = false, rollbackFor = Exception.class)
-    public void delete(WorkSchemeInfo data) throws InternalErrorException, EntityNotFoundException {
+    public void delete(long id) throws InternalErrorException, EntityNotFoundException {
         try {
-            dao.delete(data);
+            dao.delete(id);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

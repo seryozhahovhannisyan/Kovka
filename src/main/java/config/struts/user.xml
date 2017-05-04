@@ -28,6 +28,7 @@
 
         <global-results>
             <result name="login" type="redirect">admin.htm</result>
+            <result name="error" type="tiles">admin-home</result>
             <result name="user-exception" type="chain">user-exception</result>
         </global-results>
 
@@ -87,6 +88,28 @@
         </action>
 
         <!--admin-->
+
+        <action name="admin-about" class="AboutAction" method="view">
+            <result name="success" type="tiles">admin-about</result>
+        </action>
+
+        <action name="admin-about-edit" class="AboutAction" method="edit">
+            <result name="success" type="redirect">admin-about.htm</result>
+        </action>
+
+        <action name="admin-machine">
+            <result name="success" type="tiles">admin-machine</result>
+        </action>
+
+        <action name="admin-price-list">
+            <result name="success" type="tiles">admin-price-list</result>
+        </action>
+
+        <action name="admin-work-scheme">
+            <result name="success" type="tiles">admin-work-scheme</result>
+        </action>
+
+
 
 
     </package>

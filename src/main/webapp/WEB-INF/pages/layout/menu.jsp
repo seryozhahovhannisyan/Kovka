@@ -18,7 +18,7 @@
                 </s:else>
             </div>
             <div class="profile_info">
-                <span><s:text name="page.cashier.home.title">Welcome</s:text>,</span>
+                <span><s:text name="page.home.title">Welcome</s:text>,</span>
                 <h2><s:property value="#session.admin.name"/> <s:property value="#session.admin.surname"/></h2>
             </div>
         </div>
@@ -33,7 +33,11 @@
                 <ul style="" class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="sketches.htm"><s:text name="menu.sketches">Sketches</s:text></a></li>
+                            <li><a href="admin-about.htm"><s:text name="admin.menu.about">About</s:text></a></li>
+                            <li><a href="admin-machine.htm"><s:text name="admin.menu.machine">Machine</s:text></a></li>
+                            <li><a href="admin-price-list.htm"><s:text name="admin.menu.price">Price List</s:text></a></li>
+                            <li><a href="admin-sketches.htm"><s:text name="admin.menu.sketches">Sketches</s:text></a></li>
+                            <li><a href="admin-work-scheme.htm"><s:text name="admin.menu.workScheme">Work Scheme</s:text></a></li>
                         </ul>
                     </li>
                 </ul>
