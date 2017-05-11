@@ -28,7 +28,7 @@ controllers.callbacksCtrl = ['$scope', function ($scope) {
 }];
 
 
-controllers.adminCompanies = ['$scope', '$window', '$document', '$timeout', '$compile','$interval', function ($scope, $window, $document, $timeout, $compile,$interval) {
+controllers.adminCompanies = ['$scope', '$window', '$document', '$timeout', '$compile', '$interval', function ($scope, $window, $document, $timeout, $compile, $interval) {
 
     $scope.footerplace = function () {
         $scope.footer = angular.element('.main_footer');
@@ -86,7 +86,7 @@ controllers.adminCompanies = ['$scope', '$window', '$document', '$timeout', '$co
 
     $scope.addPartition = function () {
         var partition_array = [];
-        for(var i = 0; i < $scope.partitionTypeOut.length; i++){
+        for (var i = 0; i < $scope.partitionTypeOut.length; i++) {
             partition_array.push($scope.partitionTypeOut[i].id);
         }
         $scope.partition = partition_array.join("$");
@@ -106,8 +106,8 @@ controllers.adminCompanies = ['$scope', '$window', '$document', '$timeout', '$co
     $scope.addCurrency = function () {
 
         var cuerencyTypeVal = 0;
-        for(var i = 0; i < $scope.cuerencyTypeOut.length; i++){
-            cuerencyTypeVal =  $scope.cuerencyTypeOut[i].id
+        for (var i = 0; i < $scope.cuerencyTypeOut.length; i++) {
+            cuerencyTypeVal = $scope.cuerencyTypeOut[i].id
         }
         $scope.currency = cuerencyTypeVal;
     };
@@ -127,7 +127,7 @@ controllers.adminCompanies = ['$scope', '$window', '$document', '$timeout', '$co
     $scope.addRatevalue = function () {
 
         var rate_array = [];
-        for(var i = 0; i < $scope.availableRateValuesOut.length; i++){
+        for (var i = 0; i < $scope.availableRateValuesOut.length; i++) {
             rate_array.push($scope.availableRateValuesOut[i].id);
         }
         $scope.rate = rate_array.join("$");
@@ -150,11 +150,11 @@ controllers.adminCompanies = ['$scope', '$window', '$document', '$timeout', '$co
         $scope.addres_string = "";
         var address_array = [];
         var aded_fields = angular.element(".added_input");
-        for(var t=0; t < aded_fields.length; t++){
+        for (var t = 0; t < aded_fields.length; t++) {
             var ng_model_added = aded_fields[t].attributes[2].value;
             address_array.push($scope[ng_model_added]);
         }
-        $scope.addres_string = $scope.res_address+"$"+address_array.join("$");
+        $scope.addres_string = $scope.res_address + "$" + address_array.join("$");
 
     };
 
@@ -178,7 +178,7 @@ controllers.adminCompanies = ['$scope', '$window', '$document', '$timeout', '$co
 
 }];
 
-mainApp.directive('fileModel', ['$parse', '$http','$timeout', function ($parse, $http,$timeout) {
+mainApp.directive('fileModel', ['$parse', '$http', '$timeout', function ($parse, $http, $timeout) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {

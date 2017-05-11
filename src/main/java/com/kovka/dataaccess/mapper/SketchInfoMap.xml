@@ -19,19 +19,19 @@
     <insert id="add" parameterType="SketchInfo">
 
         INSERT INTO sketch_info(
-            `sketch_id`,
-            `lang`,
-            `name`,
-            `short_desc`,
-            `title`,
-            `description`
+        `sketch_id`,
+        `lang`,
+        `name`,
+        `short_desc`,
+        `title`,
+        `description`
         ) VALUE (
-            #{sketchId},
-            #{language},
-            #{name},
-            #{shortDesc},
-            #{title},
-            #{description}
+        #{sketchId},
+        #{language},
+        #{name},
+        #{shortDesc},
+        #{title},
+        #{description}
         )
 
         <selectKey keyProperty="id" resultType="_long">
@@ -50,7 +50,7 @@
 
     <update id="update" parameterType="SketchInfo">
         UPDATE sketch_info
-        SET   `name` = #{name},`short_desc` = #{shortDesc},`title` = #{title},`description` = #{description}
+        SET `name` = #{name},`short_desc` = #{shortDesc},`title` = #{title},`description` = #{description}
         WHERE sketch_id = #{sketchId}
     </update>
 

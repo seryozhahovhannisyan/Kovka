@@ -23,12 +23,12 @@ public class LanguageHandler extends BaseTypeHandler<Language> {
 
     public Language getNullableResult(ResultSet rs, String columnName) throws SQLException {
         int value = rs.getInt(columnName);
-        return value != 0?Language.valueOf(value):null;
+        return value != 0 ? Language.valueOf(value) : null;
     }
 
     public Language getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         int value = rs.getInt(columnIndex);
-        return value != 0?Language.valueOf(value):null;
+        return value != 0 ? Language.valueOf(value) : null;
     }
 
     public Language getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {

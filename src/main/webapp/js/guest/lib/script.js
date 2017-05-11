@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.list-slider').slick({
         slidesToShow: 4,
         dots: true,
@@ -7,13 +7,13 @@ $(document).ready(function(){
     $('.hotel-img-slider').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
-        infinite :false
+        infinite: false
     });
     $('.slider-images').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         speed: 900,
-        autoplay : true,
+        autoplay: true,
         autoplaySpeed: 3000
     });
 });

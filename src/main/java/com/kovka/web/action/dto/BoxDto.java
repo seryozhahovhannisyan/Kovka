@@ -24,15 +24,15 @@ public class BoxDto {
 
     private String pageType;
 
-    public void addImage(String img){
-        if(images == null){
+    public void addImage(String img) {
+        if (images == null) {
             images = new ArrayList<String>();
         }
         images.add(img);
     }
 
-    public void addProduct(ProductDto product){
-        if(products == null){
+    public void addProduct(ProductDto product) {
+        if (products == null) {
             products = new ArrayList<ProductDto>();
         }
         products.add(product);

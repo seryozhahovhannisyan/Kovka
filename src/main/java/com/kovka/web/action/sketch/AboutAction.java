@@ -1,19 +1,14 @@
 package com.kovka.web.action.sketch;
 
 import com.kovka.business.IAboutManager;
-import com.kovka.business.ISketchManager;
 import com.kovka.common.data.About;
 import com.kovka.common.data.AboutInfo;
-import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
-import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
-import com.kovka.web.action.dto.ResponseDto;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,10 +20,10 @@ public class AboutAction extends BaseAction {
     private IAboutManager aboutManager;
 
     private About about;
-     private List<AboutInfo> infosForEdit ;
+    private List<AboutInfo> infosForEdit;
     private String latitude;
     private String longitude;
-    // for add
+    // for edit
     private String coords;
     private String emailValues;
     private String phoneValues;
@@ -39,11 +34,30 @@ public class AboutAction extends BaseAction {
         About about = new About();
         about.setId(1L);
         about.setCoords(coords);
-        about.setEmailValues(emailValues);
-        about.setPhoneValues(phoneValues);
-
-
         about.setInfos(infosForEdit);
+
+        try {
+
+            about.parseEmails();
+            about.parsePhones();
+
+            about.setEmailValues(emailValues);
+            about.setPhoneValues(phoneValues);
+
+            aboutManager.update(about);
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (EntityNotFoundException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (DataParseException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        }
 
         return SUCCESS;
     }

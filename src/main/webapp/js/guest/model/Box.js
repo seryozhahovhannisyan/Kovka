@@ -1,5 +1,5 @@
-function Box (id, img, name, shortDesc, title, description,
-              page_type, has_more_info, has_book, url_) {
+function Box(id, img, name, shortDesc, title, description,
+             page_type, has_more_info, has_book, url_) {
 
     this.id = id;
     this.img = img;
@@ -18,20 +18,20 @@ function Box (id, img, name, shortDesc, title, description,
     this.images = [];
     this.products = [];
     this.viewProducts = [];
-    
 
-    this.addImg = function(img) {
+
+    this.addImg = function (img) {
         this.images.push(img);
     };
     this.addProduct = function (product) {
         this.products.push(product);
     };
 
-    this.initViewProducts = function (size) { 
-        for (var i=0; i<this.products.length; i+=size) {
-            this.viewProducts.push(this.products.slice(i,i+size));
+    this.initViewProducts = function (size) {
+        for (var i = 0; i < this.products.length; i += size) {
+            this.viewProducts.push(this.products.slice(i, i + size));
         }
-        this.products = null;  
+        this.products = null;
     };
 
 

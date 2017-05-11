@@ -14,10 +14,10 @@
 <div ng-controller="loginFormCtrl as loginForm">
 
     <div class="login_forward">
-        <form action="admin-entry.htm" method="post" autocomplete="off" >
-            <input type="password" style="display: none;" />
+        <form action="admin-entry.htm" method="post" autocomplete="off">
+            <input type="password" style="display: none;"/>
             <div class="form-login-message"></div>
-            <div class="login-form col-lg-4 col-md-6 col-sm-6 col-xs-8" >
+            <div class="login-form col-lg-4 col-md-6 col-sm-6 col-xs-8">
                 <div class="login_form_title">
                     <s:text name="page.cashierEntry.user.login">USER LOGIN</s:text>
                 </div>
@@ -25,15 +25,16 @@
                 <div class="form-group-username ">
                     <input type="text" class="form-control login_form_login" name="username"
                            placeholder="<s:text name="page.cashierEntry.placeholder.Username">Username</s:text>"
-                           autocomplete="off" />
+                           autocomplete="off"/>
                 </div>
 
                 <div class="form-group-password">
-                    <img ng-click="loginForm.passwordShowHideAndIconSrc()" class="show_hide_password" ng-cloak ng-src="{{loginForm.passwordShowHideIconSrc}}"
+                    <img ng-click="loginForm.passwordShowHideAndIconSrc()" class="show_hide_password" ng-cloak
+                         ng-src="{{loginForm.passwordShowHideIconSrc}}"
                          alt="<s:text name="page.cashierEntry.alt.Show.Hide.Password">Show/Hide Password</s:text>"/>
                     <input type="{{loginForm.inputType}}" class="form-control login_form_password" name="password"
                            placeholder="<s:text name="page.cashierEntry.placeholder.Password">Password</s:text>"
-                           autocomplete="new-password" />
+                           autocomplete="new-password"/>
                 </div>
                 <div class="login_form_forgot_password  ">
                     <a href="forgot-password.htm">

@@ -4,16 +4,16 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <title>Kovka</title>
-<html ng-app="kovkaApp" >
+<html ng-app="kovkaApp">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <style>
-        body{
-            font-size: 16px!important;
+        body {
+            font-size: 16px !important;
         }
     </style>
 
-    <link rel="icon" href="<%=request.getContextPath()%>/img/guest/logo-16.jpg" type="image/x-icon" />
+    <link rel="icon" href="<%=request.getContextPath()%>/img/guest/logo-16.jpg" type="image/x-icon"/>
     <link href="<%=request.getContextPath()%>/libs/css/bootstrap.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/libs/css/font-awesome.min.css" type="text/css" rel="stylesheet">
 
@@ -31,11 +31,11 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
     <script type="text/javascript">
         context = '<%=request.getContextPath()%>';
-        function goTo(href){
-            window.open(href,'_blank');
+        function goTo(href) {
+            window.open(href, '_blank');
         }
-        function goToAction(href){
-            if(context != null && context.length > 1){
+        function goToAction(href) {
+            if (context != null && context.length > 1) {
                 href = context + href;
             }
             window.location = href;

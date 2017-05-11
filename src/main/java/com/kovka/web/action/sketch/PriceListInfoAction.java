@@ -20,11 +20,8 @@ import java.util.List;
 public class PriceListInfoAction extends BaseAction {
 
     private static final Logger logger = Logger.getLogger(PriceListInfoAction.class.getSimpleName());
-
-    private IPriceListInfoManager priceListInfoManager;
-
     public List<PriceListInfo> priceListInfos;
-
+    private IPriceListInfoManager priceListInfoManager;
     //add
     private String name;
     private String budgetary;

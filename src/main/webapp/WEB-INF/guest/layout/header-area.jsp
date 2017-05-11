@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
+    jQuery(document).ready(function ($) {
         jQuery('#dc_jqmegamenu_widget-2-item .menu').dcMegaMenu({
             rowItems: 1,
             subMenuWidth: '',
@@ -14,7 +14,7 @@
 </script>
 
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
+    jQuery(document).ready(function ($) {
         jQuery('#dc_jqmegamenu_widget-14-item .menu').dcMegaMenu({
             subMenuWidth: '',
             speed: '',
@@ -25,7 +25,7 @@
 </script>
 
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
+    jQuery(document).ready(function ($) {
         jQuery('#dc_jqaccordion_widget-3-item .menu').dcAccordion({
             eventType: 'click',
             hoverDelay: 0,
@@ -178,10 +178,11 @@
                                 class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-135 ubermenu-current_page_item ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="#" tabindex="0"><span
-                                        class="ubermenu-target-title ubermenu-target-text"><s:property value="getToLang().getTitle()"/></span></a>
+                                        class="ubermenu-target-title ubermenu-target-text"><s:property
+                                        value="getToLang().getTitle()"/></span></a>
                                 <ul class="ubermenu-submenu ubermenu-submenu-id-146 ubermenu-submenu-type-flyout ubermenu-submenu-drop ubermenu-submenu-align-left_edge_item">
 
-                                    <%for(Language language : Language.values()){%>
+                                    <%for (Language language : Language.values()) {%>
                                     <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-109 ubermenu-item-auto ubermenu-item-normal ubermenu-item-level-1">
                                         <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                            href="#">

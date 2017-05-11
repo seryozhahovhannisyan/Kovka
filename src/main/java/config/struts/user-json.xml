@@ -8,7 +8,8 @@
     <package name="user-json" namespace="/" extends="json-default">
 
         <interceptors>
-            <interceptor name="authenticateInterceptor" class="com.kovka.web.interceptor.JSONAuthenticationInterceptor"/>
+            <interceptor name="authenticateInterceptor"
+                         class="com.kovka.web.interceptor.JSONAuthenticationInterceptor"/>
             <interceptor-stack name="userStackJSON">
                 <interceptor-ref name="jsonValidationWorkflowStack"/>
                 <interceptor-ref name="authenticateInterceptor"/>
@@ -16,8 +17,8 @@
 
             <interceptor-stack name="fileUploadStack">
                 <interceptor-ref name="fileUpload">
-                    <param name="maximumSize">1024000</param>
-                    <param name="allowedTypes"> image/jpeg,image/gif,image/png</param>
+                    <param name="maximumSize">10240000</param>
+                    <param name="allowedTypes">image/jpeg,image/gif,image/png</param>
                 </interceptor-ref>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>

@@ -1,7 +1,7 @@
 var controllers = {};
 // angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
 // var mainApp = angular.module('mainApp', ['ngTagsInput','ngSanitize', 'isteven-multi-select', 'ngTable', 'ngAnimate', 'ui.bootstrap', 'ngDroplet', bootstrapLightbox]);
-var moduls_array = [ ];
+var moduls_array = [];
 
 // gg.push('ngTbale' );
 
@@ -13,7 +13,7 @@ mainApp.config(['$httpProvider', function ($httpProvider) {
 
     var param = function (obj) {
         var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
-        console.log('param ==>',obj);
+        console.log('param ==>', obj);
         for (name in obj) {
             value = obj[name];
 
@@ -38,7 +38,7 @@ mainApp.config(['$httpProvider', function ($httpProvider) {
             else if (value !== undefined && value !== null)
                 query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
         }
-        console.log('query ==>',query);
+        console.log('query ==>', query);
         return query.length ? query.substr(0, query.length - 1) : query;
     };
     $httpProvider.defaults.transformRequest = [function (data) {
@@ -53,26 +53,23 @@ controllers.mainCtrl = function ($scope, $window) {
 
 
     $scope.hide_loader = function () {
-        $scope.loadergif=false;
+        $scope.loadergif = false;
     };
 
     $scope.show_loader = function () {
-        $scope.loadergif=true;
+        $scope.loadergif = true;
     }
 };
 
 
-$(document).on('ready', function() {
-    
+$(document).on('ready', function () {
+
     var csrfToken = $("#csrfToken").val();
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN' : csrfToken
+            'X-CSRF-TOKEN': csrfToken
         }
     });
-    
-    
-    
-    
-     
+
+
 });

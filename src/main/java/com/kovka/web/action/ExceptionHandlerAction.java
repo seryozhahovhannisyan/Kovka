@@ -17,6 +17,7 @@ public class ExceptionHandlerAction extends BaseAction {
     /**
      * Makes a log for thrown exception.
      * Returns status of execution (error)
+     *
      * @return <code>java.lang.String</code>
      */
     public String execute() {

@@ -35,7 +35,8 @@
             <aside id="text-21" class="widget widget_text">
                 <div class="textwidget">
                     <center><a class="maxbutton-1 maxbutton maxbutton-rasschitajte-stoimost"
-                               href="http://zheldor-kovka.ru/obratnaya-svyaz/"><span class="mb-text">Заказать изделие</span></a>
+                               href="http://zheldor-kovka.ru/obratnaya-svyaz/"><span
+                            class="mb-text">Заказать изделие</span></a>
                     </center>
                 </div>
             </aside>
@@ -43,13 +44,13 @@
                 <h3 class="widget-title">Полезные статьи</h3>
                 <div class="main-wrapper-image " style="padding:20px 0% 20px 0%">
 
-                    <boxes box-page="0" box-count="3" box-url='/load-sketches.htm' page-type="articles" more-info="true" book="true" box-type="small" class="wrapper-image column-1 all">
-                        <box-item  ng-repeat="page in articles" content="page" box-id="{{page.id}}" box-type="small" class="element effect-1">
+                    <boxes box-page="0" box-count="3" box-url='/load-sketches.htm' page-type="articles" more-info="true"
+                           book="true" box-type="small" class="wrapper-image column-1 all">
+                        <box-item ng-repeat="page in articles" content="page" box-id="{{page.id}}" box-type="small"
+                                  class="element effect-1">
                             <img width="100px" src="<%=request.getContextPath()%>/img/ajax-loader2.gif"/>
                         </box-item>
                     </boxes><!-- .wrapper -->
-
-
 
 
                     <div class="hide-element" style="z-index: -1;"></div>
@@ -57,4 +58,5 @@
             </aside>
         </div><!-- .widget-area -->
     </div><!-- .column -->
-</div><!-- .sidebar-2 -->
+</div>
+<!-- .sidebar-2 -->

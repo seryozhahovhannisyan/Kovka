@@ -28,7 +28,7 @@ public class ViewMixedData extends HttpServlet {
             String resource = request.getParameter("resource");
             String datasFileName = request.getParameter("datasFileName");
 
-            Map<String,List<FileData>> sessionDatas = (HashMap<String,List<FileData>>) request.getSession().getAttribute(ScopeKeys.DATA_MIXED);
+            Map<String, List<FileData>> sessionDatas = (HashMap<String, List<FileData>>) request.getSession().getAttribute(ScopeKeys.DATA_MIXED);
             FileData fileData = findFileData(sessionDatas.get(resource), datasFileName);
 
             byte[] srcImage = fileData.getData();
@@ -53,8 +53,8 @@ public class ViewMixedData extends HttpServlet {
 
     }
 
-    private synchronized FileData findFileData(List<FileData> datas , String dataFileName){
-        if(Utils.isEmpty(datas) || Utils.isEmpty(dataFileName)){
+    private synchronized FileData findFileData(List<FileData> datas, String dataFileName) {
+        if (Utils.isEmpty(datas) || Utils.isEmpty(dataFileName)) {
             return null;
         }
         for (int i = 0; i < datas.size(); i++) {

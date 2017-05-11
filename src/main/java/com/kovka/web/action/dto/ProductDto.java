@@ -1,8 +1,5 @@
 package com.kovka.web.action.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Serozh on 4/22/2017.
  */

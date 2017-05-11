@@ -11,18 +11,18 @@ import java.util.Properties;
 public class ImageSizeLoader implements Serializable {
 
 
-    private Properties props;
-
     //pages
     public int thumbWidth = 48;
     public int thumbHeight = 48;
-
     public int mainWidth = 256;
     public int mainHeight = 256;
-
     //post
     public int largeWidth = 750;
     public int largeHeight = 750;
+    public String thumb;
+    public String main;
+    public String large;
+    private Properties props;
 
     public ImageSizeLoader() {
         createFolderNames();
@@ -65,9 +65,5 @@ public class ImageSizeLoader implements Serializable {
     public String getProperty(String key) {
         return props.getProperty(key);
     }
-
-    public String thumb;
-    public String main;
-    public String large;
 
 }

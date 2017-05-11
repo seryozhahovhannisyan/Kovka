@@ -31,7 +31,7 @@ public class SketchProductDao implements ISketchProductDao {
     @Override
     public List<SketchProduct> getBySketchId(Long sketchId) throws DatabaseException {
         try {
-           return map.getBySketchId(sketchId);
+            return map.getBySketchId(sketchId);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }

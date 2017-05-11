@@ -22,9 +22,12 @@
 
     <link rel="canonical" href="http://nmgkovka.ru/">
     <!-- /all in one seo pack -->
-    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента" href="http://nmgkovka.ru/feed/">
-    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев" href="http://nmgkovka.ru/comments/feed/">
-    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/css/guest/styles.css" type="text/css" media="all">
+    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента"
+          href="http://nmgkovka.ru/feed/">
+    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"
+          href="http://nmgkovka.ru/comments/feed/">
+    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/css/guest/styles.css"
+          type="text/css" media="all">
     <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/css/guest/dcjq-mega-menu.css"
           type="text/css" media="all">
     <link href="<%=request.getContextPath()%>/libs/css/font-awesome.min.css" type="text/css" rel="stylesheet">
@@ -42,7 +45,7 @@
     <link rel="stylesheet" id="stainedglass-image-css" href="<%=request.getContextPath()%>/css/guest/image.css"
           type="text/css" media="all">
     <link rel="stylesheet" id="js_composer_front-css" href="<%=request.getContextPath()%>/css/guest/js_composer.css"
-              type="text/css" media="all">
+          type="text/css" media="all">
     <link rel="stylesheet" id="ubermenu-css" href="<%=request.getContextPath()%>/css/guest/ubermenu.css"
           type="text/css" media="all">
     <link rel="stylesheet" id="ubermenu-black-white-2-css"
@@ -75,7 +78,7 @@
         <script type="text/javascript"
                 src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.default.key"/>.js'></script>
     </s:if>
-        <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/ng-controller.js"></script>
 
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/img/guest/logo-32.jpg">
@@ -368,7 +371,8 @@
         }</style>
     </noscript>
 </head>
-<body ng-controller="homeCtrl" class="home page-template-default page page-id-36 custom-background header-text-is-on google-fonts-on logo-is-on wpb-js-composer js-comp-ver-4.11.2 vc_responsive">
+<body ng-controller="homeCtrl"
+      class="home page-template-default page page-id-36 custom-background header-text-is-on google-fonts-on logo-is-on wpb-js-composer js-comp-ver-4.11.2 vc_responsive">
 <div id="page" class="hfeed site">
 
     <tiles:insertAttribute name="header-area"/>
@@ -387,7 +391,7 @@
         $('img').bind('contextmenu', function (e) {
             return false;
         });
-        $(".prettyphoto").colorbox({rel:'prettyphoto'});
+        $(".prettyphoto").colorbox({rel: 'prettyphoto'});
 
     });
 

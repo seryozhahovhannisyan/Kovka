@@ -26,17 +26,17 @@ public class LocaleAction extends BaseAction {
             int uLangIndex = url.indexOf("?mlang=");
             int langLength = "?mlang=".length();
 
-            String uLang =  url.substring(uLangIndex + langLength, uLangIndex + langLength + 2);
-            if(!uLang.equals(mlang)){
-                url = url.replace(url.substring(0, uLangIndex + langLength ) + uLang, url.substring(0, uLangIndex + langLength ) + mlang);
+            String uLang = url.substring(uLangIndex + langLength, uLangIndex + langLength + 2);
+            if (!uLang.equals(mlang)) {
+                url = url.replace(url.substring(0, uLangIndex + langLength) + uLang, url.substring(0, uLangIndex + langLength) + mlang);
             }
         } else if (url.contains("&mlang=")) {
             int uLangIndex = url.indexOf("&mlang=");
             int langLength = "&mlang=".length();
 
-            String uLang =  url.substring(uLangIndex + langLength, uLangIndex + langLength + 2);
-            if(!uLang.equals(mlang)){
-                url = url.replace(url.substring(0, uLangIndex + langLength ) + uLang, url.substring(0, uLangIndex + langLength ) + mlang);
+            String uLang = url.substring(uLangIndex + langLength, uLangIndex + langLength + 2);
+            if (!uLang.equals(mlang)) {
+                url = url.replace(url.substring(0, uLangIndex + langLength) + uLang, url.substring(0, uLangIndex + langLength) + mlang);
             }
         }
         return SUCCESS;

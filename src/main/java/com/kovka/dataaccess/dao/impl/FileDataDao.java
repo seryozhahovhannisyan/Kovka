@@ -34,7 +34,7 @@ public class FileDataDao implements IFileDataDao {
         try {
             FileData data = map.getById(id);
             if (data == null) {
-                throw new EntityNotFoundException(String.format("Could not found FileData id=[%d]",id));
+                throw new EntityNotFoundException(String.format("Could not found FileData id=[%d]", id));
             }
             return data;
         } catch (RuntimeException e) {

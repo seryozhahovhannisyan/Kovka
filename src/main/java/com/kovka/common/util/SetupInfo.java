@@ -8,16 +8,14 @@ import java.util.Properties;
  */
 public class SetupInfo implements Serializable {
 
-    private Properties props;
-
     //pages
     public String setup = "dev";
     public String version = "1.0";
-//    public String staticDir = ".";
+    //    public String staticDir = ".";
     public String staticDir = "";
-//    public String staticDirProd = "/var/lib/tomcat7/webapps";//".";
+    //    public String staticDirProd = "/var/lib/tomcat7/webapps";//".";
     public String staticDirProd = "/opt/tomcat/webapps";//".";
-
+    private Properties props;
 
 
     public SetupInfo() {

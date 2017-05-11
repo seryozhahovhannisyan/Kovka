@@ -1,6 +1,5 @@
 package com.kovka.web.action.sketch;
 
-import com.kovka.business.IFileDataManager;
 import com.kovka.business.ISketchProductManager;
 import com.kovka.common.data.FileData;
 import com.kovka.common.data.SketchProduct;
@@ -10,7 +9,6 @@ import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
-import com.kovka.web.action.dto.ResponseDto;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
@@ -29,13 +27,10 @@ import java.util.List;
 public class SketchProductUploadAction extends BaseAction {
 
     private static final Logger logger = Logger.getLogger(SketchProductUploadAction.class.getSimpleName());
-
-    private ISketchProductManager productManager;
-
-    private InputStream result = new ByteArrayInputStream(INPUT.getBytes());
     private static final String RESP_SUCCESS = "success";//"{\"jsonrpc\" : \"2.0\", \"result\" : \"success\", \"id\" : \"id\"}";
     private static final String RESP_ERROR = "error";//"{\"jsonrpc\" : \"2.0\", \"error\" : {\"code\": 101, \"message\": \"Failed to open input stream.\"}, \"id\" : \"id\"}";
-
+    private ISketchProductManager productManager;
+    private InputStream result = new ByteArrayInputStream(INPUT.getBytes());
     private List<SketchProduct> products;
 
     private File file;
@@ -111,10 +106,6 @@ public class SketchProductUploadAction extends BaseAction {
         return products;
     }
 
-    public void setSketchId(String sketchId) {
-        this.sketchId = sketchId;
-    }
-
     public void setFile(File file) {
         this.file = file;
     }
@@ -129,6 +120,10 @@ public class SketchProductUploadAction extends BaseAction {
 
     public String getSketchId() {
         return sketchId;
+    }
+
+    public void setSketchId(String sketchId) {
+        this.sketchId = sketchId;
     }
 
     public void setProductManager(ISketchProductManager productManager) {

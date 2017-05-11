@@ -3,7 +3,6 @@ package com.kovka.dataaccess.dao.impl;
 import com.kovka.common.data.AboutInfo;
 import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.DatabaseException;
-import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.dataaccess.dao.IAboutInfoDao;
 import com.kovka.dataaccess.mapper.namespace.AboutInfoMap;
 

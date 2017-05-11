@@ -1,4 +1,3 @@
-
 package com.kovka.web.action.guest;
 
 import com.kovka.business.ISketchManager;

@@ -79,7 +79,7 @@ public class DataConverter {
 
         String loopDelim = "";
 
-        for(String s : collection) {
+        for (String s : collection) {
 
             sb.append(loopDelim);
             sb.append(s);

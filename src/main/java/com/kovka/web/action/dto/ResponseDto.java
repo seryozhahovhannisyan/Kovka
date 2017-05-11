@@ -13,22 +13,22 @@ public class ResponseDto {
     private String actionerror;
     private String actionmessage;
 
-    private Map<String,String> fielderrors;
+    private Map<String, String> fielderrors;
 
-    private Map<String,Object> response;
+    private Map<String, Object> response;
 
     public void addResponse(String key, Object value) {
-        if(response == null || response.size() == 0 ){
+        if (response == null || response.size() == 0) {
             response = new HashMap<String, Object>();
         }
-        response.put(key,value);
+        response.put(key, value);
     }
 
     public void addFieldError(String name, String error) {
-        if(fielderrors == null || fielderrors.size() == 0 ){
+        if (fielderrors == null || fielderrors.size() == 0) {
             fielderrors = new HashMap<String, String>();
         }
-        fielderrors.put(name,error);
+        fielderrors.put(name, error);
     }
 
     public ResponseStatus getResponseStatus() {

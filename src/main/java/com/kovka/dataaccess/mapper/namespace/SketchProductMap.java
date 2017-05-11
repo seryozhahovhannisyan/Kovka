@@ -8,7 +8,7 @@ public interface SketchProductMap {
 
     public void add(SketchProduct data);
 
-    public List<SketchProduct> getBySketchId(Long sketchId) ;
+    public List<SketchProduct> getBySketchId(Long sketchId);
 
     public void update(SketchProduct data);
 

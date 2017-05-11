@@ -14,11 +14,11 @@ import java.util.Map;
 
 public class LanguageInterceptor extends AbstractInterceptor {
 
-    private final String REQUEST_LANGUAGE        = "mlang";
-    private final String SESSION_LANGUAGE        = "WW_TRANS_I18N_LOCALE";
+    private final String REQUEST_LANGUAGE = "mlang";
+    private final String SESSION_LANGUAGE = "WW_TRANS_I18N_LOCALE";
 
-    private final String REQUEST_LOCALE          = "request_locale";
-    private final String REQUEST_ONLY_LOCALE     = "request_only_locale";
+    private final String REQUEST_LOCALE = "request_locale";
+    private final String REQUEST_ONLY_LOCALE = "request_only_locale";
 
     @Override
     public String intercept(ActionInvocation actionInvocation) throws Exception {
@@ -34,8 +34,8 @@ public class LanguageInterceptor extends AbstractInterceptor {
 
         // if any parameters bellow mentioned exist, it means user is changing the language
         if (parameters.containsKey(REQUEST_LOCALE) ||
-            parameters.containsKey(REQUEST_ONLY_LOCALE) ||
-            parameters.containsKey(REQUEST_LANGUAGE)) {
+                parameters.containsKey(REQUEST_ONLY_LOCALE) ||
+                parameters.containsKey(REQUEST_LANGUAGE)) {
 
             isLangDefined = true;
 
@@ -81,12 +81,14 @@ public class LanguageInterceptor extends AbstractInterceptor {
         return actionInvocation.invoke();
     }
 
-    /** Stores chosen language into session and cookie,
-      * if language exists in any storage it will be replaced.
-      * @param session (session mapped data)
-      * @param lang (chosen language)
-      * @param storeInCookies
-      */
+    /**
+     * Stores chosen language into session and cookie,
+     * if language exists in any storage it will be replaced.
+     *
+     * @param session        (session mapped data)
+     * @param lang           (chosen language)
+     * @param storeInCookies
+     */
     private void setLanguage(Map<String, Object> session, Language lang, boolean storeInCookies) {
 
         Language sesLang = (Language) session.get(ScopeKeys.LANGUAGE);

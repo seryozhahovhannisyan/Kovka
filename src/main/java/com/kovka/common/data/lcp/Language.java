@@ -8,6 +8,11 @@ public enum Language {
     ARMENIAN(2, "hy", "Armenian", new Locale("hy")),
     ENGLISH(3, "en", "English", Locale.ENGLISH);
 
+    private final int value;
+    private final String key;
+    private final String title;
+    private final Locale locale;
+
     Language(final int value, final String key, final String title, final Locale locale) {
         this.value = value;
         this.key = key;
@@ -54,11 +59,6 @@ public enum Language {
         }
         return getDefault();
     }
-
-    private final int value;
-    private final String key;
-    private final String title;
-    private final Locale locale;
 
     public int getValue() {
         return value;

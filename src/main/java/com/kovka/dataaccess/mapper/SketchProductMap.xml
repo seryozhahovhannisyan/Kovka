@@ -13,23 +13,24 @@
         <result property="imageId" column="image_id"/>
         <result property="status" column="status"/>
         <result property="order" column="order"/>
-        <association property="image" column="image_id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getById"/>
+        <association property="image" column="image_id"
+                     select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getById"/>
     </resultMap>
 
     <insert id="add" parameterType="SketchProduct">
 
         INSERT INTO sketch_product(
-            `sketch_id`,
-            `price`,
-            `image_id`,
-            `status`,
-            `order`
+        `sketch_id`,
+        `price`,
+        `image_id`,
+        `status`,
+        `order`
         ) VALUES (
-            #{sketchId},
-            #{price},
-            #{imageId},
-            #{status},
-            #{order}
+        #{sketchId},
+        #{price},
+        #{imageId},
+        #{status},
+        #{order}
         )
 
         <selectKey keyProperty="id" resultType="_long">
@@ -48,7 +49,7 @@
 
     <update id="update" parameterType="SketchProduct">
         UPDATE sketch_product
-        SET   `price` = #{price},`image_id` = #{imageId},`order` = #{order},`status` = #{status}
+        SET `price` = #{price},`image_id` = #{imageId},`order` = #{order},`status` = #{status}
         WHERE sketch_id = #{sketchId}
     </update>
 

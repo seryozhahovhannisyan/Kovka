@@ -93,7 +93,8 @@
                                     <strong><s:property value="about.currentInfo.title"/></strong>
                                 </span>
                             </h2>
-                            <p style="text-align: center;"><span style="color: #000000;"><strong>&nbsp;</strong></span></p>
+                            <p style="text-align: center;"><span style="color: #000000;"><strong>&nbsp;</strong></span>
+                            </p>
                             <p style="text-align: center;">
                                 <span style="color: #000000;">
                                     <strong><s:property value="about.currentInfo.address"/></strong>
@@ -159,11 +160,11 @@
 <script>
     function myMap() {
 
-        var mapProp= {
-            center:new google.maps.LatLng(40.177200,44.503490),
-            zoom:16,
+        var mapProp = {
+            center: new google.maps.LatLng(40.177200, 44.503490),
+            zoom: 16,
         };
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
     }
 </script>
 

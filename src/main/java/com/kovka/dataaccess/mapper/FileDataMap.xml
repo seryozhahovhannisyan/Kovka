@@ -27,23 +27,23 @@
     <insert id="add" parameterType="FileData">
 
         INSERT INTO f_data(
-            `file_name`,
-            `content_type`,
-            `size`,
-            `creation_date`,
-            `status`,
-            `order`,
-            `sketch_id`,
-            `is_machine`
+        `file_name`,
+        `content_type`,
+        `size`,
+        `creation_date`,
+        `status`,
+        `order`,
+        `sketch_id`,
+        `is_machine`
         ) VALUES (
-            #{fileName},
-            #{contentType},
-            #{size},
-            #{creationDate},
-            #{status},
-            #{order},
-            #{sketchId},
-            #{isMachine}
+        #{fileName},
+        #{contentType},
+        #{size},
+        #{creationDate},
+        #{status},
+        #{order},
+        #{sketchId},
+        #{isMachine}
         )
 
         <selectKey keyProperty="id" resultType="_long">
@@ -76,7 +76,7 @@
     </select>
 
     <select id="getMachineData"
-            resultMap="rmFileDataSimple" >
+            resultMap="rmFileDataSimple">
 
         SELECT * FROM f_data
         WHERE is_machine = 1

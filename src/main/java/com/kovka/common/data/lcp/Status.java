@@ -5,8 +5,11 @@ package com.kovka.common.data.lcp;
  */
 public enum Status {
 
-    ACTIVE          (1, "active"),
-    DELETED         (2, "deleted");
+    ACTIVE(1, "active"),
+    DELETED(2, "deleted");
+
+    private int key;
+    private String status;
 
     Status(int key, String status) {
         this.key = key;
@@ -33,8 +36,5 @@ public enum Status {
     public String getStatus() {
         return status;
     }
-
-    private int key;
-    private String status;
 
 }

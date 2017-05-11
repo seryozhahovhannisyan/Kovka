@@ -181,12 +181,12 @@ public class SketchAction extends BaseAction {
         this.description = description;
     }
 
-    public void setDataCount(long dataCount) {
-        this.dataCount = dataCount;
-    }
-
     public long getDataCount() {
         return dataCount;
+    }
+
+    public void setDataCount(long dataCount) {
+        this.dataCount = dataCount;
     }
 
     public void setId(String id) {

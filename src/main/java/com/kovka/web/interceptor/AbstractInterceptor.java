@@ -6,11 +6,13 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
 public abstract class AbstractInterceptor implements Interceptor {
 
     @Override
-    public void init() {}
+    public void init() {
+    }
 
     @Override
     public abstract String intercept(ActionInvocation actionInvocation) throws Exception;
 
     @Override
-    public void destroy() {}
+    public void destroy() {
+    }
 }

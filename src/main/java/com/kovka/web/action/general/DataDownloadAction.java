@@ -57,6 +57,10 @@ public class DataDownloadAction extends BaseAction {
         return dataFileName;
     }
 
+    public void setDataFileName(String dataFileName) {
+        this.dataFileName = dataFileName;
+    }
+
     public void setDataId(String dataId) {
         try {
             this.dataId = Long.parseLong(dataId);
@@ -64,10 +68,6 @@ public class DataDownloadAction extends BaseAction {
             this.dataId = -1L;
             logger.error("Incorrect transaction id ,  transactionId=" + dataId);
         }
-    }
-
-    public void setDataFileName(String dataFileName) {
-        this.dataFileName = dataFileName;
     }
 
 }

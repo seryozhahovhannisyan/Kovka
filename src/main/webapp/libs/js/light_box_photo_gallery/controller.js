@@ -1,5 +1,3 @@
-
-
 // angular.module('demo1', ['bootstrapLightbox']);
 
 controllers.GalleryCtrl = function ($scope, Lightbox) {
@@ -8,7 +6,7 @@ controllers.GalleryCtrl = function ($scope, Lightbox) {
             'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg'
         },
         {
-             'url': 'https://farm8.staticflickr.com/7300/12807911134_ff56d1fb3b_b.jpg'
+            'url': 'https://farm8.staticflickr.com/7300/12807911134_ff56d1fb3b_b.jpg'
         },
         {
             'url': 'https://farm1.staticflickr.com/400/20228789791_52fb84917f_b.jpg'
@@ -29,7 +27,7 @@ controllers.GalleryCtrl = function ($scope, Lightbox) {
             'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg'
         },
         {
-             'url': 'https://farm8.staticflickr.com/7300/12807911134_ff56d1fb3b_b.jpg'
+            'url': 'https://farm8.staticflickr.com/7300/12807911134_ff56d1fb3b_b.jpg'
         },
         {
             'url': 'https://farm1.staticflickr.com/400/20228789791_52fb84917f_b.jpg'

@@ -159,7 +159,7 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http', function
         }
     };
 
-    
+
 }];
 
 kovkaApp.factory('Template', function () {
@@ -183,7 +183,7 @@ kovkaApp.factory('Template', function () {
                 template = selected;
                 break;
         }
-        console.log('template',template)
+        console.log('template', template)
         return template;
     }
 
@@ -364,7 +364,7 @@ kovkaApp.directive('boxes', function ($http) {
 
                 var box_count = attr.boxCount;
                 if (box_count != null) {
-                    requestJson.count  = box_count;
+                    requestJson.count = box_count;
                 }
 
                 var box_search = attr.boxSearch;
@@ -398,12 +398,12 @@ kovkaApp.directive('boxes', function ($http) {
 
                                 var box = null;
                                 var id = t.id;
-                                if(box_type == "small"){
-                                    box = new Box(id, t.image, t.name, t.shortDesc, null , null, page_type, has_more_info, has_book, url_);
-                                } else if(box_type == "search"){
-                                    box = new Box(id, t.image, t.name, null, null , null, page_type, has_more_info, has_book, url_);
-                                } else if(box_type == "link"){
-                                    box = new Box(id,  null, null, null, t.title, null, null, null, null, null);
+                                if (box_type == "small") {
+                                    box = new Box(id, t.image, t.name, t.shortDesc, null, null, page_type, has_more_info, has_book, url_);
+                                } else if (box_type == "search") {
+                                    box = new Box(id, t.image, t.name, null, null, null, page_type, has_more_info, has_book, url_);
+                                } else if (box_type == "link") {
+                                    box = new Box(id, null, null, null, t.title, null, null, null, null, null);
                                 }
                                 $scope[page_type].push(box);
                             }
@@ -889,7 +889,7 @@ kovkaApp.directive('bookButton', function (HttpRequest) {
         }
     };
 });
-kovkaApp.directive('boxSelectedItem', function ( $http, $compile, Template) {
+kovkaApp.directive('boxSelectedItem', function ($http, $compile, Template) {
 
     var selectedItem, pageType, boxUrl, selectedId = 0;
 
@@ -904,12 +904,12 @@ kovkaApp.directive('boxSelectedItem', function ( $http, $compile, Template) {
         controller: function ($rootScope, $scope) {
 
             //find selected destination on destinations
-            var destinations = $scope[pageType]; 
+            var destinations = $scope[pageType];
             if (destinations != null && destinations.length != 0) {
                 label:
                     for (var i = 0; i < destinations.length; i++) {
                         var dest = destinations[i];
-                        if (dest.id == selectedId && dest.title != null  ) {
+                        if (dest.id == selectedId && dest.title != null) {
                             selectedItem = dest;
                             break label;
                         }
@@ -937,21 +937,21 @@ kovkaApp.directive('boxSelectedItem', function ( $http, $compile, Template) {
                                 if (t != null) {
 
                                     var id = t.id;
-                                    var selectedItem = new Box(id, null, t.name, t.shortDesc, t.title , t.description, pageType, null, null, null);
+                                    var selectedItem = new Box(id, null, t.name, t.shortDesc, t.title, t.description, pageType, null, null, null);
 
-                                    if(t.images != null){
+                                    if (t.images != null) {
                                         for (var i = 0; i < t.images.length; i++) {
                                             selectedItem.addImg(t.images[i]);
                                         }
                                     }
-                                    
-                                    if(t.products != null){
+
+                                    if (t.products != null) {
                                         for (var i = 0; i < t.products.length; i++) {
                                             selectedItem.addProduct(new Product(t.products[i].price, t.products[i].image));
                                         }
                                         selectedItem.initViewProducts(6);
-                                    } 
-                                    
+                                    }
+
                                     //$scope[pageType][id] = selectedItem;
                                     $scope.selectedPage = selectedItem;
                                 }
@@ -963,13 +963,13 @@ kovkaApp.directive('boxSelectedItem', function ( $http, $compile, Template) {
                     ).finally(function () {
                         //$scope.hide_loader();
                     });
-                } catch(e){
+                } catch (e) {
 
                 }
             }
 
             /*if($scope[pageType]!= null && box != null){*/
-            if ($scope[pageType] != null) {                
+            if ($scope[pageType] != null) {
                 $scope.$on('BOX_ITEM_UPDATED', function (e, data) {
                     $scope.selectedPage = data;
                 });

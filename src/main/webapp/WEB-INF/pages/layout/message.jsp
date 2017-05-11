@@ -17,9 +17,10 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 
-<div id="message" aria-hidden="true" role="dialog" tabindex="-1" class="modal fade" style="display: none; padding-right: 17px;" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog lg-modal resizable_style" id="draggable_add" >
-        <div class="modal-content resizable_style" >
+<div id="message" aria-hidden="true" role="dialog" tabindex="-1" class="modal fade"
+     style="display: none; padding-right: 17px;" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog lg-modal resizable_style" id="draggable_add">
+        <div class="modal-content resizable_style">
             <div class="modal-header">
                 <button data-dismiss="modal" class="close close_modal" type="button"><span aria-hidden="true">×</span>
                 </button>
@@ -35,7 +36,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <div class="add_modal_form_block" >
+                <div class="add_modal_form_block">
                 </div>
             </div>
             <div class="modal-footer">

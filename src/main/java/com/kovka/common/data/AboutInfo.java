@@ -13,7 +13,7 @@ public class AboutInfo {
 
     private String title;
     private String address;
-    private String shortDesc;    
+    private String shortDesc;
     private String description;
 
     /*##################################################################################################################

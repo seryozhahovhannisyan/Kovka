@@ -67,7 +67,7 @@
             SELECT LAST_INSERT_ID() AS `id`
         </selectKey>
 
-    </insert>  
+    </insert>
 
     <select id="getById"
             resultMap="rmAboutFull"
@@ -83,15 +83,15 @@
             parameterType="Language">
 
         SELECT a.*,
-            ai.`id` `info_id`,
-            ai.`about_id` `about_id`,
-            ai.`lang` `lang`,
-            ai.`address` `address`,
-            ai.`short_desc` `short_desc`,
-            ai.`title` `title`,
-            ai.`description` `description`
+        ai.`id` `info_id`,
+        ai.`about_id` `about_id`,
+        ai.`lang` `lang`,
+        ai.`address` `address`,
+        ai.`short_desc` `short_desc`,
+        ai.`title` `title`,
+        ai.`description` `description`
         FROM about a, about_info ai
-        WHERE ai.about_id = a.id and  ai.`lang` = #{language}
+        WHERE ai.about_id = a.id and ai.`lang` = #{language}
 
     </select>
 
@@ -99,6 +99,6 @@
         UPDATE about
         SET coords = #{coords} , `emails` = #{emailValues}, `phones` = #{phoneValues}
         WHERE id = #{id}
-    </update> 
+    </update>
 
 </mapper>

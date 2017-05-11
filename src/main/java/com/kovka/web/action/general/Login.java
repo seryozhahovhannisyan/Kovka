@@ -17,10 +17,8 @@ import javax.servlet.http.Cookie;
 public class Login extends BaseAction {
 
 
-    private IUserManager userManager;
-
     private static Logger logger = Logger.getLogger(Login.class);
-
+    private IUserManager userManager;
     private String username;
 
     private String password;
@@ -49,7 +47,6 @@ public class Login extends BaseAction {
                 logger.warn(message);
                 return INPUT;
             }
-
 
 
         } catch (Exception e) {

@@ -12,21 +12,22 @@
         <result property="language" column="lang"/>
         <result property="name" column="name"/>
         <result property="description" column="description"/>
-        <association property="children" column="parent_id" select="com.kovka.dataaccess.mapper.namespace.WorkSchemeInfoMap.getById"/>
+        <association property="children" column="parent_id"
+                     select="com.kovka.dataaccess.mapper.namespace.WorkSchemeInfoMap.getById"/>
     </resultMap>
 
     <insert id="add" parameterType="WorkSchemeInfo">
 
         INSERT INTO work_scheme_info(
-            `parent_id`,
-            `lang`,
-            `name`,
-            `description`
+        `parent_id`,
+        `lang`,
+        `name`,
+        `description`
         ) VALUE (
-            #{parentId},
-            #{language},
-            #{name},
-            #{description}
+        #{parentId},
+        #{language},
+        #{name},
+        #{description}
         )
 
         <selectKey keyProperty="id" resultType="_long">
@@ -61,13 +62,13 @@
 
     <update id="update" parameterType="WorkSchemeInfo">
         UPDATE work_scheme_info
-        SET   `name` = #{name}, `description` = #{description}, `parent_id` = #{parentId}
+        SET `name` = #{name}, `description` = #{description}, `parent_id` = #{parentId}
         WHERE id = #{id}
     </update>
 
-    <delete id="delete"  parameterType="_long">
+    <delete id="delete" parameterType="_long">
         DELETE FROM work_scheme_info
-        WHERE id =  #{id}
+        WHERE id = #{id}
     </delete>
 
 </mapper>

@@ -28,9 +28,8 @@
         {title: 'order', field: 'order', visible: true}
     ];
 
-    function insRow()
-    {
-        var x=document.getElementById('tableId');
+    function insRow() {
+        var x = document.getElementById('tableId');
         // deep clone the targeted row
         var new_row = x.rows[1].cloneNode(true);
         var new_cells = new_row.cells;
@@ -62,7 +61,7 @@
 //        inp2.value = '';
 
         // append the new row to the table
-        x.appendChild( new_row );
+        x.appendChild(new_row);
     }
 </script>
 
@@ -81,12 +80,12 @@
                 <div class="x_content">
 
                     <div class="row">
-                        <div class="add_div_brch_parent"  ng-click =add_new_records('sketch') >
-                            <div class="add_div_brch"  ></div>
-                            <div ><s:text name="page.branches.main.add.record" >Add new record</s:text></div>
+                        <div class="add_div_brch_parent" ng-click=add_new_records('sketch')>
+                            <div class="add_div_brch"></div>
+                            <div><s:text name="page.branches.main.add.record">Add new record</s:text></div>
                         </div>
-                        <div class="add_div_brch_parent"  onclick="insRow()">
-                            <div class="add_div_brch"  ></div>
+                        <div class="add_div_brch_parent" onclick="insRow()">
+                            <div class="add_div_brch"></div>
                             Add Row
                         </div>
                     </div>
@@ -162,31 +161,34 @@
                                             <td ng-show="columns[4].visible" sortable="columns[4].field">
                                                 {{item.order ? item.order : '-'}}
                                             </td>
-                                            <td class="edit_td" >
-                                                <a data-type="sketch" data-id="{{item.id}}" ng-click="add_new_image($event)">
+                                            <td class="edit_td">
+                                                <a data-type="sketch" data-id="{{item.id}}"
+                                                   ng-click="add_new_image($event)">
                                                     <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
                                                     Image
                                                 </a>
                                             </td>
-                                            <td class="edit_td" >
-                                                <a data-type="sketch" data-id="{{item.id}}" ng-click="add_new_product($event)">
+                                            <td class="edit_td">
+                                                <a data-type="sketch" data-id="{{item.id}}"
+                                                   ng-click="add_new_product($event)">
                                                     <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
                                                     Product
                                                 </a>
                                             </td>
-                                            <td class="edit_td"Deleting>
-                                                <a data-type="sketch" data-id="{{item.id}}" ng-click="deleteSelectedRow($event)">
+                                            <td class="edit_td" Deleting>
+                                                <a data-type="sketch" data-id="{{item.id}}"
+                                                   ng-click="deleteSelectedRow($event)">
                                                     <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
                                                     Editing
                                                 </a>
                                             </td>
-                                            <td class="edit_td" >
-                                                <a data-type="sketch" data-id="{{item.id}}" ng-click="editSelectedRow($event)">
+                                            <td class="edit_td">
+                                                <a data-type="sketch" data-id="{{item.id}}"
+                                                   ng-click="editSelectedRow($event)">
                                                     <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
                                                     Deleting
                                                 </a>
                                             </td>
-
 
 
                                         </tr>

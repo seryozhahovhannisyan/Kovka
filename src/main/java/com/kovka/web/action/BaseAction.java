@@ -22,29 +22,24 @@ import java.util.Map;
 public class BaseAction extends ActionSupport
         implements BaseActionConstants, ApplicationAware, SessionAware, CookiesAware {
 
+    private static Logger logger = Logger.getLogger(BaseAction.class);
+    protected final String NOT_PERMITTED = "not_permitted";
     /**
      * Tracker logger
      */
     protected Logger tracker = Logger.getLogger("Tracker");
-
-    private static Logger logger = Logger.getLogger(BaseAction.class);
-
     /**
      * data of application scope
      */
     protected Map<String, Object> application;
-
     /**
      * data of session scope
      */
     protected Map<String, Object> session;
-
     /**
      * data of cookie
      */
     protected Map<String, String> cookies;
-
-    protected final String NOT_PERMITTED = "not_permitted";
 
     protected HttpSession getHttpSession() {
         return ServletActionContext.getRequest().getSession();

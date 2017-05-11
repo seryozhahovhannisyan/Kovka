@@ -33,27 +33,75 @@ import java.util.List;
 public class Initializer implements ServletContextListener {
 
     /**
-     * application context object (container)
-     */
-    private static ApplicationContext applicationContext;
-
-    private static Logger logger = Logger.getLogger(Initializer.class);
-
-    private static SetupInfo setupInfo;
-
-    private static ImageSizeLoader imageSizeLoader;
-
-    /**
      *
      */
 
     public static String DATA_FOLDER = "data";
-
-
     public static ServletContext context;
+    /**
+     * application context object (container)
+     */
+    private static ApplicationContext applicationContext;
+    private static Logger logger = Logger.getLogger(Initializer.class);
+    private static SetupInfo setupInfo;
+    private static ImageSizeLoader imageSizeLoader;
     private static String dataPath;
 
     public Initializer() {
+    }
+
+    public static ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public static SetupInfo getSetupInfo() {
+        return setupInfo;
+    }
+
+    public static ImageSizeLoader getImageSizeLoader() {
+        return imageSizeLoader;
+    }
+
+    public static String getUploadDir() {
+        return dataPath;
+    }
+
+    public static boolean initFolders(String contextRealPath, String... folders) {
+
+        try {
+            for (String folder : folders) {
+                String path = contextRealPath + File.separator + folder;
+                File imageFolder = new File(path);
+                if (!imageFolder.exists()) {
+                    boolean created = imageFolder.mkdirs();
+                    if (created)
+                        logger.info(String.format("%s folder created successfully", path));
+                    else {
+                        logger.info(String.format("Unable to create folder[%s]", path));
+                        return false;
+                        //throw new InternalErrorException(String.format("Unable to create folder[%s]", path));
+                    }
+                } else
+                    logger.info(String.format("%s folder already exist", path));
+            }
+        } catch (Exception e) {
+            logger.error(e);
+            return false;
+        }
+
+        return true;
+    }
+
+    public static String getSketchUploadDir() {
+        return File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_SKETCH;
+    }
+
+    public static String getProductUploadDir() {
+        return File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_PRODUCT;
+    }
+
+    public static String getMachineUploadDir() {
+        return File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_MACHINE;
     }
 
     @Override
@@ -100,6 +148,7 @@ public class Initializer implements ServletContextListener {
             initFolders(dataPath + File.separator + DATA_FOLDER);
             initFolders(dataPath + File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_SKETCH);
             initFolders(dataPath + File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_PRODUCT);
+            initFolders(dataPath + File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_MACHINE);
 
 
             //set tmp dir
@@ -192,7 +241,6 @@ public class Initializer implements ServletContextListener {
         }
     }
 
-
     @Override
     public void contextDestroyed(ServletContextEvent event) {
         deRegistering();
@@ -211,18 +259,6 @@ public class Initializer implements ServletContextListener {
         }
     }
 
-    public static ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
-
-    public static SetupInfo getSetupInfo() {
-        return setupInfo;
-    }
-
-    public static String getUploadDir() {
-        return dataPath;
-    }
-
     private void initFolders(String contextRealPath) {
         File imageFolder = new File(contextRealPath);
         if (!imageFolder.exists()) {
@@ -233,39 +269,5 @@ public class Initializer implements ServletContextListener {
                 throw new RuntimeException(String.format("Unable to create posts folder[%s]", contextRealPath));
         } else
             logger.info(String.format("%s folder already exist", contextRealPath));
-    }
-
-    public static boolean initFolders(String contextRealPath, String... folders) {
-
-        try {
-            for (String folder : folders) {
-                String path = contextRealPath + File.separator + folder;
-                File imageFolder = new File(path);
-                if (!imageFolder.exists()) {
-                    boolean created = imageFolder.mkdirs();
-                    if (created)
-                        logger.info(String.format("%s folder created successfully", path));
-                    else {
-                        logger.info(String.format("Unable to create folder[%s]", path));
-                        return false;
-                        //throw new InternalErrorException(String.format("Unable to create folder[%s]", path));
-                    }
-                } else
-                    logger.info(String.format("%s folder already exist", path));
-            }
-        } catch (Exception e) {
-            logger.error(e);
-            return false;
-        }
-
-        return true;
-    }
-
-    public static String getSketchUploadDir() {
-        return File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_SKETCH;
-    }
-
-    public static String getProductUploadDir() {
-        return File.separator + DATA_FOLDER + File.separator + FileDataUtil.LOGO_PREFIX_PRODUCT;
     }
 }

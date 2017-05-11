@@ -1,37 +1,43 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/libs/css/jquery-ui-1.11.4.css" media="screen">
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/libs/js/uploader/jquery.ui.plupload.css" media="screen">
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/libs/css/jquery-ui-1.11.4.css"
+      media="screen">
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/libs/js/uploader/jquery.ui.plupload.css"
+      media="screen">
 
-<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-ui-1.11.4.js" charset="UTF-8"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/plupload.full.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/jquery.ui.plupload.min.js.download" charset="UTF-8"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/themeswitcher.js.download" charset="UTF-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-ui-1.11.4.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/plupload.full.min.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/jquery.ui.plupload.min.js.download"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/themeswitcher.js.download"
+        charset="UTF-8"></script>
 
 <script type="text/javascript">// Initialize the widget when the DOM is ready
-$(function() {
+$(function () {
     var uploader = $("#uploader").plupload({
         // General settings
-        runtimes : 'html5,flash,silverlight,html4',
+        runtimes: 'html5,flash,silverlight,html4',
         browse_button: 'pickfiles', // you can pass in id...
         url: "/admin-upload-sketch.htm?sketchId=<s:property value='sketchId'/>",
 
         // Maximum file size
-        max_file_size : '2mb',
+        max_file_size: '2mb',
         chunk_size: '1mb',
 
         // Resize images on clientside if we can
-        resize : {
-            width : 200,
-            height : 200,
-            quality : 90,
+        resize: {
+            width: 200,
+            height: 200,
+            quality: 90,
             crop: true // crop to exact dimensions
         },
 
         // Specify what files to browse for
-        filters : [
-            {title : "Image files", extensions : "jpg,gif,png"},
+        filters: [
+            {title: "Image files", extensions: "jpg,gif,png"},
         ],
 
         // Rename files by clicking on their titles
@@ -55,8 +61,7 @@ $(function() {
 
             FileUploaded: function (up, file, info) {
 
-                if (info.response != null)
-                {
+                if (info.response != null) {
                     file.status = plupload.FAILED;
                     this.trigger("Error", {
                         code: "500",
@@ -64,7 +69,7 @@ $(function() {
                         file: file
                     });
                 } else {
-                    alert( "else");
+                    alert("else");
                 }
             },
 
@@ -100,7 +105,9 @@ $(function() {
             </div>
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Media Gallery <small> gallery design </small></h2>
+                    <h2>Media Gallery
+                        <small> gallery design</small>
+                    </h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -112,7 +119,8 @@ $(function() {
                                 <div class="col-md-55">
                                     <div class="thumbnail">
                                         <div class="image view view-first">
-                                            <img style="width: 100%; display: block;"  src="<s:property value='%{getLogo(#data.fileName)}'/>" alt="image">
+                                            <img style="width: 100%; display: block;"
+                                                 src="<s:property value='%{getLogo(#data.fileName)}'/>" alt="image">
                                             <div class="mask">
                                                 <p>Your Text</p>
                                                 <div class="tools tools-bottom">

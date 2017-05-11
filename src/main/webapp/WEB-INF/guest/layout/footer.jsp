@@ -54,12 +54,14 @@
                 <div id="call" class="cbh-widget-call  cbh-widget-call_closed" style="right: 0px;">
                     <div class="cbh-video-wrapper">
                     </div>
-                    <a onclick="close_phone()" href="#" class="cbh-widget-call__close cbh-widget__close"><i class="cbh-widget-icon-cancel"></i></a>
+                    <a onclick="close_phone()" href="#" class="cbh-widget-call__close cbh-widget__close"><i
+                            class="cbh-widget-icon-cancel"></i></a>
                     <div class="cbh-widget-slide cbh-widget-slide_closed"></div>
                     <div class="cbh-widget-call__container">
                         <div class="cbh-widget-call__container-inner" id="cbh_widget_call_container">
                             <div class="cbh-widget-call__hello" id="cbh_slider_header">
-                                <div class="sheff sheff--w1a">We"ll call <a href="#" class="cbh-dialog-action-link" id="cbh_dialog_name">you</a> back in <span>00:26</span>
+                                <div class="sheff sheff--w1a">We"ll call <a href="#" class="cbh-dialog-action-link"
+                                                                            id="cbh_dialog_name">you</a> back in <span>00:26</span>
                                     seconds!
                                 </div>
                             </div>
@@ -69,7 +71,9 @@
                                         <div class="cbh-widget-call__phone__wr">
                                             <div class="CBH-masks">
 
-                                                <input type="tel" class="cbh-input instId_wirA2rue" id="cbh_slider_phone_input" value="" placeholder="+374-__-___-___"></div>
+                                                <input type="tel" class="cbh-input instId_wirA2rue"
+                                                       id="cbh_slider_phone_input" value=""
+                                                       placeholder="+374-__-___-___"></div>
                                         </div>
                                     </div>
                                     <div class="cbh-widget-call__btn-area cbh-widget-call__timer">
@@ -84,7 +88,7 @@
 
                 </div>
                 <%--phone--%>
-                <div  class="cbh-widget-callopen-wr cbh-widget-wr" style="right: 0px;">
+                <div class="cbh-widget-callopen-wr cbh-widget-wr" style="right: 0px;">
                     <div id="phone" class="cbh-widget-callopen "><%--cbh-widget-open--%>
                         <div class="cbh-ph-circle"></div>
                         <div class="cbh-ph-circle-fill"></div>

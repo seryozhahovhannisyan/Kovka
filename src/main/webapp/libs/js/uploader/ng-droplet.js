@@ -1,4 +1,4 @@
-(function($angular) {
+(function ($angular) {
 
     "use strict";
 
@@ -51,7 +51,7 @@
                      * @constant FILE_TYPES
                      * @type {Object}
                      */
-                    $scope.FILE_TYPES = { VALID: 1, INVALID: 2, DELETED: 4, UPLOADED: 8, FAILED: 16 };
+                    $scope.FILE_TYPES = {VALID: 1, INVALID: 2, DELETED: 4, UPLOADED: 8, FAILED: 16};
 
                     // Dynamically add the `ALL` property.
                     $scope.FILE_TYPES.ALL = Object.keys($scope.FILE_TYPES).reduce(function map(current, key) {
@@ -247,7 +247,7 @@
                      * @property requestProgress
                      * @type {Object}
                      */
-                    $scope.requestProgress = { percent: 0, total: 0, loaded: 0 };
+                    $scope.requestProgress = {percent: 0, total: 0, loaded: 0};
 
                     /**
                      * @property listeners
@@ -315,7 +315,7 @@
                                             });
 
                                             $rootScope.$broadcast('$dropletSuccess', response, this.files);
-                                            $scope.onSuccess({ response: response, files: this.files });
+                                            $scope.onSuccess({response: response, files: this.files});
 
                                         }.bind(this));
 
@@ -349,7 +349,7 @@
 
                                     var response = $scope.options.parserFn(this.httpRequest.responseText);
                                     $rootScope.$broadcast('$dropletError', response);
-                                    $scope.onError({ response: response });
+                                    $scope.onError({response: response});
                                     this.deferred.reject(response);
 
                                 }.bind(this));
@@ -376,8 +376,8 @@
 
                                         // Update the progress object.
                                         $scope.requestProgress.percent = Math.round((event.loaded / requestLength) * 100);
-                                        $scope.requestProgress.loaded  = event.loaded;
-                                        $scope.requestProgress.total   = requestLength;
+                                        $scope.requestProgress.loaded = event.loaded;
+                                        $scope.requestProgress.total = requestLength;
 
                                     }
 
@@ -399,7 +399,8 @@
                          * @model DropletModel
                          * @constructor
                          */
-                        $scope.DropletModel = function DropletModel() {};
+                        $scope.DropletModel = function DropletModel() {
+                        };
 
                         /**
                          * @property prototype
@@ -418,14 +419,14 @@
                                     $scope.throwException('Loaded files must be an instance of the "File" or "Blob" objects');
                                 }
 
-                                this.file      = file;
-                                this.date      = new $window.Date();
-                                this.mimeType  = file.type;
+                                this.file = file;
+                                this.date = new $window.Date();
+                                this.mimeType = file.type;
                                 this.extension = $scope.getExtension(file);
 
                                 // File has been added!
                                 $rootScope.$broadcast('$dropletFileAdded', this);
-                                $scope.onAdd({ file: this });
+                                $scope.onAdd({file: this});
 
                             },
 
@@ -439,7 +440,7 @@
 
                                 // File has been deleted!
                                 $rootScope.$broadcast('$dropletFileDeleted', this);
-                                $scope.onDelete({ file: this });
+                                $scope.onDelete({file: this});
 
                             },
 
@@ -470,7 +471,7 @@
                      */
                     $scope.finishedUploading = function finishedUploading() {
 
-                        $scope.progress    = { percent: 0, total: 0, loaded: 0 };
+                        $scope.progress = {percent: 0, total: 0, loaded: 0};
                         $scope.isUploading = false;
 
                     };
@@ -535,7 +536,7 @@
 
                         var str, separator;
 
-                        if ( typeof file.name !== 'undefined' ) {
+                        if (typeof file.name !== 'undefined') {
                             str = file.name;
                             separator = '.';
                         } else {
@@ -561,11 +562,11 @@
 
                         for (var index = 0, numFiles = files.length; index < numFiles; index++) {
 
-                            var file      = files[index],
+                            var file = files[index],
                                 extension = $scope.getExtension(file),
-                                type      = $scope.FILE_TYPES.VALID,
-                                maximum   = $scope.options.maximumValidFiles || Infinity,
-                                current   = $scope.filterFiles($scope.FILE_TYPES.VALID).length;
+                                type = $scope.FILE_TYPES.VALID,
+                                maximum = $scope.options.maximumValidFiles || Infinity,
+                                current = $scope.filterFiles($scope.FILE_TYPES.VALID).length;
 
                             if (!$scope.isValidExtension(extension) || current >= maximum) {
 
@@ -591,12 +592,12 @@
                         // Reset...
                         $scope.isError = false;
 
-                        var httpRequest   = new $window.XMLHttpRequest(),
-                            formData      = new $window.FormData(),
-                            queuedFiles   = $scope.filterFiles($scope.FILE_TYPES.VALID),
-                            fileProperty  = $scope.options.useArray ? 'file[]' : 'file',
+                        var httpRequest = new $window.XMLHttpRequest(),
+                            formData = new $window.FormData(),
+                            queuedFiles = $scope.filterFiles($scope.FILE_TYPES.VALID),
+                            fileProperty = $scope.options.useArray ? 'file[]' : 'file',
                             requestLength = $scope.getRequestLength(queuedFiles),
-                            deferred      = $q.defer();
+                            deferred = $q.defer();
 
                         // Initiate the HTTP request.
                         httpRequest.open('post', $scope.options.requestUrl, true);
@@ -627,8 +628,8 @@
                         (function attachEventListeners() {
 
                             // Define the files property so that each listener has the same interface.
-                            $scope.listeners.files       = queuedFiles;
-                            $scope.listeners.deferred    = deferred;
+                            $scope.listeners.files = queuedFiles;
+                            $scope.listeners.deferred = deferred;
                             $scope.listeners.httpRequest = httpRequest;
 
                             // Configure the event listeners for the impending request.
@@ -925,7 +926,7 @@
                             // Emit the event to notify any listening scopes that the interface has been attached
                             // for communicating with the directive.
                             $rootScope.$broadcast('$dropletReady', $scope.interface);
-                            $scope.onLoad({ interface: $scope.interface });
+                            $scope.onLoad({interface: $scope.interface});
 
                         });
 

@@ -1,14 +1,15 @@
-generalControllers.mainLoginFormCtrl = [ function() {
+generalControllers.mainLoginFormCtrl = [function () {
     var vm = this;
     vm.mainPasswordShowHideIconSrc = context + '/img/general/icon/login/dont_show.png';
     vm.inputType = 'password';
     var showPasswordPng = context + '/img/general/icon/login/show_password.png';
     var hidePasswordPng = context + '/img/general/icon/login/dont_show.png';
     var showHide = false;
-    function mainPasswordShowHide(text){
+
+    function mainPasswordShowHide(text) {
         vm.inputType = text;
     };
-    function mainPasswordShowHideIconSrc(src){
+    function mainPasswordShowHideIconSrc(src) {
         vm.mainPasswordShowHideIconSrc = src;
     };
     vm.mainPasswordShowHideAndIconSrc = function () {
@@ -26,34 +27,35 @@ generalControllers.mainLoginFormCtrl = [ function() {
 
     var mainLoginForm = false;
     vm.mainLoginFormDisplay = {
-        "display" : 'none'
-    } ;
+        "display": 'none'
+    };
     vm.fullPageFixedDiv = {
-        "position" : 'initial'
+        "position": 'initial'
     }
     function mainLoginFormShowHideByDisplay(Display) {
         vm.mainLoginFormDisplay = Display;
     }
+
     function fullPageFixedDiv(position) {
         vm.fullPageFixedDiv = position;
     }
 
 
     vm.mainLoginFormShowHide = function () {
-        if(!mainLoginForm) {
+        if (!mainLoginForm) {
 
             mainLoginFormShowHideByDisplay({
-                "display" : 'block'
+                "display": 'block'
             });
             fullPageFixedDiv({
-                "position" : 'fixed'
+                "position": 'fixed'
             });
         } else {
             mainLoginFormShowHideByDisplay({
-                "display" : 'none'
+                "display": 'none'
             });
             fullPageFixedDiv({
-                "position" : 'initial'
+                "position": 'initial'
             });
         }
         mainLoginForm = !mainLoginForm;
@@ -61,11 +63,11 @@ generalControllers.mainLoginFormCtrl = [ function() {
 
     vm.closeLoginFormOnClickBody = function closeLoginFormOnClickBody() {
         mainLoginFormShowHideByDisplay({
-            "display" : 'none'
+            "display": 'none'
         });
 
         fullPageFixedDiv({
-            "position" : 'initial'
+            "position": 'initial'
         });
         mainLoginForm = !mainLoginForm;
     }
@@ -73,18 +75,19 @@ generalControllers.mainLoginFormCtrl = [ function() {
 }];
 
 
-generalControllers.loginFormCtrl = ['$window', '$document', function($window,$document) {
+generalControllers.loginFormCtrl = ['$window', '$document', function ($window, $document) {
     var vm = this;
     vm.passwordShowHideIconSrc = context + '/img/general/icon/login/dont_show.png';
     vm.inputType = 'password';
     var showPasswordPng = context + '/img/general/icon/login/show_password.png';
     var hidePasswordPng = context + '/img/general/icon/login/dont_show.png';
     var showHide = false;
-    function passwordShowHide(text){
+
+    function passwordShowHide(text) {
         vm.inputType = text;
     };
- 
-    function passwordShowHideIconSrc(src){
+
+    function passwordShowHideIconSrc(src) {
         vm.passwordShowHideIconSrc = src;
     };
 
@@ -101,15 +104,15 @@ generalControllers.loginFormCtrl = ['$window', '$document', function($window,$do
 
     };
 
-    vm.footerplace =function () {
-        vm.doc_height =Math.max(
+    vm.footerplace = function () {
+        vm.doc_height = Math.max(
             $document[0].body.scrollHeight, $document[0].documentElement.scrollHeight,
             $document[0].body.offsetHeight, $document[0].documentElement.offsetHeight,
             $document[0].body.clientHeight, $document[0].documentElement.clientHeight
         );
         vm.win_height = $window.innerHeight;
         vm.footer = angular.element('.main_footer');
-        vm.footer_height =  vm.footer.outerHeight(true);
+        vm.footer_height = vm.footer.outerHeight(true);
         vm.content_height = vm.win_height - vm.footer_height;
         vm.content = angular.element('.login_forward');
 
@@ -117,8 +120,8 @@ generalControllers.loginFormCtrl = ['$window', '$document', function($window,$do
         if (vm.win_height < vm.doc_height) {
             vm.footer.removeClass("fixed")
         }
-        else{
-            vm.content.css("height", vm.content_height );
+        else {
+            vm.content.css("height", vm.content_height);
             vm.footer.addClass("fixed")
             console.log(vm.content_height)
         }
@@ -129,8 +132,7 @@ generalControllers.loginFormCtrl = ['$window', '$document', function($window,$do
 }];
 
 
-
-$(document).ready(function() {
+$(document).ready(function () {
 
     top_menu_underline();
 
@@ -138,9 +140,9 @@ $(document).ready(function() {
 });
 
 function top_menu_underline() {
-    $( ".branch_area p,.user_area p" ).hover(function() {
-        $( this ).next('div').css("width","100%");
-    },function(){
-        $( this ).next('div').css("width","0px");
+    $(".branch_area p,.user_area p").hover(function () {
+        $(this).next('div').css("width", "100%");
+    }, function () {
+        $(this).next('div').css("width", "0px");
     });
 }

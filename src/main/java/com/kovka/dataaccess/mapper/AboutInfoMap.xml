@@ -20,19 +20,19 @@
     <insert id="add" parameterType="AboutInfo">
 
         INSERT INTO about_info(
-            `about_id`,
-            `lang`,
-            `address`,
-            `short_desc`,
-            `title`,
-            `description`
+        `about_id`,
+        `lang`,
+        `address`,
+        `short_desc`,
+        `title`,
+        `description`
         ) VALUE (
-            #{aboutId},
-            #{language},
-            #{address},
-            #{shortDesc},
-            #{title},
-            #{description}
+        #{aboutId},
+        #{language},
+        #{address},
+        #{shortDesc},
+        #{title},
+        #{description}
         )
 
         <selectKey keyProperty="id" resultType="_long">
@@ -59,8 +59,8 @@
 
     <update id="update" parameterType="AboutInfo">
         UPDATE about_info
-        SET   `address` = #{address},`short_desc` = #{shortDesc},`title` = #{title},`description` = #{description}
-        WHERE about_id = #{aboutId}
+        SET `address` = #{address},`short_desc` = #{shortDesc},`title` = #{title},`description` = #{description}
+        WHERE id = #{id}
     </update>
 
 </mapper>

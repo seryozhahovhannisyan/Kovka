@@ -67,8 +67,6 @@
     </definition>
 
 
-
-
     <definition name="admin-sketch-product-add-view" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/admin/sketch/product-add.jsp"/>
     </definition>

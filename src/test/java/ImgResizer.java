@@ -1,3 +1,5 @@
+import com.kovka.web.util.ImageScaler;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -22,12 +24,13 @@ public class ImgResizer {
             BufferedImage originalImage = ImageIO.read(originalFile);
 
             create(photoFileName, originalImage, 128, 128);
-            create(photoFileName, originalImage, 256, 256);
-            create(photoFileName, originalImage, 512, 512);
-            create(photoFileName, originalImage, 800, 600);
-            create(photoFileName, originalImage, 1024, 1024);
-            create(photoFileName, originalImage, 1536, 1536);
-            create(photoFileName, originalImage, 2048, 2048);
+            create(photoFileName, originalImage, 1024, 768);
+//            create(photoFileName, originalImage, 256, 256);
+//            create(photoFileName, originalImage, 512, 512);
+//            create(photoFileName, originalImage, 800, 600);
+//            create(photoFileName, originalImage, 1024, 1024);
+//            create(photoFileName, originalImage, 1536, 1536);
+//            create(photoFileName, originalImage, 2048, 2048);
 
 
         } catch (Exception e) {

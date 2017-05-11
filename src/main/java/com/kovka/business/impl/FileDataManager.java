@@ -34,23 +34,34 @@ public class FileDataManager implements IFileDataManager {
     @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void add(FileData data) throws InternalErrorException {
 
+        boolean isMachine = data.getIsMachine();
         try {
             dao.add(data);
-            Sketch sketch = sketchDao.getSampleById(data.getSketchId());
-            if (sketch.getMainImage() == null) {
-                sketch.setMainImageId(data.getId());
-                sketchDao.update(sketch);
+            if (!isMachine) {
+                Sketch sketch = sketchDao.getSampleById(data.getSketchId());
+                if (sketch.getMainImage() == null) {
+                    sketch.setMainImageId(data.getId());
+                    sketchDao.update(sketch);
+                }
             }
+
 
             String fileName = data.getFileName();
             String extension = fileName.substring(fileName.indexOf("."));
             //
-            fileName = String.format(FileDataUtil.LOGO_FORMAT, FileDataUtil.LOGO_PREFIX_SKETCH, data.getId(), extension);
+            String prefix = !isMachine ? FileDataUtil.LOGO_PREFIX_SKETCH : FileDataUtil.LOGO_PREFIX_MACHINE;
+            fileName = String.format(FileDataUtil.LOGO_FORMAT, prefix, data.getId(), extension);
             data.setFileName(fileName);
 
             dao.update(data);
 
-            FileDataUtil.createFileSketch(fileName, data.getData());
+            if (!isMachine) {
+                FileDataUtil.createFileSketch(fileName, data.getData());
+            } else {
+                FileDataUtil.createFileMachine(fileName, data.getData());
+            }
+
+
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         } catch (IOException e) {

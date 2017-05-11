@@ -52,7 +52,7 @@ public class SketchProductManager implements ISketchProductManager {
             fileDataDao.update(fileData);
 
 
-            FileDataUtil.createFileProduct(fileName,  fileData.getData());
+            FileDataUtil.createFileProduct(fileName, fileData.getData());
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         } catch (IOException e) {

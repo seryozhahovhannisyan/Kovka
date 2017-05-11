@@ -23,12 +23,12 @@ public class StatusHandler extends BaseTypeHandler<Status> {
 
     public Status getNullableResult(ResultSet rs, String columnName) throws SQLException {
         int value = rs.getInt(columnName);
-        return value != 0?Status.valueOf(value):null;
+        return value != 0 ? Status.valueOf(value) : null;
     }
 
     public Status getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         int value = rs.getInt(columnIndex);
-        return value != 0?Status.valueOf(value):null;
+        return value != 0 ? Status.valueOf(value) : null;
     }
 
     public Status getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {

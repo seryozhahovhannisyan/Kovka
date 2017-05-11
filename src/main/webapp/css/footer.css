@@ -1,53 +1,61 @@
-
 @font-face {
     font-family: 'BahamasLightPlain.ttf';
     src: url(fonts/BahamasLightPlain.ttf);
 }
+
 @font-face {
     font-family: 'GothaProReg.otf';
     src: url(fonts/GothaProReg.otf);
 }
+
 .main_footer {
     text-align: center;
     width: 100%;
     background-color: #b2b9bb;
     color: #58595a;
-    font-size:100%;
-    border-top:1px solid #acacac;
-    height:60px;
+    font-size: 100%;
+    border-top: 1px solid #acacac;
+    height: 60px;
 }
+
 .clear_both {
     clear: both;
 }
-.copyright{
+
+.copyright {
     font-family: "HelveticaNeueCyr-Roman.otf";
     margin: 20px auto;
     text-align: center;
     width: 300px;
 }
-.icons{
+
+.icons {
     margin: 10px auto;
-    float: none!important;
+    float: none !important;
 }
-.icons img{
-    width: 30px!important;
+
+.icons img {
+    width: 30px !important;
     height: auto;
     margin-right: 20px;
 }
 
-.fixed{
+.fixed {
     position: fixed;
     bottom: 0px;
     width: 100%;
 }
-.contact_vshoo{
+
+.contact_vshoo {
     display: inline-block;
     font-family: 'BahamasLightPlain.ttf';
 }
-.contact_vshoo span:hover{
+
+.contact_vshoo span:hover {
     cursor: pointer;
 }
-.dropdown{
+
+.dropdown {
     display: inline-block;
     float: right;
     margin-top: 15px;
@@ -109,13 +117,13 @@
     color: #1c1b1a;
     border: 1px solid #c9c7c7;
     box-shadow: 10px 10px 5px #888888;
-    padding:4px!important;
+    padding: 4px !important;
 }
 
 .dropdown dt a {
     display: block;
     width: 170px;
-    padding:5px!important;
+    padding: 5px !important;
 }
 
 .dropdown dt a span {
@@ -144,10 +152,8 @@
     width: 30px;
 }
 
-
-
-@media all and (min-width:768px) and (max-width:992px){
-    .copyright{
+@media all and (min-width: 768px) and (max-width: 992px) {
+    .copyright {
         display: inline-block;
         padding-left: 0;
         padding-right: 0;
@@ -155,8 +161,9 @@
         text-align: center;
     }
 }
-@media all and (max-width:767px){
-    .copyright{
+
+@media all and (max-width: 767px) {
+    .copyright {
         display: inline-block;
         padding-left: 0;
         padding-right: 0;
@@ -164,14 +171,16 @@
         margin-bottom: 10px;
         text-align: center;
     }
+
     .dropdown {
-        display:table;
+        display: table;
         float: none;
         margin: 0 auto;
 
     }
-    .icons{
-        margin-bottom: 30px ;
-        float: none!important;
+
+    .icons {
+        margin-bottom: 30px;
+        float: none !important;
     }
 }

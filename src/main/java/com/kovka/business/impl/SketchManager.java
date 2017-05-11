@@ -46,11 +46,12 @@ public class SketchManager implements ISketchManager {
         try {
             dao.add(data);
             List<SketchInfo> infos = data.getInfos();
-            for(SketchInfo info : infos){
+            for (SketchInfo info : infos) {
                 info.setSketchId(data.getId());
                 infoDao.add(info);
             }
-        } catch (DatabaseException e) {e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
             throw new InternalErrorException(e);
         }
     }

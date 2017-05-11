@@ -16,6 +16,7 @@ import java.util.List;
 public class WorkSchemeInfoManager implements IWorkSchemeInfoManager {
 
     private IWorkSchemeInfoDao dao;
+
     public void setDao(IWorkSchemeInfoDao dao) {
         this.dao = dao;
     }
@@ -25,7 +26,8 @@ public class WorkSchemeInfoManager implements IWorkSchemeInfoManager {
     public void add(WorkSchemeInfo data) throws InternalErrorException {
         try {
             dao.add(data);
-        } catch (DatabaseException e) {e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
             throw new InternalErrorException(e);
         }
     }
@@ -34,10 +36,11 @@ public class WorkSchemeInfoManager implements IWorkSchemeInfoManager {
     @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void add(List<WorkSchemeInfo> data) throws InternalErrorException {
         try {
-            for(WorkSchemeInfo info : data){
+            for (WorkSchemeInfo info : data) {
                 dao.add(info);
             }
-        } catch (DatabaseException e) {e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
             throw new InternalErrorException(e);
         }
     }

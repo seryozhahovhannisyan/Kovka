@@ -51,7 +51,7 @@ public class CommonValidator {
         }
     }
 
-     public static boolean isValidDateBeforeNow(String strDate) {
+    public static boolean isValidDateBeforeNow(String strDate) {
         try {
             Date date = dateFormat.parse(strDate);
             return date.before(new Date());

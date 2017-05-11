@@ -32,8 +32,9 @@
 }
 
 .footer_fixed footer {
-    position: relative!important;
+    position: relative !important;
 }
+
 .note-editable {
     min-height: 100px !important;;
     height: 200px !important;
@@ -47,6 +48,7 @@
     height: 30px;
 
 }
-.added_input,.add_input{
-    margin-top:10px;
+
+.added_input, .add_input {
+    margin-top: 10px;
 }

@@ -23,5 +23,5 @@ public interface BaseActionConstants {
     public static final String GLOBAL_RESULT_LOGIN = "login";
     public static final String GLOBAL_RESULT_PENDING_TRANSACTION = "pending";
 
-    public static final String LANGUAGE            = "request_locale";
+    public static final String LANGUAGE = "request_locale";
 }

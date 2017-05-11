@@ -1,5 +1,5 @@
 var generalControllers = {};
-var generalModuls_array = [ ];
+var generalModuls_array = [];
 var kovkaApp = angular.module('kovkaApp', generalModuls_array);
 kovkaApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -39,7 +39,7 @@ kovkaApp.config(['$httpProvider', function ($httpProvider) {
 
 }]);
 
-kovkaApp .directive('onlyDigits', function () {
+kovkaApp.directive('onlyDigits', function () {
     return {
         require: 'ngModel',
         restrict: 'A',
@@ -52,10 +52,11 @@ kovkaApp .directive('onlyDigits', function () {
                         ctrl.$setViewValue(digits);
                         ctrl.$render();
                     }
-                    return parseInt(digits,10);
+                    return parseInt(digits, 10);
                 }
                 return undefined;
             }
+
             ctrl.$parsers.push(inputValue);
         }
     };
@@ -65,20 +66,20 @@ kovkaApp.controller(generalControllers);
 generalControllers.mainCtrlGeneral = function ($scope) {
 
     $scope.hide_loader = function () {
-        $scope.loadergif=false;
+        $scope.loadergif = false;
     }
 
     $scope.show_loader = function () {
-        $scope.loadergif=true;
+        $scope.loadergif = true;
     }
 };
 
 
-$(document).on('ready', function() {
+$(document).on('ready', function () {
     var csrfToken = $("#csrfToken").val();
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN' : csrfToken
+            'X-CSRF-TOKEN': csrfToken
         }
     });
 });

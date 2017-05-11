@@ -1,7 +1,7 @@
 package com.kovka.business.impl;
 
 import com.kovka.business.IPriceListInfoManager;
-import com.kovka.common.data.PriceListInfo; 
+import com.kovka.common.data.PriceListInfo;
 import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.DatabaseException;
 import com.kovka.common.exception.EntityNotFoundException;
@@ -15,17 +15,19 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class PriceListInfoManager implements IPriceListInfoManager {
 
-    private IPriceListInfoDao dao; 
+    private IPriceListInfoDao dao;
+
     public void setDao(IPriceListInfoDao dao) {
         this.dao = dao;
-    } 
+    }
 
     @Override
     @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void add(PriceListInfo data) throws InternalErrorException {
         try {
             dao.add(data);
-        } catch (DatabaseException e) {e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
             throw new InternalErrorException(e);
         }
     }
@@ -34,10 +36,11 @@ public class PriceListInfoManager implements IPriceListInfoManager {
     @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void add(List<PriceListInfo> data) throws InternalErrorException {
         try {
-            for(PriceListInfo info : data){
+            for (PriceListInfo info : data) {
                 dao.add(info);
             }
-        } catch (DatabaseException e) {e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
             throw new InternalErrorException(e);
         }
     }

@@ -1,24 +1,18 @@
 package com.kovka.web.action.sketch;
 
 import com.kovka.business.IWorkSchemeInfoManager;
-import com.kovka.common.data.Sketch;
-import com.kovka.common.data.SketchInfo;
 import com.kovka.common.data.WorkSchemeInfo;
 import com.kovka.common.data.lcp.Language;
-import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
-import com.kovka.web.action.dto.ResponseDto;
-import com.kovka.web.action.dto.ResponseStatus;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Serozh on 6/26/2016.
@@ -26,11 +20,8 @@ import java.util.Map;
 public class WorkSchemeInfoAction extends BaseAction {
 
     private static final Logger logger = Logger.getLogger(WorkSchemeInfoAction.class.getSimpleName());
-
-    private IWorkSchemeInfoManager workSchemeInfoManager;
-
     public List<WorkSchemeInfo> workSchemeInfos;
-
+    private IWorkSchemeInfoManager workSchemeInfoManager;
     //add
     private String name;
     private String description;

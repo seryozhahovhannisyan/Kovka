@@ -13,7 +13,6 @@ import com.kovka.dataaccess.dao.IAboutInfoDao;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 
 @Transactional(readOnly = true)
@@ -21,6 +20,7 @@ public class AboutManager implements IAboutManager {
 
     private IAboutDao dao;
     private IAboutInfoDao infoDao;
+
     public void setDao(IAboutDao dao) {
         this.dao = dao;
     }
@@ -35,11 +35,12 @@ public class AboutManager implements IAboutManager {
         try {
             dao.add(data);
             List<AboutInfo> infos = data.getInfos();
-            for(AboutInfo info : infos){
+            for (AboutInfo info : infos) {
                 info.setAboutId(data.getId());
                 infoDao.add(info);
             }
-        } catch (DatabaseException e) {e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
             throw new InternalErrorException(e);
         }
     }
@@ -58,7 +59,7 @@ public class AboutManager implements IAboutManager {
         try {
             List<About> abouts = dao.getAll(Language.getDefault());
             if (Utils.isEmpty(abouts)) {
-                throw new EntityNotFoundException("Could not found about by lang, language="+language);
+                throw new EntityNotFoundException("Could not found about by lang, language=" + language);
             }
             return abouts.get(0);
         } catch (DatabaseException e) {
@@ -79,7 +80,14 @@ public class AboutManager implements IAboutManager {
     @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void update(About data) throws InternalErrorException, EntityNotFoundException {
         try {
+
             dao.update(data);
+
+            List<AboutInfo> infos = data.getInfos();
+            for (AboutInfo info : infos  ) {
+                infoDao.update(info);
+            }
+
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

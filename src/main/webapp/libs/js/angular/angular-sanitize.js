@@ -3,7 +3,8 @@
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
-(function(window, angular, undefined) {'use strict';
+(function (window, angular, undefined) {
+    'use strict';
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *     Any commits to this file should be reviewed with security in mind.  *
@@ -147,13 +148,13 @@
     function $SanitizeProvider() {
         var svgEnabled = false;
 
-        this.$get = ['$$sanitizeUri', function($$sanitizeUri) {
+        this.$get = ['$$sanitizeUri', function ($$sanitizeUri) {
             if (svgEnabled) {
                 angular.extend(validElements, svgElements);
             }
-            return function(html) {
+            return function (html) {
                 var buf = [];
-                htmlParser(html, htmlSanitizeWriter(buf, function(uri, isImage) {
+                htmlParser(html, htmlSanitizeWriter(buf, function (uri, isImage) {
                     return !/^unsafe:/.test($$sanitizeUri(uri, isImage));
                 }));
                 return buf.join('');
@@ -191,7 +192,7 @@
          * @returns {boolean|ng.$sanitizeProvider} Returns the currently configured value if called
          *    without an argument or self for chaining otherwise.
          */
-        this.enableSvg = function(enableSvg) {
+        this.enableSvg = function (enableSvg) {
             if (angular.isDefined(enableSvg)) {
                 svgEnabled = enableSvg;
                 return this;
@@ -299,7 +300,7 @@
     }
 
     var inertBodyElement;
-    (function(window) {
+    (function (window) {
         var doc;
         if (window.document && window.document.implementation) {
             doc = window.document.implementation.createHTMLDocument("inert");
@@ -410,18 +411,13 @@
      * @returns {string} escaped text
      */
     function encodeEntities(value) {
-        return value.
-        replace(/&/g, '&amp;').
-        replace(SURROGATE_PAIR_REGEXP, function(value) {
+        return value.replace(/&/g, '&amp;').replace(SURROGATE_PAIR_REGEXP, function (value) {
             var hi = value.charCodeAt(0);
             var low = value.charCodeAt(1);
             return '&#' + (((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000) + ';';
-        }).
-        replace(NON_ALPHANUMERIC_REGEXP, function(value) {
+        }).replace(NON_ALPHANUMERIC_REGEXP, function (value) {
             return '&#' + value.charCodeAt(0) + ';';
-        }).
-        replace(/</g, '&lt;').
-        replace(/>/g, '&gt;');
+        }).replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
     /**
@@ -438,7 +434,7 @@
         var ignoreCurrentElement = false;
         var out = angular.bind(buf, buf.push);
         return {
-            start: function(tag, attrs) {
+            start: function (tag, attrs) {
                 tag = angular.lowercase(tag);
                 if (!ignoreCurrentElement && blockedElements[tag]) {
                     ignoreCurrentElement = tag;
@@ -446,8 +442,8 @@
                 if (!ignoreCurrentElement && validElements[tag] === true) {
                     out('<');
                     out(tag);
-                    angular.forEach(attrs, function(value, key) {
-                        var lkey=angular.lowercase(key);
+                    angular.forEach(attrs, function (value, key) {
+                        var lkey = angular.lowercase(key);
                         var isImage = (tag === 'img' && lkey === 'src') || (lkey === 'background');
                         if (validAttrs[lkey] === true &&
                             (uriAttrs[lkey] !== true || uriValidator(value, isImage))) {
@@ -461,7 +457,7 @@
                     out('>');
                 }
             },
-            end: function(tag) {
+            end: function (tag) {
                 tag = angular.lowercase(tag);
                 if (!ignoreCurrentElement && validElements[tag] === true && voidElements[tag] !== true) {
                     out('</');
@@ -472,7 +468,7 @@
                     ignoreCurrentElement = false;
                 }
             },
-            chars: function(chars) {
+            chars: function (chars) {
                 if (!ignoreCurrentElement) {
                     out(encodeEntities(chars));
                 }
@@ -512,7 +508,6 @@
             stripCustomNsAttrs(nextNode);
         }
     }
-
 
 
 // define ngSanitize module and register $sanitize service
@@ -647,7 +642,7 @@
      </file>
      </example>
      */
-    angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
+    angular.module('ngSanitize').filter('linky', ['$sanitize', function ($sanitize) {
         var LINKY_URL_REGEXP =
                 /((ftp|https?):\/\/|(www\.)|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"\u201d\u2019]/i,
             MAILTO_REGEXP = /^mailto:/i;
@@ -655,7 +650,7 @@
         var linkyMinErr = angular.$$minErr('linky');
         var isString = angular.isString;
 
-        return function(text, target, attributes) {
+        return function (text, target, attributes) {
             if (text == null || text === '') return text;
             if (!isString(text)) throw linkyMinErr('notstring', 'Expected string but received: {0}', text);
 

@@ -11,15 +11,15 @@ import java.util.Map;
 
 public class LanguageInterceptorGuest extends AbstractInterceptor {
 
-    private final String REQUEST_LANGUAGE        = "mlang";
-    private final String SESSION_LANGUAGE        = "WW_TRANS_I18N_LOCALE";
+    private final String REQUEST_LANGUAGE = "mlang";
+    private final String SESSION_LANGUAGE = "WW_TRANS_I18N_LOCALE";
 
-    private final String REQUEST_LOCALE          = "request_locale";
-    private final String REQUEST_ONLY_LOCALE     = "request_only_locale";
+    private final String REQUEST_LOCALE = "request_locale";
+    private final String REQUEST_ONLY_LOCALE = "request_only_locale";
 
     //private final String LANGUAGE                = "request_locale";
-    
-    
+
+
     @Override
     public String intercept(ActionInvocation actionInvocation) throws Exception {
 
@@ -42,7 +42,7 @@ public class LanguageInterceptorGuest extends AbstractInterceptor {
                 language = ((String[]) parameters.get(REQUEST_ONLY_LOCALE))[0];
             } else {
                 language = ((String[]) parameters.get(REQUEST_LANGUAGE))[0];
-            } 
+            }
 
             // retrieves resource
             Language lang = Language.languageOf(language);
@@ -51,9 +51,9 @@ public class LanguageInterceptorGuest extends AbstractInterceptor {
         }
 
         // retrieves guest's  preferred resource if it's defined on session
-        if(session.containsKey(BaseAction.LANGUAGE)){
+        if (session.containsKey(BaseAction.LANGUAGE)) {
 
-            Language lang = (Language)session.get(BaseAction.LANGUAGE);
+            Language lang = (Language) session.get(BaseAction.LANGUAGE);
             setLanguage(session, lang, false);
             return actionInvocation.invoke();
         }

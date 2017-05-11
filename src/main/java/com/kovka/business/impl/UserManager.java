@@ -46,7 +46,7 @@ public class UserManager implements IUserManager {
     }
 
     @Override
-    public List<User> getAll()  throws InternalErrorException {
+    public List<User> getAll() throws InternalErrorException {
         try {
             return dao.getAll();
         } catch (DatabaseException e) {

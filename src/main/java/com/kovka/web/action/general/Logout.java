@@ -9,14 +9,14 @@ import org.apache.struts2.dispatcher.SessionMap;
  */
 public class Logout extends BaseAction {
 
-    public String execute(){
+    public String execute() {
         session.clear();
         try {
             SessionMap session = (SessionMap) ActionContext.getContext().getSession();
 
             //invalidate
             session.invalidate();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return SUCCESS;

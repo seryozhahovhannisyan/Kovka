@@ -25,12 +25,14 @@
         <div class="row">
             <div class="user_text_div col-lg-6 col-md-6 col-sm-6 col-xs-8">
                 <!-- message box -->
-                <div class="box-info" <s:if test="%{#session.info == null || #session.info == ''}">style="display: none"</s:if>>
+                <div class="box-info"
+                     <s:if test="%{#session.info == null || #session.info == ''}">style="display: none"</s:if>>
                     <s:property value="#session.info"/>
                     <s:set var="info" scope="session" value=""/>
                 </div>
 
-                <div class="box-hint" <s:if test="%{#session.message == null || #session.message == ''}">style="display: none"</s:if>>
+                <div class="box-hint"
+                     <s:if test="%{#session.message == null || #session.message == ''}">style="display: none"</s:if>>
                     <s:property value="#session.message"/>
                     <s:set var="message" scope="session" value=""/>
                 </div>

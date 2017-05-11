@@ -1,4 +1,3 @@
-
 package com.kovka.business;
 
 import com.kovka.common.data.SketchProduct;

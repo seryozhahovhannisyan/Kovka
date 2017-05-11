@@ -1,14 +1,14 @@
 moduls_array.push('ngSanitize');
-moduls_array.push( 'ngTable');
+moduls_array.push('ngTable');
 moduls_array.push('isteven-multi-select');
 // moduls_array.push( 'ngTableDemos');
-console.log("moduls_array",moduls_array);
+console.log("moduls_array", moduls_array);
 
-controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','ngTableParams','$timeout', function($scope, $http, $filter, $window, $sce, ngTableParams, $timeout) {
+controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', 'ngTableParams', '$timeout', function ($scope, $http, $filter, $window, $sce, ngTableParams, $timeout) {
 
     $scope.item = [];
     $scope.image = [];
-    $scope.checked={};
+    $scope.checked = {};
     $scope.selected = [];
     $scope.columns = columns;
     $scope.isteven_branches = typeof isteven_branches === 'undefined' ? null : isteven_branches;
@@ -16,74 +16,75 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
     // var check_box_container_height = $('.checkBoxContainer').height;
 
     var set_interval_function = setInterval(check_if_function_work, 1000);
+
     function check_if_function_work() {
 
         if ($('.checkBoxContainer').length) {
-            $('.checkBoxContainer').bind('scroll',chk_scroll);
+            $('.checkBoxContainer').bind('scroll', chk_scroll);
 
-            function chk_scroll(e)
-            {
+            function chk_scroll(e) {
                 var elem = $(e.currentTarget);
-                if (elem[0].scrollHeight - Math.floor(elem.scrollTop()) == elem.outerHeight())
-                {
+                if (elem[0].scrollHeight - Math.floor(elem.scrollTop()) == elem.outerHeight()) {
                     alert('bottom');
                 }
             }
+
             clearInterval(set_interval_function);
         }
 
     }
-    
-    $scope.tableParams = new ngTableParams (
+
+    $scope.tableParams = new ngTableParams(
         {page: 1, count: 10, sorting: {name: 'asc'}},
-        {total: 0,
-            getData: function($defer, params) {
+        {
+            total: 0,
+            getData: function ($defer, params) {
                 var path = $scope.actionPath;
                 var orderBy = 'name';
                 var orderType = 'asc';
 
                 var sorting = params.sorting();
-                for(var key in sorting){
+                for (var key in sorting) {
                     orderBy = key;
-                    orderType = sorting[key] ;
+                    orderType = sorting[key];
                 }
 
-                var requestJson  = {
-                    page : params.page(),
-                    count : params.count(),
-                    orderBy : orderBy,//addresss :desc
-                    orderType : orderType,
-                    group : params.group,
-                    groupBy : params.groupBy
+                var requestJson = {
+                    page: params.page(),
+                    count: params.count(),
+                    orderBy: orderBy,//addresss :desc
+                    orderType: orderType,
+                    group: params.group,
+                    groupBy: params.groupBy
                 };
 
-                if(params.filter() != null && params.filter().length != null){
+                if (params.filter() != null && params.filter().length != null) {
                     requestJson.filter = params.filter();
                 }
 
-                if($scope.isteven_branches != null){
+                if ($scope.isteven_branches != null) {
                     var ides = [];
                     var branchesOutPut = $scope.isteven_branches[0].outPut;
-                    for(var id in branchesOutPut){
-                       ides.push(branchesOutPut[id].id);
+                    for (var id in branchesOutPut) {
+                        ides.push(branchesOutPut[id].id);
                         console.log('branchesOutPut[id]', branchesOutPut[id].id);
                     }
                     requestJson.branchIdes = ides.toString();
                 }
 
-                 $scope.show_loader();
+                $scope.show_loader();
 
-                requestJson =  JSON.stringify(requestJson);
+                requestJson = JSON.stringify(requestJson);
 
                 $http({
                     method: 'post',
                     url: path,
-                    data :  {
-                        requestJson : requestJson
+                    data: {
+                        requestJson: requestJson
                     },
                     dataType: 'json'
                 }).then(
-                    function(response) {
+                    function (response) {
 
                         var result = response.data.dto;
 
@@ -105,10 +106,10 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
                             $defer.resolve(sortedItems);
                         }
                     }
-                ).finally(function() {
-                $scope.hide_loader();
-                    $scope.serch_val="";
-                    
+                ).finally(function () {
+                    $scope.hide_loader();
+                    $scope.serch_val = "";
+
                 });
 
                 // hides count tools as items is less than 10
@@ -121,7 +122,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
 
     $scope.add_new_records = function (id_type) {
         var href = "#";
-        if(id_type == "sketch"){
+        if (id_type == "sketch") {
             href = "/sketch-add-view.htm";
         }
         window.location = href;
@@ -133,8 +134,8 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
         var id_type = item.currentTarget.getAttribute("data-type");
         var href = "#";
         //
-        if(id_type == "sketch"){
-            href = "/sketch-images-add-view.htm?sketchId="+id;
+        if (id_type == "sketch") {
+            href = "/sketch-images-add-view.htm?sketchId=" + id;
         }
         window.location = href;
     };
@@ -143,8 +144,8 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
         var id = item.currentTarget.getAttribute("data-id");
         var id_type = item.currentTarget.getAttribute("data-type");
         var href = "#";
-        if(id_type == "sketch"){
-            href = "/sketch-product-add-view.htm?sketchId="+id;
+        if (id_type == "sketch") {
+            href = "/sketch-product-add-view.htm?sketchId=" + id;
         }
         window.location = href;
     };
@@ -155,8 +156,8 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
         var id_type = item.currentTarget.getAttribute("data-type");
 
         var href = "#";
-        if(id_type == "sketch"){
-            href = "/sketch-delete.htm?sketchIdes="+id;
+        if (id_type == "sketch") {
+            href = "/sketch-delete.htm?sketchIdes=" + id;
         }
         window.location = href;
 
@@ -168,15 +169,15 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
         var id_type = item.currentTarget.getAttribute("data-type");
 
         var href = "#";
-        if(id_type == "sketch"){
-            href = "/sketch-edit.htm?sketchIdes="+id;
+        if (id_type == "sketch") {
+            href = "/sketch-edit.htm?sketchIdes=" + id;
         }
         window.location = href;
 
     };
 
-    $scope.updateSelection = function ($event, id,all) {
-        if(all== undefined) {
+    $scope.updateSelection = function ($event, id, all) {
+        if (all == undefined) {
             var checkbox = $event.currentTarget;
             var action = checkbox.checked ? 'add' : 'remove';
             if (action == 'add' & $scope.selected.indexOf(id) == -1) {
@@ -186,7 +187,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
                 $scope.selected.splice($scope.selected.indexOf(id), 1);
             }
         }
-        else{
+        else {
             $scope.selected = [];
             var checkbox = $event.currentTarget;
             var action = checkbox.checked ? 'add' : 'remove';
@@ -200,7 +201,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce','n
             }
 
         }
-        console.log("$scope.selected",$scope.selected)
+        console.log("$scope.selected", $scope.selected)
     };
 
 

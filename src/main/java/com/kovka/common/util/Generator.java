@@ -6,25 +6,6 @@ public class Generator {
 
     private static Random rand = new Random();
 
-    public enum Type {
-
-        DIGITS              ("0123456789"),
-        ALPHABETIC_LOWER    ("abcdefghijklmnopqrstuvwxyz"),
-        ALPHABETIC_UPPER    ("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
-        ALPHABETIC          ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
-        ALPHABETIC_DIGIT    ("0123456789abcdefghijklmnopqrstuvwxyz");
-
-        Type(final String value) {
-            this.value = value;
-        }
-
-        private final String value;
-
-        public String getValue() {
-            return value;
-        }
-    }
-
     public static synchronized String get(int count, Type type) {
 
         if (type == null) {
@@ -40,5 +21,24 @@ public class Generator {
             count--;
         }
         return buff.toString();
+    }
+
+    public enum Type {
+
+        DIGITS("0123456789"),
+        ALPHABETIC_LOWER("abcdefghijklmnopqrstuvwxyz"),
+        ALPHABETIC_UPPER("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+        ALPHABETIC("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+        ALPHABETIC_DIGIT("0123456789abcdefghijklmnopqrstuvwxyz");
+
+        private final String value;
+
+        Type(final String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
     }
 }

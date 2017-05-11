@@ -2,18 +2,11 @@ package com.kovka.web.action.guest;
 
 import com.kovka.business.IAboutManager;
 import com.kovka.common.data.About;
-import com.kovka.common.data.AboutInfo;
-import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
-import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
-import com.kovka.web.action.dto.ResponseDto;
 import org.apache.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Serozh on 6/26/2016.

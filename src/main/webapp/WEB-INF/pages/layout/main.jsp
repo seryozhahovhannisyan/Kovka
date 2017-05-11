@@ -5,7 +5,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
-<html  lang = en ng-app="mainApp" >
+<html lang=en ng-app="mainApp">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,26 +31,26 @@
 
 
     <!-- jQuery -->
-    <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-2.2.4.js" ></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-2.2.4.js"></script>
     <!-- jQuery ui -->
-    <script  type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-ui-1.11.4.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-ui-1.11.4.js"></script>
     <%--angular  js--%>
-    <script   type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
     <%--angular animate min js--%>
-    <script src="<%=request.getContextPath()%>/libs/js/angular/angular-animate.min.1.5.7.js" type="text/javascript" ></script>
+    <script src="<%=request.getContextPath()%>/libs/js/angular/angular-animate.min.1.5.7.js"
+            type="text/javascript"></script>
     <%--isteven-multi-select--%>
-    <script src="<%=request.getContextPath()%>/libs/js/angular/isteven-multi-select.js" type="text/javascript" ></script>
+    <script src="<%=request.getContextPath()%>/libs/js/angular/isteven-multi-select.js" type="text/javascript"></script>
     <!-- Bootstrap -->
-    <script   type="text/javascript" src="<%=request.getContextPath()%>/libs/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/bootstrap.js"></script>
     <!-- ng-droplet -->
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/ng-droplet.js"></script>
-    
-    <script src="<%=request.getContextPath()%>/js/sketch/main.js" type="text/javascript" ></script>
+
+    <script src="<%=request.getContextPath()%>/js/sketch/main.js" type="text/javascript"></script>
 
 
-
-    <style >
-        .loader{
+    <style>
+        .loader {
             width: 150px;
             height: 150px;
             background-image: url("../../../img/general/loader.gif");
@@ -70,17 +70,17 @@
     <script type="text/javascript">
         context = '<%=request.getContextPath()%>';
         localeFilter = {//default-label is deprecated and replaced with this.
-            selectAll       : '<s:text name="label.selectAll">Select All</s:text>',
-            selectNone      : '<s:text name="label.selectNone">Select None</s:text>',
-            reset           : '<s:text name="label.reset">Reset</s:text>',
-            search          : '<s:text name="label.search">Search</s:text>',
-            nothingSelected : '<s:text name="label.nothingSelected">Nothing Selected</s:text>'
+            selectAll: '<s:text name="label.selectAll">Select All</s:text>',
+            selectNone: '<s:text name="label.selectNone">Select None</s:text>',
+            reset: '<s:text name="label.reset">Reset</s:text>',
+            search: '<s:text name="label.search">Search</s:text>',
+            nothingSelected: '<s:text name="label.nothingSelected">Nothing Selected</s:text>'
         }
-        function goTo(href){
-            window.open(href,'_blank');
+        function goTo(href) {
+            window.open(href, '_blank');
         }
-        function goToAction(href){
-            if(context != null && context.length > 1){
+        function goToAction(href) {
+            if (context != null && context.length > 1) {
                 href = context + href;
             }
             window.location = href;
@@ -89,9 +89,9 @@
 
 </head>
 
-<body class="nav-md footer_fixed" >
+<body class="nav-md footer_fixed">
 <div class="container body">
-    <div class="main_container" ng-controller ="mainCtrl">
+    <div class="main_container" ng-controller="mainCtrl">
 
 
         <tiles:insertAttribute name="header"/>
@@ -112,16 +112,16 @@
 </div>
 
 <!-- FastClick -->
-<script  type="text/javascript" src="<%=request.getContextPath()%>/js/template/fastclick.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/template/fastclick.js"></script>
 <!-- NProgress -->
-<script  type="text/javascript" src="<%=request.getContextPath()%>/js/template/nprogress.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/template/nprogress.js"></script>
 /*jQuery custom content scroller*/
-<script  type="text/javascript" src="<%=request.getContextPath()%>/js/template/jquery-mousewell.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/template/jquery-mousewell.js"></script>
 
 /*Custom Theme Scripts*/
-<script  type="text/javascript" src="<%=request.getContextPath()%>/js/template/custom.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/template/custom.js"></script>
 /*Custom Scripts*/
-<script   type="text/javascript" src="<%=request.getContextPath()%>/js/template/branches.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/template/branches.js"></script>
 </body>
 </html>
 

@@ -12,7 +12,7 @@
         <result property="order" column="order"/>
         <result property="status" column="status"/>
 
-        <association property="currentInfo"  column="id" javaType="SketchInfo">
+        <association property="currentInfo" column="id" javaType="SketchInfo">
             <result property="id" column="info_id"/>
             <result property="sketchId" column="sketch_id"/>
             <result property="language" column="lang"/>
@@ -20,7 +20,8 @@
             <result property="shortDesc" column="short_desc"/>
             <result property="title" column="title"/>
         </association>
-        <association property="mainImage" column="main_image_id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getById"/>
+        <association property="mainImage" column="main_image_id"
+                     select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getById"/>
 
     </resultMap>
 
@@ -28,14 +29,15 @@
         <id property="id" column="id"/>
         <result property="order" column="order"/>
         <result property="status" column="status"/>
-        <association property="infos" column="id" select="com.kovka.dataaccess.mapper.namespace.SketchInfoMap.getBySketchId"/>
+        <association property="infos" column="id"
+                     select="com.kovka.dataaccess.mapper.namespace.SketchInfoMap.getBySketchId"/>
     </resultMap>
 
     <resultMap id="rmSketchFullCurrentLang" type="Sketch">
         <id property="id" column="id"/>
         <result property="order" column="order"/>
         <result property="status" column="status"/>
-        <association property="currentInfo"  column="id" javaType="SketchInfo">
+        <association property="currentInfo" column="id" javaType="SketchInfo">
             <result property="id" column="info_id"/>
             <result property="sketchId" column="sketch_id"/>
             <result property="language" column="lang"/>
@@ -44,18 +46,20 @@
             <result property="title" column="title"/>
             <result property="description" column="description"/>
         </association>
-        <association property="images" column="id" select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getSketchImg"/>
-        <association property="products" column="id" select="com.kovka.dataaccess.mapper.namespace.SketchProductMap.getBySketchId"/>
+        <association property="images" column="id"
+                     select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getSketchImg"/>
+        <association property="products" column="id"
+                     select="com.kovka.dataaccess.mapper.namespace.SketchProductMap.getBySketchId"/>
     </resultMap>
 
     <insert id="add" parameterType="Sketch">
 
         INSERT INTO sketch(
-            `order`,
-            `status`
+        `order`,
+        `status`
         ) VALUES (
-            #{order},
-            #{status}
+        #{order},
+        #{status}
         )
 
         <selectKey keyProperty="id" resultType="_long">
@@ -85,18 +89,18 @@
             parameterType="long">
 
         SELECT s.*,
-            si.`id` `info_id`,
-            si.`sketch_id` `sketch_id`,
-            si.`lang` `lang`,
-            si.`name` `name`,
-            si.`short_desc` `short_desc`,
-            si.`title` `title`,
-            si.`description` `description`
+        si.`id` `info_id`,
+        si.`sketch_id` `sketch_id`,
+        si.`lang` `lang`,
+        si.`name` `name`,
+        si.`short_desc` `short_desc`,
+        si.`title` `title`,
+        si.`description` `description`
         FROM sketch s, sketch_info si
         WHERE si.sketch_id = s.id and s.id = #{id}
 
     </select>
-    
+
     <select id="getFullById"
             resultMap="rmSketchFull"
             parameterType="long">
@@ -111,33 +115,33 @@
             parameterType="long">
 
         SELECT s.*,
-            si.`id` `info_id`,
-            si.`sketch_id` `sketch_id`,
-            si.`lang` `lang`,
-            si.`name` `name`,
-            si.`short_desc` `short_desc`,
-            si.`title` `title`,
-            si.`description` `description`
+        si.`id` `info_id`,
+        si.`sketch_id` `sketch_id`,
+        si.`lang` `lang`,
+        si.`name` `name`,
+        si.`short_desc` `short_desc`,
+        si.`title` `title`,
+        si.`description` `description`
         FROM sketch s, sketch_info si
-        WHERE si.sketch_id = s.id and  s.id = #{id}
+        WHERE si.sketch_id = s.id and s.id = #{id}
 
     </select>
-    
+
     <select id="getSampleByParams"
             resultMap="rmSketch"
             parameterType="long">
 
         SELECT s.*,
-            si.`id` `info_id`,
-            si.`sketch_id` `sketch_id`,
-            si.`lang` `lang`,
-            si.`name` `name`,
-            si.`short_desc` `short_desc`,
-            si.`title` `title`,
-            si.`description` `description`
+        si.`id` `info_id`,
+        si.`sketch_id` `sketch_id`,
+        si.`lang` `lang`,
+        si.`name` `name`,
+        si.`short_desc` `short_desc`,
+        si.`title` `title`,
+        si.`description` `description`
         FROM sketch s, sketch_info si
         WHERE si.sketch_id = s.id
-        <if test="filter != null">             AND (
+        <if test="filter != null">AND (
             OR `status` = #{filter}
             )
         </if>
@@ -146,19 +150,19 @@
         </if>
 
     </select>
-    
+
     <select id="getCountByParams"
             resultType="long"
             parameterType="map">
 
-        SELECT count(`id`) FROM sketch WHERE 1 
-        <if test="filter != null">             AND ( 
+        SELECT count(`id`) FROM sketch WHERE 1
+        <if test="filter != null">AND (
             OR `status` = #{filter}
             )
         </if>
         <if test="except != null">
             AND id != #{except}
-        </if> 
+        </if>
 
 
     </select>

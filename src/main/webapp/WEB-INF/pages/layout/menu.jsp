@@ -11,10 +11,12 @@
         <div class="profile">
             <div class="profile_pic">
                 <s:if test="%{isUserThumbFileExist(#session.session_user.id, #session.session_user.photoData.fileName)}">
-                    <img  class="img-circle profile_img" src="<s:property value='%{getUserThumbImg(#session.session_user.id, #session.session_user.photoData.fileName)}'/>" />
+                    <img class="img-circle profile_img"
+                         src="<s:property value='%{getUserThumbImg(#session.session_user.id, #session.session_user.photoData.fileName)}'/>"/>
                 </s:if>
                 <s:else>
-                    <img  class="img-circle profile_img" src="<%=request.getContextPath()%>/img/general/avatars/avatar.png" alt=""/>
+                    <img class="img-circle profile_img"
+                         src="<%=request.getContextPath()%>/img/general/avatars/avatar.png" alt=""/>
                 </s:else>
             </div>
             <div class="profile_info">
@@ -35,9 +37,12 @@
                         <ul class="nav child_menu">
                             <li><a href="admin-about.htm"><s:text name="admin.menu.about">About</s:text></a></li>
                             <li><a href="admin-machine.htm"><s:text name="admin.menu.machine">Machine</s:text></a></li>
-                            <li><a href="admin-price-list.htm"><s:text name="admin.menu.price">Price List</s:text></a></li>
-                            <li><a href="admin-sketches.htm"><s:text name="admin.menu.sketches">Sketches</s:text></a></li>
-                            <li><a href="admin-work-scheme.htm"><s:text name="admin.menu.workScheme">Work Scheme</s:text></a></li>
+                            <li><a href="admin-price-list.htm"><s:text name="admin.menu.price">Price List</s:text></a>
+                            </li>
+                            <li><a href="admin-sketches.htm"><s:text name="admin.menu.sketches">Sketches</s:text></a>
+                            </li>
+                            <li><a href="admin-work-scheme.htm"><s:text
+                                    name="admin.menu.workScheme">Work Scheme</s:text></a></li>
                         </ul>
                     </li>
                 </ul>

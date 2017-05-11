@@ -6,11 +6,11 @@
     <title>Kovka</title>
 
     <style>
-        .logo_div_main_start{
+        .logo_div_main_start {
             width: 500px;
             height: 500px;
             position: absolute;
-            top:0;
+            top: 0;
             bottom: 0;
             right: 0;
             left: 0;
@@ -29,7 +29,7 @@
         }
     </script>
 </head>
-<body >
+<body>
 <div class="logo_div_main_start">
 
 </div>

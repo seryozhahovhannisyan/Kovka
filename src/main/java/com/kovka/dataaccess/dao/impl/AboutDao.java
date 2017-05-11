@@ -8,7 +8,6 @@ import com.kovka.dataaccess.dao.IAboutDao;
 import com.kovka.dataaccess.mapper.namespace.AboutMap;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Serozh on 6/21/2016.

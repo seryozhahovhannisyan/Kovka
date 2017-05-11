@@ -1,9 +1,5 @@
 package com.kovka.common.data;
 
-import com.kovka.common.data.FileData;
-import com.kovka.common.data.SketchInfo;
-import com.kovka.common.data.SketchProduct;
-import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
 import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
@@ -80,7 +76,7 @@ public class About {
     public String convertEmails() throws DataParseException {
         this.emailValues = null;
         if (!Utils.isEmpty(this.emails)) {
-            this.emailValues  = DataConverter.join(this.emails,",");
+            this.emailValues = DataConverter.join(this.emails, ",");
         }
 
         return this.emailValues;
@@ -89,16 +85,15 @@ public class About {
     public String convertPhones() throws DataParseException {
         this.phoneValues = null;
         if (!Utils.isEmpty(this.phones)) {
-            this.phoneValues  = DataConverter.join(this.phones,",");
+            this.phoneValues = DataConverter.join(this.phones, ",");
         }
 
         return this.phoneValues;
     }
 
 
-
-    public void addEmail(String email){
-        if(Utils.isEmpty(emails)){
+    public void addEmail(String email) {
+        if (Utils.isEmpty(emails)) {
             emails = new HashSet<String>();
         }
         emails.add(email);

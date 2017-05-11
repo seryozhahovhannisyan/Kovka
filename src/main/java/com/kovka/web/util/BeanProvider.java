@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class BeanProvider {
 
-//    private static ApplicationContext context = Initializer.getApplicationContext();
+    //    private static ApplicationContext context = Initializer.getApplicationContext();
     private static ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 
 
@@ -24,7 +24,6 @@ public class BeanProvider {
     public static IAboutManager getAboutManager() throws BeansException {
         return (IAboutManager) context.getBean("AboutManager");
     }
-
 
 
 }

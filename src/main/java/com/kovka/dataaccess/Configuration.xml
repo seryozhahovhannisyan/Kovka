@@ -46,8 +46,10 @@
     </typeAliases>
 
     <typeHandlers>
-        <typeHandler handler="com.kovka.dataaccess.extension.LanguageHandler" javaType="com.kovka.common.data.lcp.Language"/>
-        <typeHandler handler="com.kovka.dataaccess.extension.StatusHandler" javaType="com.kovka.common.data.lcp.Status"/>
+        <typeHandler handler="com.kovka.dataaccess.extension.LanguageHandler"
+                     javaType="com.kovka.common.data.lcp.Language"/>
+        <typeHandler handler="com.kovka.dataaccess.extension.StatusHandler"
+                     javaType="com.kovka.common.data.lcp.Status"/>
     </typeHandlers>
 
     <mappers>
