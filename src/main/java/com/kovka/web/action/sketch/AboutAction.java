@@ -32,35 +32,18 @@ public class AboutAction extends BaseAction {
     private String coords;
     private String emailValues;
     private String phoneValues;
-    //info
-    private String title;
-    private String address;
-    private String shortDesc;
-    private String description;
+
 
     public String edit() {
 
-        if (Utils.isEmpty(address) ||
-                Utils.isEmpty(shortDesc) ||
-                Utils.isEmpty(title) ||
-                Utils.isEmpty(description)) {
-            logger.info("Empty incoming data");
-            return INPUT;
-        }
-
         About about = new About();
+        about.setId(1L);
+        about.setCoords(coords);
+        about.setEmailValues(emailValues);
+        about.setPhoneValues(phoneValues);
 
-        List<AboutInfo> infos = new ArrayList<AboutInfo>();
-        for (Language language : Language.values()) {
-            AboutInfo info = new AboutInfo();
-            info.setLanguage(language);
-            info.setAddress(address.trim());
-            info.setShortDesc(shortDesc.trim());
-            info.setTitle(title.trim());
-            info.setDescription(description.trim());
-            infos.add(info);
-        }
-        about.setInfos(infos);
+
+        about.setInfos(infosForEdit);
 
         return SUCCESS;
     }
@@ -129,38 +112,6 @@ public class AboutAction extends BaseAction {
 
     public void setPhoneValues(String phoneValues) {
         this.phoneValues = phoneValues;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getShortDesc() {
-        return shortDesc;
-    }
-
-    public void setShortDesc(String shortDesc) {
-        this.shortDesc = shortDesc;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public List<AboutInfo> getInfosForEdit() {

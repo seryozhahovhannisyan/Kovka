@@ -50,7 +50,7 @@
 
                     <form id="aboutForm" action="admin-about-edit.htm" method="post" data-parsley-validate="" class="form-horizontal form-label-left"
                           novalidate="">
-
+                        <input type="hidden" name="coords" id="coords">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
                                 <s:text name="menu.about.email">e-mail</s:text>
@@ -76,24 +76,57 @@
 
                         </div>
 
-                        <s:iterator var="info" value="about.infos"  status="st">>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="<s:property value="#info.language.key"/>">
+                        <s:iterator var="info" value="about.infos"  status="st">
+                            <input name="infosForEdit[<s:property value="#st.index"/>].id" value='<s:property value="#info.id"/>' type="hidden" />
+
+                            <div class="form-group" id="<s:property value="#info.language.key"/>">
+                                <h2 class="control-label col-md-3 col-sm-3 col-xs-12" for="<s:property value="#info.language.key"/>">
                                     <s:property value="#info.language.title"/>
+                                </h2>
+                            </div>
+
+                            <div class="form-group" >
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="title<s:property value="#info.language.key"/>">
+                                    Title
                                 </label>
-                                <div id="<s:property value="#info.language.key"/>"  class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="infosForEdit[<s:property value="#st.index"/>].id" value='<s:property value="#info.id"/>' type="hidden" />
-                                    title:<input name="infosForEdit[<s:property value="#st.index"/>].title" value='<s:property value="#info.title"/>'   class="form-control col-md-7 col-xs-12" type="text"/>
-                                    address:<input name="infosForEdit[<s:property value="#st.index"/>].address" value='<s:property value="#info.address"/>'   class="form-control col-md-7 col-xs-12" type="text"/>
-                                    shortDesc:<input name="infosForEdit[<s:property value="#st.index"/>].shortDesc" value='<s:property value="#info.shortDesc"/>'   class="form-control col-md-7 col-xs-12" type="text"/>
-                                    description:<input name="infosForEdit[<s:property value="#st.index"/>].description" value='<s:property value="#info.description"/>'   class="form-control col-md-7 col-xs-12" type="text"/>
-
-
+                                <div id="title<s:property value="#info.language.key"/>"  class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="infosForEdit[<s:property value="#st.index"/>].title" value='<s:property value="#info.title"/>'   class="form-control col-md-7 col-xs-12" type="text"/>
                                 </div>
                             </div>
+                            <div class="form-group" >
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="address<s:property value="#info.language.key"/>">
+                                    Address
+                                </label>
+                                <div id="address<s:property value="#info.language.key"/>"  class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="infosForEdit[<s:property value="#st.index"/>].address" value='<s:property value="#info.address"/>'   class="form-control col-md-7 col-xs-12" type="text"/>
+                                        <%--shortDesc:<input name="infosForEdit[<s:property value="#st.index"/>].shortDesc" value='<s:property value="#info.shortDesc"/>'   class="form-control col-md-7 col-xs-12" type="text"/>--%>
+                                        <%--description:<input name="infosForEdit[<s:property value="#st.index"/>].description" value='<s:property value="#info.description"/>'   class="form-control col-md-7 col-xs-12" type="text"/>--%>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="shortDesc<s:property value="#info.language.key"/>">
+                                    Short Description
+                                </label>
+                                <div id="shortDesc<s:property value="#info.language.key"/>"  class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="infosForEdit[<s:property value="#st.index"/>].shortDesc" value='<s:property value="#info.shortDesc"/>'   class="form-control col-md-7 col-xs-12" type="text"/>
+                                        <%--description:<input name="infosForEdit[<s:property value="#st.index"/>].description" value='<s:property value="#info.description"/>'   class="form-control col-md-7 col-xs-12" type="text"/>--%>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="description<s:property value="#info.language.key"/>">
+                                    Description
+                                </label>
+                                <div id="description<s:property value="#info.language.key"/>"  class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="infosForEdit[<s:property value="#st.index"/>].description" value='<s:property value="#info.description"/>'   class="form-control col-md-7 col-xs-12" type="text"/>
+                                </div>
+
+                            </div>
+
                         </s:iterator>
-
-
 
                     </form>
                     <div class="form-group">
@@ -115,9 +148,9 @@
 <script>
     var marker;
     function submitForm(){
-        var coord = marker.position;
-        alert(coord)
-//        $('#aboutForm').submit();
+        var coords = marker.position;
+        $('#coords').val(coords);
+        $('#aboutForm').submit();
     }
     function addEmail(){
         $('#email').append('<input name="emailValues"  required="required" class="form-control col-md-7 col-xs-12" type="text"/>');
