@@ -37,7 +37,7 @@ $(function () {
 
         // Specify what files to browse for
         filters: [
-            {title: "Image files", extensions: "jpg,gif,png"},
+            {title: "Image files", extensions: "jpg,jpeg,gif,png"},
         ],
 
         // Rename files by clicking on their titles
@@ -115,18 +115,18 @@ $(function () {
 
                         <p>Media gallery design emelents</p>
                         <s:iterator var="data" value="datas">
-                            <s:if test="%{isLogoExist(#data.fileName)}">
+                            <s:if test="%{isMachineImageExist(#data.fileName)}">
                                 <div class="col-md-55">
                                     <div class="thumbnail">
                                         <div class="image view view-first">
                                             <img style="width: 100%; display: block;"
-                                                 src="<s:property value='%{getLogo(#data.fileName)}'/>" alt="image">
+                                                 src="<s:property value='%{getMachineImage(#data.fileName)}'/>" alt="image">
                                             <div class="mask">
                                                 <p>Your Text</p>
                                                 <div class="tools tools-bottom">
-                                                    <a href="#"><i class="fa fa-link"></i></a>
-                                                    <a href="#"><i class="fa fa-pencil"></i></a>
-                                                    <a href="#"><i class="fa fa-times"></i></a>
+                                                    <%--<a href="#"><i class="fa fa-link"></i></a>--%>
+                                                    <%--<a href="#"><i class="fa fa-pencil"></i></a>--%>
+                                                    <a href="admin-image-delete.htm?id=<s:property value="#data.id"/>"><i class="fa fa-times"></i></a>
                                                 </div>
                                             </div>
                                         </div>

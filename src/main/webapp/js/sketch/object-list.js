@@ -123,7 +123,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
     $scope.add_new_records = function (id_type) {
         var href = "#";
         if (id_type == "sketch") {
-            href = "/sketch-add-view.htm";
+            href = "/admin-sketch-add-view.htm";
         }
         window.location = href;
     };
@@ -135,7 +135,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
         var href = "#";
         //
         if (id_type == "sketch") {
-            href = "/sketch-images-add-view.htm?sketchId=" + id;
+            href = "/admin-sketch-images-add-view.htm?sketchId=" + id;
         }
         window.location = href;
     };
@@ -145,7 +145,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
         var id_type = item.currentTarget.getAttribute("data-type");
         var href = "#";
         if (id_type == "sketch") {
-            href = "/sketch-product-add-view.htm?sketchId=" + id;
+            href = "/admin-sketch-product-add-view.htm?sketchId=" + id;
         }
         window.location = href;
     };
@@ -157,7 +157,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
 
         var href = "#";
         if (id_type == "sketch") {
-            href = "/sketch-delete.htm?sketchIdes=" + id;
+            href = "/admin-sketch-delete.htm?id=" + id;
         }
         window.location = href;
 
@@ -170,39 +170,11 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
 
         var href = "#";
         if (id_type == "sketch") {
-            href = "/sketch-edit.htm?sketchIdes=" + id;
+            href = "/admin-sketch.htm?id=" + id;
         }
         window.location = href;
 
-    };
-
-    $scope.updateSelection = function ($event, id, all) {
-        if (all == undefined) {
-            var checkbox = $event.currentTarget;
-            var action = checkbox.checked ? 'add' : 'remove';
-            if (action == 'add' & $scope.selected.indexOf(id) == -1) {
-                $scope.selected.push(id);
-            }
-            if (action == 'remove' && $scope.selected.indexOf(id) != -1) {
-                $scope.selected.splice($scope.selected.indexOf(id), 1);
-            }
-        }
-        else {
-            $scope.selected = [];
-            var checkbox = $event.currentTarget;
-            var action = checkbox.checked ? 'add' : 'remove';
-            if (action == 'add' & $scope.selected.indexOf(id) == -1) {
-                angular.forEach($scope.arraytems, function (value, key) {
-                    $scope.selected.push(value.id)
-                })
-            }
-            if (action == 'remove' && $scope.selected.indexOf(id) != -1) {
-                $scope.selected = [];
-            }
-
-        }
-        console.log("$scope.selected", $scope.selected)
-    };
+    }; 
 
 
 }]

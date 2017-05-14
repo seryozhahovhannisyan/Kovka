@@ -127,6 +127,19 @@ public class BaseAction extends ActionSupport
         return false;
     }
 
+    public boolean isMachineImageExist(String logo) {
+        try {
+            String pPath = Initializer.getUploadDir() + Initializer.getMachineUploadDir() + Constants.FILE_SEPARATOR + logo;
+            pPath = pPath.replaceAll("\\\\", "/");
+
+            File file = new File(pPath);
+            return file.exists() && file.isFile();
+        } catch (Exception e) {
+            logger.warn(String.format("file not exist[%s]", logo));
+        }
+        return false;
+    }
+
     public boolean isProductImageExist(String logo) {
         try {
             String pPath = Initializer.getUploadDir() + Initializer.getProductUploadDir() + Constants.FILE_SEPARATOR + logo;
@@ -142,6 +155,12 @@ public class BaseAction extends ActionSupport
 
     public String getLogo(String logo) {
         String pPath = Initializer.getSketchUploadDir() + Constants.FILE_SEPARATOR + logo;
+        pPath = pPath.replaceAll("\\\\", "/");
+        return pPath;
+    }
+
+    public String getMachineImage(String logo) {
+        String pPath = Initializer.getMachineUploadDir() + Constants.FILE_SEPARATOR + logo;
         pPath = pPath.replaceAll("\\\\", "/");
         return pPath;
     }

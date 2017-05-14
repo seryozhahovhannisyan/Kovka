@@ -82,6 +82,16 @@
             <result name="error" type="tiles">admin-sketches</result>
         </action>
 
+        <action name="admin-sketch-edit" class="SketchAction" method="edit">
+            <result name="success" type="redirect">admin-sketches.htm</result>
+            <result name="error" type="tiles">admin-sketches</result>
+        </action>
+
+        <action name="admin-sketch-image-default" class="SketchAction" method="sketchImageDefault">
+            <result name="success" type="redirect">admin-sketches.htm</result>
+            <result name="error" type="tiles">admin-sketches</result>
+        </action>
+
         <action name="admin-sketch-delete" class="SketchAction" method="delete">
             <result name="success" type="redirect">admin-sketches.htm</result>
             <result name="error" type="tiles">admin-sketches</result>
@@ -101,8 +111,24 @@
             <result name="success" type="tiles">admin-machine</result>
         </action>
 
-        <action name="admin-price-list">
+        <action name="admin-image-delete" class="FileDataAction" method="delete">
+            <result name="success" type="redirect">admin-machine.htm</result>
+        </action>
+
+        <action name="admin-price-list" class="PriceListInfoAction" method="list">
             <result name="success" type="tiles">admin-price-list</result>
+        </action>
+
+        <action name="admin-price-list-add" class="PriceListInfoAction" method="add">
+            <result name="success" type="redirect">admin-price-list.htm</result>
+        </action>
+
+        <action name="admin-price-list-edit" class="PriceListInfoAction" method="update">
+            <result name="success" type="redirect">admin-price-list.htm</result>
+        </action>
+
+        <action name="admin-price-list-delete" class="PriceListInfoAction" method="delete">
+            <result name="success" type="redirect">admin-price-list.htm</result>
         </action>
 
         <action name="admin-work-scheme">

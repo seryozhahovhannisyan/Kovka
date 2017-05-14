@@ -1,7 +1,7 @@
 <%@ page import="com.kovka.common.data.lcp.Language" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<script type="text/javascript">
+<%--<script type="text/javascript">
     jQuery(document).ready(function ($) {
         jQuery('#dc_jqmegamenu_widget-2-item .menu').dcMegaMenu({
             rowItems: 1,
@@ -41,7 +41,12 @@
             speed: 'normal'
         });
     });
-</script>
+</script>--%>
+
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/libs/js/light_box_photo_gallery/lightbox-2.6.min.css" media="screen"/>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/libs/css/light_box_photo_gallery/style.css" media="screen"/>
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/light_box_photo_gallery/lightbox-2.6.min.js"></script>
 
 <header id="masthead" class="site-header" role="banner">
 

@@ -123,6 +123,19 @@ public class SketchManager implements ISketchManager {
     @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void update(Sketch data) throws InternalErrorException, EntityNotFoundException {
         try {
+            List<SketchInfo> infosForEdit = data.getInfos();
+            for(SketchInfo info :infosForEdit){
+                infoDao.update(info);
+            }
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+
+    @Override
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
+    public void markImageDefault(Sketch data) throws InternalErrorException, EntityNotFoundException {
+        try {
             dao.update(data);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);

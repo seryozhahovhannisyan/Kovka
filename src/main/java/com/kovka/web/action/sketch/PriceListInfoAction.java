@@ -22,7 +22,9 @@ public class PriceListInfoAction extends BaseAction {
     private static final Logger logger = Logger.getLogger(PriceListInfoAction.class.getSimpleName());
     public List<PriceListInfo> priceListInfos;
     private IPriceListInfoManager priceListInfoManager;
-    //add
+    //all count
+    private long dataCount;
+    //add/edit
     private String name;
     private String budgetary;
     private String standard;
@@ -30,9 +32,12 @@ public class PriceListInfoAction extends BaseAction {
     private String productionTime;
     //update
     private String id;
+    //delete
+    private String key;
 
     public String add() {
 
+        Long key = System.currentTimeMillis();
         if (Utils.isEmpty(name)) {
             logger.info("name is  required");
             session.put(MESSAGE, "name is requeired");
@@ -44,6 +49,7 @@ public class PriceListInfoAction extends BaseAction {
         for (Language language : Language.values()) {
             PriceListInfo info = new PriceListInfo();
             info.setLanguage(language);
+            info.setKey(key);
             info.setName(name.trim());
             info.setBudgetary(budgetary.trim());
             info.setStandard(standard.trim());
@@ -65,6 +71,9 @@ public class PriceListInfoAction extends BaseAction {
     public String list() {
         try {
             priceListInfos = priceListInfoManager.getAll();
+            if(!Utils.isEmpty(priceListInfos)){
+                dataCount = priceListInfos.size();
+            }
         } catch (InternalErrorException e) {
             logger.error(e);
             session.put(MESSAGE, "Internal Server Exception");
@@ -105,7 +114,7 @@ public class PriceListInfoAction extends BaseAction {
     public String delete() {
 
         try {
-            priceListInfoManager.delete(DataConverter.convertToLong(id));
+            priceListInfoManager.delete(DataConverter.convertToLong(key));
         } catch (InternalErrorException e) {
             logger.error(e);
             session.put(MESSAGE, "Internal Server Exception");
@@ -128,8 +137,16 @@ public class PriceListInfoAction extends BaseAction {
      *##################################################################################################################
      */
 
+    public long getDataCount() {
+        return dataCount;
+    }
+
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public List<PriceListInfo> getPriceListInfos() {

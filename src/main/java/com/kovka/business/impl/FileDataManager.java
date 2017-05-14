@@ -57,6 +57,7 @@ public class FileDataManager implements IFileDataManager {
 
             if (!isMachine) {
                 FileDataUtil.createFileSketch(fileName, data.getData());
+                FileDataUtil.createLargeFileSketch(fileName, data.getData());
             } else {
                 FileDataUtil.createFileMachine(fileName, data.getData());
             }
@@ -119,9 +120,9 @@ public class FileDataManager implements IFileDataManager {
 
     @Override
     @Transactional(readOnly = false, rollbackFor = Exception.class)
-    public void delete(FileData data) throws InternalErrorException, EntityNotFoundException {
+    public void delete(long id) throws InternalErrorException, EntityNotFoundException {
         try {
-            dao.delete(data);
+            dao.delete(id);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

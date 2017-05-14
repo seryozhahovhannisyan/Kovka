@@ -21,6 +21,6 @@ public interface IFileDataDao {
 
     public void update(FileData data) throws DatabaseException, EntityNotFoundException;
 
-    public void delete(FileData data) throws DatabaseException, EntityNotFoundException;
+    public void delete(long id) throws DatabaseException, EntityNotFoundException;
 
 }

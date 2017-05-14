@@ -45,141 +45,78 @@
                                         <div class="wpb_wrapper">
                                             <div class="wpb_text_column wpb_content_element ">
                                                 <div class="wpb_wrapper">
-                                                    <p style="text-align: center;"><span style="color: #000000;"><b>«Желдор Ковка» давно и прочно обосновалась на рынке металлообработки</b></span>
+                                                    <p style="text-align: center;">
+                                                        <span style="color: #000000;">
+                                                            <b><s:text name="page.home.title">«Желдор Ковка» давно и прочно обосновалась на рынке металлообработки</s:text></b>
+                                                        </span>
                                                     </p>
-                                                    <p style="text-align: justify;"><span
-                                                            style="color: #000000;"><b>На сегодняшний день в нашей Компании&nbsp;</b><b>работают</b> <b>специалисты
- только высокого уровня, у нас вы можете заказать кованные изделия любой
- сложности. Мы занимаем заслуженное место среди конкурентов. Оказывая
-широкий спектр услуг в области обработки металла, наши специалисты
-внимательно следят за качеством выполненных работ . Наше предприятие
-работает как с оптовыми заказами , так и с индивидуальными</b><b>).</b></span></p>
+                                                    <p style="text-align: justify;">
+                                                        <span style="color: #000000;">
+                                                            <b><s:text name="page.home.content">На сегодняшний день в нашей Компании работают специалисты только высокого уровня, у нас вы можете заказать кованные изделия любой сложности. Мы занимаем заслуженное место среди конкурентов. Оказывая широкий спектр услуг в области обработки металла, наши специалисты внимательно следят за качеством выполненных работ . Наше предприятие работает как с оптовыми заказами , так и с индивидуальными.</s:text></b>
+                                                        </span>
+                                                    </p>
 
                                                 </div>
                                             </div>
                                             <!-- vc_grid start -->
                                             <div class="vc_grid-container-wrapper vc_clearfix">
-                                                <div class="vc_grid-container vc_clearfix wpb_content_element vc_media_grid"
-                                                     data-initial-loading-animation="flash"
-                                                     data-vc-grid-settings="{&quot;page_id&quot;:36,&quot;style&quot;:&quot;all&quot;,&quot;action&quot;:&quot;vc_get_vc_grid_data&quot;,&quot;shortcode_id&quot;:&quot;1490884727435-c2a6f33a-39b0-9&quot;,&quot;tag&quot;:&quot;vc_media_grid&quot;}"
-                                                     data-vc-request="http://zheldor-kovka.ru/wp-admin/admin-ajax.php"
-                                                     data-vc-post-id="36" data-vc-public-nonce="048529bc18">
-                                                    <style type="text/css">
-                                                        img.wp-smiley,
-                                                        img.emoji {
-                                                            display: inline !important;
-                                                            border: none !important;
-                                                            box-shadow: none !important;
-                                                            height: 1em !important;
-                                                            width: 1em !important;
-                                                            margin: 0 .07em !important;
-                                                            vertical-align: -0.1em !important;
-                                                            background: none !important;
-                                                            padding: 0 !important;
-                                                        }
-                                                    </style>
-                                                    <div class="vc_grid vc_row vc_grid-gutter-35px vc_pageable-wrapper vc_hook_hover"
-                                                         data-vc-pageable-content="true">
-                                                        <div class="vc_pageable-slide-wrapper vc_clearfix"
-                                                             data-vc-grid-content="true">
-                                                            <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                                <div class="vc_grid-item-mini vc_clearfix ">
-                                                                    <div class="vc_gitem-animated-block ">
-                                                                        <div class="vc_gitem-zone vc_gitem-zone-a vc-gitem-zone-height-mode-auto vc-gitem-zone-height-mode-auto-1-1 vc_gitem-is-link"
-                                                                             style="background-image: url(http://zheldor-kovka.ru/wp-content/uploads/2016/12/Рисунок1.jpg) !important;">
-                                                                            <a href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/%D0%A0%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA1.jpg"
-                                                                               title="Собственное производство по Художественной ковке"
-                                                                               data-rel="prettyPhoto[rel--1107119351]"
-                                                                               data-vc-gitem-zone="prettyphotoLink"
-                                                                               class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
-                                                                            <img src="home_files/1.jpg"
-                                                                                 class="list-slider vc_gitem-zone-img"
-                                                                                 alt="Собственное производство по Художественной ковке">
-                                                                            <div class="vc_gitem-zone-mini">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="vc_clearfix"></div>
+
+                                                <div class="vc_grid-container vc_clearfix wpb_content_element vc_media_grid" >
+
+                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
+                                                                <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                                    <img width="100%" src="/data/machine/machine_1.jpg">
+                                                                </a>
                                                             </div>
-                                                            <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                                <div class="vc_grid-item-mini vc_clearfix ">
-                                                                    <div class="vc_gitem-animated-block ">
-                                                                        <div class="vc_gitem-zone vc_gitem-zone-a vc-gitem-zone-height-mode-auto vc-gitem-zone-height-mode-auto-1-1 vc_gitem-is-link"
-                                                                             style="background-image: url(http://zheldor-kovka.ru/wp-content/uploads/2016/12/20160203_161158-1024x614.jpg) !important;">
-                                                                            <a href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/20160203_161158-1024x614.jpg"
-                                                                               title="Собственное производство по Ковке"
-                                                                               data-rel="prettyPhoto[rel--1107119351]"
-                                                                               data-vc-gitem-zone="prettyphotoLink"
-                                                                               class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
-                                                                            <img src="home_files/20160203_161158-1024x614.jpg"
-                                                                                 class="list-slider vc_gitem-zone-img"
-                                                                                 alt="Собственное производство по Ковке">
-                                                                            <div class="vc_gitem-zone-mini">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="vc_clearfix"></div>
-                                                            </div>
-                                                            <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                                <div class="vc_grid-item-mini vc_clearfix">
-                                                                    <div class="vc_gitem-animated-block ">
-                                                                        <div class="vc_gitem-zone vc_gitem-zone-a vc-gitem-zone-height-mode-auto vc-gitem-zone-height-mode-auto-1-1 vc_gitem-is-link"
-                                                                             style="background-image: url(http://zheldor-kovka.ru/wp-content/uploads/2016/12/20160203_161708-1024x614.jpg) !important;">
-                                                                            <a href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/20160203_161708-1024x614.jpg"
-                                                                               title="Собственное производство по Ковке"
-                                                                               data-rel="prettyPhoto[rel--1107119351]"
-                                                                               data-vc-gitem-zone="prettyphotoLink"
-                                                                               class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
-                                                                            <img src="home_files/20160203_161708-1024x614.jpg"
-                                                                                 class="list-slider vc_gitem-zone-img"
-                                                                                 alt="Собственное производство по Ковке">
-                                                                            <div class="vc_gitem-zone-mini">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="vc_clearfix"></div>
-                                                            </div>
-                                                            <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                                <div class="vc_grid-item-mini vc_clearfix">
-                                                                    <div class="vc_gitem-animated-block ">
-                                                                        <div class="vc_gitem-zone vc_gitem-zone-a vc-gitem-zone-height-mode-auto vc-gitem-zone-height-mode-auto-1-1 vc_gitem-is-link"
-                                                                             style="background-image: url(http://zheldor-kovka.ru/wp-content/uploads/2016/12/20160212_165903-1024x614.jpg) !important;">
-                                                                            <a href="http://zheldor-kovka.ru/wp-content/uploads/2016/12/20160212_165903-1024x614.jpg"
-                                                                               title="Собственное производство по Ковке"
-                                                                               data-rel="prettyPhoto[rel--1107119351]"
-                                                                               data-vc-gitem-zone="prettyphotoLink"
-                                                                               class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>
-                                                                            <img src="home_files/20160212_165903-1024x614.jpg"
-                                                                                 class="list-slider vc_gitem-zone-img"
-                                                                                 alt="Собственное производство по Ковке">
-                                                                            <div class="vc_gitem-zone-mini">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="vc_clearfix"></div>
-                                                            </div>
-                                                        </div>
+                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
+                                                        <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                            <img src="/data/machine/machine_1.jpg">
+                                                        </a>
                                                     </div>
+                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
+                                                        <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                            <img src="/data/machine/machine_1.jpg">
+                                                        </a>
+                                                    </div>
+                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
+                                                                <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                                    <img src="/data/machine/machine_1.jpg">
+                                                                </a>
+                                                            </div>
+
                                                 </div>
+                                                <div class="vc_grid-container vc_clearfix wpb_content_element vc_media_grid" >
+
+                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
+                                                                <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                                    <img src="/data/machine/machine_1.jpg">
+                                                                </a>
+                                                            </div>
+                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
+                                                        <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                            <img src="/data/machine/machine_1.jpg">
+                                                        </a>
+                                                    </div>
+                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
+                                                        <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                            <img src="/data/machine/machine_1.jpg">
+                                                        </a>
+                                                    </div>
+                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
+                                                                <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                                    <img src="/data/machine/machine_1.jpg">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+
                                             </div><!-- vc_grid end -->
 
-                                            <div class="wpb_text_column wpb_content_element ">
-                                                <div class="wpb_wrapper">
-                                                    <h2 style="text-align: center;"><span
-                                                            style="color: #000000;"><em><strong>Собственное производство в городе Железнодорожный Московской области</strong></em></span>
-                                                    </h2>
-
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="vc_row wpb_row vc_row-fluid">
+                            <%--<div class="vc_row wpb_row vc_row-fluid">
                                 <div class="wpb_column vc_column_container vc_col-sm-12">
                                     <div class="vc_column-inner ">
                                         <div class="wpb_wrapper">
@@ -483,7 +420,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--%>
                             <div class="clear"></div>
                             <footer class="entry-footer">
                                 <div class="entry-meta">

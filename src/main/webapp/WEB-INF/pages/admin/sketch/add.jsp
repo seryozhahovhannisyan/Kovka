@@ -30,7 +30,7 @@
                 </div>
                 <div class="x_content">
 
-                    <form id="sketchInfoForm" action="sketch-add.htm" method="post" data-parsley-validate=""
+                    <form id="sketchInfoForm" action="admin-sketch-add.htm" method="post" data-parsley-validate=""
                           class="form-horizontal form-label-left"
                           novalidate="">
 
@@ -68,18 +68,18 @@
                             <input name="description" id="descriptionVal" class="form-control col-md-7 col-xs-12"
                                    type="hidden">
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div id="description" class="summernote">summernote 1</div>
+                                <div id="description" class="summernote"></div>
                             </div>
                         </div>
 
 
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button class="btn btn-primary" type="button" onclick="goToAction('/sketches.htm')">
-                                    Back
+                                <button class="btn btn-primary" type="button" onclick="goToAction('/admin-sketches.htm')">
+                                    <s:text name="label.back">Back</s:text>
                                 </button>
-                                <button class="btn btn-primary" type="reset">Reset</button>
-                                <button type="button" class="btn btn-success" onclick="submitForm()">Submit</button>
+                                <button class="btn btn-primary" type="reset"><s:text name="label.reset">Reset</s:text></button>
+                                <button type="button" class="btn btn-success" onclick="submitForm()"><s:text name="label.Save">Save</s:text></button>
                             </div>
                         </div>
 

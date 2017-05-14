@@ -1,11 +1,15 @@
+<%@ page import="com.kovka.common.data.lcp.Language" %><%--
+  Created by IntelliJ IDEA.
+  User: Serozh
+  Date: 7/29/2016
+  Time: 4:58 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-<link href="<%=request.getContextPath()%>/css/template/companies.css" rel="stylesheet">
 <link href="https://cdn.rawgit.com/summernote/summernote/v0.8.1/dist/summernote.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/summernote.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-summernote.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/template/companies.js"></script>
 
 
 <div class="right_col" role="main" style="min-height: 2519px;">
@@ -15,248 +19,136 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>
-                        <s:text name="sketches.title.add">Sketch Add</s:text>
+                        <s:text name="sketches.title">Sketch</s:text>
                     </h2>
 
                     <div class="clearfix"></div>
                 </div>
+                <div class="x_content">
+
+                    <div class="row">
+                        <div class="user_text_div col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                            <!-- message box -->
+                            <div class="box-info"
+                                 <s:if test="%{#session.info == null || #session.info == ''}">style="display: none"</s:if>>
+                                <s:property value="#session.info"/>
+                                <s:set var="info" scope="session" value=""/>
+                            </div>
+
+                            <div class="box-hint"
+                                 <s:if test="%{#session.message == null || #session.message == ''}">style="display: none"</s:if>>
+                                <s:property value="#session.message"/>
+                                <s:set var="message" scope="session" value=""/>
+                            </div>
+                            <!-- message box -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="x_content">
+
+                    <form id="sketchEditForm" action="admin-sketch-edit.htm" method="post" data-parsley-validate=""
+                          class="form-horizontal form-label-left"
+                          novalidate="">
+
+
+                        <s:iterator var="info" value="infosForEdit" status="st">
+                            <input name="infosForEdit[<s:property value="#st.index"/>].id"
+                                   value='<s:property value="#info.id"/>' type="hidden"/>
+
+                            <div class="form-group" id="<s:property value="#info.language.key"/>">
+                                <h2 class="control-label col-md-3 col-sm-3 col-xs-12"
+                                    for="<s:property value="#info.language.key"/>">
+                                    <s:property value="#info.language.title"/>
+                                </h2>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="title<s:property value="#info.language.key"/>">
+                                    Name
+                                </label>
+                                <div id="title<s:property value="#info.language.key"/>"
+                                     class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="infosForEdit[<s:property value="#st.index"/>].title"
+                                           value='<s:property value="#info.name"/>'
+                                           class="form-control col-md-7 col-xs-12" type="text"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="shortDesc<s:property value="#info.language.key"/>">
+                                    Short Description
+                                </label>
+                                <div id="shortDesc<s:property value="#info.language.key"/>"
+                                     class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="infosForEdit[<s:property value="#st.index"/>].shortDesc"
+                                           value='<s:property value="#info.shortDesc"/>'
+                                           class="form-control col-md-7 col-xs-12" type="text"/>
+                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="title<s:property value="#info.language.key"/>">
+                                    Title
+                                </label>
+                                <div id="title<s:property value="#info.language.key"/>"
+                                     class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="infosForEdit[<s:property value="#st.index"/>].title"
+                                           value='<s:property value="#info.title"/>'
+                                           class="form-control col-md-7 col-xs-12" type="text"/>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <input name="infosForEdit[<s:property value="#st.index"/>].description"
+                                       id="descriptionVal_<s:property value="#info.language.key"/>"
+                                       class="form-control col-md-7 col-xs-12"
+                                       type="hidden">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="description_<s:property value="#info.language.key"/>">
+                                    Description
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div id="description_<s:property value="#info.language.key"/>"
+                                         class="summernote_<s:property value="#info.language.key"/>">
+                                        <s:property value="#info.description" escapeHtml="false"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </s:iterator>
+
+                    </form>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="button" onclick="goToAction('/user-home.htm')">Menu
+                            </button>
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            <button type="button" class="btn btn-success" onclick="submitForm()">Submit</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="row" ng-cloak>
-        <div class="form_parent_div col-lg-4 col-md-4 col-sm-6 col-xs-10" ng-controller="adminCompanies">
-
-            <form action="company-form-request-verify.htm" name=companyInfoEditAdmin method="post"
-                  novalidate="novalidate">
-                <input type="hidden" name="formRequestId" value="<s:property value="formRequestId"/>">
-
-                <div class="input_parent_div">
-                    <input type="text" placeholder="response title" name="title" required="required"
-                           ng-model="company.title">
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.title.$touched && companyInfoEditAdmin.title.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-
-                    <div ng-controller="callbacksCtrl" class="main_text_editor ">
-                        <input type="hidden" ng-value="summer_value" name="message">
-                        <summernote name="message_summer" config="optionsSummernote"
-                                    on-init="init()" on-enter="enter()" on-focus="focus(evt)"
-                                    on-blur="blur(evt)" on-paste="paste(evt)" on-keyup="keyup(evt)"
-                                    on-keydown="keydown(evt)"
-                                    on-change="change(contents)"
-                                    on-image-upload="imageUpload(files)"
-                                    editable="editable" editor="editor">
-                        </summernote>
-                    </div>
-                </div>
-                <div class="input_parent_div">
-                    <input type="file" file-model="fileInfo">
-                </div>
-
-                <div class="input_parent_div">
-                    <button type="button" class="plus_button" ng-click=plus()>+</button>
-                    <input type="text" class="add_input" placeholder="response remote addresses" ng-model='res_address'
-                           ng-blur='blur_input_addres()' required>
-                    <input type="hidden" name="allowedRemoteAddressValues" ng-value='addres_string'>
-                    <div class="error_div"
-                         ng-show="companyInfoEditAdmin.allowedRemoteAddressValues.$touched && companyInfoEditAdmin.allowedRemoteAddressValues.$error.required">
-                        <span>This field is required</span>
-                    </div>
-                </div>
-
-                <div class="input_parent_div">
-                    <div class="request-form-group ">
-                        <div class="ist_mult" on-item-click="addPartition()"
-                             isteven-multi-select
-                             input-model="partitionType"
-                             output-model="partitionTypeOut"
-                             button-label="name"
-                             item-label="name"
-                             tick-property="ticked"
-                             selection-mode="multiple"
-                             helper-elements="filter"
-                             translation="select_partition"
-                        >
-                        </div>
-                    </div>
-                    <input type="hidden" name="allowedPartitionValues" ng-value="partition">
-                </div>
-
-
-                <div class="input_parent_div">
-                    <input type="number" placeholder="balance provided by merchant" name="balanceProvidedByMerchant"
-                           ng-model='company.balanceProvidedByMerchant' required>
-
-                    <div class="error_div"
-                         ng-show="companyInfoEditAdmin.balanceProvidedByMerchant.$touched && companyInfoEditAdmin.balanceProvidedByMerchant.$error.required">
-                        <span>This field is required</span>
-                    </div>
-                </div>
-
-
-                <div class="input_parent_div">
-                    <input type="number" placeholder="accepted overpayment" name="acceptedOverpayment" required
-                           ng-model='company.acceptedOverpayment'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.acceptedOverpayment.$touched && companyInfoEditAdmin.acceptedOverpayment.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="maximum limit of transaction" name="maximumLimitOfTransaction"
-                           required ng-model='company.maximumLimitOfTransaction'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.maximumLimitOfTransaction.$touched && companyInfoEditAdmin.maximumLimitOfTransaction.$error.required">
-                    <span>This field is required</span>
-                </div>
-
-
-                <div class="input_parent_div">
-                    <div class="request-form-group ">
-                        <div class="ist_mult" on-item-click="addCurrency()"
-                             isteven-multi-select
-                             input-model="cuerencyType"
-                             output-model="cuerencyTypeOut"
-                             button-label="name"
-                             item-label="name"
-                             tick-property="ticked"
-                             selection-mode="single"
-                             helper-elements="none"
-                             translation="select_currency"
-                        >
-                        </div>
-                    </div>
-                    <input type="hidden" name="currencyType" ng-value="currency">
-                </div>
-
-
-                <div class="input_parent_div">
-
-
-                    <div class="request-form-group ">
-                        <div class="ist_mult" on-item-click="addRatevalue()"
-                             isteven-multi-select
-                             input-model="availableRateValues"
-                             output-model="availableRateValuesOut"
-                             button-label="name"
-                             item-label="name"
-                             tick-property="ticked"
-                             selection-mode="multiple"
-                             helper-elements="filter"
-                             translation="select_rate"
-                        >
-                        </div>
-                    </div>
-                    <input type="hidden" name="availableRateValues" ng-value="rate">
-                </div>
-
-
-                <div class="input_parent_div">
-                    <input type="number" placeholder="deposit fee percent" name="depositFeePercent" required
-                           ng-model='company.depositFeePercent'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.depositFeePercent.$touched && companyInfoEditAdmin.depositFeePercent.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="deposit minimum fee" name="depositMinFee" required
-                           ng-model='company.depositMinFee'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.depositMinFee.$touched && companyInfoEditAdmin.depositMinFee.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="deposit maximum fee" name="depositMaxFee" required
-                           ng-model='company.depositMaxFee'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.depositMaxFee.$touched && companyInfoEditAdmin.depositMaxFee.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="withdraw fee percent" name="withdrawFeePercent" required
-                           ng-model='company.withdrawFeePercent'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.withdrawFeePercent.$touched && companyInfoEditAdmin.withdrawFeePercent.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="withdraw minimum fee" name="withdrawMinFee" required
-                           ng-model='company.withdrawMinFee'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.withdrawMinFee.$touched && companyInfoEditAdmin.withdrawMinFee.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="withdraw maximum fee" name="withdrawMaxFee" required
-                           ng-model='company.withdrawMaxFee'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.withdrawMaxFee.$touched && companyInfoEditAdmin.withdrawMaxFee.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="exchange deposit fee percent" name="exchangeDepositFeePercent"
-                           required ng-model='company.exchangeDepositFeePercent'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.exchangeDepositFeePercent.$touched && companyInfoEditAdmin.exchangeDepositFeePercent.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="exchange deposit minimum fee" name="exchangeDepositMinFee"
-                           required ng-model='company.exchangeDepositMinFee'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.exchangeDepositMinFee.$touched && companyInfoEditAdmin.exchangeDepositMinFee.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="exchange deposit maximum fee" name="exchangeDepositMaxFee"
-                           required ng-model='company.exchangeDepositMaxFee'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.exchangeDepositMaxFee.$touched && companyInfoEditAdmin.exchangeDepositMaxFee.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="exchange withdraw fee percent" name="exchangeWithdrawFeePercent"
-                           required ng-model='company.exchangeWithdrawFeePercent'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.exchangeWithdrawFeePercent.$touched && companyInfoEditAdmin.exchangeWithdrawFeePercent.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="exchange withdraw min fee" name="exchangeWithdrawMinFee" required
-                           ng-model='company.exchangeWithdrawMinFee'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.exchangeWithdrawMinFee.$touched && companyInfoEditAdmin.exchangeWithdrawMinFee.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div class="input_parent_div">
-                    <input type="number" placeholder="exchange withdraw max fee" name="exchangeWithdrawMaxFee" required
-                           ng-model='company.exchangeWithdrawMaxFee'>
-                </div>
-                <div class="error_div"
-                     ng-show="companyInfoEditAdmin.exchangeWithdrawMaxFee.$touched && companyInfoEditAdmin.exchangeWithdrawMaxFee.$error.required">
-                    <span>This field is required</span>
-                </div>
-                <div align="center">
-                    <button class="btn btn-success">submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
 </div>
+</div>
+<script>
+    $(document).ready(function () {
+        <%for (Language language : Language.values()){%>
+        $('.summernote_<%=language.getKey()%>').summernote();
+        <%}%>
+
+    });
+    function submitForm() {
+        <%for (Language language : Language.values()){%>
+        $("#descriptionVal_<%=language.getKey()%>").val($('.summernote_<%=language.getKey()%>').summernote('code'));
+        <%}%>
+
+        $('#sketchEditForm').submit()
+    }
+</script>
+

@@ -24,20 +24,20 @@ $(function () {
         url: "/admin-upload-sketch.htm?sketchId=<s:property value='sketchId'/>",
 
         // Maximum file size
-        max_file_size: '2mb',
-        chunk_size: '1mb',
+        max_file_size: '10mb',
+        chunk_size: '10mb',
 
         // Resize images on clientside if we can
-        resize: {
-            width: 200,
-            height: 200,
-            quality: 90,
-            crop: true // crop to exact dimensions
-        },
+//        resize: {
+//            width: 200,
+//            height: 200,
+//            quality: 90,
+//            crop: true // crop to exact dimensions
+//        },
 
         // Specify what files to browse for
         filters: [
-            {title: "Image files", extensions: "jpg,gif,png"},
+            {title: "Image files", extensions: "jpg,jpeg,gif,png"},
         ],
 
         // Rename files by clicking on their titles
@@ -124,9 +124,9 @@ $(function () {
                                             <div class="mask">
                                                 <p>Your Text</p>
                                                 <div class="tools tools-bottom">
-                                                    <a href="#"><i class="fa fa-link"></i></a>
+                                                    <a href="admin-sketch-image-default.htm?id=<s:property value="sketchId"/>&mainImageId=<s:property value="#data.id"/>"><i class="fa fa-link"></i></a>
                                                     <a href="#"><i class="fa fa-pencil"></i></a>
-                                                    <a href="#"><i class="fa fa-times"></i></a>
+                                                    <a href="admin-image-delete.htm?id=<s:property value="#data.id"/>"><i class="fa fa-times"></i></a>
                                                 </div>
                                             </div>
                                         </div>

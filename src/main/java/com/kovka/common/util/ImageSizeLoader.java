@@ -10,21 +10,19 @@ public class ImageSizeLoader implements Serializable {
 
 
     //thumb
-    public int thumbWidth = 48;
-    public int thumbHeight = 48;
+    public int productWidth = 640;
+    public int productHeight = 419;
     //main
-    public int mainWidth = 400;
-    public int mainHeight = 300;
+    public int sketchWidth = 150;
+    public int sketchHeight = 150;
     //large
     public int largeWidth = 1024;
     public int largeHeight = 768;
-    //slide
-    public int slideWidth = 800;
-    public int slideHeight = 600;
-    public String thumb;
-    public String main;
+
+    public String product;
+    public String sketch;
     public String large;
-    public String slide;
+
     private Properties props;
 
     public ImageSizeLoader() {
@@ -35,17 +33,14 @@ public class ImageSizeLoader implements Serializable {
         try {
             this.props = properties;
 
-            thumbWidth = Integer.parseInt(properties.getProperty("thumb.width"));
-            thumbHeight = Integer.parseInt(properties.getProperty("thumb.height"));
+            productWidth = Integer.parseInt(properties.getProperty("product.width"));
+            productHeight = Integer.parseInt(properties.getProperty("product.height"));
 
-            mainWidth = Integer.parseInt(properties.getProperty("main.width"));
-            mainHeight = Integer.parseInt(properties.getProperty("main.height"));
+            sketchWidth = Integer.parseInt(properties.getProperty("sketch.width"));
+            sketchHeight = Integer.parseInt(properties.getProperty("sketch.height"));
 
             largeWidth = Integer.parseInt(properties.getProperty("large.width"));
             largeHeight = Integer.parseInt(properties.getProperty("large.height"));
-
-            slideWidth = Integer.parseInt(properties.getProperty("slide.width"));
-            slideHeight = Integer.parseInt(properties.getProperty("slide.height"));
 
         } catch (Exception e) {
 
@@ -55,14 +50,13 @@ public class ImageSizeLoader implements Serializable {
     }
 
     private String fName(int width, int height) {
-        return width + "x" + height;
+        return width + "x" + height + "_";
     }
 
     private void createFolderNames() {
-        thumb = fName(thumbWidth, thumbWidth);
-        main = fName(mainWidth, mainHeight);
+        product = fName(productWidth, productWidth);
+        sketch = fName(sketchWidth, sketchHeight);
         large = fName(largeWidth, largeHeight);
-        slide = fName(slideWidth, slideHeight);
     }
 
     public final Properties getProperties() {

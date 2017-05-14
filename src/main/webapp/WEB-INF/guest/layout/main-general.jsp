@@ -54,22 +54,22 @@
           href="<%=request.getContextPath()%>/css/guest/font-awesome_002.css" type="text/css"
           media="all">
 
-    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/js/guest/lib/colorbox.css"
-          type="text/css" media="all">
+    <%--<link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/js/guest/lib/colorbox.css"--%>
+          <%--type="text/css" media="all">--%>
 
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-2.2.4.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/slick-1.5.0.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/jquery.colorbox-min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/script.js"></script>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/slick-1.5.0.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/jquery.colorbox-min.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/script.js"></script>--%>
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
 
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.dcjqaccordion.2.9.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.dcmegamenu.1.3.4.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.hoverIntent.minified.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/ubermenu.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/navigation.js"></script>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.dcjqaccordion.2.9.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.dcmegamenu.1.3.4.min.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.min.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.hoverIntent.minified.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/ubermenu.min.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/navigation.js"></script>--%>
 
 
     <script type="text/javascript"
@@ -388,55 +388,10 @@
 
     $(document).ready(function () {
         // No right click
-        $('img').bind('contextmenu', function (e) {
-            return false;
-        });
-        $(".prettyphoto").colorbox({rel: 'prettyphoto'});
+
+//        $(".prettyphoto").colorbox({rel: 'prettyphoto'});
 
     });
-
-    function doModal(identifier) {
-        var id = $(identifier).data('id');
-        $("#post_id").val(id);
-        $('#hidCaptchaId').val('<%=session.getId()%>');
-        $(".booking-modal").modal();
-    }
-
-    function closeModal() {
-        $("#post_id").val("");
-        $(".booking-modal").modal('hide');
-    }
-
-    function book_button_target(identifier, type) {
-        //onmouseover
-        if (type == 1) {
-            if ($(identifier).hasClass('blue')) {
-                $(identifier).removeClass('blue');
-                $(identifier).addClass('red');
-            }
-        } else if (type == 2) {
-            //onmouseout
-            if ($(identifier).hasClass('red')) {
-                $(identifier).removeClass('red');
-                $(identifier).addClass('blue');
-            }
-        }
-    }
-
-    function more_info_button_target(identifier, type) {
-        //onmouseover
-        if (type == 1) {
-            $(identifier).css("background", " none repeat scroll 0 0 red");
-        } else if (type == 2) {
-            //onmouseout
-            $(identifier).css("background", " none repeat scroll 0 0 #84a5b1");
-        }
-    }
-
-    function more_info_country(target) {
-        var redirect = $(target).attr("data-redirect");
-        window.location = redirect;
-    }
 
 </script>
 

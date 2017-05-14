@@ -19,30 +19,25 @@
             <div class="form-login-message"></div>
             <div class="login-form col-lg-4 col-md-6 col-sm-6 col-xs-8">
                 <div class="login_form_title">
-                    <s:text name="page.cashierEntry.user.login">USER LOGIN</s:text>
+                    <s:text name="page.area.header.alt.Login.Admin">Admin LOGIN</s:text>
                 </div>
 
                 <div class="form-group-username ">
                     <input type="text" class="form-control login_form_login" name="username"
-                           placeholder="<s:text name="page.cashierEntry.placeholder.Username">Username</s:text>"
+                           placeholder="<s:text name="page.area.header.placeholder.Username">Username</s:text>"
                            autocomplete="off"/>
                 </div>
 
                 <div class="form-group-password">
                     <img ng-click="loginForm.passwordShowHideAndIconSrc()" class="show_hide_password" ng-cloak
                          ng-src="{{loginForm.passwordShowHideIconSrc}}"
-                         alt="<s:text name="page.cashierEntry.alt.Show.Hide.Password">Show/Hide Password</s:text>"/>
+                         alt="<s:text name="page.area.header.alt.Show.Hide.Password">Show/Hide Password</s:text>"/>
                     <input type="{{loginForm.inputType}}" class="form-control login_form_password" name="password"
-                           placeholder="<s:text name="page.cashierEntry.placeholder.Password">Password</s:text>"
+                           placeholder="<s:text name="label.password">Password</s:text>"
                            autocomplete="new-password"/>
                 </div>
-                <div class="login_form_forgot_password  ">
-                    <a href="forgot-password.htm">
-                        <s:text name="page.login.Forgot.Password">Forgot Password ?</s:text>
-                    </a>
-                </div>
                 <button type="submit" class="login_button col-lg-8 col-md-10 col-sm-10 col-xs-10">
-                    <s:text name="page.login.login.button">login</s:text>
+                    <s:text name="button.login">login</s:text>
                 </button>
             </div>
         </form>

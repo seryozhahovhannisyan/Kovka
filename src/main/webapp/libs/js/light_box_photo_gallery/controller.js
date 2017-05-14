@@ -1,5 +1,6 @@
 // angular.module('demo1', ['bootstrapLightbox']);
 
+/*
 controllers.GalleryCtrl = function ($scope, Lightbox) {
     $scope.images = [
         {
@@ -50,4 +51,4 @@ controllers.GalleryCtrl = function ($scope, Lightbox) {
         Lightbox.openModal($scope.images, index);
     };
 
-};
+};*/

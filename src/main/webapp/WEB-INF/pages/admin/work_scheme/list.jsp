@@ -82,7 +82,7 @@
                     <div class="row">
                         <div class="add_div_brch_parent" ng-click=add_new_records('sketch')>
                             <div class="add_div_brch"></div>
-                            <div><s:text name="page.branches.main.add.record">Add new record</s:text></div>
+                            <div><s:text name="label.add.record">Add new record</s:text></div>
                         </div>
                         <div class="add_div_brch_parent" onclick="insRow()">
                             <div class="add_div_brch"></div>
@@ -203,7 +203,7 @@
 
                             </s:if>
                             <s:else>
-                                <s:text name="page.branches.info.list.data.found">Data not found</s:text>
+                                <s:text name="page.info.list.data.found">Data not found</s:text>
                             </s:else>
                         </div>
                     </div>

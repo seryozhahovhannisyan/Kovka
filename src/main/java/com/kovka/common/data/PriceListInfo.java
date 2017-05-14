@@ -8,6 +8,7 @@ import com.kovka.common.data.lcp.Language;
 public class PriceListInfo {
 
     private Long id;
+    private Long key;
     private Language language;
 
     private String name;
@@ -27,6 +28,14 @@ public class PriceListInfo {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getKey() {
+        return key;
+    }
+
+    public void setKey(Long key) {
+        this.key = key;
     }
 
     public Language getLanguage() {

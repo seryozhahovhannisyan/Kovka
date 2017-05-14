@@ -71,9 +71,9 @@ public class FileDataDao implements IFileDataDao {
     }
 
     @Override
-    public void delete(FileData data) throws DatabaseException, EntityNotFoundException {
+    public void delete(long id) throws DatabaseException, EntityNotFoundException {
         try {
-            map.delete(data);
+            map.delete(id);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }

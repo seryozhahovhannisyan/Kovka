@@ -62,7 +62,7 @@
             parameterType="_long">
 
         SELECT * FROM f_data
-        WHERE id = #{id}
+        WHERE id = #{id} AND `status` = 1
 
     </select>
 
@@ -71,7 +71,7 @@
             parameterType="_long">
 
         SELECT * FROM f_data
-        WHERE sketch_id = #{sketchId}
+        WHERE sketch_id = #{sketchId} AND `status` = 1
 
     </select>
 
@@ -79,7 +79,7 @@
             resultMap="rmFileDataSimple">
 
         SELECT * FROM f_data
-        WHERE is_machine = 1
+        WHERE is_machine = 1 AND `status` = 1
 
     </select>
 
@@ -97,7 +97,7 @@
             parameterType="_long">
 
         SELECT * FROM f_data
-        WHERE sketch_id = #{sketchId}
+        WHERE sketch_id = #{sketchId} AND `status` = 1
 
     </select>
 
@@ -119,9 +119,9 @@
         WHERE id = #{id}
     </update>
 
-    <update id="delete" parameterType="FileData">
+    <update id="delete" parameterType="_long">
         UPDATE f_data
-        SET status = #{status}
+        SET status = 2
         WHERE id = #{id}
     </update>
 

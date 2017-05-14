@@ -3,7 +3,10 @@ package com.kovka.web.action.sketch;
 import com.kovka.business.IFileDataManager;
 import com.kovka.common.data.FileData;
 import com.kovka.common.data.lcp.Status;
+import com.kovka.common.exception.DataParseException;
+import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
+import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
 import com.kovka.web.action.BaseAction;
 import org.apache.commons.io.FileUtils;
@@ -34,12 +37,15 @@ public class MachineUploadAction extends BaseAction {
     private String fileFileName;
     private String fileContentType;
 
+    private String id;
+
     public String view() {
         try {
             datas = dataManager.getMachineData();
         } catch (InternalErrorException e) {
             logger.error(e);
-            return INPUT;
+            session.put(MESSAGE, getText("error.internal"));
+            return ERROR;
         }
         return SUCCESS;
     }
@@ -104,6 +110,10 @@ public class MachineUploadAction extends BaseAction {
 
     public void setFileContentType(String fileContentType) {
         this.fileContentType = fileContentType;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setDataManager(IFileDataManager dataManager) {

@@ -16,7 +16,7 @@
     <div class="">
         <div class="row">
             <div class="hello_div_parent">
-                <s:text name="page.home.title">Welcome</s:text>
+                <s:text name="page.home.title.admin">Welcome</s:text>
                 <div class="name_div">
                     <s:property value="#session.cashier.name"/>&nbsp; <s:property value="#session.cashier.surname"/>
                 </div>

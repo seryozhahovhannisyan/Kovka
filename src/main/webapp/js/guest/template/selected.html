@@ -220,9 +220,11 @@
                                 <h2 class="wpb_heading wpb_singleimage_heading" ng-if="p.price != null"> Эскиз
                                     №{{$index+1 + sectionIndex}} &nbsp; {{p.price}} р/кв.м.</h2>
                                 <figure class="wpb_wrapper vc_figure">
-                                    <a href="{{p.image}}" title="№{{$index+1 + sectionIndex}}"
-                                       class="vc_single_image-wrapper vc_box_border_grey test">
-                                        <img src="{{p.image}}" class="vc_single_image-img attachment-medium"
+                                    <a data-lightbox="roadtrip" href="{{p.image}}" title="№{{$index+1 + sectionIndex}}"
+                                       class="vc_single_image-wrapper vc_box_border_grey test"
+                                    >
+                                        <img src="{{p.image}}"
+                                             class="vc_single_image-img attachment-medium"
                                              height="202" width="300"/>
                                     </a>
                                 </figure>

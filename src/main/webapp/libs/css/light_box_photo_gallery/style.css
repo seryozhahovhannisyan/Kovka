@@ -1,3 +1,4 @@
+/*
 .gallery {
     padding: 0;
     margin-top: 50px;
@@ -72,4 +73,25 @@
 
 .view .mask, .view .content {
     top: -41px;
+}*/
+.lightbox-container-image-box {
+    max-width: 80%;
+    height:100% !important;
+}
+.lightbox-container-image img {
+    max-width: 100%;
+}
+.lightbox-container-image-data-box{
+    max-width:80%; margin-bottom:50px;
+}
+
+#lightbox-container-image-box {
+    max-width: 80%;
+    height:100% !important;
+}
+#lightbox-container-image img {
+    max-width: 100%;
+}
+#lightbox-container-image-data-box{
+    max-width:80%; margin-bottom:50px;
 }

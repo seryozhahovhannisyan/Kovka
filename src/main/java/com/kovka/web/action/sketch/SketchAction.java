@@ -31,9 +31,10 @@ public class SketchAction extends BaseAction {
     private ISketchManager sketchManager;
 
     private Sketch sketch;
+    public List<SketchInfo> infosForEdit;
     // for delete
     private Long id;
-    private String sketchIdes;
+     private Long mainImageId;
     // for add
     private String name;
     private String shortDesc;
@@ -53,6 +54,10 @@ public class SketchAction extends BaseAction {
             logger.info("Empty incoming data");
             return INPUT;
         }
+
+        description =  description.replaceAll("vc_col-sm-6","vc_col-sm-12")
+                .replaceAll("vc_col-sm-8","vc_col-sm-12")
+                .replaceAll("vc_col-sm-10","vc_col-sm-12");
 
         Sketch sketch = new Sketch();
         sketch.setStatus(Status.ACTIVE);
@@ -80,6 +85,7 @@ public class SketchAction extends BaseAction {
     public String view() {
         try {
             sketch = sketchManager.getFullById(id);
+            infosForEdit = sketch.getInfos();
         } catch (InternalErrorException e) {
             logger.error(e);
         } catch (EntityNotFoundException e) {
@@ -126,6 +132,50 @@ public class SketchAction extends BaseAction {
         return SUCCESS;
     }
 
+    public String sketchImageDefault() {
+
+        Sketch sketch = new Sketch();
+        sketch.setId(id);
+        sketch.setMainImageId(mainImageId);
+
+        try {
+
+            sketchManager.markImageDefault(sketch);
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (EntityNotFoundException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        }
+
+        return SUCCESS;
+    }
+
+    public String edit() {
+
+        Sketch sketch = new Sketch();
+        sketch.setId(id);
+        sketch.setInfos(infosForEdit);
+
+        try {
+
+            sketchManager.update(sketch);
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        } catch (EntityNotFoundException e) {
+            logger.error(e);
+            session.put(MESSAGE, "Internal Server Exception");
+            return ERROR;
+        }
+
+        return SUCCESS;
+    }
+
     public String delete() {
 
         try {
@@ -147,6 +197,14 @@ public class SketchAction extends BaseAction {
 
     public Sketch getSketch() {
         return sketch;
+    }
+
+    public List<SketchInfo> getInfosForEdit() {
+        return infosForEdit;
+    }
+
+    public void setInfosForEdit(List<SketchInfo> infosForEdit) {
+        this.infosForEdit = infosForEdit;
     }
 
     public String getName() {
@@ -197,6 +255,14 @@ public class SketchAction extends BaseAction {
         }
     }
 
+    public void setMainImageId(String mainImageId) {
+        try {
+            this.mainImageId = Long.parseLong(mainImageId);
+        } catch (Exception e) {
+            this.id = -1L;
+        }
+    }
+
     public String getRequestJson() {
         return requestJson;
     }
@@ -215,9 +281,5 @@ public class SketchAction extends BaseAction {
 
     public void setSketchManager(ISketchManager sketchManager) {
         this.sketchManager = sketchManager;
-    }
-
-    public void setSketchIdes(String sketchIdes) {
-        this.sketchIdes = sketchIdes;
     }
 }

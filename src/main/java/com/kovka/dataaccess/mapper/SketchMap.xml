@@ -169,7 +169,17 @@
 
     <update id="update" parameterType="Sketch">
         UPDATE sketch
-        SET status = #{status} , `order` = #{order}, `main_image_id` = #{mainImageId}
+        SET
+        id = #{id}
+        <if test="status != null">
+            , status = #{status}
+        </if>
+       <if test="order != null">
+            , order = #{order}
+        </if>
+        <if test="mainImageId != null">
+            , main_image_id = #{mainImageId}
+        </if>
         WHERE id = #{id}
     </update>
 

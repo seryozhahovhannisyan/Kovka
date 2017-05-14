@@ -19,7 +19,7 @@ public class Sketch {
     private List<SketchProduct> products;
 
     private Status status;
-    private int order;
+    private Integer order;
     private Long mainImageId;
 
     /*##################################################################################################################
@@ -75,11 +75,11 @@ public class Sketch {
         this.status = status;
     }
 
-    public int getOrder() {
+    public Integer getOrder() {
         return order;
     }
 
-    public void setOrder(int order) {
+    public void setOrder(Integer order) {
         this.order = order;
     }
 

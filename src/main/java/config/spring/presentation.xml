@@ -51,6 +51,11 @@
     </bean>
 
 
+    <bean id="FileDataAction" class="com.kovka.web.action.sketch.FileDataAction" scope="prototype">
+        <property name="dataManager" ref="FileDataManager"/>
+    </bean>
+
+
     <bean id="PriceListInfoAction" class="com.kovka.web.action.sketch.PriceListInfoAction" scope="prototype">
         <property name="priceListInfoManager" ref="PriceListInfoManager"/>
     </bean>

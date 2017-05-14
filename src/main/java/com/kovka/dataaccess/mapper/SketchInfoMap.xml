@@ -51,7 +51,7 @@
     <update id="update" parameterType="SketchInfo">
         UPDATE sketch_info
         SET `name` = #{name},`short_desc` = #{shortDesc},`title` = #{title},`description` = #{description}
-        WHERE sketch_id = #{sketchId}
+        WHERE id = #{id}
     </update>
 
 </mapper>

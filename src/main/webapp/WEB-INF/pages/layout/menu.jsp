@@ -20,7 +20,7 @@
                 </s:else>
             </div>
             <div class="profile_info">
-                <span><s:text name="page.home.title">Welcome</s:text>,</span>
+                <span><s:text name="page.home.title.admin">Welcome</s:text>,</span>
                 <h2><s:property value="#session.admin.name"/> <s:property value="#session.admin.surname"/></h2>
             </div>
         </div>

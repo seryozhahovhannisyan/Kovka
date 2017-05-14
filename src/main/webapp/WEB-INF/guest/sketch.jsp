@@ -15,6 +15,8 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/model/Box.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/model/BoxProduct.js"></script>
 
+
+
 <style type="text/css">
     .maxbutton-1.maxbutton.maxbutton-rasschitajte-stoimost {
         position: relative;

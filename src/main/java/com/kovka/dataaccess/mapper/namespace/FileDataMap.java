@@ -23,6 +23,6 @@ public interface FileDataMap {
 
     public void update(FileData data);
 
-    public void delete(FileData data);
+    public void delete(long id);
 
 }
