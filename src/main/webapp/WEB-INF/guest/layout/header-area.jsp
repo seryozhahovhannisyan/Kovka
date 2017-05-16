@@ -120,7 +120,10 @@
 
                 <h2 class="site-description"> 8 (495) 642-40-66</h2>
                 <h2 class="site-description">   kovka@zheldor-kovka.ru</h2>
-                <h2 class="site-description"> 109390 г.Москва, ул. 1-я Текстильщиков д. 12/9 офис 2</h2>
+                <h2 class="site-description">
+                    109390 г.Москва, ул. 1-я Текстильщиков д. 12/9 офис 2
+                    <i class="fa fa-globe"></i>
+                </h2>
 
             </div><!-- .element-wrap -->
 
