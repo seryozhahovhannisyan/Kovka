@@ -163,9 +163,9 @@
         .element.effect-17 .hover,
         .element.effect-17 .entry-title,
         .site-title,
-        .element-wrap {
-            background: rgba(244, 244, 244, 0.6);
-        }
+        /*.element-wrap {*/
+            /*background: rgba(244, 244, 244, 0.6);*/
+        /*}*/
 
         .widget.stainedglass_recent_posts .content article footer a,
         .content-container article .entry-content a,

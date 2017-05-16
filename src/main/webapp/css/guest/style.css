@@ -818,7 +818,7 @@ div.wp-caption.alignright .wp-caption-text {
 .site-description,
 .site-title {
     margin: 0;
-    text-align: center;
+    text-align: right;
 }
 
 .site-title {
@@ -833,8 +833,8 @@ div.wp-caption.alignright .wp-caption-text {
 }
 
 .site-description {
-    line-height: 2vw;
-    padding: 2% 6% 6% 6%;
+    /*line-height: 2vw;*/
+    /*padding: 2% 6% 6% 6%;*/
     font-size: 1.6vw;
     font-style: italic;
 }
@@ -847,22 +847,42 @@ div.wp-caption.alignright .wp-caption-text {
     margin: 0 auto;
 }
 
+/*.element-wrap {*/
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    /*border-radius: 20px 20px 0 0;*/
+    /*bottom: 0;*/
+    /*-webkit-box-shadow: -1px 6px 78px 6px rgba(138, 123, 138, 1);*/
+    /*-moz-box-shadow: -1px 6px 78px 6px rgba(138, 123, 138, 1);*/
+    /*box-shadow: -1px 6px 78px 6px rgba(138, 123, 138, 1);*/
+    /*display: inline-block;*/
+    /*left: 0;*/
+    /*overflow: hidden;*/
+    /*position: absolute;*/
+    /*margin-right: 50%;*/
+    /*margin-left: 10px;*/
+    /*-webkit-transition: all 0.4s ease-in-out;*/
+    /*transition: all 0.4s ease-in-out;*/
+    /*width: 40%;*/
+/*}*/
+
 .element-wrap {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 20px 20px 0 0;
+    /*background: rgb(244, 244, 244);*/
+
+    /*border-radius: 20px 20px 0 0;*/
     bottom: 0;
-    -webkit-box-shadow: -1px 6px 78px 6px rgba(138, 123, 138, 1);
-    -moz-box-shadow: -1px 6px 78px 6px rgba(138, 123, 138, 1);
-    box-shadow: -1px 6px 78px 6px rgba(138, 123, 138, 1);
+
+    /*-moz-box-shadow: -1px 6px 78px 6px rgba(138, 123, 138, 1);*/
+    /* box-shadow: -1px 6px 78px 6px rgba(138, 123, 138, 1); */
     display: inline-block;
-    left: 0;
-    overflow: hidden;
+    /* left: 0; */
+    /* overflow: hidden; */
     position: absolute;
-    margin-right: 50%;
-    margin-left: 10px;
-    -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-    width: 40%;
+    margin-right: 10px;
+    /* -webkit-transition: all 0.4s ease-in-out; */
+    /* transition: all 0.4s ease-in-out; */
+    width: auto;
+    right: 0;
+    /*padding: 10px;*/
 }
 
 .boxed-header .sg-header-area {

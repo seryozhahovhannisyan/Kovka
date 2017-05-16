@@ -108,20 +108,21 @@
     <div class="image-container">
         <div class="image-wrapper">
 
-            <a href="http://zheldor-kovka.ru/">
+            <a href="#">
                 <img src="<%=request.getContextPath()%>/img/guest/l5646.jpg" class="header-image" alt=""
                      height="510" width="1600">
             </a>
 
-            <%--<div class="element-wrap">
+            <div class="element-wrap">
 
-                <h1 class="site-title"><a href="http://zheldor-kovka.ru/" rel="home">Художественная ковка</a></h1>
+                <%--<h1 class="site-title"><a href="#" rel="home">Художественная ковка</a></h1>--%>
                 <!-- Dscription -->
-                <h2 class="site-description">Собственное производство в Железнодорожном &mdash; Кованые и Сварные
-                    ворота, перила, лестницы, заборы, ограждения, навесы, козырьки, мебель, люстры, фонари, беседки,
-                    балконы и т.д.</h2>
 
-            </div>--%><!-- .element-wrap -->
+                <h2 class="site-description"> 8 (495) 642-40-66</h2>
+                <h2 class="site-description">   kovka@zheldor-kovka.ru</h2>
+                <h2 class="site-description"> 109390 г.Москва, ул. 1-я Текстильщиков д. 12/9 офис 2</h2>
+
+            </div><!-- .element-wrap -->
 
         </div>
     </div>
