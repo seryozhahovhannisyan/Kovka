@@ -11,6 +11,16 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http', function
     $scope.searches = [];
     $scope.selectedPage = {};
 
+    $scope.loadScrip_ = function() {
+        console.log('link');
+        $("area[rel^='prettyPhoto']").prettyPhoto();
+
+        $("a[rel^='prettyPhoto']").prettyPhoto(
+            {default_width: 640,
+            default_height: 419}
+            /*{animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true}*/);
+    };
+
     $scope.deliberatelyTrustAsHtml = function (param) {
         return $sce.trustAsHtml(param);
     };
@@ -895,6 +905,12 @@ kovkaApp.directive('boxSelectedItem', function ($http, $compile, Template) {
 
     return {
         restrict: 'E',
+        link: function(scope, element, attr) {
+            console.log('link');
+            $("area[rel^='prettyPhoto']").prettyPhoto();
+
+            $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+        },
         templateUrl: function (element, attrs) {
             pageType = attrs.pageType;
             selectedId = attrs.selectedId;

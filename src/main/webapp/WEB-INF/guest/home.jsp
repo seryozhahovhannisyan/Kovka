@@ -64,53 +64,30 @@
                                                 <div class="vc_grid-container vc_clearfix wpb_content_element vc_media_grid" >
 
                                                     <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                                <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
-                                                                    <img width="100%" src="/data/machine/machine_1.jpg">
-                                                                </a>
-                                                            </div>
+                                                        <a rel="prettyPhoto[gallery1]" href="/data/machine/machine_1.jpg" title="">
+                                                            <img width="100%" src="/data/machine/machine_1.jpg">
+                                                        </a>
+                                                    </div>
                                                     <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                        <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                        <a rel="prettyPhoto[gallery1]" href="/data/machine/machine_1.jpg" title="">
                                                             <img src="/data/machine/machine_1.jpg">
                                                         </a>
                                                     </div>
                                                     <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                        <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                        <a rel="prettyPhoto[gallery1]" href="/data/machine/machine_1.jpg" title="">
                                                             <img src="/data/machine/machine_1.jpg">
                                                         </a>
                                                     </div>
                                                     <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                                <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
-                                                                    <img src="/data/machine/machine_1.jpg">
-                                                                </a>
-                                                            </div>
-
-                                                </div>
-                                                <div class="vc_grid-container vc_clearfix wpb_content_element vc_media_grid" >
-
-                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                                <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
-                                                                    <img src="/data/machine/machine_1.jpg">
-                                                                </a>
-                                                            </div>
-                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                        <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
+                                                        <a rel="prettyPhoto[gallery1]" href="/data/machine/machine_1.jpg" title="">
                                                             <img src="/data/machine/machine_1.jpg">
                                                         </a>
                                                     </div>
-                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                        <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
-                                                            <img src="/data/machine/machine_1.jpg">
-                                                        </a>
-                                                    </div>
-                                                    <div class="vc_grid-item vc_clearfix vc_col-sm-3 vc_visible-item flash animated">
-                                                                <a data-lightbox="roadtrip" href="/data/machine/machine_1.jpg" title="">
-                                                                    <img src="/data/machine/machine_1.jpg">
-                                                                </a>
-                                                            </div>
 
                                                 </div>
 
-                                            </div><!-- vc_grid end -->
+                                            </div>
+                                            <!-- vc_grid end -->
 
                                         </div>
                                     </div>

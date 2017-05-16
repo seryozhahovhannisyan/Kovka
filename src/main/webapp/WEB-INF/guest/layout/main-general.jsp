@@ -389,8 +389,6 @@
     $(document).ready(function () {
         // No right click
 
-//        $(".prettyphoto").colorbox({rel: 'prettyphoto'});
-
     });
 
 </script>

@@ -1,3 +1,9 @@
+<style type="text/css">
+    #pp_full_res img{
+        width: 640px;
+        height: 419px;
+    }
+</style>
 <div ng-model="selectedPage" id="selectedPage" ng-show="selectedPage != null"
      class="tour-box-large-description col-md-12"><!--ng-if="selectedPage != null"-->
 
@@ -217,15 +223,15 @@
                             <div class="wpb_single_image wpb_content_element vc_align_center">
                                 <h2 class="wpb_heading wpb_singleimage_heading" ng-if="p.price == null">Эскиз
                                     №{{$index+1 + sectionIndex}}</h2>
-                                <h2 class="wpb_heading wpb_singleimage_heading" ng-if="p.price != null"> Эскиз
-                                    №{{$index+1 + sectionIndex}} &nbsp; {{p.price}} р/кв.м.</h2>
-                                <figure class="wpb_wrapper vc_figure">
-                                    <a data-lightbox="roadtrip" href="{{p.image}}" title="№{{$index+1 + sectionIndex}}"
+                                <!--<h2 class="wpb_heading wpb_singleimage_heading" ng-if="p.price != null"> Эскиз
+                                    №{{$index+1 + sectionIndex}} &nbsp; {{p.price}} р/кв.м.</h2>-->
+                                <figure class="wpb_wrapper vc_figure" ng-init="loadScrip_()">
+                                    <a rel="prettyPhoto[gallery1]" href="{{p.image}}" title="№{{$index+1 + sectionIndex}}"
                                        class="vc_single_image-wrapper vc_box_border_grey test"
                                     >
-                                        <img src="{{p.image}}"
+                                        <img src="{{p.image}}" height="202" width="300"
                                              class="vc_single_image-img attachment-medium"
-                                             height="202" width="300"/>
+                                            />
                                     </a>
                                 </figure>
                             </div>
@@ -244,6 +250,10 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $(".test").colorbox({rel: 'test'});
+
+        $("area[rel^='prettyPhoto']").prettyPhoto();
+
+        $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+        console.log('1')
     });
 </script>

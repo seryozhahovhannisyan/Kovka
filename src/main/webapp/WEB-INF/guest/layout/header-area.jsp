@@ -43,10 +43,22 @@
     });
 </script>--%>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("area[rel^='prettyPhoto']").prettyPhoto();
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/libs/js/light_box_photo_gallery/lightbox-2.6.min.css" media="screen"/>
+        $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+
+    });
+</script>
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/guest/lib/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+<script src="<%=request.getContextPath()%>/js/guest/lib/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+
+
+<%--<link rel="stylesheet" href="<%=request.getContextPath()%>/libs/js/light_box_photo_gallery/lightbox-2.6.min.css" media="screen"/>--%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/libs/css/light_box_photo_gallery/style.css" media="screen"/>
-<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/light_box_photo_gallery/lightbox-2.6.min.js"></script>
+<%--<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/light_box_photo_gallery/lightbox-2.6.min.js"></script>--%>
 
 <header id="masthead" class="site-header" role="banner">
 
