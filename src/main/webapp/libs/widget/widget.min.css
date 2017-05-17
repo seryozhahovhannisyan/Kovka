@@ -1667,8 +1667,8 @@
 
 @font-face {
     font-family: cbh-icons;
-    src: url(../v3/fonts/cbh-icons.eot?r3673);
-    src: url(../v3/fonts/cbh-icons.eot?r3673) format("embedded-opentype"), url(../v3/fonts/cbh-icons.woff?r3673) format("woff"), url(../v3/fonts/cbh-icons.ttf?r3673) format("truetype"), url(../v3/fonts/cbh-icons.svg?r3673) format("svg");
+    src: url(cbh-icons.eot?r3673);
+    src: url(cbh-icons.eot?r3673) format("embedded-opentype"), url(cbh-icons.woff?r3673) format("woff"), url(cbh-icons.ttf?r3673) format("truetype"), url(cbh-icons.svg?r3673) format("svg");
     font-weight: 400;
     font-style: normal
 }

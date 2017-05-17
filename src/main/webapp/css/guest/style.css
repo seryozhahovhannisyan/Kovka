@@ -2089,7 +2089,7 @@ CSS
 
 /* Scroll UP Button */
 .scrollup {
-    background: url(img/scrollup.png) no-repeat 0 20px;
+    background: url(../../img/scrollup.png) no-repeat 0 20px;
     bottom: 40px;
     display: none;
     height: 45px;

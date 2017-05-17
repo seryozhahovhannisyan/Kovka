@@ -23,16 +23,21 @@
             <aside id="search-7" class="widget widget_search">
                 <form role="search" method="get" class="search-form" action="search.htm">
                     <label>
-                        <span class="screen-reader-text">Найти:</span>
-                        <input class="search-field" placeholder="Поиск…" value="" name="search" type="search">
+                        <span class="screen-reader-text"><s:text name="label.find">Найти</s:text>:</span>
+                        <input class="search-field" placeholder="<s:text name="label.search">Поиск</s:text>…" value="" name="search" type="search">
                     </label>
-                    <input class="search-submit" value="Поиск" type="submit">
+                    <input class="search-submit" value="<s:text name="label.search">Поиск</s:text>" type="submit">
                 </form>
             </aside>
-            <aside id="text-13" class="widget widget_text"><h3 class="widget-title">Tel: 8 (495) 642-40-66 e-mail:
-                Kovka@Zheldor-Kovka.ru</h3>
-                <div class="textwidget"><span style="color: #000000;"><center>© 2007-2017 Студия художественной ковки в Железнодорожном. Кованые и сварные изделия на заказ в Москве и Московской области.
-ИНН 7723383020 ОГРН 1157746241267</center></span></div>
+            <aside id="text-13" class="widget widget_text">
+                <h3 class="widget-title">Tel: 8 (495) 642-40-66 e-mail:Kovka@Zheldor-Kovka.ru</h3>
+                <div class="textwidget">
+                    <span style="color: #000000;">
+                        <center>
+                            <s:text name="footer.info">&copy; 2007-2017 Студия художественной ковки в Железнодорожном. Кованые и сварные изделия на заказ в Москве и Московской области. ИНН 7723383020 ОГРН 1157746241267</s:text>
+                        </center>
+                    </span>
+                </div>
             </aside>
         </div><!-- .widget-area -->
     </div><!-- .sidebar-before-footer .wide -->
@@ -60,9 +65,10 @@
                     <div class="cbh-widget-call__container">
                         <div class="cbh-widget-call__container-inner" id="cbh_widget_call_container">
                             <div class="cbh-widget-call__hello" id="cbh_slider_header">
-                                <div class="sheff sheff--w1a">We"ll call <a href="#" class="cbh-dialog-action-link"
-                                                                            id="cbh_dialog_name">you</a> back in <span>00:26</span>
-                                    seconds!
+                                <div class="sheff sheff--w1a">
+                                    <s:text name="footer.callYouBack">Мы вам перезвоним</s:text>
+                                    <%--<span>00:26</span>--%>
+                                    <%--seconds!--%>
                                 </div>
                             </div>
                             <div class="cbh-widget-call__wrapper-select">
@@ -73,12 +79,12 @@
 
                                                 <input type="tel" class="cbh-input instId_wirA2rue"
                                                        id="cbh_slider_phone_input" value=""
-                                                       placeholder="+374-__-___-___"></div>
+                                                       placeholder="+7-__-___-___"></div>
                                         </div>
                                     </div>
                                     <div class="cbh-widget-call__btn-area cbh-widget-call__timer">
                                         <button type="button" class="cbh-widget-call__btn" id="cbh_slider_call_btn">
-                                            <div class="sheff sheff--w1b">Call me</div>
+                                            <div class="sheff sheff--w1b"><s:text name="footer.CallMe">Позвони мне</s:text></div>
                                         </button>
                                         <span id="cbh_slider_countdown_container"></span></div>
                                 </div>
@@ -94,7 +100,7 @@
                         <div class="cbh-ph-circle-fill"></div>
                         <button type="button" class="cbh-widget-button" onclick="open_phone()">
                             <i class="cbh-widget-button-phone cbh-rotate-icon"></i>
-                            <i class="cbh-widget-button-call">Call back</i>
+                            <i class="cbh-widget-button-call"><s:text name="footer.callBack">Перезвони</s:text></i>
                             <i class="cbh-widget-button-logo"></i></button>
                     </div>
                 </div>

@@ -5,12 +5,9 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
     <bean id="HomeAction" class="com.kovka.web.action.guest.HomeAction" scope="prototype">
-        <property name="dto" ref="ResponseDto"/>
-        <property name="sketchManager" ref="SketchManager"/>
-    </bean>
-
-    <bean id="GuestAboutAction" class="com.kovka.web.action.guest.GuestAboutAction" scope="prototype">
         <property name="aboutManager" ref="AboutManager"/>
+        <property name="sketchManager" ref="SketchManager"/>
+        <property name="dto" ref="ResponseDto"/>
     </bean>
 
 

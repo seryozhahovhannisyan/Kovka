@@ -6,12 +6,7 @@
 </div><!-- .sidebar-top-full -->
 </div><!-- .header-wrap -->
 </div>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/guest/skin_002.css" type="text/css"
-      media="screen">
-
-<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/model/Box.js"></script>
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/guest/skin_002.css" type="text/css" media="screen">
 <style type="text/css">
     .maxbutton-1.maxbutton.maxbutton-rasschitajte-stoimost {
         position: relative;
@@ -61,6 +56,16 @@
         color: #505ac7
     }
 </style>
+<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/model/Box.js"></script>
+
+<s:set var="about"   />
+<s:if test="%{#session.about == null}">
+    <s:set var="about" value='%{loadAbout()}'/>
+</s:if>
+<s:else>
+    <s:set var="about" value='#session.about'/>
+</s:else>
 
 <div class="main-area">
     <div class="main-wrapper right-sidebar ">
@@ -90,21 +95,21 @@
                         <div class="entry-content">
                             <h2 style="text-align: center;">
                                 <span style="color: #000000;">
-                                    <strong><s:property value="about.currentInfo.title"/></strong>
+                                    <strong><s:property value="#about.currentInfo.title"/></strong>
                                 </span>
                             </h2>
                             <p style="text-align: center;"><span style="color: #000000;"><strong>&nbsp;</strong></span>
                             </p>
                             <p style="text-align: center;">
                                 <span style="color: #000000;">
-                                    <strong><s:property value="about.currentInfo.address"/></strong>
+                                    <strong><s:property value="#about.currentInfo.address"/></strong>
                                 </span>
                             </p>
                             <%--email/phone--%>
                             <p style="text-align: center;">
                                 <span style="color: #000000;">
                                     <strong><s:text name="menu.about.email">e-mail :</s:text></strong>
-                                    <s:iterator var="email" value="about.emails" status="status">
+                                    <s:iterator var="email" value="#about.emails" status="status">
                                         <s:property value="email"/>
                                         <s:if test="#status.last == false ">
                                             ,&nbsp;
@@ -115,7 +120,7 @@
                             <p style="text-align: center;">
                                 <span style="color: #000000;">
                                     <strong><s:text name="menu.about.phone">телефон :</s:text></strong>
-                                    <s:iterator var="phone" value="about.phones" status="status">
+                                    <s:iterator var="phone" value="#about.phones" status="status">
                                         <s:property value="phone"/>
                                         <s:if test="#status.last == false ">
                                             ,&nbsp;
@@ -126,12 +131,12 @@
                             <%--desc--%>
                             <p style="text-align: center;">
                                 <span style="color: #000000;">
-                                     <strong><s:property value="about.currentInfo.shortDesc"/></strong>
+                                     <strong><s:property value="#about.currentInfo.shortDesc"/></strong>
                                 </span>
                             </p>
                             <p style="text-align: center;">
                                 <span style="color: #000000;">
-                                    <strong><s:property value="about.currentInfo.description"/></strong>
+                                    <strong><s:property value="#about.currentInfo.description"/></strong>
                                 </span>
                             </p>
 
@@ -158,15 +163,26 @@
 
 
 <script>
-    function myMap() {
+    function initMap() {
 
-        var mapProp = {
-            center: new google.maps.LatLng(40.177200, 44.503490),
+        var latitude = '<s:property value="#about.latitude"/>';
+        var longitude = '<s:property value="#about.longitude"/>';
+
+        var myLatLng = {lat: Number(latitude), lng: Number(longitude)};
+
+        var map = new google.maps.Map(document.getElementById('googleMap'), {
             zoom: 16,
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'NMG Ковка',
+            draggable: true
+        });
     }
 </script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1ju2JGoRHLOsDZQTktv6J8zLa6XrvUXA&callback=myMap&center=40.176117948407445,44.51258471012112&zoom=16&format=png&maptype=roadmap&size=480x360"></script>
-
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1ju2JGoRHLOsDZQTktv6J8zLa6XrvUXA&callback=initMap">
+</script>

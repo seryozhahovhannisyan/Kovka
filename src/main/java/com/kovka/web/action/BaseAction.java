@@ -1,7 +1,12 @@
 package com.kovka.web.action;
 
+import com.kovka.business.IAboutManager;
+import com.kovka.common.data.About;
 import com.kovka.common.data.lcp.Language;
 import com.kovka.common.data.lcp.Status;
+import com.kovka.common.exception.DataParseException;
+import com.kovka.common.exception.EntityNotFoundException;
+import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.Utils;
 import com.kovka.web.util.Constants;
 import com.kovka.web.util.Initializer;
@@ -19,26 +24,15 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
-public class BaseAction extends ActionSupport
-        implements BaseActionConstants, ApplicationAware, SessionAware, CookiesAware {
+public class BaseAction extends ActionSupport implements BaseActionConstants, ApplicationAware, SessionAware, CookiesAware {
 
     private static Logger logger = Logger.getLogger(BaseAction.class);
-    protected final String NOT_PERMITTED = "not_permitted";
-    /**
-     * Tracker logger
-     */
     protected Logger tracker = Logger.getLogger("Tracker");
-    /**
-     * data of application scope
-     */
+
+    private IAboutManager aboutManager;
+
     protected Map<String, Object> application;
-    /**
-     * data of session scope
-     */
     protected Map<String, Object> session;
-    /**
-     * data of cookie
-     */
     protected Map<String, String> cookies;
 
     protected HttpSession getHttpSession() {
@@ -58,7 +52,7 @@ public class BaseAction extends ActionSupport
     }
 
     protected String getErrorUrlAction() {
-        return "error.action";
+        return "error.htm";
     }
 
     public Language getToLang() {
@@ -169,5 +163,33 @@ public class BaseAction extends ActionSupport
         String pPath = Initializer.getProductUploadDir() + Constants.FILE_SEPARATOR + logo;
         pPath = pPath.replaceAll("\\\\", "/");
         return pPath;
+    }
+
+    public About loadAbout() {
+
+        About about = (About) session.get("about");
+
+        try {
+
+            if (about == null) {
+                about = aboutManager.getByLang(getToLang());
+                about.parseEmails();
+                about.parsePhones();
+                about.parseCoords();
+                session.put("about", about);
+            }
+
+        } catch (InternalErrorException e) {
+            logger.error(e);
+        } catch (EntityNotFoundException e) {
+            logger.error(e);
+        } catch (DataParseException e) {
+            logger.error(e);
+        }
+        return about;
+    }
+
+    public void setAboutManager(IAboutManager aboutManager) {
+        this.aboutManager = aboutManager;
     }
 }

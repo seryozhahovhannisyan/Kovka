@@ -1,76 +1,13 @@
 <%@ page import="com.kovka.common.data.lcp.Language" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%--<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        jQuery('#dc_jqmegamenu_widget-2-item .menu').dcMegaMenu({
-            rowItems: 1,
-            subMenuWidth: '',
-            speed: 0,
-            effect: 'fade',
-            event: 'hover'
-        });
-    });
-</script>
+<%@ taglib prefix="S" uri="/struts-tags" %>
 
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        jQuery('#dc_jqmegamenu_widget-14-item .menu').dcMegaMenu({
-            subMenuWidth: '',
-            speed: '',
-            effect: 'fade',
-            event: 'hover'
-        });
-    });
-</script>
-
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        jQuery('#dc_jqaccordion_widget-3-item .menu').dcAccordion({
-            eventType: 'click',
-            hoverDelay: 0,
-            menuClose: false,
-            autoClose: true,
-            saveState: false,
-            autoExpand: false,
-            classExpand: 'current-menu-item',
-            classDisable: '',
-            showCount: false,
-            disableLink: false,
-            cookie: 'dc_jqaccordion_widget-3',
-            speed: 'normal'
-        });
-    });
-</script>--%>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("area[rel^='prettyPhoto']").prettyPhoto();
-
-        $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
-
-    });
-</script>
-
-<link rel="stylesheet" href="<%=request.getContextPath()%>/js/guest/lib/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
-<script src="<%=request.getContextPath()%>/js/guest/lib/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-
-
-<%--<link rel="stylesheet" href="<%=request.getContextPath()%>/libs/js/light_box_photo_gallery/lightbox-2.6.min.css" media="screen"/>--%>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/libs/css/light_box_photo_gallery/style.css" media="screen"/>
-<%--<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/light_box_photo_gallery/lightbox-2.6.min.js"></script>--%>
 
 <header id="masthead" class="site-header" role="banner">
 
     <div class="top-menu original">
         <div id="sg-site-header" class="sg-site-header sticky-menu">
-            <%--<div class="logo-block">
-                <a class="logo-section" href="http://zheldor-kovka.ru/" title="Художественная ковка" rel="home">
-                    <img height="128px" width="128px" src="<%=request.getContextPath()%>/img/guest/logo-32.jpg"
-                         class="logo" alt="Художественная ковка">
-                </a><!-- .logo-section -->
-            </div><!--%><!-- .logo-block -->
-
             <div class="menu-top">
                 <!-- First Top Menu -->
                 <div class="nav-container top-1-navigation">
@@ -84,12 +21,6 @@
     <div class="top-menu cloned on-sceen"
          style="position: fixed; top: 0px; margin-left: 0px; z-index: 500; display: block; left: 151.5px; width: 1600px;">
         <div id="sg-site-header" class="sg-site-header sticky-menu">
-            <%--<div class="logo-block">
-                <a class="logo-section" href="http://zheldor-kovka.ru/" title="Художественная ковка" rel="home">
-                    <img height="128px" width="128px" src="<%=request.getContextPath()%>/img/guest/logo-32.jpg"
-                         class="logo" alt="Художественная ковка">
-                </a><!-- .logo-section -->
-            </div>--%><!-- .logo-block -->
 
             <div class="menu-top">
                 <!-- First Top Menu -->
@@ -108,24 +39,29 @@
     <div class="image-container">
         <div class="image-wrapper">
 
-            <a href="#">
-                <img src="<%=request.getContextPath()%>/img/guest/l5646.jpg" class="header-image" alt=""
-                     height="510" width="1600">
-            </a>
+            <img src="<%=request.getContextPath()%>/img/guest/l5646.jpg" class="header-image" alt="" height="510" width="1600">
 
-            <div class="element-wrap">
+            <s:set var="about"   />
+            <s:if test="%{#session.about == null}">
+                <s:set var="about" value='%{loadAbout()}'/>
+            </s:if>
+            <s:else>
+                <s:set var="about" value='#session.about'/>
+            </s:else>
 
-                <%--<h1 class="site-title"><a href="#" rel="home">Художественная ковка</a></h1>--%>
-                <!-- Dscription -->
+            <s:if test="%{#about != null}" >
+                <div class="element-wrap">
 
-                <h2 class="site-description"> 8 (495) 642-40-66</h2>
-                <h2 class="site-description">   kovka@zheldor-kovka.ru</h2>
-                <h2 class="site-description">
-                    109390 г.Москва, ул. 1-я Текстильщиков д. 12/9 офис 2
-                    <i class="fa fa-globe"></i>
-                </h2>
+                    <h2 class="site-description"><s:property value="%{#about.firstPhone}"/></h2>
+                    <h2 class="site-description"><s:property value="#about.firstEmail"/></h2>
+                    <h2 class="site-description">
+                        <s:property value="#about.currentInfo.address"/>
+                        <i class="fa fa-globe"></i>
+                    </h2>
+                </div>
+            </s:if>
 
-            </div><!-- .element-wrap -->
+            <!-- .element-wrap -->
 
         </div>
     </div>

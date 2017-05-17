@@ -1,11 +1,5 @@
 var controllers = {};
-// angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
-// var mainApp = angular.module('mainApp', ['ngTagsInput','ngSanitize', 'isteven-multi-select', 'ngTable', 'ngAnimate', 'ui.bootstrap', 'ngDroplet', bootstrapLightbox]);
 var moduls_array = [];
-
-// gg.push('ngTbale' );
-
-
 var mainApp = angular.module('mainApp', moduls_array);
 mainApp.config(['$httpProvider', function ($httpProvider) {
 
@@ -63,13 +57,10 @@ controllers.mainCtrl = function ($scope, $window) {
 
 
 $(document).on('ready', function () {
-
     var csrfToken = $("#csrfToken").val();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': csrfToken
         }
     });
-
-
 });

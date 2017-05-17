@@ -1,3 +1,4 @@
+<%@ page import="com.kovka.common.data.lcp.Language" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%-- Created by IntelliJ IDEA. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -22,65 +23,38 @@
 
     <link rel="canonical" href="http://nmgkovka.ru/">
     <!-- /all in one seo pack -->
-    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента"
-          href="http://nmgkovka.ru/feed/">
-    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"
-          href="http://nmgkovka.ru/comments/feed/">
-    <link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/css/guest/styles.css"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/css/guest/dcjq-mega-menu.css"
-          type="text/css" media="all">
-    <link href="<%=request.getContextPath()%>/libs/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" id="stainedglass-fonts-css" href="<%=request.getContextPath()%>/css/guest/css.css"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-style-css" href="<%=request.getContextPath()%>/css/guest/style.css"
-          type="text/css" media="all">
-    <!--[if lt IE 9]>
-    <link rel='stylesheet' id='stainedglass-ie-css'
-          href='<%=request.getContextPath()%>/css/guest/ie.css?ver=20141210' type='text/css'
-          media='all'/>
-    <![endif]-->
-    <link rel="stylesheet" id="stainedglass-page-css" href="<%=request.getContextPath()%>/css/guest/page.css"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="stainedglass-image-css" href="<%=request.getContextPath()%>/css/guest/image.css"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="js_composer_front-css" href="<%=request.getContextPath()%>/css/guest/js_composer.css"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="ubermenu-css" href="<%=request.getContextPath()%>/css/guest/ubermenu.css"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="ubermenu-black-white-2-css"
-          href="<%=request.getContextPath()%>/css/guest/blackwhite2.css" type="text/css" media="all">
-    <link rel="stylesheet" id="ubermenu-font-awesome-css"
-          href="<%=request.getContextPath()%>/css/guest/font-awesome_002.css" type="text/css"
-          media="all">
+    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента" href="http://nmgkovka.ru/feed/">
+    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"  href="http://nmgkovka.ru/comments/feed/">
 
-    <%--<link rel="stylesheet" id="contact-form-7-css" href="<%=request.getContextPath()%>/js/guest/lib/colorbox.css"--%>
-          <%--type="text/css" media="all">--%>
+    <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/css/guest/dcjq-mega-menu.css"  type="text/css" media="all">
+
+    <link rel="stylesheet" id="ubermenu-font-awesome-css"   href="<%=request.getContextPath()%>/css/guest/font-awesome_002.css" type="text/css"  media="all">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/libs/css/font-awesome.min.css" type="text/css" >
+
+    <link rel="stylesheet" id="stainedglass-fonts-css" href="<%=request.getContextPath()%>/css/guest/css.css" type="text/css" media="all">
+    <link rel="stylesheet" id="stainedglass-style-css" href="<%=request.getContextPath()%>/css/guest/style.css"  type="text/css" media="all">
+    <!--[if lt IE 9]>
+    <link rel='stylesheet' id='stainedglass-ie-css'  href='<%=request.getContextPath()%>/css/guest/ie.css?ver=20141210' type='text/css'  media='all'/>
+    <![endif]-->
+    <%--<link rel="stylesheet" id="stainedglass-page-css" href="<%=request.getContextPath()%>/css/guest/page.css" type="text/css" media="all">--%>
+    <link rel="stylesheet" id="stainedglass-image-css" href="<%=request.getContextPath()%>/css/guest/image.css" type="text/css" media="all">
+    <link rel="stylesheet" id="js_composer_front-css" href="<%=request.getContextPath()%>/css/guest/js_composer.css" type="text/css" media="all">
+    <link rel="stylesheet" id="ubermenu-css" href="<%=request.getContextPath()%>/css/guest/ubermenu.css" type="text/css" media="all">
+    <link rel="stylesheet" id="ubermenu-black-white-2-css"  href="<%=request.getContextPath()%>/css/guest/blackwhite2.css" type="text/css" media="all">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/js/guest/lib/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+
 
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-2.2.4.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/bootstrap.js"></script>
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/slick-1.5.0.js"></script>--%>
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/jquery.colorbox-min.js"></script>--%>
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/script.js"></script>--%>
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
 
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.dcjqaccordion.2.9.js"></script>--%>
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.dcmegamenu.1.3.4.min.js"></script>--%>
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.min.js"></script>--%>
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.hoverIntent.minified.js"></script>--%>
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/ubermenu.min.js"></script>--%>
-    <%--<script type="text/javascript" src="<%=request.getContextPath()%>/js/navigation.js"></script>--%>
-
-
-    <script type="text/javascript"
-            src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.key"/>.js'></script>
+    <script type="text/javascript" src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.key"/>.js'></script>
     <s:if test="%{toLang.id != toLang.default.id}">
-        <script type="text/javascript"
-                src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.default.key"/>.js'></script>
+        <script type="text/javascript" src='<%=request.getContextPath()%>/static/generated/locale/i18n_<s:property value="toLang.default.key"/>.js'></script>
     </s:if>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/ng-controller.js"></script>
-
+    <script src="<%=request.getContextPath()%>/js/guest/lib/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/img/guest/logo-32.jpg">
 
     <style type="text/css">
@@ -380,17 +354,9 @@
     <tiles:insertAttribute name="footer"/>
     <tiles:insertAttribute name="banner"/>
     <input id="current_lang" type="hidden" value='<s:property value="toLang.key"/>'>
+    <input id="current_lang" type="hidden" value='<%=Language.getDefault().getKey()%>'>
     <div class="loader" ng-show="loadergif"></div>
 </div>
 </body>
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        // No right click
-
-    });
-
-</script>
 
 </html>

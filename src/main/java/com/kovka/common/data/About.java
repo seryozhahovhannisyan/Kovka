@@ -16,12 +16,17 @@ public class About {
     private Long id;
 
     private String coords;
+    private String latitude;
+    private String longitude;
 
     private String emailValues;
     private String phoneValues;
 
     private Set<String> emails;
     private Set<String> phones;
+
+    private String firstEmail;
+    private String firstPhone;
 
     private List<AboutInfo> infos;
 
@@ -43,7 +48,7 @@ public class About {
                 throw new DataParseException(e);
             }
 
-
+            firstEmail = ars[0];
             return this.emails;
         }
 
@@ -66,11 +71,18 @@ public class About {
                 throw new DataParseException(e);
             }
 
-
+            firstPhone = ars[0];
             return this.phones;
         }
 
         return null;
+    }
+
+    public void parseCoords() throws DataParseException {
+        if (!Utils.isEmpty(this.coords)) {
+            latitude = coords.split(",")[0];
+            longitude = coords.split(",")[1];
+        }
     }
 
     public String convertEmails() throws DataParseException {
@@ -104,6 +116,14 @@ public class About {
             phones = new HashSet<String>();
         }
         phones.add(phone);
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
     }
 
 
@@ -174,5 +194,13 @@ public class About {
 
     public void setCurrentInfo(AboutInfo currentInfo) {
         this.currentInfo = currentInfo;
+    }
+
+    public String getFirstEmail() {
+        return firstEmail;
+    }
+
+    public String getFirstPhone() {
+        return firstPhone;
     }
 }

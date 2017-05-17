@@ -58,23 +58,23 @@
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
-        <action name="services" class="GuestAboutAction" method="view">
+        <action name="services" class="BaseAction" >
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
-        <action name="how-we-work" class="GuestAboutAction" method="view">
+        <action name="how-we-work"  class="BaseAction">
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
-        <action name="our-works" class="GuestAboutAction" method="view">
+        <action name="our-works" class="BaseAction" >
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
-        <action name="prices" class="GuestAboutAction" method="view">
+        <action name="prices"  class="BaseAction">
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
-        <action name="about" class="GuestAboutAction" method="view">
+        <action name="about"  class="BaseAction">
             <result name="success" type="tiles">about</result>
         </action>
 
