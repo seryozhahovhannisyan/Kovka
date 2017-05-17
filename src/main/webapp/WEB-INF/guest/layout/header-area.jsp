@@ -6,24 +6,27 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $(document).on("touchstart",function(e){
-            var $clicked = $(e.target);
-            if (! $clicked.parents().hasClass("dropdown"))
-                $(".dropdown dd ul").hide();
+           // hide_lang();
         });
         var userLang = navigator.language || navigator.userLanguage;
         var l = userLang.split('-')[0];
 
 
         $(".ubermenu-has-submenu-drop").click(function () {
-            $(this).addClass('');
+            $(this).addClass('ubermenu-active');
+            console.log('active');
         });
 
     });
 
     $(document).bind('click', function (e) {
         var $clicked = $(e.target);
-        if (!$clicked.parents().hasClass("dropdown"))
-            $(".dropdown dd ul").hide();
+        if (!$clicked.parents().hasClass("ubermenu-nav")){
+            hide_lang();
+            console.log('hide');
+        }
+
+
     });
 
 
@@ -31,7 +34,7 @@
         window.location = "locale.htm?mlang=" + lang;
     }
     function hide_lang() {
-        $(".dropdown dd ul").hide();
+        $(".ubermenu-has-submenu-drop").removeClass('ubermenu-active');
     }
 
 </script>
@@ -156,24 +159,31 @@
                                 </a>
                             </li>
 
-
+                            <s:set var="lang" value="%{getToLang()}"/>
                             <li style="float: right;margin-right: 50px" id="menu-item-149"
-                                class="ubermenu-active ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-135 ubermenu-current_page_item ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
+                                class="ubermenu-has-submenu-drop ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-135 ubermenu-current_page_item ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
-                                   href="#" tabindex="0"><span
-                                        class="ubermenu-target-title ubermenu-target-text"><s:property
-                                        value="getToLang().getTitle()"/></span></a>
+                                   href="javascript:void(0)" tabindex="0">
+                                    <span class="ubermenu-target-title ubermenu-target-text">
+                                        <s:property value="getToLang().getTitle()"/>
+                                    </span>
+                                </a>
                                 <ul class="ubermenu-submenu ubermenu-submenu-id-146 ubermenu-submenu-type-flyout ubermenu-submenu-drop ubermenu-submenu-align-left_edge_item">
 
-                                    <%for (Language language : Language.values()) {%>
+                                    <s:iterator value="%{getLanguages()}" var="language">
                                     <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-109 ubermenu-item-auto ubermenu-item-normal ubermenu-item-level-1">
                                         <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
-                                           href="#">
+                                                <s:if test="%{#lang.value == #language.value}"> class="current_lang" onclick="hide_lang();return false;"
+                                                    style=" background-color: #c9c7c7; "
+                                                </s:if>
+                                                <s:else> onclick="select_lang('<s:property value="#language.key"/>');return false;"</s:else>
+                                        >
                                             <span class="ubermenu-target-title ubermenu-target-text">
-                                                <%=language.getTitle()%></span>
+                                             <s:property value="#language.title"/>
+                                            </span>
                                         </a>
                                     </li>
-                                    <%}%>
+                                    </s:iterator>
                                 </ul>
                             </li>
 

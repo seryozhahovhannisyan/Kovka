@@ -13,7 +13,7 @@
         <!--The filtering language data-->
         <interceptors>
 
-            <interceptor name="languageGuest" class="com.kovka.web.interceptor.LanguageInterceptorGuest"/>
+            <interceptor name="languageGuest" class="com.kovka.web.interceptor.LanguageInterceptor"/>
 
             <interceptor-stack name="generalGuestStack">
                 <interceptor-ref name="jsonValidationWorkflowStack"/>

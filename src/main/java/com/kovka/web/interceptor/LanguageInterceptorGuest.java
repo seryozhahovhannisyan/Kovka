@@ -2,6 +2,7 @@ package com.kovka.web.interceptor;
 
 import com.kovka.common.data.lcp.Language;
 import com.kovka.web.action.BaseAction;
+import com.kovka.web.util.ScopeKeys;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import org.apache.struts2.ServletActionContext;
@@ -99,11 +100,19 @@ public class LanguageInterceptorGuest extends AbstractInterceptor {
         // if resource not stored in session
         // or it is not matched with chosen resource
         if (sesLang == null || sesLang != lang) {
-            // sets resource for employer usage
+//            // sets resource for employer usage
+//            session.put(BaseAction.LANGUAGE, lang);
+//            // sets locale for application localization (i18n)
+//            session.put(SESSION_LANGUAGE, lang.getLocale());
+//            ActionContext.getContext().setLocale(lang.getLocale());
+
+
+            // sets language for user usage
+            session.put(ScopeKeys.LANGUAGE, lang);
+            // sets language for guest usage
             session.put(BaseAction.LANGUAGE, lang);
             // sets locale for application localization (i18n)
             session.put(SESSION_LANGUAGE, lang.getLocale());
-            ActionContext.getContext().setLocale(lang.getLocale());
         }
 
         if (storeInCookies) {
