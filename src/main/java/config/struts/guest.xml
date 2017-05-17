@@ -4,7 +4,7 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-    <package name="guest" extends="json-default" namespace="/">
+    <package name="guest" namespace="/" extends="struts-default">
 
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
@@ -13,11 +13,11 @@
         <!--The filtering language data-->
         <interceptors>
 
-            <interceptor name="languageGuest" class="com.kovka.web.interceptor.LanguageInterceptor"/>
+            <interceptor name="languageGuest" class="com.kovka.web.interceptor.LanguageInterceptorGuest"/>
 
             <interceptor-stack name="generalGuestStack">
-                <interceptor-ref name="jsonValidationWorkflowStack"/>
                 <interceptor-ref name="languageGuest"/>
+                <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
 
         </interceptors>
