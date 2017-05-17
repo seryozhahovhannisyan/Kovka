@@ -9,16 +9,28 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http', function
     $scope.sketches = [];
     $scope.articles = [];
     $scope.searches = [];
+    $scope.machines = [];
     $scope.selectedPage = {};
 
     $scope.loadScrip_ = function() {
-        console.log('link');
         $("area[rel^='prettyPhoto']").prettyPhoto();
 
-        $("a[rel^='prettyPhoto']").prettyPhoto(
-            {default_width: 640,
-            default_height: 419}
-            /*{animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true}*/);
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            default_width: 640,
+            default_height: 419
+        });
+    };
+
+    $scope.pretty_machine = function() {
+
+        console.log('pretty_machine');
+
+        $("area[rel^='prettyPhoto']").prettyPhoto();
+
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            default_width: 640,
+            default_height: 419
+        });
     };
 
     $scope.deliberatelyTrustAsHtml = function (param) {
@@ -428,6 +440,60 @@ kovkaApp.directive('boxes', function ($http) {
             } catch (e) {
                 console.log(e);
                 $("#emptydata").show();
+            }
+
+            $(element).parent().removeClass("content-loading");
+            $(element).parent().find(".loading").hide();
+
+            if (content_loading != null) {
+                content_loading.style.display = 'none';
+            }
+
+        }
+        return linkFunction;
+    }
+
+    return directive;
+});
+kovkaApp.directive('machine', function ($http) {
+    var directive = {};
+    directive.restrict = 'E';
+    directive.compile = function (element, attributes) {
+        var linkFunction = function ($scope, element, attr) {
+
+            $(element).parent().addClass("content-loading");
+            $(element).parent().find(".loading").show();
+            try {
+
+                var content_loading = document.getElementById("content_loading");
+                if (content_loading != null) {
+                    content_loading.style.display = '';
+                }
+                $http({
+                    method: 'post',
+                    url: '/load-machines.htm',
+                    dataType: 'json'
+                }).then(
+                    function (response) {
+                        var result = response.data.dto;
+                        if (result.responseStatus == 'SUCCESS') {
+                            var dtos = result.response.data;
+                            for (var i = 0; i < dtos.length; i++) {
+                                var t = dtos[i];
+                                $scope['machines'].push(t);
+                            }
+                        } else {
+                            //$("#emptydata").show();
+                        }
+                    }
+                ).finally(function () {
+                    //$scope.hide_loader();
+                });
+
+            } catch (e) {
+                alert('machine' + e)
+                console.log(e);
+                //$("#emptydata").show();
             }
 
             $(element).parent().removeClass("content-loading");

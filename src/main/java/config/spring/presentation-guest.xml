@@ -10,5 +10,11 @@
         <property name="dto" ref="ResponseDto"/>
     </bean>
 
+    <bean id="MachineAction" class="com.kovka.web.action.guest.MachineAction" scope="prototype">
+        <property name="aboutManager" ref="AboutManager"/>
+        <property name="dataManager" ref="FileDataManager"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
 
 </beans>

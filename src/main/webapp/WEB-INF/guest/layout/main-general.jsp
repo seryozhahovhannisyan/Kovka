@@ -55,6 +55,8 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/main-general.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/ng-controller.js"></script>
     <script src="<%=request.getContextPath()%>/js/guest/lib/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/model/Box.js"></script>
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/img/guest/logo-32.jpg">
 
     <style type="text/css">
