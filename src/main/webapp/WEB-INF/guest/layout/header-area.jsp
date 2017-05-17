@@ -3,6 +3,38 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="S" uri="/struts-tags" %>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("touchstart",function(e){
+            var $clicked = $(e.target);
+            if (! $clicked.parents().hasClass("dropdown"))
+                $(".dropdown dd ul").hide();
+        });
+        var userLang = navigator.language || navigator.userLanguage;
+        var l = userLang.split('-')[0];
+
+
+        $(".ubermenu-has-submenu-drop").click(function () {
+            $(this).addClass('');
+        });
+
+    });
+
+    $(document).bind('click', function (e) {
+        var $clicked = $(e.target);
+        if (!$clicked.parents().hasClass("dropdown"))
+            $(".dropdown dd ul").hide();
+    });
+
+
+    function select_lang(lang) {
+        window.location = "locale.htm?mlang=" + lang;
+    }
+    function hide_lang() {
+        $(".dropdown dd ul").hide();
+    }
+
+</script>
 
 <header id="masthead" class="site-header" role="banner">
 
@@ -81,39 +113,34 @@
                     <nav id="ubermenu-main-2"
                          class="ubermenu ubermenu-main ubermenu-menu-2 ubermenu-responsive ubermenu-responsive-single-column ubermenu-responsive-default ubermenu-responsive-collapse ubermenu-horizontal ubermenu-transition-shift ubermenu-trigger-hover_intent ubermenu-skin-black-white-2 ubermenu-has-border ubermenu-bar-align-full ubermenu-items-align-center ubermenu-bound ubermenu-disable-submenu-scroll ubermenu-sub-indicators ubermenu-retractors-responsive ubermenu-notouch">
                         <ul id="ubermenu-nav-main-2" class="ubermenu-nav">
-                            <li id="menu-item-51"
-                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-home ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-36 ubermenu-current_page_item ubermenu-item-51 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
+                            <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-home ubermenu-page_item ubermenu-page-item-36 ubermenu-current_page_item ubermenu-item-51 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
                                 <a class="ubermenu-target ubermenu-target-with-icon ubermenu-item-layout-default ubermenu-item-layout-icon_left"
                                    href="home.htm" tabindex="0">
                                     <i class="ubermenu-icon fa fa-home"></i>
                                     <span class="ubermenu-target-title ubermenu-target-text"><s:text
                                             name="menu.home">Главная</s:text></span></a></li>
-                            <li id="menu-item-146"
-                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
+                            <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="services.htm" tabindex="0">
                                     <span class="ubermenu-target-title ubermenu-target-text"><s:text
                                             name="menu.services">Услуги</s:text></span>
                                 </a>
                             </li>
-                            <li id="menu-item-145"
-                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-145 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
+                            <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-145 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="how-we-work.htm" tabindex="0">
                                     <span class="ubermenu-target-title ubermenu-target-text"><s:text
                                             name="menu.how.we.work">Как мы работаем</s:text></span>
                                 </a>
                             </li>
-                            <li id="menu-item-144"
-                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-144 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
+                            <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-144 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="our-works.htm" tabindex="0">
                                     <span class="ubermenu-target-title ubermenu-target-text"><s:text
                                             name="menu.our.works">Наши работы</s:text></span>
                                 </a>
                             </li>
-                            <li id="menu-item-147"
-                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-147 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
+                            <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-147 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-target-with-icon ubermenu-item-layout-default ubermenu-item-layout-icon_left"
                                    href="prices.htm" tabindex="0">
                                     <i class="ubermenu-icon fa fa-shopping-cart"></i>
@@ -121,8 +148,7 @@
                                             name="menu.price">Цены</s:text></span>
                                 </a>
                             </li>
-                            <li id="menu-item-482"
-                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-482 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
+                            <li class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-482 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="about.htm" tabindex="0">
                                     <span class="ubermenu-target-title ubermenu-target-text"><s:text
@@ -132,7 +158,7 @@
 
 
                             <li style="float: right;margin-right: 50px" id="menu-item-149"
-                                class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-135 ubermenu-current_page_item ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
+                                class="ubermenu-active ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-current-menu-item ubermenu-page_item ubermenu-page-item-135 ubermenu-current_page_item ubermenu-item-has-children ubermenu-item-146 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-drop ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="#" tabindex="0"><span
                                         class="ubermenu-target-title ubermenu-target-text"><s:property
