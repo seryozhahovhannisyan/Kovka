@@ -126,6 +126,22 @@
         <put-attribute name="content" value="content-our-works" type="definition"/>
     </definition>
 
+    <definition name="content-prices" template="/WEB-INF/guest/prices.jsp">
+        <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
+    </definition>
+
+    <definition name="prices" extends="web-guest">
+        <put-attribute name="content" value="content-prices" type="definition"/>
+    </definition>
+
+    <definition name="content-how-we-work" template="/WEB-INF/guest/how-we-work.jsp">
+        <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
+    </definition>
+
+    <definition name="how-we-work" extends="web-guest">
+        <put-attribute name="content" value="content-how-we-work" type="definition"/>
+    </definition>
+
 
 
 

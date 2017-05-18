@@ -10,6 +10,11 @@
         <property name="dto" ref="ResponseDto"/>
     </bean>
 
+    <bean id="PriceListAction" class="com.kovka.web.action.guest.PriceListAction" scope="prototype">
+        <property name="aboutManager" ref="AboutManager"/>
+        <property name="priceListInfoManager" ref="PriceListInfoManager"/>
+    </bean>
+
     <bean id="MachineAction" class="com.kovka.web.action.guest.MachineAction" scope="prototype">
         <property name="dataManager" ref="FileDataManager"/>
         <property name="dto" ref="ResponseDto"/>

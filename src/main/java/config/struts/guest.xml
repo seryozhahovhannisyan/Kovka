@@ -63,15 +63,15 @@
         </action>
 
         <action name="how-we-work"  class="BaseAction">
-            <result name="success" type="tiles">sketch-single</result>
+            <result name="success" type="tiles">how-we-work</result>
         </action>
 
         <action name="our-works" class="BaseAction" >
             <result name="success" type="tiles">our-works</result>
         </action>
 
-        <action name="prices"  class="BaseAction">
-            <result name="success" type="tiles">sketch-single</result>
+        <action name="prices"  class="PriceListAction" method="loadPriceList">
+            <result name="success" type="tiles">prices</result>
         </action>
 
         <action name="about"  class="BaseAction">
