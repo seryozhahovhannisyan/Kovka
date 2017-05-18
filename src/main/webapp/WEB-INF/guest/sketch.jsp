@@ -75,7 +75,6 @@
             <div class="content">
 
                 <box-selected-item id="box-selected-item"
-                                   class="content-container"
                                    selected-id="<s:property value="id"/>"
                                    box-url='/load-sketch.htm'
                                    page-type="sketches" content="selectedPage" box-type="selected_page">
@@ -85,7 +84,17 @@
             </div><!-- .content -->
 
             <div class="clear"></div>
-
+            <nav class="navigation post-navigation" role="navigation">
+                <h1 class="screen-reader-text">Навигация по записям</h1>
+                <div class="nav-link">
+                    <nav style="width: 50%" ng-model="prev" id='<s:property value="id"/>' type="prev" >
+                        <a ng-href="{{prev.href}}" rel="prev" ng-if="prev.name"><span class="nav-previous-one">← {{prev.name}}</span></a>
+                    </nav>
+                    <nav style="width: 50%"  ng-model="next" id='<s:property value="id"/>' type="next" ng-show="next != null">
+                        <a ng-href="{{next.href}}" rel="next" ng-if="next.name"><span  class="nav-next">{{next.name}} →</span></a>
+                    </nav>
+                </div><!-- .nav-links -->
+            </nav>
         </div><!-- .site-content -->
 
         <tiles:insertAttribute name="right"/>

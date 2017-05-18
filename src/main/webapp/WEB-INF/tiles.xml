@@ -118,5 +118,15 @@
         <put-attribute name="content" value="content-about" type="definition"/>
     </definition>
 
+    <definition name="content-our-works" template="/WEB-INF/guest/our-works.jsp">
+        <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
+    </definition>
+
+    <definition name="our-works" extends="web-guest">
+        <put-attribute name="content" value="content-our-works" type="definition"/>
+    </definition>
+
+
+
 
 </tiles-definitions>

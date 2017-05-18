@@ -58,7 +58,7 @@
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
-        <action name="services" class="BaseAction" >
+        <action name="services" class="HomeAction"  method="service">
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
@@ -67,7 +67,7 @@
         </action>
 
         <action name="our-works" class="BaseAction" >
-            <result name="success" type="tiles">sketch-single</result>
+            <result name="success" type="tiles">our-works</result>
         </action>
 
         <action name="prices"  class="BaseAction">

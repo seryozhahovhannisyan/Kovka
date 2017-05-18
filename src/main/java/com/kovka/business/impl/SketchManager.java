@@ -3,6 +3,7 @@ package com.kovka.business.impl;
 import com.kovka.business.ISketchManager;
 import com.kovka.common.data.Sketch;
 import com.kovka.common.data.SketchInfo;
+import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.DatabaseException;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
@@ -12,6 +13,7 @@ import com.kovka.dataaccess.dao.ISketchInfoDao;
 import com.kovka.dataaccess.dao.ISketchProductDao;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -75,27 +77,46 @@ public class SketchManager implements ISketchManager {
     }
 
     @Override
-    public Sketch getFullCurrentLangById(Long id) throws InternalErrorException, EntityNotFoundException {
+    public Sketch getFullCurrentLangById(Long id, Language language) throws InternalErrorException, EntityNotFoundException {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id",id);
+        params.put("language",language);
+
         try {
-            return dao.getFullCurrentLangById(id);
+            return dao.getFullCurrentLangById(params);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }
     }
 
     @Override
-    public Long getPreview(Long id) throws InternalErrorException {
+    public Sketch getPreview(Long id, Language language) throws InternalErrorException {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id",id);
+        params.put("language",language);
         try {
-            return dao.getPreview(id);
+            return dao.getPreview(params);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }
     }
 
     @Override
-    public Long getNext(Long id) throws InternalErrorException {
+    public Long getFirstId() throws InternalErrorException {
         try {
-            return dao.getNext(id);
+            return dao.getFirstId();
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+
+    @Override
+    public Sketch getNext(Long id, Language language) throws InternalErrorException {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id",id);
+        params.put("language",language);
+        try {
+            return dao.getNext(params);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }
@@ -105,6 +126,14 @@ public class SketchManager implements ISketchManager {
     public List<Sketch> getSampleByParams(Map<String, Object> params) throws InternalErrorException {
         try {
             return dao.getSampleByParams(params);
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+ @Override
+    public List<Sketch> getNameImages(Language language) throws InternalErrorException {
+        try {
+            return dao.getNameImages(language);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

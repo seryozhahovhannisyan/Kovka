@@ -10,7 +10,10 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http', function
     $scope.articles = [];
     $scope.searches = [];
     $scope.machines = [];
+    $scope.galleries = [];
     $scope.selectedPage = {};
+    $scope.prev = {};
+    $scope.next = {};
 
     $scope.loadScrip_ = function() {
         $("area[rel^='prettyPhoto']").prettyPhoto();
@@ -509,6 +512,144 @@ kovkaApp.directive('machine', function ($http) {
 
     return directive;
 });
+kovkaApp.directive('gallery', function ($http) {
+    var directive = {};
+    directive.restrict = 'E';
+    directive.compile = function (element, attributes) {
+        var linkFunction = function ($scope, element, attr) {
+
+            $(element).parent().addClass("content-loading");
+            $(element).parent().find(".loading").show();
+            try {
+
+                var content_loading = document.getElementById("content_loading");
+                if (content_loading != null) {
+                    content_loading.style.display = '';
+                }
+                $http({
+                    method: 'post',
+                    url: '/load-galleries.htm',
+                    dataType: 'json'
+                }).then(
+                    function (response) {
+                        var result = response.data.dto;
+                        if (result.responseStatus == 'SUCCESS') {
+                            var dtos = result.response.data;
+                            for (var i = 0; i < dtos.length; i++) {
+                                var t = dtos[i];
+                                $scope['galleries'].push({title : t.name, images : t.images});
+                            }
+                        } else {
+                            //$("#emptydata").show();
+                        }
+                    }
+                ).finally(function () {
+                    //$scope.hide_loader();
+                });
+
+            } catch (e) {
+                alert('machine' + e)
+                console.log(e);
+                //$("#emptydata").show();
+            }
+
+            $(element).parent().removeClass("content-loading");
+            $(element).parent().find(".loading").hide();
+
+            if (content_loading != null) {
+                content_loading.style.display = 'none';
+            }
+
+        }
+        return linkFunction;
+    }
+
+    return directive;
+});
+kovkaApp.directive('nav', function ($http) {
+    var directive = {};
+    directive.restrict = 'E';
+    directive.compile = function (element, attributes) {
+        var linkFunction = function ($scope, element, attr) {
+
+            $(element).parent().addClass("content-loading");
+            $(element).parent().find(".loading").show();
+            try {
+
+                var content_loading = document.getElementById("content_loading");
+                if (content_loading != null) {
+                    content_loading.style.display = '';
+                }
+
+                var url = '';
+                var type = attr.type;
+                if(type == 'prev'){
+                    url= '/nav-preview.htm';
+                } else if(type == 'next'){
+                    url= '/nav-next.htm';
+                }
+
+                if(url.length > 0){
+                    var id = attr.id;
+
+
+                    var requestJson = {};
+                    requestJson.id = id;
+
+                    requestJson = JSON.stringify(requestJson);
+                    $http({
+                        method: 'post',
+                        url: url,
+                        data: {
+                            requestJson: requestJson
+                        },
+                        dataType: 'json'
+                    }).then(
+                        function (response) {
+                            var result = response.data.dto;
+                            if (result && result.responseStatus == 'SUCCESS') {
+
+                                if(result.response != null){
+                                    var d = result.response.data;
+
+                                    if(type == 'prev'){
+                                        $scope['prev']= {href : "/sketch-single.htm?id=" + d.id, name : d.name};
+                                    } else if(type == 'next'){
+                                        $scope['next']= {href : "/sketch-single.htm?id=" + d.id, name : d.name};
+                                    }
+
+                                }
+
+                            } else {
+                                //$("#emptydata").show();
+                            }
+                        }
+                    ).finally(function () {
+                        //$scope.hide_loader();
+                    });
+                }
+
+
+            } catch (e) {
+                alert('machine' + e)
+                console.log(e);
+                //$("#emptydata").show();
+            }
+
+            $(element).parent().removeClass("content-loading");
+            $(element).parent().find(".loading").hide();
+
+            if (content_loading != null) {
+                content_loading.style.display = 'none';
+            }
+
+        }
+        return linkFunction;
+    }
+
+    return directive;
+});
+
 kovkaApp.directive('boxItem', function (Template) {
     var box_id = 0;
     return {
@@ -971,12 +1112,6 @@ kovkaApp.directive('boxSelectedItem', function ($http, $compile, Template) {
 
     return {
         restrict: 'E',
-        link: function(scope, element, attr) {
-            console.log('link');
-            $("area[rel^='prettyPhoto']").prettyPhoto();
-
-            $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
-        },
         templateUrl: function (element, attrs) {
             pageType = attrs.pageType;
             selectedId = attrs.selectedId;

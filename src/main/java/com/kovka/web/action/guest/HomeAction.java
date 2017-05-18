@@ -43,6 +43,17 @@ public class HomeAction extends BaseAction {
         return SUCCESS;
     }
 
+    public String service() {
+        try {
+            id = ""+ sketchManager.getFirstId();
+        } catch (InternalErrorException e) {
+            return ERROR;
+        } catch (EntityNotFoundException e) {
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+
     public String loadSketches() {
 
         try {
@@ -100,6 +111,46 @@ public class HomeAction extends BaseAction {
         return SUCCESS;
     }
 
+    public String loadGalleries() {
+
+        try {
+
+            List<Sketch> sketches = sketchManager.getNameImages(getToLang());
+
+            List<BoxDto> boxDtos = new ArrayList<BoxDto>();
+            for (Sketch sketch : sketches) {
+                if (sketch.getStatus().getKey() == Status.ACTIVE.getKey()) {
+                    SketchInfo currentInfo = sketch.getCurrentInfo();
+
+                    BoxDto dto = new BoxDto();
+                    dto.setId("" + sketch.getId());
+
+                    dto.setName(currentInfo.getName());
+                    List<FileData> fileDatas = sketch.getImages();
+                    if (!Utils.isEmpty(fileDatas)) {
+                        for(FileData img : fileDatas){
+                            String path = img.getFileName();
+                            if (isLogoExist(path)) {
+                                path = getLogo(path);
+                                path.replaceAll("\\\\", "/");
+                                path.replaceAll("//", "/");
+                                dto.addImage(path);
+                            }
+                        }
+                    }
+                    boxDtos.add(dto);
+                }
+            }
+
+            dto.addResponse("data", boxDtos);
+            dto.setResponseStatus(ResponseStatus.SUCCESS);
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
+        }
+        return SUCCESS;
+    }
+
     public String loadSketch() {
 
         try {
@@ -108,7 +159,7 @@ public class HomeAction extends BaseAction {
 
             long id = Long.valueOf(params.get("id").toString());
 
-            Sketch sketch = sketchManager.getFullCurrentLangById(id);
+            Sketch sketch = sketchManager.getFullCurrentLangById(id, getToLang());
 
             BoxDto boxDto = new BoxDto();
             if (sketch.getStatus().getKey() == Status.ACTIVE.getKey()) {
@@ -119,7 +170,14 @@ public class HomeAction extends BaseAction {
                 boxDto.setName(currentInfo.getName());
                 boxDto.setShortDesc(currentInfo.getShortDesc());
                 boxDto.setTitle(currentInfo.getTitle());
-                boxDto.setDescription(currentInfo.getDescription());
+
+
+                String description = currentInfo.getDescription();
+                description =  description.replaceAll("vc_col-sm-6","vc_col-sm-10")
+                        .replaceAll("vc_col-sm-8","vc_col-sm-10")
+                        .replaceAll("vc_col-sm-12","vc_col-sm-10");
+
+                boxDto.setDescription(description);
 
                 List<FileData> images = sketch.getImages();
                 if (!Utils.isEmpty(images)) {
@@ -161,6 +219,68 @@ public class HomeAction extends BaseAction {
         } catch (EntityNotFoundException e) {
             logger.error(e);
             dto.setResponseStatus(ResponseStatus.RESOURCE_NOT_FOUND);
+        }
+        return SUCCESS;
+    }
+
+    public String navPreview() {
+
+        try {
+
+            Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
+
+            long id = Long.valueOf(params.get("id").toString());
+
+            Sketch sketch = sketchManager.getPreview(id, getToLang());
+            if(sketch != null){
+                BoxDto boxDto = new BoxDto();
+                if (sketch.getStatus().getKey() == Status.ACTIVE.getKey()) {
+                    SketchInfo currentInfo = sketch.getCurrentInfo();
+                    boxDto.setId("" + sketch.getId());
+                    boxDto.setName(currentInfo.getName());
+                }
+
+                dto.addResponse("data", boxDto);
+            }
+
+            dto.setResponseStatus(ResponseStatus.SUCCESS);
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
+        } catch (DataParseException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.INVALID_PARAMETER);
+        }
+        return SUCCESS;
+    }
+
+    public String navNext() {
+
+        try {
+
+            Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
+
+            long id = Long.valueOf(params.get("id").toString());
+
+            Sketch sketch = sketchManager.getNext(id, getToLang());
+
+            if(sketch != null){
+                BoxDto boxDto = new BoxDto();
+                if (sketch.getStatus().getKey() == Status.ACTIVE.getKey()) {
+                    SketchInfo currentInfo = sketch.getCurrentInfo();
+                    boxDto.setId("" + sketch.getId());
+                    boxDto.setName(currentInfo.getName());
+                }
+
+                dto.addResponse("data", boxDto);
+            }
+            dto.setResponseStatus(ResponseStatus.SUCCESS);
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
+        } catch (DataParseException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.INVALID_PARAMETER);
         }
         return SUCCESS;
     }

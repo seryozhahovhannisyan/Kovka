@@ -34,7 +34,18 @@
             <result name="success" type="json"/>
         </action>
 
+        <action name="nav-preview" class="HomeAction" method="navPreview">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="nav-next" class="HomeAction" method="navNext">
+            <result name="success" type="json"/>
+        </action>
+
         <action name="load-machines" class="MachineAction" method="loadMachines">
+            <result name="success" type="json"/>
+        </action>
+        <action name="load-galleries" class="HomeAction" method="loadGalleries">
             <result name="success" type="json"/>
         </action>
 

@@ -1,6 +1,7 @@
 package com.kovka.business;
 
 import com.kovka.common.data.Sketch;
+import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
 
@@ -15,13 +16,17 @@ public interface ISketchManager {
 
     public Sketch getFullById(Long id) throws InternalErrorException, EntityNotFoundException;
 
-    public Sketch getFullCurrentLangById(Long id) throws InternalErrorException, EntityNotFoundException;
+    public Sketch getFullCurrentLangById(Long id, Language language) throws InternalErrorException, EntityNotFoundException;
 
-    public Long getPreview(Long id) throws InternalErrorException;
+    public Long getFirstId() throws InternalErrorException, EntityNotFoundException;
 
-    public Long getNext(Long id) throws InternalErrorException;
+    public Sketch getPreview(Long id, Language language) throws InternalErrorException;
+
+    public Sketch getNext(Long id, Language language) throws InternalErrorException;
 
     public List<Sketch> getSampleByParams(Map<String, Object> params) throws InternalErrorException;
+
+    public List<Sketch> getNameImages(Language language) throws InternalErrorException;
 
     public long getCountByParams(Map<String, Object> params) throws InternalErrorException;
 

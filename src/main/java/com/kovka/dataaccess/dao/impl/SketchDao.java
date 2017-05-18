@@ -1,6 +1,7 @@
 package com.kovka.dataaccess.dao.impl;
 
 import com.kovka.common.data.Sketch;
+import com.kovka.common.data.lcp.Language;
 import com.kovka.common.exception.DatabaseException;
 import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.dataaccess.dao.ISketchDao;
@@ -56,11 +57,11 @@ public class SketchDao implements ISketchDao {
     }
 
     @Override
-    public Sketch getFullCurrentLangById(Long id) throws DatabaseException, EntityNotFoundException {
+    public Sketch getFullCurrentLangById(Map<String, Object> params) throws DatabaseException, EntityNotFoundException {
         try {
-            Sketch data = map.getFullCurrentLangById(id);
+            Sketch data = map.getFullCurrentLangById(params);
             if (data == null) {
-                throw new EntityNotFoundException(String.format("Could not found Sketch id=[%d]", id));
+                throw new EntityNotFoundException(String.format("Could not found Sketch id=[%d]", params));
             }
             return data;
         } catch (RuntimeException e) {
@@ -69,18 +70,27 @@ public class SketchDao implements ISketchDao {
     }
 
     @Override
-    public Long getPreview(Long id) throws DatabaseException {
+    public Long getFirstId() throws DatabaseException {
         try {
-            return map.getPreview(id);
+            return map.getFirstId();
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }
     }
 
     @Override
-    public Long getNext(Long id) throws DatabaseException {
+    public Sketch getPreview(Map<String, Object> params) throws DatabaseException {
         try {
-            return map.getPreview(id);
+            return map.getPreview(params);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
+    public Sketch getNext(Map<String, Object> params) throws DatabaseException {
+        try {
+            return map.getNext(params);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }
@@ -91,6 +101,15 @@ public class SketchDao implements ISketchDao {
     public List<Sketch> getSampleByParams(Map<String, Object> params) throws DatabaseException {
         try {
             return map.getSampleByParams(params);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
+    public List<Sketch> getNameImages(Language language) throws DatabaseException {
+        try {
+            return map.getNameImages(language);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }
