@@ -3,6 +3,9 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="S" uri="/struts-tags" %>
 
+<link rel="stylesheet" href="https://www.connecttotv.com/js/announcement/wallet/liMarquee/liMarquee.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+<script type="text/javascript" src="https://www.connecttotv.com/js/announcement/wallet/liMarquee/jquery.liMarquee.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -24,6 +27,17 @@
 
         $(".ubermenu-has-submenu-drop").click(function () {
             $(this).addClass('ubermenu-active');
+        });
+
+        $('.str').liMarquee({
+            width: 'auto',					//Sets width of the Marquee.
+//            height: '44px',					//Sets height of the Marquee.
+            direction: 'left',
+            circular: true,
+            scrollStop : false,
+            hoverStop : true,
+            dragAndDrop : false,
+            startShow : true
         });
 
     });
@@ -94,10 +108,14 @@
                 <div class="element-wrap">
 
                     <h2 class="site-description"><s:property value="%{#about.firstPhone}"/></h2>
-                    <h2 class="site-description"><s:property value="#about.firstEmail"/></h2>
-                    <h2 class="site-description">
-                        <s:property value="#about.currentInfo.address"/>
-                        <i class="fa fa-globe"></i>
+                    <h2 class="site-description"><s:property value="%{#about.firstEmail}"/></h2>
+                    <h2 class="str site-description">
+                        &nbsp;&nbsp;<i class="fa fa-globe"></i><s:property value="#about.currentInfo.address"/><i class="fa fa-globe"></i>&nbsp;&nbsp;
+                        &nbsp;&nbsp;<i class="fa fa-globe"></i><s:property value="#about.currentInfo.address"/><i class="fa fa-globe"></i>&nbsp;&nbsp;
+                        &nbsp;&nbsp;<i class="fa fa-globe"></i><s:property value="#about.currentInfo.address"/><i class="fa fa-globe"></i>&nbsp;&nbsp;
+                        &nbsp;&nbsp;<i class="fa fa-globe"></i><s:property value="#about.currentInfo.address"/><i class="fa fa-globe"></i>&nbsp;&nbsp;
+
+
                     </h2>
                 </div>
             </s:if>

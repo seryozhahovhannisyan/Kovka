@@ -880,7 +880,8 @@ div.wp-caption.alignright .wp-caption-text {
     margin-right: 10px;
     /* -webkit-transition: all 0.4s ease-in-out; */
     /* transition: all 0.4s ease-in-out; */
-    width: auto;
+    /*width: auto;*/
+    width: 100%;
     right: 0;
     /*padding: 10px;*/
 }
