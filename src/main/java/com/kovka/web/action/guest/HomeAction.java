@@ -1,5 +1,6 @@
 package com.kovka.web.action.guest;
 
+import com.kovka.business.IFileDataManager;
 import com.kovka.business.ISketchManager;
 import com.kovka.common.data.FileData;
 import com.kovka.common.data.Sketch;
@@ -32,6 +33,8 @@ public class HomeAction extends BaseAction {
     private ResponseDto dto;
 
     private ISketchManager sketchManager;
+
+    private IFileDataManager dataManager;
 
     private String requestJson;
 
@@ -141,6 +144,25 @@ public class HomeAction extends BaseAction {
                     boxDtos.add(dto);
                 }
             }
+
+
+            BoxDto boxDto = new BoxDto();
+            boxDto.setId("-1");
+
+            boxDto.setName(getText("admin.menu.machine"));
+            List<FileData> fileDatas = dataManager.getMachineData();
+            if (!Utils.isEmpty(fileDatas)) {
+                for(FileData img : fileDatas){
+                    String path = img.getFileName();
+                    if (isMachineImageExist(path)) {
+                        path = getMachineImage(path);
+                        path.replaceAll("\\\\", "/");
+                        path.replaceAll("//", "/");
+                        boxDto.addImage(path);
+                    }
+                }
+            }
+            boxDtos.add(boxDto);
 
             dto.addResponse("data", boxDtos);
             dto.setResponseStatus(ResponseStatus.SUCCESS);
@@ -311,6 +333,10 @@ public class HomeAction extends BaseAction {
 
     public void setSketchManager(ISketchManager sketchManager) {
         this.sketchManager = sketchManager;
+    }
+
+    public void setDataManager(IFileDataManager dataManager) {
+        this.dataManager = dataManager;
     }
 
     public void setRequestJson(String requestJson) {
