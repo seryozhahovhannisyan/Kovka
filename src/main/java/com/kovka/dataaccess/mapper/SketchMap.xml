@@ -25,6 +25,20 @@
 
     </resultMap>
 
+    <resultMap id="rmNameImages" type="Sketch">
+
+        <id property="id" column="id"/>
+        <result property="order" column="order"/>
+        <result property="status" column="status"/>
+
+        <association property="currentInfo" column="id" javaType="SketchInfo">
+            <result property="name" column="name"/>
+        </association>
+        <association property="images" column="id"
+                     select="com.kovka.dataaccess.mapper.namespace.FileDataMap.getSketchImg"/>
+
+    </resultMap>
+
     <resultMap id="rmSketchFull" type="Sketch">
         <id property="id" column="id"/>
         <result property="order" column="order"/>
@@ -52,6 +66,15 @@
                      select="com.kovka.dataaccess.mapper.namespace.SketchProductMap.getBySketchId"/>
     </resultMap>
 
+    <resultMap id="rmSketchNav" type="Sketch">
+        <id property="id" column="id"/>
+        <result property="order" column="order"/>
+        <result property="status" column="status"/>
+        <association property="currentInfo" column="id" javaType="SketchInfo">
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+
     <insert id="add" parameterType="Sketch">
 
         INSERT INTO sketch(
@@ -68,19 +91,34 @@
 
     </insert>
 
-    <select id="getPreview"
-            resultType="long"
-            parameterType="long">
+    <select id="getFirstId"
+            resultType="long" >
 
-        SELECT id FROM sketch WHERE id &lt; #{id} ORDER BY id DESC LIMIT 1
+        SELECT id
+        FROM sketch
+        ORDER BY id LIMIT 1
+
+    </select>
+
+    <select id="getPreview"
+            resultMap="rmSketchNav"
+            parameterType="map">
+
+        SELECT s.*,
+        si.`name` `name`
+        FROM sketch s, sketch_info si
+        WHERE si.sketch_id = s.id and si.`lang` = #{language} AND s.id &lt; #{id} ORDER BY s.id DESC LIMIT 1
 
     </select>
 
     <select id="getNext"
-            resultType="long"
-            parameterType="long">
+            resultMap="rmSketchNav"
+            parameterType="map">
 
-        SELECT id FROM sketch WHERE id &gt; #{id} LIMIT 1
+        SELECT s.*,
+        si.`name` `name`
+        FROM sketch s, sketch_info si
+        WHERE si.sketch_id = s.id and si.`lang` = #{language} AND s.id &gt; #{id} LIMIT 1
 
     </select>
 
@@ -112,7 +150,7 @@
 
     <select id="getFullCurrentLangById"
             resultMap="rmSketchFullCurrentLang"
-            parameterType="long">
+            parameterType="map">
 
         SELECT s.*,
         si.`id` `info_id`,
@@ -123,7 +161,7 @@
         si.`title` `title`,
         si.`description` `description`
         FROM sketch s, sketch_info si
-        WHERE si.sketch_id = s.id and s.id = #{id}
+        WHERE si.sketch_id = s.id and s.id = #{id} and si.`lang` = #{language}
 
     </select>
 
@@ -148,6 +186,17 @@
         <if test="except != null">
             AND id != #{except}
         </if>
+
+    </select>
+
+    <select id="getNameImages"
+            resultMap="rmNameImages"
+            parameterType="Language">
+
+        SELECT s.*,
+        si.`name` `name`
+        FROM sketch s, sketch_info si
+        WHERE si.sketch_id = s.id AND si.`lang` = #{language}
 
     </select>
 
