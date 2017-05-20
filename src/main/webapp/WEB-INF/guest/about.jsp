@@ -56,8 +56,6 @@
         color: #505ac7
     }
 </style>
-<script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-sanitize.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/model/Box.js"></script>
 
 <s:set var="about"   />
 <s:if test="%{#session.about == null}">
@@ -178,7 +176,7 @@
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
-            title: 'NMG Ковка',
+            title: 'MNG Ковка',
             draggable: true
         });
     }

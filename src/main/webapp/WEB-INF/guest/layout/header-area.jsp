@@ -3,8 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="S" uri="/struts-tags" %>
 
-<link rel="stylesheet" href="https://www.connecttotv.com/js/announcement/wallet/liMarquee/liMarquee.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
-<script type="text/javascript" src="https://www.connecttotv.com/js/announcement/wallet/liMarquee/jquery.liMarquee.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/guest/lib/liMarquee.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/guest/lib/jquery.liMarquee.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -35,7 +35,7 @@
             direction: 'left',
             circular: true,
             scrollStop : false,
-            hoverStop : true,
+            hoverStop : false,
             dragAndDrop : false,
             startShow : true
         });
@@ -55,6 +55,13 @@
     }
     function hide_lang() {
         $(".ubermenu-has-submenu-drop").removeClass('ubermenu-active');
+    }
+
+    function about_entry(){
+        window.open(
+                '<%=request.getContextPath()%>/about.htm',
+                '_blank' // <- This is what makes it open in a new window.
+        );
     }
 
 </script>
@@ -107,15 +114,13 @@
             <s:if test="%{#about != null}" >
                 <div class="element-wrap">
 
-                    <h2 class="site-description"><s:property value="%{#about.firstPhone}"/></h2>
-                    <h2 class="site-description"><s:property value="%{#about.firstEmail}"/></h2>
-                    <h2 class="str site-description">
-                        &nbsp;&nbsp;<i class="fa fa-globe"></i><s:property value="#about.currentInfo.address"/><i class="fa fa-globe"></i>&nbsp;&nbsp;
-                        &nbsp;&nbsp;<i class="fa fa-globe"></i><s:property value="#about.currentInfo.address"/><i class="fa fa-globe"></i>&nbsp;&nbsp;
-                        &nbsp;&nbsp;<i class="fa fa-globe"></i><s:property value="#about.currentInfo.address"/><i class="fa fa-globe"></i>&nbsp;&nbsp;
-                        &nbsp;&nbsp;<i class="fa fa-globe"></i><s:property value="#about.currentInfo.address"/><i class="fa fa-globe"></i>&nbsp;&nbsp;
-
-
+                    <%--<h2 class="site-description"><s:property value="%{#about.firstPhone}"/></h2>--%>
+                    <%--<h2 class="site-description"><s:property value="%{#about.firstEmail}"/></h2>--%>
+                    <h2 class="str site-description" onclick="about_entry()" >
+                        <s:text name="header.banner">Собственное производство, 100% самые низкие цены!</s:text>
+                        &nbsp;&nbsp;<i class="fa fa-globe"></i>&nbsp;<s:property value="#about.currentInfo.address"/>&nbsp;<i class="fa fa-globe"></i>&nbsp;&nbsp;
+                        &nbsp;&nbsp;<i class="fa fa-phone"></i>&nbsp;<s:property value="#about.firstPhone"/>&nbsp;<i class="fa fa-phone"></i>&nbsp;&nbsp;
+                        &nbsp;&nbsp;<i class="fa fa-envelope"></i>&nbsp;<s:property value="#about.firstEmail"/>&nbsp;<i class="fa fa-envelope"></i>&nbsp;&nbsp;
                     </h2>
                 </div>
             </s:if>
@@ -175,6 +180,14 @@
                                             name="menu.price">Цены</s:text></span>
                                 </a>
                             </li>
+                            <li id="prices" class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-147 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-flyout">
+                                <a class="ubermenu-target ubermenu-target-with-icon ubermenu-item-layout-default ubermenu-item-layout-icon_left"
+                                   href="feedback.htm" tabindex="0">
+                                    <i class="ubermenu-icon fa fa-envelope"></i>
+                                    <span class="ubermenu-target-title ubermenu-target-text"><s:text
+                                            name="menu.feedback">Обратная связь</s:text></span>
+                                </a>
+                            </li>
                             <li id="about" class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item-has-children ubermenu-item-482 ubermenu-item-level-0 ubermenu-column ubermenu-column-auto ubermenu-has-submenu-flyout">
                                 <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only"
                                    href="about.htm" tabindex="0">
@@ -217,7 +230,7 @@
                     <!-- End UberMenu -->
                 </aside>
                 <aside id="text-20" class="widget widget_text">
-                    <h3 class="widget-title"><s:text name="header.banner"></s:text></h3>
+                    <%--<h3 class="widget-title"><s:text name="header.banner">Собственное производство, 100% самые низкие цены!</s:text></h3>--%>
                     <div class="textwidget">
                         <center><input value='<s:text name="header.promotions">Специальные АКЦИИ</s:text>'
                                        type="button"></center>

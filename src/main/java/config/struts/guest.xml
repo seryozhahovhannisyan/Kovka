@@ -74,6 +74,15 @@
             <result name="success" type="tiles">prices</result>
         </action>
 
+        <action name="feedback"  class="BaseAction">
+            <result name="success" type="tiles">feedback</result>
+        </action>
+
+        <action name="send-feedback"  class="FeedbackAction" method="execute">
+            <result name="success" type="redirect">feedback.htm</result>
+            <result name="error" type="tiles">feedback</result>
+        </action>
+
         <action name="about"  class="BaseAction">
             <result name="success" type="tiles">about</result>
         </action>

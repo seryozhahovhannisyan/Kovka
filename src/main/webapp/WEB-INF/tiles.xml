@@ -118,6 +118,14 @@
         <put-attribute name="content" value="content-about" type="definition"/>
     </definition>
 
+    <definition name="content-feedback" template="/WEB-INF/guest/feedback.jsp">
+        <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
+    </definition>
+
+    <definition name="feedback" extends="web-guest">
+        <put-attribute name="content" value="content-feedback" type="definition"/>
+    </definition>
+
     <definition name="content-our-works" template="/WEB-INF/guest/our-works.jsp">
         <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
     </definition>

@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>NMG ковка</title>
+    <title>MNG ковка</title>
 
     <style>
         .logo_div_main_start {
