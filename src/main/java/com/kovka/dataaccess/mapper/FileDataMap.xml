@@ -115,7 +115,18 @@
    -->
     <update id="update" parameterType="FileData">
         UPDATE f_data
-        SET status = #{status}, file_name = #{fileName}
+        SET
+        id = #{id}
+        <if test="status != null">
+            , status = #{status}
+        </if>
+        <if test="fileName != null">
+            , file_name = #{fileName}
+        </if>
+        <if test="order != null">
+            , `order` = #{order}
+        </if>
+
         WHERE id = #{id}
     </update>
 

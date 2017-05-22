@@ -21,7 +21,7 @@ $(function () {
         // General settings
         runtimes: 'html5,flash,silverlight,html4',
         browse_button: 'pickfiles', // you can pass in id...
-        url: "/admin-upload-sketch.htm?sketchId=<s:property value='sketchId'/>",
+        url: "/admin-upload-admin.htm?sketchId=<s:property value='sketchId'/>",
 
         // Maximum file size
         max_file_size: '10mb',
@@ -81,6 +81,11 @@ $(function () {
     });
 
     uploader.init();
+
+    $( "#sortable" ).sortable({
+        cursor: 'move'
+    });
+    $( "#sortable" ).disableSelection();
 })
 </script>
 
@@ -104,43 +109,48 @@ $(function () {
                 </div>
             </div>
             <div class="x_panel">
-                <div class="x_title">
-                    <h2>Media Gallery
-                        <small> gallery design</small>
-                    </h2>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <div class="row">
 
-                        <p>Media gallery design emelents</p>
-                        <s:iterator var="data" value="datas">
-                            <s:if test="%{isLogoExist(#data.fileName)}">
-                                <div class="col-md-55">
-                                    <div class="thumbnail">
-                                        <div class="image view view-first">
-                                            <img style="width: 100%; display: block;"
-                                                 src="<s:property value='%{getLogo(#data.fileName)}'/>" alt="image">
-                                            <div class="mask">
-                                                <p>Your Text</p>
-                                                <div class="tools tools-bottom">
-                                                    <a href="admin-sketch-image-default.htm?id=<s:property value="sketchId"/>&mainImageId=<s:property value="#data.id"/>"><i class="fa fa-link"></i></a>
-                                                    <a href="#"><i class="fa fa-pencil"></i></a>
-                                                    <a href="admin-image-delete.htm?id=<s:property value="#data.id"/>"><i class="fa fa-times"></i></a>
+                <form action="admin-sketch-images-sort.htm" method="post">
+                    <input type="hidden" name="sketchId" value="<s:property value='sketchId'/>"/>
+                    <div class="x_title">
+                        <h2>Sketch
+                            <small> gallery</small>
+                            <button type="submit" class="btn btn-primary">
+                                <s:text name="label.sort">Sort</s:text>
+                            </button>
+                        </h2>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                        <div id="sortable" class="row">
+                            <s:iterator var="data" value="datas">
+                                <input type="hidden" name="sortIdes" value="<s:property value="#data.id"/>"/>
+                                <s:if test="%{isLogoExist(#data.fileName)}">
+                                    <div class="col-md-55">
+                                        <div class="thumbnail">
+                                            <div class="image view view-first">
+                                                <img style="width: 100%; display: block;"
+                                                     src="<s:property value='%{getLogo(#data.fileName)}'/>" alt="image"/>
+                                                <div class="mask">
+                                                    <p><s:text name="label.edit">Edit</s:text></p>
+                                                    <div class="tools tools-bottom">
+                                                        <a href="admin-sketch-image-default.htm?id=<s:property value="sketchId"/>&mainImageId=<s:property value="#data.id"/>"><i class="fa fa-link"></i></a>
+                                                        <a href="admin-image-delete.htm?id=<s:property value="#data.id"/>"><i class="fa fa-times"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="caption">
-                                            <p>Snow and Ice Incoming for the South</p>
-                                        </div>
                                     </div>
-                                </div>
-                            </s:if>
-                        </s:iterator>
+                                </s:if>
+                            </s:iterator>
 
 
+                        </div>
                     </div>
-                </div>
+                </form>
+
+
             </div>
         </div>
     </div>

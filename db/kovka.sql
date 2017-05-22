@@ -2,7 +2,8 @@
 SQLyog Enterprise - MySQL GUI v6.56
 MySQL - 5.7.15-log : Database - kovka
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -73,7 +74,7 @@ CREATE TABLE `g_language_lcp` (
 
 insert  into `g_language_lcp`(`value`,`key`,`title`,`locale`) values (1,'hy','Armenian','hy'),(2,'en','English','en'),(3,'ru','Russian','ru'),(4,'fr','France','fr'),(5,'es','Spanish','es'),(6,'fa','Persian','fa');
 
-/*Table structure for table `sketch` */
+/*Table structure for table `admin` */
 
 DROP TABLE IF EXISTS `sketch`;
 
@@ -85,7 +86,7 @@ CREATE TABLE `sketch` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-/*Data for the table `sketch` */
+/*Data for the table `admin` */
 
 insert  into `sketch`(`id`,`status`,`order`,`main_image_id`) values (1,1,0,1),(2,1,0,56);
 

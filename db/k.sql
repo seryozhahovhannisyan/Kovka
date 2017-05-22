@@ -265,7 +265,7 @@ CREATE TABLE `price_list_info` (
 
 /*Data for the table `price_list_info` */
 
-/*Table structure for table `sketch` */
+/*Table structure for table `admin` */
 
 DROP TABLE IF EXISTS `sketch`;
 
@@ -277,7 +277,7 @@ CREATE TABLE `sketch` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-/*Data for the table `sketch` */
+/*Data for the table `admin` */
 
 insert  into `sketch`(`id`,`status`,`order`,`main_image_id`) values 
 (1,1,0,1),

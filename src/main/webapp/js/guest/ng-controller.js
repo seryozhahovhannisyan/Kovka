@@ -418,7 +418,7 @@ kovkaApp.directive('boxes', function ($http) {
                                 var t = dtos[i];
                                 var url_ = "#";
                                 if (page_type == "sketches" || page_type == "articles") {
-                                    url_ = '/sketch-single.htm?id=' + t.id;
+                                    url_ = '/admin-single.htm?id=' + t.id;
                                 }
 
                                 var box = null;
@@ -613,9 +613,9 @@ kovkaApp.directive('nav', function ($http) {
                                     var d = result.response.data;
 
                                     if(type == 'prev'){
-                                        $scope['prev']= {href : "/sketch-single.htm?id=" + d.id, name : d.name};
+                                        $scope['prev']= {href : "/admin-single.htm?id=" + d.id, name : d.name};
                                     } else if(type == 'next'){
-                                        $scope['next']= {href : "/sketch-single.htm?id=" + d.id, name : d.name};
+                                        $scope['next']= {href : "/admin-single.htm?id=" + d.id, name : d.name};
                                     }
 
                                 }

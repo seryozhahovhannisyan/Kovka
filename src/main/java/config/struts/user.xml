@@ -59,6 +59,11 @@
             <result name="success" type="tiles">admin-sketches</result>
         </action>
 
+        <action name="admin-sketches-sort" class="SketchAction" method="sort">
+            <result name="success" type="redirect">admin-sketches-sort.htm</result>
+            <result name="input" type="tiles">admin-sketches</result>
+        </action>
+
         <action name="admin-sketch" class="SketchAction" method="view">
             <result name="success" type="tiles">admin-sketch</result>
         </action>
@@ -72,8 +77,18 @@
             <result name="input" type="tiles">admin-sketches</result>
         </action>
 
+        <action name="admin-sketch-images-sort" class="FileDataAction" method="sort">
+            <result name="success" type="redirect">admin-sketch-images-add-view.htm?sketchId=${sketchId}</result>
+            <result name="input" type="tiles">admin-sketch-images-add-view</result>
+        </action>
+
         <action name="admin-sketch-product-add-view" class="SketchProductUploadAction" method="view">
             <result name="success" type="tiles">admin-sketch-product-add-view</result>
+            <result name="input" type="tiles">admin-sketches</result>
+        </action>
+
+        <action name="admin-sketch-product-sort" class="FileDataAction" method="sort">
+            <result name="success" type="redirect">admin-sketch-product-add-view.htm?sketchId=${sketchId}</result>
             <result name="input" type="tiles">admin-sketches</result>
         </action>
 
@@ -109,6 +124,10 @@
 
         <action name="admin-machine" class="MachineUploadAction" method="view">
             <result name="success" type="tiles">admin-machine</result>
+        </action>
+
+        <action name="admin-machine-sort" class="FileDataAction" method="sort">
+            <result name="success" type="redirect">admin-machine.htm</result>
         </action>
 
         <action name="admin-image-delete" class="FileDataAction" method="delete">

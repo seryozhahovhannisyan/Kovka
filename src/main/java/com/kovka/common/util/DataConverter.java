@@ -5,9 +5,7 @@ import com.kovka.common.exception.DataParseException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Serozh on 6/30/2016.
@@ -71,6 +69,23 @@ public class DataConverter {
         } catch (Exception e) {
             throw new DataParseException(e);
         }
+    }
+
+    public static List<Long> convertStringIdesToLong(String data) throws DataParseException {
+        List<Long> ides = new ArrayList<Long>();
+        if (Utils.isEmpty(data)) {
+            throw new DataParseException("Empty list");
+        }
+
+        try {
+            for (String i : data.split(",")) {
+                ides.add(Long.parseLong(i));
+            }
+            return ides;
+        } catch (Exception e) {
+            throw new DataParseException(e);
+        }
+
     }
 
     public static String join(Collection<String> collection, String delim) {

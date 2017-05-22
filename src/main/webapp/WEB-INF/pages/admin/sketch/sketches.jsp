@@ -27,6 +27,14 @@
         {title: 'status', field: 'status', visible: true},
         {title: 'order', field: 'order', visible: true}
     ];
+    $( function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+    } );
+
+    function sort(){
+        $('#sort').submit();
+    }
 </script>
 
 <div class="right_col" role="main" style="min-height: 2519px;" ng-controller="listController">
@@ -48,6 +56,11 @@
                             <div class="add_div_brch"></div>
                             <div><s:text name="label.add.record">Add new record</s:text></div>
                         </div>
+                        <div class="add_div_brch_parent" click=sort()>
+                            <div class="add_div_brch"></div>
+                            <div><s:text name="label.sort">sort</s:text></div>
+                        </div>
+
                     </div>
 
                     <div class="row">
@@ -76,58 +89,63 @@
 
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr ng-repeat="item in $data" ng-class-even="'tbl-row-even'"
-                                            ng-class="{'tbl_row_even': $even, 'tbl_row_odd': $odd }">
-                                            <td ng-show="columns[0].visible" sortable="columns[0].field">
-                                                {{item.currentInfo.name ? item.currentInfo.name : '-'}}
-                                            </td>
-                                            <td ng-show="columns[1].visible" sortable="columns[1].field">
-                                                {{item.currentInfo.shortDesc ? item.currentInfo.shortDesc : '-'}}
-                                            </td>
-                                            <td ng-show="columns[2].visible" sortable="columns[2].field">
-                                                {{item.currentInfo.title ? item.currentInfo.title : '-'}}
-                                            </td>
 
-                                            <td ng-show="columns[3].visible" sortable="columns[3].field">
-                                                {{item.status ? item.status : '-'}}
-                                            </td>
+                                        <form id="sort" action="admin-sketches-sort.htm" method="post">
+                                            <tbody id="sortable">
+                                            <tr ng-repeat="item in $data" ng-class-even="'tbl-row-even'"
+                                                ng-class="{'tbl_row_even': $even, 'tbl_row_odd': $odd }">
+                                                <input type="hidden" name="sortIdes" value="{{item.id}}"/>
+                                                <td ng-show="columns[0].visible" sortable="columns[0].field">
+                                                    {{item.currentInfo.name ? item.currentInfo.name : '-'}}
+                                                </td>
+                                                <td ng-show="columns[1].visible" sortable="columns[1].field">
+                                                    {{item.currentInfo.shortDesc ? item.currentInfo.shortDesc : '-'}}
+                                                </td>
+                                                <td ng-show="columns[2].visible" sortable="columns[2].field">
+                                                    {{item.currentInfo.title ? item.currentInfo.title : '-'}}
+                                                </td>
 
-                                            <td ng-show="columns[4].visible" sortable="columns[4].field">
-                                                {{item.order ? item.order : '-'}}
-                                            </td>
-                                            <td class="edit_td">
-                                                <a data-type="sketch" data-id="{{item.id}}"
-                                                   ng-click="add_new_image($event)">
-                                                    <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
-                                                    <s:text name="label.image">Image</s:text>
-                                                </a>
-                                            </td>
-                                            <td class="edit_td">
-                                                <a data-type="sketch" data-id="{{item.id}}"
-                                                   ng-click="add_new_product($event)">
-                                                    <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
-                                                    <s:text name="sketches.title.Product">Product</s:text>
-                                                </a>
-                                            </td>
-                                            <td class="edit_td" Deleting>
-                                                <a data-type="sketch" data-id="{{item.id}}"
-                                                   ng-click="editSelectedRow($event)">editSelectedRow
-                                                    <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
-                                                    <s:text name="label.edit">Edit</s:text>
-                                                </a>
-                                            </td>
-                                            <td class="edit_td">
-                                                <a data-type="sketch" data-id="{{item.id}}"
-                                                   ng-click="deleteSelectedRow($event)">
-                                                    <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
-                                                    <s:text name="label.delete">Delete</s:text>
-                                                </a>
-                                            </td>
+                                                <td ng-show="columns[3].visible" sortable="columns[3].field">
+                                                    {{item.status ? item.status : '-'}}
+                                                </td>
+
+                                                <td ng-show="columns[4].visible" sortable="columns[4].field">
+                                                    {{item.order ? item.order : '-'}}
+                                                </td>
+                                                <td class="edit_td">
+                                                    <a data-type="sketch" data-id="{{item.id}}"
+                                                       ng-click="add_new_image($event)">
+                                                        <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                        <s:text name="label.image">Image</s:text>
+                                                    </a>
+                                                </td>
+                                                <td class="edit_td">
+                                                    <a data-type="sketch" data-id="{{item.id}}"
+                                                       ng-click="add_new_product($event)">
+                                                        <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                        <s:text name="sketches.title.Product">Product</s:text>
+                                                    </a>
+                                                </td>
+                                                <td class="edit_td" >
+                                                    <a data-type="sketch" data-id="{{item.id}}"
+                                                       ng-click="editSelectedRow($event)">
+                                                        <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                        <s:text name="label.edit">Edit</s:text>
+                                                    </a>
+                                                </td>
+                                                <td class="edit_td">
+                                                    <a data-type="sketch" data-id="{{item.id}}"
+                                                       ng-click="deleteSelectedRow($event)">
+                                                        <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
+                                                        <s:text name="label.delete">Delete</s:text>
+                                                    </a>
+                                                </td>
 
 
-                                        </tr>
-                                        </tbody>
+                                            </tr>
+                                            </tbody>
+                                        </form>
+
                                     </table>
                                 </div>
 

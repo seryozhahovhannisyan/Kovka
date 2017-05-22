@@ -224,7 +224,7 @@
             , status = #{status}
         </if>
        <if test="order != null">
-            , order = #{order}
+            , `order` = #{order}
         </if>
         <if test="mainImageId != null">
             , main_image_id = #{mainImageId}

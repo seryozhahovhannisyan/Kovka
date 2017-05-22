@@ -1,4 +1,4 @@
-package com.kovka.web.action.sketch;
+package com.kovka.web.action.admin;
 
 import com.kovka.business.IPriceListInfoManager;
 import com.kovka.common.data.PriceListInfo;

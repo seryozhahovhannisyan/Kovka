@@ -1,4 +1,4 @@
-package com.kovka.web.action.sketch;
+package com.kovka.web.action.admin;
 
 import com.kovka.business.ISketchManager;
 import com.kovka.common.data.Sketch;
@@ -44,6 +44,8 @@ public class SketchAction extends BaseAction {
     // for search
     private String requestJson;
     private long dataCount;
+    //
+    private String sortIdes;
 
     public String add() {
 
@@ -103,6 +105,28 @@ public class SketchAction extends BaseAction {
             logger.error(e);
         } catch (DataParseException e) {
             logger.error(e);
+        }
+        return SUCCESS;
+    }
+
+    public String sort() {
+        try {
+
+            List<Long> ides = DataConverter.convertStringIdesToLong(sortIdes);
+            sketchManager.sort(ides);
+
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            session.put(MESSAGE, getText("error.internal"));
+            return INPUT;
+        } catch (DataParseException e) {
+            logger.error(e);
+            session.put(MESSAGE, getText("error.internal"));
+            return INPUT;
+        } catch (EntityNotFoundException e) {
+            logger.error(e);
+            session.put(MESSAGE, getText("error.internal"));
+            return INPUT;
         }
         return SUCCESS;
     }

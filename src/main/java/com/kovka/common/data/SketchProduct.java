@@ -14,7 +14,7 @@ public class SketchProduct {
     private FileData image;
     private Long imageId;
 
-    private int order;
+    private Integer order;
     private Status status;
 
     /*##################################################################################################################
@@ -62,11 +62,11 @@ public class SketchProduct {
         this.imageId = imageId;
     }
 
-    public int getOrder() {
+    public Integer getOrder() {
         return order;
     }
 
-    public void setOrder(int order) {
+    public void setOrder(Integer order) {
         this.order = order;
     }
 

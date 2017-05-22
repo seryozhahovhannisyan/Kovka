@@ -79,8 +79,12 @@ $(function () {
             }
         }
     });
-
     uploader.init();
+
+    $( "#sortable" ).sortable({
+        cursor: 'move'
+    });
+    $( "#sortable" ).disableSelection();
 })
 </script>
 
@@ -104,42 +108,43 @@ $(function () {
                 </div>
             </div>
             <div class="x_panel">
-                <div class="x_title">
-                    <h2>Media Gallery
-                        <small> gallery design</small>
-                    </h2>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <div class="row">
-
-                        <p>Media gallery design emelents</p>
-                        <s:iterator var="product" value="products">
-                            <s:if test="%{isProductImageExist(#product.image.fileName)}">
-                                <div class="col-md-55">
-                                    <div class="thumbnail">
-                                        <div class="image view view-first">
-                                            <img style="width: 100%; display: block;"
-                                                 src="<s:property value='%{getProductImage(#product.image.fileName)}'/>"
-                                                 alt="image">
-                                            <div class="mask">
-                                                <p>Your Text</p>
-                                                <div class="tools tools-bottom">
-                                                    <a href="admin-image-delete.htm?id=<s:property value="#data.id"/>"><i class="fa fa-times"></i></a>
+                <form action="admin-sketch-product-sort.htm" method="post">
+                    <input type="hidden" name="sketchId" value="<s:property value='sketchId'/>"/>
+                    <div class="x_title">
+                        <h2>Product Gallery
+                            <button type="submit" class="btn btn-primary">
+                                <s:text name="label.sort">Sort</s:text>
+                            </button>
+                        </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+                            <s:iterator var="product" value="products">
+                                <input type="hidden" name="sortIdes" value="<s:property value="#data.id"/>"/>
+                                <s:if test="%{isProductImageExist(#product.image.fileName)}">
+                                    <div class="col-md-55">
+                                        <div class="thumbnail">
+                                            <div class="image view view-first">
+                                                <img style="width: 100%; display: block;"
+                                                     src="<s:property value='%{getProductImage(#product.image.fileName)}'/>"
+                                                     alt="image">
+                                                <div class="mask">
+                                                    <p><s:text name="label.delete">Delete</s:text></p>
+                                                    <div class="tools tools-bottom">
+                                                        <a href="admin-image-delete.htm?id=<s:property value="#data.id"/>"><i class="fa fa-times"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="caption">
-                                            <p>Snow and Ice Incoming for the South</p>
-                                        </div>
                                     </div>
-                                </div>
-                            </s:if>
-                        </s:iterator>
+                                </s:if>
+                            </s:iterator>
 
 
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -1,10 +1,10 @@
-package com.kovka.web.action.sketch;
+package com.kovka.web.action.admin;
 
-import com.kovka.business.ISketchProductManager;
+import com.kovka.business.IFileDataManager;
 import com.kovka.common.data.FileData;
-import com.kovka.common.data.SketchProduct;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
+import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
@@ -24,14 +24,14 @@ import java.util.List;
 /**
  * Created by htdev001 on 3/5/14.
  */
-public class SketchProductUploadAction extends BaseAction {
+public class SketchUploadAction extends BaseAction {
 
-    private static final Logger logger = Logger.getLogger(SketchProductUploadAction.class.getSimpleName());
+    private static final Logger logger = Logger.getLogger(SketchUploadAction.class.getSimpleName());
     private static final String RESP_SUCCESS = "success";//"{\"jsonrpc\" : \"2.0\", \"result\" : \"success\", \"id\" : \"id\"}";
     private static final String RESP_ERROR = "error";//"{\"jsonrpc\" : \"2.0\", \"error\" : {\"code\": 101, \"message\": \"Failed to open input stream.\"}, \"id\" : \"id\"}";
-    private ISketchProductManager productManager;
+    private IFileDataManager dataManager;
     private InputStream result = new ByteArrayInputStream(INPUT.getBytes());
-    private List<SketchProduct> products;
+    private List<FileData> datas;
 
     private File file;
     private String fileFileName;
@@ -39,18 +39,23 @@ public class SketchProductUploadAction extends BaseAction {
 
     private String sketchId;
 
+
     public String view() {
         try {
-            products = productManager.getBySketchId(DataConverter.convertToLong(sketchId));
+            datas = dataManager.getBySketchId(DataConverter.convertToLong(sketchId));
         } catch (InternalErrorException e) {
             logger.error(e);
+            session.put(MESSAGE, getText("error.internal"));
             return INPUT;
         } catch (DataParseException e) {
             logger.error(e);
+            session.put(MESSAGE, getText("error.internal"));
             return INPUT;
         }
         return SUCCESS;
     }
+
+
 
     public String upload() {
 
@@ -78,12 +83,8 @@ public class SketchProductUploadAction extends BaseAction {
             d.setSize(fileData.length);
             d.setCreationDate(new Date(System.currentTimeMillis()));
             d.setStatus(Status.ACTIVE);
-
-            SketchProduct sketchProduct = new SketchProduct();
-            sketchProduct.setSketchId(DataConverter.convertToLong(sketchId));
-            sketchProduct.setImage(d);
-            sketchProduct.setStatus(Status.ACTIVE);
-            productManager.add(sketchProduct);
+            d.setSketchId(DataConverter.convertToLong(sketchId));
+            dataManager.add(d);
         } catch (IOException e) {
             result = new ByteArrayInputStream(RESP_ERROR.getBytes());
             logger.error(e);
@@ -102,8 +103,8 @@ public class SketchProductUploadAction extends BaseAction {
         return result;
     }
 
-    public List<SketchProduct> getProducts() {
-        return products;
+    public List<FileData> getDatas() {
+        return datas;
     }
 
     public void setFile(File file) {
@@ -126,7 +127,7 @@ public class SketchProductUploadAction extends BaseAction {
         this.sketchId = sketchId;
     }
 
-    public void setProductManager(ISketchProductManager productManager) {
-        this.productManager = productManager;
+    public void setDataManager(IFileDataManager dataManager) {
+        this.dataManager = dataManager;
     }
 }

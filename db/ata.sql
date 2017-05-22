@@ -233,7 +233,7 @@ insert  into `g_language_lcp`(`value`,`key`,`title`,`locale`) values
 
 /*Data for the table `price_list_info` */
 
-/*Data for the table `sketch` */
+/*Data for the table `admin` */
 
 insert  into `sketch`(`id`,`status`,`order`,`main_image_id`) values 
 (1,1,NULL,13),

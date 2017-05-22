@@ -49,7 +49,21 @@
 
     <update id="update" parameterType="SketchProduct">
         UPDATE sketch_product
-        SET `price` = #{price},`image_id` = #{imageId},`order` = #{order},`status` = #{status}
+        SET
+        id = #{id}
+        <if test="status != null">
+            , status = #{status}
+        </if>
+        <if test="order != null">
+            , `order` = #{order}
+        </if>
+        <if test="price != null">
+            , price = #{price}
+        </if>
+        <if test="imageId != null">
+            , image_id = #{imageId}
+        </if>
+
         WHERE sketch_id = #{sketchId}
     </update>
 

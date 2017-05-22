@@ -24,7 +24,7 @@ public class FileData {
 
     private boolean isMachine;
 
-    private int order;
+    private Integer order;
 
 
     /*##################################################################################################################
@@ -104,11 +104,11 @@ public class FileData {
         this.sketchId = sketchId;
     }
 
-    public int getOrder() {
+    public Integer getOrder() {
         return order;
     }
 
-    public void setOrder(int order) {
+    public void setOrder(Integer order) {
         this.order = order;
     }
 
@@ -116,8 +116,7 @@ public class FileData {
         return isMachine;
     }
 
-    public FileData setIsMachine(boolean machine) {
-        isMachine = machine;
-        return this;
+    public void setIsMachine(boolean machine) {
+        this.isMachine = machine;
     }
 }

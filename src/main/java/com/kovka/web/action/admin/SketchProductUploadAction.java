@@ -1,10 +1,10 @@
-package com.kovka.web.action.sketch;
+package com.kovka.web.action.admin;
 
-import com.kovka.business.IFileDataManager;
+import com.kovka.business.ISketchProductManager;
 import com.kovka.common.data.FileData;
+import com.kovka.common.data.SketchProduct;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
-import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
@@ -24,35 +24,37 @@ import java.util.List;
 /**
  * Created by htdev001 on 3/5/14.
  */
-public class MachineUploadAction extends BaseAction {
+public class SketchProductUploadAction extends BaseAction {
 
-    private static final Logger logger = Logger.getLogger(MachineUploadAction.class.getSimpleName());
+    private static final Logger logger = Logger.getLogger(SketchProductUploadAction.class.getSimpleName());
     private static final String RESP_SUCCESS = "success";//"{\"jsonrpc\" : \"2.0\", \"result\" : \"success\", \"id\" : \"id\"}";
     private static final String RESP_ERROR = "error";//"{\"jsonrpc\" : \"2.0\", \"error\" : {\"code\": 101, \"message\": \"Failed to open input stream.\"}, \"id\" : \"id\"}";
-    private IFileDataManager dataManager;
+    private ISketchProductManager productManager;
     private InputStream result = new ByteArrayInputStream(INPUT.getBytes());
-    private List<FileData> datas;
+    private List<SketchProduct> products;
 
     private File file;
     private String fileFileName;
     private String fileContentType;
 
-    private String id;
+    private String sketchId;
 
     public String view() {
         try {
-            datas = dataManager.getMachineData();
+            products = productManager.getBySketchId(DataConverter.convertToLong(sketchId));
         } catch (InternalErrorException e) {
             logger.error(e);
-            session.put(MESSAGE, getText("error.internal"));
-            return ERROR;
+            return INPUT;
+        } catch (DataParseException e) {
+            logger.error(e);
+            return INPUT;
         }
         return SUCCESS;
     }
 
     public String upload() {
 
-        if (file == null || Utils.isEmpty(fileFileName)) {
+        if (file == null || Utils.isEmpty(fileFileName) || Utils.isEmpty(sketchId)) {
             logger.error("SketchUploadAction, data or dataFileName is null");
             result = new ByteArrayInputStream(RESP_ERROR.getBytes());
             session.put(MESSAGE, getText("error.internal"));
@@ -76,8 +78,12 @@ public class MachineUploadAction extends BaseAction {
             d.setSize(fileData.length);
             d.setCreationDate(new Date(System.currentTimeMillis()));
             d.setStatus(Status.ACTIVE);
-            d.setIsMachine(true);
-            dataManager.add(d);
+
+            SketchProduct sketchProduct = new SketchProduct();
+            sketchProduct.setSketchId(DataConverter.convertToLong(sketchId));
+            sketchProduct.setImage(d);
+            sketchProduct.setStatus(Status.ACTIVE);
+            productManager.add(sketchProduct);
         } catch (IOException e) {
             result = new ByteArrayInputStream(RESP_ERROR.getBytes());
             logger.error(e);
@@ -96,8 +102,8 @@ public class MachineUploadAction extends BaseAction {
         return result;
     }
 
-    public List<FileData> getDatas() {
-        return datas;
+    public List<SketchProduct> getProducts() {
+        return products;
     }
 
     public void setFile(File file) {
@@ -112,11 +118,15 @@ public class MachineUploadAction extends BaseAction {
         this.fileContentType = fileContentType;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getSketchId() {
+        return sketchId;
     }
 
-    public void setDataManager(IFileDataManager dataManager) {
-        this.dataManager = dataManager;
+    public void setSketchId(String sketchId) {
+        this.sketchId = sketchId;
+    }
+
+    public void setProductManager(ISketchProductManager productManager) {
+        this.productManager = productManager;
     }
 }

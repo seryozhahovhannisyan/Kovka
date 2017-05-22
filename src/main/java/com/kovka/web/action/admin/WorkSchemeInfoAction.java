@@ -1,4 +1,4 @@
-package com.kovka.web.action.sketch;
+package com.kovka.web.action.admin;
 
 import com.kovka.business.IWorkSchemeInfoManager;
 import com.kovka.common.data.WorkSchemeInfo;

@@ -21,11 +21,11 @@
     <bean id="Logout" class="com.kovka.web.action.general.Logout" scope="prototype">
     </bean>
 
-    <bean id="SketchUploadAction" class="com.kovka.web.action.sketch.SketchUploadAction" scope="prototype">
+    <bean id="SketchUploadAction" class="com.kovka.web.action.admin.SketchUploadAction" scope="prototype">
         <property name="dataManager" ref="FileDataManager"/>
     </bean>
 
-    <bean id="SketchProductUploadAction" class="com.kovka.web.action.sketch.SketchProductUploadAction"
+    <bean id="SketchProductUploadAction" class="com.kovka.web.action.admin.SketchProductUploadAction"
           scope="prototype">
         <property name="productManager" ref="SketchProductManager"/>
     </bean>
@@ -38,30 +38,30 @@
           scope="prototype">
     </bean>
 
-    <bean id="SketchAction" class="com.kovka.web.action.sketch.SketchAction" scope="prototype">
+    <bean id="SketchAction" class="com.kovka.web.action.admin.SketchAction" scope="prototype">
         <property name="dto" ref="ResponseDto"/>
         <property name="sketchManager" ref="SketchManager"/>
     </bean>
 
-    <bean id="AboutAction" class="com.kovka.web.action.sketch.AboutAction" scope="prototype">
+    <bean id="AboutAction" class="com.kovka.web.action.admin.AboutAction" scope="prototype">
         <property name="aboutManager" ref="AboutManager"/>
     </bean>
 
-    <bean id="MachineUploadAction" class="com.kovka.web.action.sketch.MachineUploadAction" scope="prototype">
+    <bean id="MachineUploadAction" class="com.kovka.web.action.admin.MachineUploadAction" scope="prototype">
         <property name="dataManager" ref="FileDataManager"/>
     </bean>
 
 
-    <bean id="FileDataAction" class="com.kovka.web.action.sketch.FileDataAction" scope="prototype">
+    <bean id="FileDataAction" class="com.kovka.web.action.admin.FileDataAction" scope="prototype">
         <property name="dataManager" ref="FileDataManager"/>
     </bean>
 
 
-    <bean id="PriceListInfoAction" class="com.kovka.web.action.sketch.PriceListInfoAction" scope="prototype">
+    <bean id="PriceListInfoAction" class="com.kovka.web.action.admin.PriceListInfoAction" scope="prototype">
         <property name="priceListInfoManager" ref="PriceListInfoManager"/>
     </bean>
 
-    <bean id="WorkSchemeInfoAction" class="com.kovka.web.action.sketch.WorkSchemeInfoAction" scope="prototype">
+    <bean id="WorkSchemeInfoAction" class="com.kovka.web.action.admin.WorkSchemeInfoAction" scope="prototype">
         <property name="workSchemeInfoManager" ref="WorkSchemeInfoManager"/>
     </bean>
 
