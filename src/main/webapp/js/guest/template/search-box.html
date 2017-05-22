@@ -8,33 +8,30 @@
         <div class="element effect-1">
             <div class="entry-thumbnail">
                 <img width="400" height="351"
-                     src="http://zheldor-kovka.ru/wp-content/uploads/2017/03/Как-выбрать-кованые-перила-для-лестниц-9-400x351.jpg"
-                     class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Кованая лестница"
-                     srcset="http://zheldor-kovka.ru/wp-content/uploads/2017/03/Как-выбрать-кованые-перила-для-лестниц-9-400x351.jpg 400w, http://zheldor-kovka.ru/wp-content/uploads/2017/03/Как-выбрать-кованые-перила-для-лестниц-9-300x263.jpg 300w, http://zheldor-kovka.ru/wp-content/uploads/2017/03/Как-выбрать-кованые-перила-для-лестниц-9-768x674.jpg 768w, http://zheldor-kovka.ru/wp-content/uploads/2017/03/Как-выбрать-кованые-перила-для-лестниц-9-1024x899.jpg 1024w"
+                     ng-src="{{page.img}}"
+                     class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="{{page.name}}"
                      sizes="(max-width: 400px) 100vw, 400px"></div><!-- .entry-thumbnail -->
 
-            <a href="http://zheldor-kovka.ru/vybor-lestnicy-dlya-chastnogo-doma-na-chto-obratit-vnimanie-pered-pokupkoj/"
-               class="link-hover" rel="bookmark">
-						<span class="link-button">
-							Читать далее...						</span>
+            <a href="{{page.url_}}" class="link-hover" rel="bookmark">
+                <span class="link-button">
+                    Читать далее...
+                </span>
             </a>
 
         </div><!-- .element -->
 
-        <h1 class="entry-title"><a
-                href="http://zheldor-kovka.ru/vybor-lestnicy-dlya-chastnogo-doma-na-chto-obratit-vnimanie-pered-pokupkoj/"
-                rel="bookmark">Выбор лестницы для частного дома: на что обратить внимание перед покупкой?</a></h1>
+        <h1 class="entry-title">
+            <a href="{{page.url_}}" rel="bookmark">{{page.name}}</a>
+        </h1>
     </header><!-- .entry-header -->
 
 
     <div class="entry-summary">
-        <p>Лестница является одним из главнейших конструкционных элементов строения домов, имеющих два или три этажа.
-            Благодаря ей все члены семьи смогут комфортно и безопасно перемещаться по всему дому. Поэтому крайне важно
-            […]</p>
+        <p ng-bind-html="deliberatelyTrustAsHtmlWithLength(page.description)"></p>
     </div><!-- .entry-summary -->
 
 
-    <footer class="entry-meta">
+    <!--<footer class="entry-meta">
 
 				<span class="post-date">
 					<span class="entry-date"><a
@@ -45,7 +42,7 @@
                                                                                    href="http://zheldor-kovka.ru/author/kovka/"
                                                                                    rel="author">kovka</a></span></span>				</span>
 
-    </footer><!-- .entry-meta -->
+    </footer>--><!-- .entry-meta -->
 
 </article><!-- #post -->
 

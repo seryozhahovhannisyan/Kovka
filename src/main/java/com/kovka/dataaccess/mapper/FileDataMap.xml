@@ -72,7 +72,7 @@
 
         SELECT * FROM f_data
         WHERE sketch_id = #{sketchId} AND `status` = 1
-
+        ORDER BY `order` DESC
     </select>
 
     <select id="getMachineData"
@@ -80,7 +80,7 @@
 
         SELECT * FROM f_data
         WHERE is_machine = 1 AND `status` = 1
-
+        ORDER BY `order` DESC
     </select>
 
     <select id="getDefaultSketchImg"
@@ -105,7 +105,7 @@
             resultMap="rmFileDataSimple"
             parameterType="map">
 
-        SELECT * FROM f_data
+        SELECT * FROM f_data ORDER BY `order` DESC
 
     </select>
     <!--

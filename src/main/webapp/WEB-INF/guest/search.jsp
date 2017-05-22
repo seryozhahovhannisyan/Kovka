@@ -70,7 +70,7 @@
 
         <div class="site-content">
             <header class="archive-header">
-                <h1 class="archive-title">Результаты поиска для: a (32)</h1>
+                <h1 class="archive-title"><s:text name="page.search.title">Результаты поиска для</s:text>: <s:property value="search"/></h1>
             </header><!-- .archive-header -->
 
             <%--<div >--%>

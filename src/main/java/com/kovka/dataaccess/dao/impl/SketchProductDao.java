@@ -38,6 +38,19 @@ public class SketchProductDao implements ISketchProductDao {
     }
 
     @Override
+    public SketchProduct getById(Long id) throws DatabaseException, EntityNotFoundException {
+        try {
+            SketchProduct product =  map.getById(id);
+            if(product == null){
+                throw new EntityNotFoundException(String.format("Could not found SketchProduct id=[%d]", id));
+            }
+            return product;
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
     public void update(SketchProduct data) throws DatabaseException, EntityNotFoundException {
         try {
             map.update(data);

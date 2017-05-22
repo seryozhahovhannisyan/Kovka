@@ -179,14 +179,25 @@
         si.`description` `description`
         FROM sketch s, sketch_info si
         WHERE si.sketch_id = s.id
-        <if test="filter != null">AND (
-            OR `status` = #{filter}
+        <if test="search != null">
+            AND (
+                (si.`name`) LIKE concat('%' , #{search,jdbcType=NVARCHAR} ,'%')
+                OR LOWER(si.`short_desc`) LIKE  concat('%' , #{search,jdbcType=NVARCHAR} ,'%')
+                OR LOWER(si.`title`) LIKE  concat('%' , #{search,jdbcType=NVARCHAR} ,'%')
+                OR LOWER(si.`description`) LIKE  concat('%' , #{search,jdbcType=NVARCHAR} ,'%')
+            )
+        </if>
+        <if test="filter != null"> AND (
+            OR `s.status` = #{filter}
             )
         </if>
         <if test="except != null">
-            AND id != #{except}
+            AND s.id != #{except}
         </if>
-
+        <if test="language != null">
+            AND si.lang != #{language}
+        </if>
+        ORDER BY s.`order` DESC
     </select>
 
     <select id="getNameImages"
@@ -197,7 +208,7 @@
         si.`name` `name`
         FROM sketch s, sketch_info si
         WHERE si.sketch_id = s.id AND si.`lang` = #{language}
-
+        ORDER BY s.`order` DESC
     </select>
 
     <select id="getCountByParams"

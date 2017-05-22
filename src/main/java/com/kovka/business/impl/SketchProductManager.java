@@ -81,6 +81,23 @@ public class SketchProductManager implements ISketchProductManager {
         }
     }
 
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
+    public void sort(List<Long> ides) throws InternalErrorException, EntityNotFoundException {
+        try {
+            int order = 1;
+            for(Long id : ides) {
+                SketchProduct data = dao.getById(id);
+                data.setId(id);
+                data.setOrder(order);
+                order++;
+                dao.update(data);
+            }
+
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+
     @Override
     @Transactional(readOnly = false, rollbackFor = Exception.class)
     public void delete(SketchProduct data) throws InternalErrorException, EntityNotFoundException {

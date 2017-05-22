@@ -5,6 +5,7 @@ import com.kovka.common.data.FileData;
 import com.kovka.common.data.SketchProduct;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
+import com.kovka.common.exception.EntityNotFoundException;
 import com.kovka.common.exception.InternalErrorException;
 import com.kovka.common.util.DataConverter;
 import com.kovka.common.util.Utils;
@@ -38,6 +39,8 @@ public class SketchProductUploadAction extends BaseAction {
     private String fileContentType;
 
     private String sketchId;
+    //
+    private String sortIdes;
 
     public String view() {
         try {
@@ -47,6 +50,28 @@ public class SketchProductUploadAction extends BaseAction {
             return INPUT;
         } catch (DataParseException e) {
             logger.error(e);
+            return INPUT;
+        }
+        return SUCCESS;
+    }
+
+    public String sort() {
+        try {
+
+            List<Long> ides = DataConverter.convertStringIdesToLong(sortIdes);
+            productManager.sort(ides);
+
+        } catch (InternalErrorException e) {
+            logger.error(e);
+            session.put(MESSAGE, getText("error.internal"));
+            return INPUT;
+        } catch (DataParseException e) {
+            logger.error(e);
+            session.put(MESSAGE, getText("error.internal"));
+            return INPUT;
+        } catch (EntityNotFoundException e) {
+            logger.error(e);
+            session.put(MESSAGE, getText("error.internal"));
             return INPUT;
         }
         return SUCCESS;
@@ -124,6 +149,11 @@ public class SketchProductUploadAction extends BaseAction {
 
     public void setSketchId(String sketchId) {
         this.sketchId = sketchId;
+    }
+
+
+    public void setSortIdes(String sortIdes) {
+        this.sortIdes = sortIdes;
     }
 
     public void setProductManager(ISketchProductManager productManager) {

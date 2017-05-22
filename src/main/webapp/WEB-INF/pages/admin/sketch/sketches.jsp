@@ -32,8 +32,15 @@
         $( "#sortable" ).disableSelection();
     } );
 
-    function sort(){
-        $('#sort').submit();
+    function sort() {
+        $('.sort').each(function(index,item){
+            var value = $(item).data('value');
+            if(value>0){
+                $('<input type="hidden" name="sortIdes" value="' + value + '"/>').appendTo('#sortForm');
+            }
+        });
+
+        $('#sortForm').submit();
     }
 </script>
 
@@ -56,7 +63,7 @@
                             <div class="add_div_brch"></div>
                             <div><s:text name="label.add.record">Add new record</s:text></div>
                         </div>
-                        <div class="add_div_brch_parent" click=sort()>
+                        <div class="add_div_brch_parent"  onclick="sort()" >
                             <div class="add_div_brch"></div>
                             <div><s:text name="label.sort">sort</s:text></div>
                         </div>
@@ -90,12 +97,12 @@
                                         </tr>
                                         </thead>
 
-                                        <form id="sort" action="admin-sketches-sort.htm" method="post">
+                                        <form id="sortForm" action="admin-sketches-sort.htm" method="post">
                                             <tbody id="sortable">
                                             <tr ng-repeat="item in $data" ng-class-even="'tbl-row-even'"
                                                 ng-class="{'tbl_row_even': $even, 'tbl_row_odd': $odd }">
-                                                <input type="hidden" name="sortIdes" value="{{item.id}}"/>
-                                                <td ng-show="columns[0].visible" sortable="columns[0].field">
+                                                <td ng-show="columns[0].visible" sortable="columns[0].field"
+                                                    class="sort" data-value="{{item.id}}">
                                                     {{item.currentInfo.name ? item.currentInfo.name : '-'}}
                                                 </td>
                                                 <td ng-show="columns[1].visible" sortable="columns[1].field">

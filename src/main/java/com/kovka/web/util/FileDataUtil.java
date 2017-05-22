@@ -17,7 +17,7 @@ import java.io.InputStream;
 public class FileDataUtil {
 
     public static String LOGO_FORMAT = "%s_%d%s";
-    public static String LOGO_PREFIX_SKETCH = "admin";
+    public static String LOGO_PREFIX_SKETCH = "sketch";
     public static String LOGO_PREFIX_MACHINE = "machine";
     public static String LOGO_PREFIX_PRODUCT = "product";
 

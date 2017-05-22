@@ -60,7 +60,7 @@
         </action>
 
         <action name="admin-sketches-sort" class="SketchAction" method="sort">
-            <result name="success" type="redirect">admin-sketches-sort.htm</result>
+            <result name="success" type="redirect">admin-sketches.htm</result>
             <result name="input" type="tiles">admin-sketches</result>
         </action>
 
@@ -87,7 +87,7 @@
             <result name="input" type="tiles">admin-sketches</result>
         </action>
 
-        <action name="admin-sketch-product-sort" class="FileDataAction" method="sort">
+        <action name="admin-sketch-product-sort" class="SketchProductUploadAction" method="sort">
             <result name="success" type="redirect">admin-sketch-product-add-view.htm?sketchId=${sketchId}</result>
             <result name="input" type="tiles">admin-sketches</result>
         </action>

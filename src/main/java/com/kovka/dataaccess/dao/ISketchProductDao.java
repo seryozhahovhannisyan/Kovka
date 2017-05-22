@@ -12,6 +12,8 @@ public interface ISketchProductDao {
 
     public List<SketchProduct> getBySketchId(Long sketchId) throws DatabaseException;
 
+    public SketchProduct getById(Long sketchId) throws DatabaseException, EntityNotFoundException;
+
     public void update(SketchProduct data) throws DatabaseException, EntityNotFoundException;
 
     public void delete(SketchProduct data) throws DatabaseException, EntityNotFoundException;

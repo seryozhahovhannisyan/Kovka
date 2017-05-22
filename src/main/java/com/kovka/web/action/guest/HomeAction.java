@@ -66,7 +66,7 @@ public class HomeAction extends BaseAction {
             long page = Long.valueOf(params.get("page").toString());
             long count = Long.valueOf(params.get("count").toString());
             params.put("page", (page - 1) * count);
-
+            params.put("language",getToLang());
             List<Sketch> sketches = sketchManager.getSampleByParams(params);
 
             List<BoxDto> boxDtos = new ArrayList<BoxDto>();

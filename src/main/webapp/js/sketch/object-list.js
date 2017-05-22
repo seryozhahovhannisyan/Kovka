@@ -122,8 +122,8 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
 
     $scope.add_new_records = function (id_type) {
         var href = "#";
-        if (id_type == "admin") {
-            href = "/admin-admin-add-view.htm";
+        if (id_type == "sketch") {
+            href = "/admin-sketch-add-view.htm";
         }
         window.location = href;
     };
@@ -133,9 +133,10 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
         var id = item.currentTarget.getAttribute("data-id");
         var id_type = item.currentTarget.getAttribute("data-type");
         var href = "#";
+        console.log(id,id_type)
         //
-        if (id_type == "admin") {
-            href = "/admin-admin-images-add-view.htm?sketchId=" + id;
+        if (id_type == "sketch") {
+            href = "/admin-sketch-images-add-view.htm?sketchId=" + id;
         }
         window.location = href;
     };
@@ -144,8 +145,8 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
         var id = item.currentTarget.getAttribute("data-id");
         var id_type = item.currentTarget.getAttribute("data-type");
         var href = "#";
-        if (id_type == "admin") {
-            href = "/admin-admin-product-add-view.htm?sketchId=" + id;
+        if (id_type == "sketch") {
+            href = "/admin-sketch-product-add-view.htm?sketchId=" + id;
         }
         window.location = href;
     };
@@ -156,8 +157,8 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
         var id_type = item.currentTarget.getAttribute("data-type");
 
         var href = "#";
-        if (id_type == "admin") {
-            href = "/admin-admin-delete.htm?id=" + id;
+        if (id_type == "sketch") {
+            href = "/admin-sketch-delete.htm?id=" + id;
         }
         window.location = href;
 
@@ -169,8 +170,8 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
         var id_type = item.currentTarget.getAttribute("data-type");
 
         var href = "#";
-        if (id_type == "admin") {
-            href = "/admin-admin.htm?id=" + id;
+        if (id_type == "sketch") {
+            href = "/admin-sketch-edit.htm?id=" + id;
         }
         window.location = href;
 

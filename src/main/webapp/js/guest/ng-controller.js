@@ -40,6 +40,12 @@ generalControllers.homeCtrl = ['$rootScope', '$scope', '$sce', '$http', function
         return $sce.trustAsHtml(param);
     };
 
+    $scope.deliberatelyTrustAsHtmlWithLength = function (param) {
+        var html = $sce.trustAsHtml(param);
+        html = html.substr(0,210) + '[.....]';
+        return html;
+    };
+
     $scope.goTo = function (event) {
         var href_ = event.target.attributes.redirect.value;
         window.location = href_;
@@ -411,14 +417,11 @@ kovkaApp.directive('boxes', function ($http) {
                             var dtos = result.response.data;
                             var load_more = result.loadMore;
                             var pagination_page = dtos.length / 4;
-                            console.log('dtos.length', dtos.length)
-                            console.log('page_type', page_type)
-                            console.log('box_type', box_type)
                             for (var i = 0; i < dtos.length; i++) {
                                 var t = dtos[i];
                                 var url_ = "#";
                                 if (page_type == "sketches" || page_type == "articles") {
-                                    url_ = '/admin-single.htm?id=' + t.id;
+                                    url_ = '/sketch-single.htm?id=' + t.id;
                                 }
 
                                 var box = null;
@@ -613,9 +616,9 @@ kovkaApp.directive('nav', function ($http) {
                                     var d = result.response.data;
 
                                     if(type == 'prev'){
-                                        $scope['prev']= {href : "/admin-single.htm?id=" + d.id, name : d.name};
+                                        $scope['prev']= {href : "/sketch-single.htm?id=" + d.id, name : d.name};
                                     } else if(type == 'next'){
-                                        $scope['next']= {href : "/admin-single.htm?id=" + d.id, name : d.name};
+                                        $scope['next']= {href : "/sketch-single.htm?id=" + d.id, name : d.name};
                                     }
 
                                 }

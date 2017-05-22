@@ -14,6 +14,8 @@ public interface ISketchProductManager {
 
     public void update(SketchProduct data) throws InternalErrorException, EntityNotFoundException;
 
+    public void sort(List<Long> ides) throws InternalErrorException, EntityNotFoundException;
+
     public void delete(SketchProduct data) throws InternalErrorException, EntityNotFoundException;
 
 

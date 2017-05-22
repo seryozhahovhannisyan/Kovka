@@ -303,6 +303,10 @@ public class SketchAction extends BaseAction {
         this.dto = dto;
     }
 
+    public void setSortIdes(String sortIdes) {
+        this.sortIdes = sortIdes;
+    }
+
     public void setSketchManager(ISketchManager sketchManager) {
         this.sketchManager = sketchManager;
     }

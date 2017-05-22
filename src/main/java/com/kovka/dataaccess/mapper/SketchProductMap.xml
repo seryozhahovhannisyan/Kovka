@@ -43,7 +43,15 @@
             resultMap="rmSketchProduct"
             parameterType="_long">
 
-        SELECT * FROM sketch_product WHERE sketch_id = #{sketchId}
+        SELECT * FROM sketch_product WHERE sketch_id = #{sketchId} ORDER BY `order` DESC
+
+    </select>
+
+    <select id="getById"
+            resultMap="rmSketchProduct"
+            parameterType="_long">
+
+        SELECT * FROM sketch_product WHERE id = #{id}
 
     </select>
 
@@ -64,7 +72,7 @@
             , image_id = #{imageId}
         </if>
 
-        WHERE sketch_id = #{sketchId}
+        WHERE id = #{id}
     </update>
 
     <update id="delete" parameterType="SketchProduct">

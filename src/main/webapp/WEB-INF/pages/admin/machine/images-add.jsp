@@ -86,6 +86,19 @@ $(function () {
     });
     $( "#sortable" ).disableSelection();
 })
+    
+    function sort() {
+        $('.sort').each(function(index,item){
+            var value = $(item).data('value');
+            if(value>0){
+                $('<input type="hidden" name="sortIdes" value="' + value + '"/>').appendTo('#sortForm');
+            }
+        });
+
+        $('#sortForm').submit();
+    }
+    
+    
 </script>
 
 <div class="right_col" role="main" style="min-height: 2519px;">
@@ -109,11 +122,11 @@ $(function () {
             </div>
             <div class="x_panel">
 
-                <form action="admin-machine-sort.htm" method="post">
+                <form id="sortForm" action="admin-machine-sort.htm" method="post">
 
                     <div class="x_title">
                         <h2>Machine Gallery
-                            <button type="submit" class="btn btn-primary">
+                            <button type="button" onclick="sort()" class="btn btn-primary">
                                 <s:text name="label.sort">Sort</s:text>
                             </button>
                         </h2>
@@ -123,9 +136,8 @@ $(function () {
                     <div class="x_content">
                         <div id="sortable" class="row">
                             <s:iterator var="data" value="datas">
-                                <s:if test="%{isMachineImageExist(#data.fileName)}">
-                                    <input type="hidden" name="sortIdes" value="<s:property value="#data.id"/>"/>
-                                    <div class="col-md-55">
+                                <s:if test="%{isMachineImageExist(#data.fileName)}"> 
+                                    <div class="col-md-55 sort" data-value="<s:property value="#data.id"/>">
                                         <div class="thumbnail">
                                             <div class="image view view-first">
                                                 <img style="width: 100%; display: block;"
