@@ -123,8 +123,8 @@ $(function () {
                     <div class="x_content">
                         <div id="sortable" class="row">
                             <s:iterator var="data" value="datas">
-                                <input type="hidden" name="sortIdes" value="<s:property value="#data.id"/>"/>
                                 <s:if test="%{isMachineImageExist(#data.fileName)}">
+                                    <input type="hidden" name="sortIdes" value="<s:property value="#data.id"/>"/>
                                     <div class="col-md-55">
                                         <div class="thumbnail">
                                             <div class="image view view-first">

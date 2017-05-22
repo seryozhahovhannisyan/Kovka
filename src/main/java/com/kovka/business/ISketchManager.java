@@ -32,6 +32,8 @@ public interface ISketchManager {
 
     public void update(Sketch data) throws InternalErrorException, EntityNotFoundException;
 
+    public void sort(List<Long> ides) throws InternalErrorException, EntityNotFoundException;
+
     public void markImageDefault(Sketch data) throws InternalErrorException, EntityNotFoundException;
 
     public void delete(Sketch data) throws InternalErrorException, EntityNotFoundException;

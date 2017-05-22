@@ -79,7 +79,7 @@ public class DataConverter {
 
         try {
             for (String i : data.split(",")) {
-                ides.add(Long.parseLong(i));
+                ides.add(Long.parseLong(i.trim()));
             }
             return ides;
         } catch (Exception e) {

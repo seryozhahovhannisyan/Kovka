@@ -1,6 +1,7 @@
 package com.kovka.business.impl;
 
 import com.kovka.business.ISketchManager;
+import com.kovka.common.data.FileData;
 import com.kovka.common.data.Sketch;
 import com.kovka.common.data.SketchInfo;
 import com.kovka.common.data.lcp.Language;
@@ -156,6 +157,23 @@ public class SketchManager implements ISketchManager {
             for(SketchInfo info :infosForEdit){
                 infoDao.update(info);
             }
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
+    public void sort(List<Long> ides) throws InternalErrorException, EntityNotFoundException {
+        try {
+            int order = 1;
+            for(Long id : ides) {
+                Sketch data = dao.getSampleById(id);
+                data.setId(id);
+                data.setOrder(order);
+                order++;
+                dao.update(data);
+            }
+
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }
