@@ -45,7 +45,12 @@
         <action name="load-machines" class="MachineAction" method="loadMachines">
             <result name="success" type="json"/>
         </action>
+
         <action name="load-galleries" class="HomeAction" method="loadGalleries">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="call-me" class="FeedbackAction" method="callMe">
             <result name="success" type="json"/>
         </action>
 

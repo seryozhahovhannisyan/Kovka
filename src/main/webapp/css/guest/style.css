@@ -1924,7 +1924,7 @@ div.wp-caption.alignright .wp-caption-text {
 .wide .widget.widget_categories ul,
 .wide .widget.widget_archive ul,
 .wide .widget.widget_rss ul {
-    padding: 0 20px;
+    /*padding: 0 20px;*/
 }
 
 .widget.stainedglass_socialicons ul li:before {
