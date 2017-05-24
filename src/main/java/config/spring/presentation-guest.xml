@@ -22,6 +22,7 @@
     </bean>
 
     <bean id="FeedbackAction" class="com.kovka.web.action.guest.FeedbackAction" scope="prototype">
+        <property name="dto" ref="ResponseDto"/>
         <property name="aboutManager" ref="AboutManager"/>
     </bean>
 

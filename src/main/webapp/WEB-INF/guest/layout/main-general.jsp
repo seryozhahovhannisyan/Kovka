@@ -25,7 +25,7 @@
     <!-- /all in one seo pack -->
     <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента" href="http://mngkovka.ru/feed/">
     <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"  href="http://mngkovka.ru/comments/feed/">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/css/guest/dcjq-mega-menu.css"  type="text/css" media="all">
 
     <link rel="stylesheet" id="ubermenu-font-awesome-css"   href="<%=request.getContextPath()%>/css/guest/font-awesome_002.css" type="text/css"  media="all">

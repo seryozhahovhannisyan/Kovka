@@ -9,9 +9,39 @@
         $('#phone').removeClass('cbh-widget-open');
 
     }
+
     function open_phone() {
         $('#call').removeClass('cbh-widget-call_closed');
         $('#phone').addClass('cbh-widget-open');
+    }
+
+    function feedback() {
+        close_phone();
+        var phone = $('#cbh_slider_phone_input').val();
+        $.ajax({
+            url: "/call-me.htm",
+            type: "POST",
+            dataType: "json",
+            async: false,
+            data: {
+                phone : phone
+            },
+            success: function(response) {
+                var result = response.dto;
+                if (result.responseStatus == 'SUCCESS') {
+                    $('.modal-body p').text('<s:text name="mail.success">Спасибо за ваш отзыв. Мы свяжемся с вами.</s:text>');
+                } else {
+                    $('.modal-body p').text('<s:text name="error.internal">Произошла внутренняя ошибка. Пожалуйста, попробуйте позднее.</s:text>');
+                }
+                $('#cbh_slider_phone_input').val("");
+                $("#myModal").modal();
+            },
+            error: function (e) {
+                $('.modal-body p').text('<s:text name="error.internal">Произошла внутренняя ошибка. Пожалуйста, попробуйте позднее.</s:text>');
+                $("#myModal").modal();
+            }
+        });
+
     }
 
 
@@ -30,7 +60,8 @@
                 </form>
             </aside>
             <aside id="text-13" class="widget widget_text">
-                <h3 class="widget-title">Tel: 8 (495) 642-40-66 e-mail:Kovka@Zheldor-Kovka.ru</h3>
+                <h3 class="widget-title"><s:text name="footer.tel">Tel </s:text>: <s:property value="#session.about.firstPhone"/>
+                    e-mail: <s:property value="#session.about.firstEmail"/></h3>
                 <div class="textwidget">
                     <span style="color: #000000;">
                         <center>
@@ -82,8 +113,8 @@
                                                        placeholder="+7-__-___-___"></div>
                                         </div>
                                     </div>
-                                    <div class="cbh-widget-call__btn-area cbh-widget-call__timer">
-                                        <button type="button" class="cbh-widget-call__btn" id="cbh_slider_call_btn">
+                                    <div class="cbh-widget-call__btn-area cbh-widget-call__timer" style="margin: -1px">
+                                        <button onclick="feedback()" type="button" class="cbh-widget-call__btn" id="cbh_slider_call_btn">
                                             <div class="sheff sheff--w1b"><s:text name="footer.CallMe">Позвони мне</s:text></div>
                                         </button>
                                         <span id="cbh_slider_countdown_container"></span></div>
@@ -110,5 +141,22 @@
         </div>
     </div>
 </div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog ">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><s:text name="label.thanks">Спасибо</s:text>!</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><s:text name="label.close">Закрыть</s:text></button>
+            </div>
+        </div>
 
+    </div>
+</div>

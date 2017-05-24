@@ -3,6 +3,7 @@ package com.kovka.web.action.guest;
 import com.kovka.common.data.About;
 import com.kovka.web.action.BaseAction;
 import com.kovka.web.action.dto.ResponseDto;
+import com.kovka.web.action.dto.ResponseStatus;
 import com.kovka.web.action.notification.MailContent;
 import com.kovka.web.action.notification.MailException;
 import com.kovka.web.action.notification.MailSender;
@@ -16,6 +17,8 @@ import java.util.Set;
 public class FeedbackAction extends BaseAction {
 
     private static final Logger logger = Logger.getLogger(FeedbackAction.class.getSimpleName());
+
+    private ResponseDto dto;
 
     private String name;
     private String phone;
@@ -46,7 +49,7 @@ public class FeedbackAction extends BaseAction {
         MailContent mailContent = new MailContent();
         mailContent.setEmailsTo(new String[]{fromEmail});
         mailContent.setEmailsCC(emails.toArray(new String[emails.size()]));
-        mailContent.setSubject(subject);
+        mailContent.setSubject("NMG Kovka");
         mailContent.setContent(context.toString());
         mailContent.setRecipientTypeTo();
 
@@ -58,6 +61,41 @@ public class FeedbackAction extends BaseAction {
             logger.error(e);
             session.put(MESSAGE, getText("error.internal"));
             return ERROR;
+        }
+
+        return SUCCESS;
+    }
+
+    public String callMe() {
+
+        About about = (About) session.get("about");
+        Set<String> emails = about.getEmails();
+
+        String fromEmail = "mngkovka@gmail.com";
+        String fromEmailPassword = "098478877";
+
+        StringBuilder context = new StringBuilder();
+
+        context.append("Hello").append("<br/>");
+        context.append("Please connect to Phone number ").append(phone).append("<br/>");
+
+
+        MailContent mailContent = new MailContent();
+        mailContent.setEmailsTo(new String[]{fromEmail});
+        mailContent.setEmailsCC(emails.toArray(new String[emails.size()]));
+        mailContent.setSubject("NMG Kovka");
+        mailContent.setContent(context.toString());
+        mailContent.setRecipientTypeTo();
+
+        MailSender mailNotification = new MailSender();
+        try {
+            mailNotification.sendEmailFromConnectTo(mailContent, fromEmail, fromEmailPassword);
+            dto.setActionmessage(getText("mail.success"));
+            dto.setResponseStatus(ResponseStatus.SUCCESS);
+        } catch (Exception e) {
+            logger.error(e);
+            dto.setActionerror(getText("error.internal"));
+            dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
         }
 
         return SUCCESS;
@@ -101,5 +139,13 @@ public class FeedbackAction extends BaseAction {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public ResponseDto getDto() {
+        return dto;
+    }
+
+    public void setDto(ResponseDto dto) {
+        this.dto = dto;
     }
 }

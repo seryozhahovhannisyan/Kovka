@@ -2912,7 +2912,7 @@
 
 #cbh_widget_wrapper .cbh-widget .cbh-call-container .cbh-widget-call__btn-area {
     padding: 0 0 0 8px !important;
-    margin: 0 !important;
+    /*margin: 0 !important;*/
     white-space: nowrap !important;
     line-height: 0 !important
 }
