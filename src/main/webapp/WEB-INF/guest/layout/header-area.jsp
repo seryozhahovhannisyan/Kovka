@@ -59,8 +59,7 @@
 
     function about_entry(){
         window.open(
-                '<%=request.getContextPath()%>/about.htm',
-                '_blank' // <- This is what makes it open in a new window.
+                '<%=request.getContextPath()%>/about.htm'
         );
     }
 
@@ -232,90 +231,10 @@
                 <aside id="text-20" class="widget widget_text" >
                     <%--<h3 class="widget-title"><s:text name="header.banner">Собственное производство, 100% самые низкие цены!</s:text></h3>--%>
 
-                        <div class="vc_row wpb_row vc_row-fluid ng-scope" >
-                            <div style="padding: 0 10px" class="wpb_column vc_column_container vc_col-sm-2 ng-scope" >
-                                <div class="vc_column-inner ">
-                                    <div class="wpb_wrapper">
-                                        <div class="wpb_single_image wpb_content_element vc_align_center">
-                                            <figure class="wpb_wrapper vc_figure" >
-                                                <a rel="prettyPhoto[gallery1]" href="/data/product/product_162.jpg" title="№1" class="vc_single_image-wrapper vc_box_border_grey test">
-                                                    <img src="/data/product/product_162.jpg" height="202" width="300" class="vc_single_image-img attachment-medium">
-                                                </a>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="padding: 0 10px" class="wpb_column vc_column_container vc_col-sm-2 ng-scope" >
-                                <div class="vc_column-inner ">
-                                    <div class="wpb_wrapper">
-                                        <div class="wpb_single_image wpb_content_element vc_align_center">
-                                            <figure class="wpb_wrapper vc_figure" >
-                                                <a rel="prettyPhoto[gallery1]" href="/data/product/product_162.jpg" title="№1" class="vc_single_image-wrapper vc_box_border_grey test">
-                                                    <img src="/data/product/product_162.jpg" height="202" width="300" class="vc_single_image-img attachment-medium">
-                                                </a>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div  style="padding: 0 10px" class="wpb_column vc_column_container vc_col-sm-2 ng-scope" >
-                            <div class="vc_column-inner ">
-                                <div class="wpb_wrapper">
-                                    <div class="wpb_single_image wpb_content_element vc_align_center">
-                                        <figure class="wpb_wrapper vc_figure" >
-                                            <a rel="prettyPhoto[gallery1]" href="/data/product/product_162.jpg" title="№1" class="vc_single_image-wrapper vc_box_border_grey test">
-                                                <img src="/data/product/product_162.jpg" height="202" width="300" class="vc_single_image-img attachment-medium">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            <div  style="padding: 0 10px" class="wpb_column vc_column_container vc_col-sm-2 ng-scope" >
-                            <div class="vc_column-inner ">
-                                <div class="wpb_wrapper">
-                                    <div class="wpb_single_image wpb_content_element vc_align_center">
-                                        <figure class="wpb_wrapper vc_figure" >
-                                            <a rel="prettyPhoto[gallery1]" href="/data/product/product_162.jpg" title="№1" class="vc_single_image-wrapper vc_box_border_grey test">
-                                                <img src="/data/product/product_162.jpg" height="202" width="300" class="vc_single_image-img attachment-medium">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            <div  style="padding: 0 10px" class="wpb_column vc_column_container vc_col-sm-2 ng-scope" >
-                            <div class="vc_column-inner ">
-                                <div class="wpb_wrapper">
-                                    <div class="wpb_single_image wpb_content_element vc_align_center">
-                                        <figure class="wpb_wrapper vc_figure" >
-                                            <a rel="prettyPhoto[gallery1]" href="/data/product/product_162.jpg" title="№1" class="vc_single_image-wrapper vc_box_border_grey test">
-                                                <img src="/data/product/product_162.jpg" height="202" width="300" class="vc_single_image-img attachment-medium">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            <div  style="padding: 0 10px" class="wpb_column vc_column_container vc_col-sm-2 ng-scope" >
-                            <div class="vc_column-inner ">
-                                <div class="wpb_wrapper">
-                                    <div class="wpb_single_image wpb_content_element vc_align_center">
-                                        <figure class="wpb_wrapper vc_figure" >
-                                            <a rel="prettyPhoto[gallery1]" href="/data/product/product_162.jpg" title="№1" class="vc_single_image-wrapper vc_box_border_grey test">
-                                                <img src="/data/product/product_162.jpg" height="202" width="300" class="vc_single_image-img attachment-medium">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        </div>
 
                     <div class="textwidget">
-                        <center><input value='<s:text name="header.promotions">Специальные АКЦИИ</s:text>'
-                                       type="button"></center>
+                        <center>
+                            <input value='<s:text name="header.promotions">Специальные АКЦИИ</s:text>' type="button"/>
+                        </center>
                     </div>
                 </aside>

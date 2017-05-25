@@ -28,13 +28,10 @@ public class PriceListAction extends BaseAction {
 
 
     public String loadPriceList() {
-
         try {
-
             priceLists = priceListInfoManager.getBy(getToLang());
-
-
         } catch (InternalErrorException e) {
+            logger.error(e);
         }
         return SUCCESS;
     }

@@ -99,7 +99,7 @@
 
                                         <form id="sortForm" action="admin-sketches-sort.htm" method="post">
                                             <tbody id="sortable">
-                                            <tr ng-repeat="item in $data" ng-class-even="'tbl-row-even'"
+                                            <tr id="row_{{item.id}}" ng-repeat="item in $data" ng-class-even="'tbl-row-even'"
                                                 ng-class="{'tbl_row_even': $even, 'tbl_row_odd': $odd }">
                                                 <td ng-show="columns[0].visible" sortable="columns[0].field"
                                                     class="sort" data-value="{{item.id}}">

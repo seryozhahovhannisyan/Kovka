@@ -150,10 +150,21 @@
             <result name="success" type="redirect">admin-price-list.htm</result>
         </action>
 
-        <action name="admin-work-scheme">
+        <action name="admin-work-scheme" class="WorkSchemeInfoAction" method="list">
             <result name="success" type="tiles">admin-work-scheme</result>
         </action>
 
+        <action name="admin-work-scheme-add" class="WorkSchemeInfoAction" method="add">
+            <result name="success" type="redirect">admin-work-scheme.htm</result>
+        </action>
+
+        <action name="admin-work-scheme-edit" class="WorkSchemeInfoAction" method="update">
+            <result name="success" type="redirect">admin-work-scheme.htm</result>
+        </action>
+
+        <action name="admin-work-scheme-delete" class="WorkSchemeInfoAction" method="delete">
+            <result name="success" type="redirect">admin-work-scheme.htm</result>
+        </action>
 
     </package>
 

@@ -62,7 +62,7 @@
             <result name="success" type="tiles">sketch-single</result>
         </action>
 
-        <action name="how-we-work"  class="BaseAction">
+        <action name="how-we-work" class="WorkSchemeAction" method="loadWorkScheme">
             <result name="success" type="tiles">how-we-work</result>
         </action>
 

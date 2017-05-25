@@ -16,6 +16,11 @@
         <property name="priceListInfoManager" ref="PriceListInfoManager"/>
     </bean>
 
+    <bean id="WorkSchemeAction" class="com.kovka.web.action.guest.WorkSchemeAction" scope="prototype">
+        <property name="aboutManager" ref="AboutManager"/>
+        <property name="workSchemeInfoManager" ref="WorkSchemeInfoManager"/>
+    </bean>
+
     <bean id="MachineAction" class="com.kovka.web.action.guest.MachineAction" scope="prototype">
         <property name="dataManager" ref="FileDataManager"/>
         <property name="dto" ref="ResponseDto"/>

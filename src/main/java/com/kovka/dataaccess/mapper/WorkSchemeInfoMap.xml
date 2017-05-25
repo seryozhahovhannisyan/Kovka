@@ -19,11 +19,13 @@
     <insert id="add" parameterType="WorkSchemeInfo">
 
         INSERT INTO work_scheme_info(
+        `key`,
         `parent_id`,
         `lang`,
         `name`,
         `description`
         ) VALUE (
+        #{key},
         #{parentId},
         #{language},
         #{name},
@@ -68,7 +70,7 @@
 
     <delete id="delete" parameterType="_long">
         DELETE FROM work_scheme_info
-        WHERE id = #{id}
+        WHERE `key` = #{key}
     </delete>
 
 </mapper>

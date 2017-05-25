@@ -10,6 +10,7 @@ import java.util.List;
 public class WorkSchemeInfo {
 
     private Long id;
+    private Long key;
     private Long parentId;
     private Language language;
 
@@ -69,5 +70,13 @@ public class WorkSchemeInfo {
 
     public void setChildren(List<WorkSchemeInfo> children) {
         this.children = children;
+    }
+
+    public Long getKey() {
+        return key;
+    }
+
+    public void setKey(Long key) {
+        this.key = key;
     }
 }

@@ -197,7 +197,7 @@
         <if test="language != null">
             AND si.lang != #{language}
         </if>
-        ORDER BY s.`order` DESC
+        ORDER BY s.`order`
     </select>
 
     <select id="getNameImages"
@@ -208,7 +208,7 @@
         si.`name` `name`
         FROM sketch s, sketch_info si
         WHERE si.sketch_id = s.id AND si.`lang` = #{language}
-        ORDER BY s.`order` DESC
+        ORDER BY s.`order`
     </select>
 
     <select id="getCountByParams"

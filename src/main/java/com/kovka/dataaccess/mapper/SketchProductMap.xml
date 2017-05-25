@@ -43,7 +43,7 @@
             resultMap="rmSketchProduct"
             parameterType="_long">
 
-        SELECT * FROM sketch_product WHERE sketch_id = #{sketchId} ORDER BY `order` DESC
+        SELECT * FROM sketch_product WHERE sketch_id = #{sketchId} ORDER BY `order`
 
     </select>
 

@@ -22,14 +22,19 @@ public class WorkSchemeInfoAction extends BaseAction {
     private static final Logger logger = Logger.getLogger(WorkSchemeInfoAction.class.getSimpleName());
     public List<WorkSchemeInfo> workSchemeInfos;
     private IWorkSchemeInfoManager workSchemeInfoManager;
-    //add
+    //all count
+    private long dataCount;
+    //add/edit
     private String name;
     private String description;
     //update
     private String id;
+    //delete
+    private String key;
 
     public String add() {
 
+        Long key = System.currentTimeMillis();
         if (Utils.isEmpty(name)) {
             logger.info("name is  required");
             session.put(MESSAGE, "name is requeired");
@@ -41,9 +46,9 @@ public class WorkSchemeInfoAction extends BaseAction {
         for (Language language : Language.values()) {
             WorkSchemeInfo info = new WorkSchemeInfo();
             info.setLanguage(language);
+            info.setKey(key);
             info.setName(name.trim());
             info.setDescription(description.trim());
-
             infos.add(info);
         }
         try {
@@ -59,6 +64,9 @@ public class WorkSchemeInfoAction extends BaseAction {
     public String list() {
         try {
             workSchemeInfos = workSchemeInfoManager.getAll();
+            if(!Utils.isEmpty(workSchemeInfos)){
+                dataCount = workSchemeInfos.size();
+            }
         } catch (InternalErrorException e) {
             logger.error(e);
             session.put(MESSAGE, "Internal Server Exception");
@@ -96,7 +104,7 @@ public class WorkSchemeInfoAction extends BaseAction {
     public String delete() {
 
         try {
-            workSchemeInfoManager.delete(DataConverter.convertToLong(id));
+            workSchemeInfoManager.delete(DataConverter.convertToLong(key));
         } catch (InternalErrorException e) {
             logger.error(e);
             session.put(MESSAGE, "Internal Server Exception");
@@ -119,6 +127,37 @@ public class WorkSchemeInfoAction extends BaseAction {
      *##################################################################################################################
      */
 
+    public List<WorkSchemeInfo> getWorkSchemeInfos() {
+        return workSchemeInfos;
+    }
+
+    public long getDataCount() {
+         return dataCount;
+     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public void setWorkSchemeInfoManager(IWorkSchemeInfoManager workSchemeInfoManager) {
         this.workSchemeInfoManager = workSchemeInfoManager;
