@@ -1,0 +1,80 @@
+Dear Seryozha Hovhannisyan (MNG Kovka),
+
+PLEASE READ THIS EMAIL IN FULL AND PRINT IT FOR YOUR RECORDS
+
+Thank you for your order from us! Your hosting account has now been setup and this email contains all the information you will need in order to begin using your account.
+
+If you have requested a domain name during sign up, please keep in mind that your domain name will not be visible on the internet instantly. This process is called propagation and can take up to 48 hours. Until your domain has propagated, your website and email will not function, we have provided a temporary url which you may use to view your website and upload files in the meantime.
+
+New Account Information
+
+Hosting Package: 15 Days Free Trial Java Private Tomcat Hosting
+Domain: mngkovka.ru
+First Payment Amount: $0.00 USD
+Recurring Amount: $0.00 USD
+Billing Cycle: Free Account
+Next Due Date: -
+
+Login Details
+
+Username: mngkovka
+Password: K!xr6?~221gYk%^
+
+Control Panel URL: https://xjdz4.dailyrazor.com:2083
+Once your domain name's dns is pointing to our server, you may also use http://www.mngkovka.ru:2082
+
+Server Information
+
+Server Name: xjdz4
+Server IP: 162.253.124.18
+
+If you are using an existing domain with your new hosting account, you will need to update your domain's nameservers with your domain registration company to point to the nameservers listed below.
+
+Nameserver 1: xjns7.dailyrazor.com (162.253.124.18)
+Nameserver 2: xjns8.dailyrazor.com (162.253.124.19)
+
+Uploading Your Website
+
+Temporarily you may use one of the addresses given below to manage your web site:
+
+Temporary FTP Hostname: 162.253.124.18
+Temporary Webpage URL: http://162.253.124.18/~mngkovka/
+
+And once your domain has propagated you may use the details below:
+
+FTP Hostname: mngkovka.ru
+Webpage URL: http://www.mngkovka.ru
+
+Email Settings
+
+For email accounts that you setup, you should use the following connection details in your email program:
+
+POP3 Host Address: mail.mngkovka.ru
+SMTP Host Address: mail.mngkovka.ru
+Username: The email address you are checking email for
+Password: As specified in your control panel
+
+Tomcat Server Information
+
+We're in the process of configuring Tomcat Application Server for your account. If you ordered a Private Tomcat hosting plan, you'll be getting another email within 1 hour with your Private Tomcat Server details. If you ordered a Shared Tomcat hosting plan, we will notify you within 1 hours once your domain name has been added to the Shared Tomcat instance.
+
+Billing System/Client Area:
+
+Below is the login credential you can use to access our client area:
+
+Email Address: seryozha.hovhannisyan@gmail.com
+Password: **********
+
+To login, visit https://billing.dailyrazor.com/gateway/
+Have Questions? Need Support?
+
+Visit us online and open a support ticket via https://support.dailyrazor.com/index.php?/default_import/Tickets/Submit - we're available to serve 24/7/365.
+
+Thank you for choosing DailyRazor for your web hosting needs.
+
+DailyRazor.com
+9320 Annapolis Road
+Suite 310
+Lanham, MD 20706
+Phone: 1-800-975-6814
+Web: www.DailyRazor.com
