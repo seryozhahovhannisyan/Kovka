@@ -22,32 +22,31 @@
 
                         <header class="entry-header">
 
-                            <h1 class="entry-title"><s:text name="menu.our.works">Наши работы</s:text></h1>
+                            <h1 class="entry-title"><s:text name="menu.special.offer">Специальное предложение</s:text></h1>
 
 
                         </header><!-- .entry-header -->
 
-                        <gallery class="entry-content" category="<%=Category.MAIN.getKey()%>">
+                        <gallery category="<%=Category.OFFER.getKey()%>" class="entry-content">
 
                             <div class="vc_row wpb_row vc_row-fluid" ng-repeat="gallery in galleries">
                                 <div class="wpb_column vc_column_container vc_col-sm-12">
                                     <div class="vc_column-inner ">
                                         <div class="wpb_wrapper">
-                                            <div ng-if="$first" class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_text_column wpb_content_element ">
                                                 <div class="wpb_wrapper">
-                                                    <h2 style="text-align: center;">
-                                                        <em>
-                                                        <strong>
-                                                            <s:text name="page.our.works.content">Фотоальбом наших работ постоянно пополняется, здесь представлен далеко не весь список выполненных заказов</s:text>
-                                                        </strong>
-                                                        </em>
-                                                    </h2>
-
+                                                    <h2 style="text-align: center;">{{gallery.title}}</h2>
                                                 </div>
                                             </div>
                                             <div class="wpb_text_column wpb_content_element ">
                                                 <div class="wpb_wrapper">
-                                                    <h2 style="text-align: center;">{{gallery.title}}</h2>
+                                                    <h2 style="text-align: center;">
+                                                        <em>
+                                                            <strong>
+                                                                {{gallery.description}}
+                                                            </strong>
+                                                        </em>
+                                                    </h2>
                                                 </div>
                                             </div>
                                             <!-- vc_grid start -->
@@ -55,7 +54,7 @@
                                                 <div class="vc_grid-container vc_clearfix wpb_content_element vc_media_grid">
                                                     <div class="vc_grid vc_row vc_grid-gutter-5px vc_pageable-wrapper vc_hook_hover">
                                                         <div class="vc_pageable-slide-wrapper vc_clearfix">
-                                                            <div  ng-repeat="img in gallery.images" class="vc_grid-item vc_clearfix vc_col-sm-2 vc_grid_filter-item vc_visible-item fadeIn animated">
+                                                            <div ng-repeat="img in gallery.images" class="vc_grid-item vc_clearfix vc_col-sm-2 vc_grid_filter-item vc_visible-item fadeIn animated">
                                                                 <a rel="prettyPhoto[machine]" ng-href="{{img}}" title="" ng-init="$last?pretty_machine():null"
                                                                    class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link">
                                                                     <img width="100%" ng-src="{{img}}"/>

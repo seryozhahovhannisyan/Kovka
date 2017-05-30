@@ -24,7 +24,7 @@ public interface SketchMap {
 
     public List<Sketch> getSampleByParams(Map<String, Object> params);
 
-    public List<Sketch> getNameImages(Language language);
+    public List<Sketch> getNameImages(Map<String, Object> params);
 
     public long getCountByParams(Map<String, Object> params);
 

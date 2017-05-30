@@ -54,7 +54,6 @@
         </action>
 
         <!--admin SketchAction-->
-
         <action name="admin-sketches" class="SketchAction" method="listView">
             <result name="success" type="tiles">admin-sketches</result>
         </action>

@@ -48,6 +48,14 @@ public class DataConverter {
                     params.put("type", responseMessage.get("type").toString());
                 }
 
+                if (responseMessage.get("category") != null) {
+                    String category = responseMessage.get("category").toString();
+                    if("1".equals(category)){
+                        params.put("machine", 1);
+                    }
+                    params.put("category", category);
+                }
+
                 if (responseMessage.get("orderBy") != null && responseMessage.get("orderType") != null) {
                     params.put("orderBy", responseMessage.get("orderBy"));
                     params.put("orderType", responseMessage.get("orderType"));

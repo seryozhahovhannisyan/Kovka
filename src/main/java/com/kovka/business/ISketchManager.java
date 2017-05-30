@@ -26,7 +26,7 @@ public interface ISketchManager {
 
     public List<Sketch> getSampleByParams(Map<String, Object> params) throws InternalErrorException;
 
-    public List<Sketch> getNameImages(Language language) throws InternalErrorException;
+    public List<Sketch> getNameImages(Map<String, Object> params) throws InternalErrorException;
 
     public long getCountByParams(Map<String, Object> params) throws InternalErrorException;
 

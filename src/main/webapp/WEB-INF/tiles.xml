@@ -134,6 +134,14 @@
         <put-attribute name="content" value="content-our-works" type="definition"/>
     </definition>
 
+    <definition name="content-special-offer" template="/WEB-INF/guest/special-offer.jsp">
+        <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
+    </definition>
+
+    <definition name="special-offer" extends="web-guest">
+        <put-attribute name="content" value="content-special-offer" type="definition"/>
+    </definition>
+
     <definition name="content-prices" template="/WEB-INF/guest/prices.jsp">
         <put-attribute name="right" value="/WEB-INF/guest/layout/right.jsp"/>
     </definition>

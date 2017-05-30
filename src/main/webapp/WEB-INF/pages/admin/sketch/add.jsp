@@ -1,3 +1,4 @@
+<%@ page import="com.kovka.common.data.lcp.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -13,6 +14,17 @@
         $("#descriptionVal").val($('.summernote').summernote('code'));
         $('#sketchInfoForm').submit()
     }
+
+    function description_block(this_) {
+        var val = $(this_).val();
+        alert(val)
+        if(val == '<%=Category.MAIN.getKey()%>'){
+           $(".description_block").show();
+        } else {
+            $(".description_block").hide();
+        }
+    }
+
 </script>
 
 
@@ -34,6 +46,18 @@
                           class="form-horizontal form-label-left"
                           novalidate="">
 
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Category <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select name="category" class="form-control"  onchange="description_block(this)">
+                                    <option selected="selected" value="<%=Category.MAIN.getKey()%>"><s:text name="admin.page.sketch.category.main">Главный</s:text></option>
+                                    <option value="<%=Category.OFFER.getKey()%>"><s:text name="admin.page.sketch.category.offer">Предложения</s:text></option>
+                                    <%--<option value="<%=Category.ARTICLE.getKey()%>"><s:text name="admin.page.sketch.category.article">Статья</s:text></option>--%>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span
                                     class="required">*</span>
@@ -61,7 +85,7 @@
                                        class="form-control col-md-7 col-xs-12" type="text">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group description_block" >
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description <span
                                     class="required">*</span>
                             </label>

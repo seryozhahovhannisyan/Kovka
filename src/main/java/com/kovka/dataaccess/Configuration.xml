@@ -41,6 +41,7 @@
         <typeAlias type="com.kovka.common.data.WorkSchemeInfo" alias="WorkSchemeInfo"/>
 
         <typeAlias type="com.kovka.common.data.lcp.Language" alias="Language"/>
+        <typeAlias type="com.kovka.common.data.lcp.Category" alias="Category"/>
 
 
     </typeAliases>
@@ -50,6 +51,9 @@
                      javaType="com.kovka.common.data.lcp.Language"/>
         <typeHandler handler="com.kovka.dataaccess.extension.StatusHandler"
                      javaType="com.kovka.common.data.lcp.Status"/>
+        <typeHandler handler="com.kovka.dataaccess.extension.CategoryHandler"
+                     javaType="com.kovka.common.data.lcp.Category"/>
+
     </typeHandlers>
 
     <mappers>

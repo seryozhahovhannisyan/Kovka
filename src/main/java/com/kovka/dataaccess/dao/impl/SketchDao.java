@@ -107,9 +107,9 @@ public class SketchDao implements ISketchDao {
     }
 
     @Override
-    public List<Sketch> getNameImages(Language language) throws DatabaseException {
+    public List<Sketch> getNameImages(Map<String, Object> params) throws DatabaseException {
         try {
-            return map.getNameImages(language);
+            return map.getNameImages(params);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }

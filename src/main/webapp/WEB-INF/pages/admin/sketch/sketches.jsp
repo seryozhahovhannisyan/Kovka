@@ -25,7 +25,8 @@
         {title: 'shortDesc', field: 'shortDesc', visible: true},
         {title: 'title', field: 'title', visible: true},
         {title: 'status', field: 'status', visible: true},
-        {title: 'order', field: 'order', visible: true}
+        {title: 'order', field: 'order', visible: true},
+        {title: 'category', field: 'category', visible: true}
     ];
     $( function() {
         $( "#sortable" ).sortable();
@@ -118,6 +119,9 @@
 
                                                 <td ng-show="columns[4].visible" sortable="columns[4].field">
                                                     {{item.order ? item.order : '-'}}
+                                                </td>
+                                                <td ng-show="columns[5].visible" sortable="columns[5].field">
+                                                    {{item.category ? item.category : '-'}}
                                                 </td>
                                                 <td class="edit_td">
                                                     <a data-type="sketch" data-id="{{item.id}}"

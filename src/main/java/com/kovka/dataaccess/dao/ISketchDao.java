@@ -26,7 +26,7 @@ public interface ISketchDao {
 
     public List<Sketch> getSampleByParams(Map<String, Object> params) throws DatabaseException;
 
-    public List<Sketch> getNameImages(Language language) throws DatabaseException;
+    public List<Sketch> getNameImages(Map<String, Object> params) throws DatabaseException;
 
     public long getCountByParams(Map<String, Object> params) throws DatabaseException;
 

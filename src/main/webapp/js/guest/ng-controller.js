@@ -529,10 +529,23 @@ kovkaApp.directive('gallery', function ($http) {
                 if (content_loading != null) {
                     content_loading.style.display = '';
                 }
+
+                var requestJson = {};
+                var category = attr.category;
+                if(category == null){
+                    category = 1;
+                }
+
+                requestJson.category = category;
+                requestJson = JSON.stringify(requestJson);
+
                 $http({
                     method: 'post',
                     url: '/load-galleries.htm',
-                    dataType: 'json'
+                    dataType: 'json',
+                    data: {
+                        requestJson: requestJson
+                    },
                 }).then(
                     function (response) {
                         var result = response.data.dto;
@@ -540,7 +553,7 @@ kovkaApp.directive('gallery', function ($http) {
                             var dtos = result.response.data;
                             for (var i = 0; i < dtos.length; i++) {
                                 var t = dtos[i];
-                                $scope['galleries'].push({title : t.name, images : t.images});
+                                $scope['galleries'].push({title : t.name, description : t.description, images : t.images});
                             }
                         } else {
                             //$("#emptydata").show();

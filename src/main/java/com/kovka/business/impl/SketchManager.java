@@ -1,7 +1,6 @@
 package com.kovka.business.impl;
 
 import com.kovka.business.ISketchManager;
-import com.kovka.common.data.FileData;
 import com.kovka.common.data.Sketch;
 import com.kovka.common.data.SketchInfo;
 import com.kovka.common.data.lcp.Language;
@@ -80,8 +79,8 @@ public class SketchManager implements ISketchManager {
     @Override
     public Sketch getFullCurrentLangById(Long id, Language language) throws InternalErrorException, EntityNotFoundException {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("id",id);
-        params.put("language",language);
+        params.put("id", id);
+        params.put("language", language);
 
         try {
             return dao.getFullCurrentLangById(params);
@@ -93,8 +92,8 @@ public class SketchManager implements ISketchManager {
     @Override
     public Sketch getPreview(Long id, Language language) throws InternalErrorException {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("id",id);
-        params.put("language",language);
+        params.put("id", id);
+        params.put("language", language);
         try {
             return dao.getPreview(params);
         } catch (DatabaseException e) {
@@ -114,8 +113,8 @@ public class SketchManager implements ISketchManager {
     @Override
     public Sketch getNext(Long id, Language language) throws InternalErrorException {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("id",id);
-        params.put("language",language);
+        params.put("id", id);
+        params.put("language", language);
         try {
             return dao.getNext(params);
         } catch (DatabaseException e) {
@@ -131,10 +130,11 @@ public class SketchManager implements ISketchManager {
             throw new InternalErrorException(e);
         }
     }
- @Override
-    public List<Sketch> getNameImages(Language language) throws InternalErrorException {
+
+    @Override
+    public List<Sketch> getNameImages(Map<String, Object> params) throws InternalErrorException {
         try {
-            return dao.getNameImages(language);
+            return dao.getNameImages(params);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }
@@ -154,7 +154,7 @@ public class SketchManager implements ISketchManager {
     public void update(Sketch data) throws InternalErrorException, EntityNotFoundException {
         try {
             List<SketchInfo> infosForEdit = data.getInfos();
-            for(SketchInfo info :infosForEdit){
+            for (SketchInfo info : infosForEdit) {
                 infoDao.update(info);
             }
         } catch (DatabaseException e) {
@@ -166,7 +166,7 @@ public class SketchManager implements ISketchManager {
     public void sort(List<Long> ides) throws InternalErrorException, EntityNotFoundException {
         try {
             int order = 1;
-            for(Long id : ides) {
+            for (Long id : ides) {
                 Sketch data = dao.getSampleById(id);
                 data.setId(id);
                 data.setOrder(order);

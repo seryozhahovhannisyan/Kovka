@@ -21,7 +21,7 @@ $(function () {
         // General settings
         runtimes: 'html5,flash,silverlight,html4',
         browse_button: 'pickfiles', // you can pass in id...
-        url: "/admin-upload-admin.htm?sketchId=<s:property value='sketchId'/>",
+        url: "/admin-upload-sketch.htm?sketchId=<s:property value='sketchId'/>",
 
         // Maximum file size
         max_file_size: '10mb',

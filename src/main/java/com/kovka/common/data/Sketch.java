@@ -1,5 +1,6 @@
 package com.kovka.common.data;
 
+import com.kovka.common.data.lcp.Category;
 import com.kovka.common.data.lcp.Status;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public class Sketch {
 
     private Long id;
 
+    private Category category;
     private FileData mainImage;
     private SketchInfo currentInfo;
     private List<SketchInfo> infos;
@@ -33,6 +35,14 @@ public class Sketch {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public SketchInfo getCurrentInfo() {

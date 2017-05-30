@@ -3,6 +3,7 @@ package com.kovka.web.action.admin;
 import com.kovka.business.ISketchManager;
 import com.kovka.common.data.Sketch;
 import com.kovka.common.data.SketchInfo;
+import com.kovka.common.data.lcp.Category;
 import com.kovka.common.data.lcp.Language;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
@@ -34,8 +35,9 @@ public class SketchAction extends BaseAction {
     public List<SketchInfo> infosForEdit;
     // for delete
     private Long id;
-     private Long mainImageId;
+    private Long mainImageId;
     // for add
+    private String category;
     private String name;
     private String shortDesc;
     private String title;
@@ -51,17 +53,25 @@ public class SketchAction extends BaseAction {
 
         if (Utils.isEmpty(name) ||
                 Utils.isEmpty(shortDesc) ||
-                Utils.isEmpty(title) ||
-                Utils.isEmpty(description)) {
+                Utils.isEmpty(title)) {
             logger.info("Empty incoming data");
             return INPUT;
         }
 
-        description =  description.replaceAll("vc_col-sm-6","vc_col-sm-12")
-                .replaceAll("vc_col-sm-8","vc_col-sm-12")
-                .replaceAll("vc_col-sm-10","vc_col-sm-12");
+        description = description.replaceAll("vc_col-sm-6", "vc_col-sm-10")
+                .replaceAll("vc_col-sm-8", "vc_col-sm-10")
+                .replaceAll("vc_col-sm-12", "vc_col-sm-10");
+
+        Category cat = Category.MAIN;
+
+        try {
+            cat = Category.valueOf(Integer.valueOf(category));
+        } catch (Exception e) {
+            logger.warn(e);
+        }
 
         Sketch sketch = new Sketch();
+        sketch.setCategory(cat);
         sketch.setStatus(Status.ACTIVE);
 
         List<SketchInfo> infos = new ArrayList<SketchInfo>();
@@ -76,6 +86,7 @@ public class SketchAction extends BaseAction {
         }
         sketch.setInfos(infos);
         try {
+
             sketchManager.add(sketch);
         } catch (InternalErrorException e) {
             logger.error(e);
@@ -97,7 +108,6 @@ public class SketchAction extends BaseAction {
     }
 
     public String listView() {
-
         try {
             Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
             dataCount = sketchManager.getCountByParams(params);
@@ -218,6 +228,14 @@ public class SketchAction extends BaseAction {
      *                                  GETTERS & SETTERS
      *##################################################################################################################
      */
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public Sketch getSketch() {
         return sketch;

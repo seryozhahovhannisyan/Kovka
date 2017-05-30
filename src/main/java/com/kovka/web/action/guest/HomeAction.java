@@ -6,6 +6,7 @@ import com.kovka.common.data.FileData;
 import com.kovka.common.data.Sketch;
 import com.kovka.common.data.SketchInfo;
 import com.kovka.common.data.SketchProduct;
+import com.kovka.common.data.lcp.Category;
 import com.kovka.common.data.lcp.Status;
 import com.kovka.common.exception.DataParseException;
 import com.kovka.common.exception.EntityNotFoundException;
@@ -67,6 +68,7 @@ public class HomeAction extends BaseAction {
             long count = Long.valueOf(params.get("count").toString());
             params.put("page", (page - 1) * count);
             params.put("language",getToLang());
+            params.put("category", Category.MAIN.getKey());
             List<Sketch> sketches = sketchManager.getSampleByParams(params);
 
             List<BoxDto> boxDtos = new ArrayList<BoxDto>();
@@ -118,7 +120,10 @@ public class HomeAction extends BaseAction {
 
         try {
 
-            List<Sketch> sketches = sketchManager.getNameImages(getToLang());
+            Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
+            params.put("language", getToLang());
+
+            List<Sketch> sketches = sketchManager.getNameImages(params);
 
             List<BoxDto> boxDtos = new ArrayList<BoxDto>();
             for (Sketch sketch : sketches) {
@@ -129,6 +134,7 @@ public class HomeAction extends BaseAction {
                     dto.setId("" + sketch.getId());
 
                     dto.setName(currentInfo.getName());
+                    dto.setDescription(currentInfo.getShortDesc());
                     List<FileData> fileDatas = sketch.getImages();
                     if (!Utils.isEmpty(fileDatas)) {
                         for(FileData img : fileDatas){
@@ -145,28 +151,33 @@ public class HomeAction extends BaseAction {
                 }
             }
 
+            if(params.containsKey("machine")){
+                BoxDto boxDto = new BoxDto();
+                boxDto.setId("-1");
 
-            BoxDto boxDto = new BoxDto();
-            boxDto.setId("-1");
+                boxDto.setName(getText("admin.menu.machine"));
 
-            boxDto.setName(getText("admin.menu.machine"));
-            List<FileData> fileDatas = dataManager.getMachineData();
-            if (!Utils.isEmpty(fileDatas)) {
-                for(FileData img : fileDatas){
-                    String path = img.getFileName();
-                    if (isMachineImageExist(path)) {
-                        path = getMachineImage(path);
-                        path.replaceAll("\\\\", "/");
-                        path.replaceAll("//", "/");
-                        boxDto.addImage(path);
+                List<FileData> fileDatas = dataManager.getMachineData();
+                if (!Utils.isEmpty(fileDatas)) {
+                    for(FileData img : fileDatas){
+                        String path = img.getFileName();
+                        if (isMachineImageExist(path)) {
+                            path = getMachineImage(path);
+                            path.replaceAll("\\\\", "/");
+                            path.replaceAll("//", "/");
+                            boxDto.addImage(path);
+                        }
                     }
                 }
+                boxDtos.add(boxDto);
             }
-            boxDtos.add(boxDto);
 
             dto.addResponse("data", boxDtos);
             dto.setResponseStatus(ResponseStatus.SUCCESS);
         } catch (InternalErrorException e) {
+            logger.error(e);
+            dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
+        } catch (DataParseException e) {
             logger.error(e);
             dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
         }

@@ -171,7 +171,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
 
         var href = "#";
         if (id_type == "sketch") {
-            href = "/admin-sketch-edit.htm?id=" + id;
+            href = "/admin-sketch.htm?id=" + id;
         }
         window.location = href;
 

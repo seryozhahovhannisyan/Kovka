@@ -58,10 +58,14 @@
     }
 
     function about_entry(){
-        window.open(
-                '<%=request.getContextPath()%>/about.htm'
-        );
+        window.location  = '<%=request.getContextPath()%>/about.htm';
     }
+
+    function special_offer_entry(){
+        window.location  = '<%=request.getContextPath()%>/special-offer.htm';
+    }
+
+
 
 </script>
 
@@ -234,7 +238,7 @@
 
                     <div class="textwidget">
                         <center>
-                            <input value='<s:text name="header.promotions">Специальные АКЦИИ</s:text>' type="button"/>
+                            <input value='<s:text name="header.promotions">Специальные АКЦИИ</s:text>' type="button" onclick="special_offer_entry()"/>
                         </center>
                     </div>
                 </aside>
