@@ -22,12 +22,12 @@
 
         }
     </style>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
 
         window.onload = function () {
             window.location = "<%=request.getContextPath()%>/home.htm";
         }
-    </script>
+    </script>--%>
 </head>
 <body>
 <div class="logo_div_main_start">

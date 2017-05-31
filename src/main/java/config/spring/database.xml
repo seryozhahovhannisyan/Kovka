@@ -7,7 +7,7 @@
         <property name="location" value="classpath:config/db-configs.properties"/>
     </bean>
 
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${database.driver}"/>
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
@@ -15,9 +15,9 @@
         <property name="maxActive" value="${database.max.active}"/>
         <property name="maxWait" value="10000"/>
         <property name="validationQuery" value="select 1"/>
-    </bean>-->
+    </bean>
 
-    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+    <!--<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="poolName" value="springHikariCP" />
         <property name="connectionTestQuery" value="SELECT 1" />
         <property name="dataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" />
@@ -26,7 +26,7 @@
         <property name="maximumPoolSize" value="75" />
         <property name="connectionTimeout" value="7000" />
         <property name="maxLifetime" value="60000" />
-        <!--<property name="readOnly" value="true" />-->
+        &lt;!&ndash;<property name="readOnly" value="true" />&ndash;&gt;
 
         <property name="dataSourceProperties">
             <props>
@@ -41,11 +41,11 @@
                 <prop key="useServerPrepStmts">true</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+    <!--<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
         <constructor-arg ref="hikariConfig" />
-    </bean>
+    </bean>-->
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>

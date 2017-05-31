@@ -1,0 +1,4 @@
+db  :mngkovka_kovka
+host:162.253.124.18
+user:mngkovka_root
+pasw:pA)skPGlb2#%

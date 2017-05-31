@@ -122,6 +122,7 @@ public class Initializer implements ServletContextListener {
             setupInfo = (SetupInfo) applicationContext.getBean("setupInfo");
             imageSizeLoader = (ImageSizeLoader) applicationContext.getBean("imageSizeLoader");
 
+            logger.info("contextPath " +  contextPath);
 
             if (setupInfo.getSetup().equals(DEV)) {
 

@@ -244,11 +244,6 @@ public class SketchAction extends BaseAction {
     public List<SketchInfo> getInfosForEdit() {
         return infosForEdit;
     }
-
-    public void setSortIdes(String sortIdes) {
-        this.sortIdes = sortIdes;
-    }
-
     public void setInfosForEdit(List<SketchInfo> infosForEdit) {
         this.infosForEdit = infosForEdit;
     }
