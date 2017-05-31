@@ -590,9 +590,9 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <db.username>root</db.username>
-                <db.password>home</db.password>
-                <db.url>jdbc:mysql://localhost:3306/kovka?useUnicode=yes&amp;autoReconnect=true&amp;characterEncoding=UTF8</db.url>
+                <db.username>mngkovka_root</db.username>
+                <db.password>SQnbihXLi[h3</db.password>
+                <db.url>jdbc:mysql://192.69.210.154:3306/mngkovka_kovka?useUnicode=yes&amp;autoReconnect=true&amp;characterEncoding=UTF8</db.url>
                 <log.file.path>${project.basedir}/kovka/log.log</log.file.path>
                 <log.level>DEBUG</log.level>
                 <setup.val>dev</setup.val>

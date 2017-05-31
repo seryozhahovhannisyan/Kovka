@@ -1,0 +1,102 @@
+Dear Seryozha HOvhannisyan,
+
+PLEASE READ THIS EMAIL IN FULL AND PRINT IT FOR YOUR RECORDS
+
+Thank you for your order from us! Your hosting account has now been setup and this email contains all the information you will need in order to begin using your account.
+
+If you have requested a domain name during sign up, please keep in mind that your domain name will not be visible on the internet instantly. This process is called propagation and can take up to 48 hours. Until your domain has propagated, your website and email will not function, we have provided a temporary url which you may use to view your website and upload files in the meantime.
+
+New Account Information
+
+Hosting Package: Medium Hosting Plan
+Domain: mngkovka.ru
+First Payment Amount: $10.00 USD
+Recurring Amount: $10.00 USD
+Billing Cycle: Monthly
+Next Due Date: 30/06/2017
+
+Login Details
+
+Username: mngkovka
+Password: 3s87tQkw3U
+
+Control Panel URL: http://192.69.210.154:2082/
+Once your domain has propogated, you may also use http://www.mngkovka.ru:2082/
+
+Server Information
+
+Server Name: cp2.astrahosting.com
+Server IP: 192.69.210.154
+
+If you are using an existing domain with your new hosting account, you will need to update the nameservers to point to the nameservers listed below.
+
+Nameserver 1: cp2.astrahosting.com (192.69.210.154)
+Nameserver 2: cp2b.astrahosting.com (192.69.210.155)
+
+Uploading Your Website
+
+Temporarily you may use one of the addresses given below to manage your web site:
+
+Temporary FTP Hostname: 192.69.210.154
+Temporary Webpage URL: http://192.69.210.154/~mngkovka/
+
+And once your domain has propagated you may use the details below:
+
+FTP Hostname: mngkovka.ru
+Webpage URL: http://www.mngkovka.ru
+
+Email Settings
+
+For email accounts that you setup, you should use the following connection details in your email program:
+
+POP3 Host Address: mail.mngkovka.ru
+SMTP Host Address: mail.mngkovka.ru
+Username: The email address you are checking email for
+Password: As specified in your control panel
+
+NGASI - Tomcat & Java Control Panel Details
+
+Tomcat  is now installing under your account and it usually takes 30 minutes to complete so please be patient.
+Tomcat  installation dir is located at /home/mngkovka/appservers/apache-tomcat-8x/.
+
+To access your NGASI Control Panel , restart JVM, install other version use this URL and login with your cPanel username and password:
+
+http://cp2.astrahosting.com:8666/zp/appservermgr/
+
+Once you do that you will be loged into NGASI manager where you can restart your tomcat under Start/Stop section or Install Jboss, Glassfish, Jetty or Oracle-OC4J
+if you want to use any of them instead Tomcat.
+
+
+To deploy your java applications you need to put them into your /home/mngkovka/appservers/apache-tomcat-8x/webapps/ROOT/ folder and they will be
+automatically deployed by your Tomcat. If application is in war file you will need to restart Tomcat from your Ngasi panel to deploy it.
+
+
+You can also use Drag-And-Drop application manager to deploy your apps. To use it login here with your cpanel username and password:
+
+https://cp2.astrahosting.com:8663/modules/uap/user/index.zul
+
+Your Tomcat is up and runing as you can see if you visit this URL http://www.mngkovka.ru/hello2.jsp
+
+To get your Tomcat runing and active under your domain name and to use it you need to change DNS servers for your domain name (if you host already registred domain name
+with us) to cp2.astrahosting.com (192.69.210.154) and cp2b.astrahosting.com (192.69.210.155)
+
+
+If you want to test your application before switching DNS servers than you need to use our DNS servers in your connection settings.
+
+You will also need to setup mappings in apache server - which file or folder names you want to forward from Apache http server to your Tomcat server. To do that
+just click on "Web Server and Hosting Manager Configuration" link on right panel inside NGASI manager. There you can route everything to your Tomcat server by
+clicking on "Enable Wildcard Map" or you can add custom mapping under "Add Path Map" field.
+
+Important NOTE: With NGASI Control Panel  you have ability to choose between five different JVM Servers.
+You can choose between Tomcat, Glassfish, Wildfly, JBoss, Jetty and Oracle-OC4J.
+All you need to do is to login into NGASI Control Panel select JVM you want, version you wand and click on Install tab.
+
+
+For further instructions for setup of your java applications use Help menu from NGASI Manager, read our FAQ
+or contact our support staff using ticket system or our live online chat.
+
+
+Thank you for choosing us.
+
+Super Java Host
+http://www.superjavahost.com/
