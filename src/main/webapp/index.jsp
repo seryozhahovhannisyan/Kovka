@@ -15,19 +15,18 @@
             right: 0;
             left: 0;
             margin: auto;
-            background-image: url("/img/guest/l5646.jpg");
+            background-image: url("<%=request.getContextPath()%>/img/guest/l5646.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: 80%;
 
         }
     </style>
-    <%--<script type="text/javascript">
-
+    <script type="text/javascript">
         window.onload = function () {
             window.location = "<%=request.getContextPath()%>/home.htm";
         }
-    </script>--%>
+    </script>
 </head>
 <body>
 <div class="logo_div_main_start">

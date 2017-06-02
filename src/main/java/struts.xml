@@ -28,7 +28,7 @@
     <constant name="struts.multipart.maxSize" value="10485760"/>
 
     <!--New Design-->
-    <include file="config/struts/custom-json-default.xml"/>
+    <!--<include file="config/struts/custom-json-default.xml"/>-->
 
     <!--New Design-->
     <include file="config/struts/guest.xml"/>

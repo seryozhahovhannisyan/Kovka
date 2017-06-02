@@ -159,7 +159,7 @@ public class Initializer implements ServletContextListener {
             logger.info("-- application started -- ");
         } catch (Exception e) {
             logger.error(e);
-            throw new RuntimeException("unable intitilize application");
+            throw new RuntimeException("unable initialize application");
         }
     }
 
@@ -213,38 +213,9 @@ public class Initializer implements ServletContextListener {
         }
     }
 
-    private void initPriceListInfo() throws InternalErrorException, EncryptException, DataParseException {
-        IAboutManager aboutManager = BeanProvider.getAboutManager();
-        List<About> abouts = aboutManager.getAll(Language.getDefault());
-        if (Utils.isEmpty(abouts)) {
-            About about = new About();
-            about.addEmail("seryozha.hovhannisyan@gmail.com");
-            about.addPhone("37493787377");
-            about.addPhone("37441658595");
-            about.setCoords("40.177200,44.503490");
-
-            about.convertEmails();
-            about.convertPhones();
-
-            List<AboutInfo> infos = new ArrayList<AboutInfo>();
-            for (Language language : Language.values()) {
-                AboutInfo aboutInfo = new AboutInfo();
-                aboutInfo.setLanguage(language);
-
-                aboutInfo.setTitle("Общество с ограниченной ответственностью «Техпромстрой»");
-                aboutInfo.setAddress("109390 г.Москва, ул. 1-я Текстильщиков д. 12/9 офис 2");
-                aboutInfo.setDescription("«Желдор Ковка» была организована в 2007 году и располагает собственными мощностями, строительными материалами и оборудованием в Железнодорожном Московской области, а так же высококвалифицированными как ИТР, так и рабочими для производства работ. Основная специализация нашего производства —  ковка различных художественных изделий, комплексный капитальный ремонт и реконструкция многоквартирных жилых домов, детских дошкольных учреждений, общеобразовательных школ, больниц и поликлиник.");
-
-                infos.add(aboutInfo);
-            }
-            about.setInfos(infos);
-            aboutManager.add(about);
-        }
-    }
-
     @Override
     public void contextDestroyed(ServletContextEvent event) {
-        deRegistering();
+//        deRegistering();
     }
 
     private void deRegistering() {
