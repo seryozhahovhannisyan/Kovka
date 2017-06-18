@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.kovka.web.util.Initializer" %><%--
   Created by IntelliJ IDEA.
   User: Serozh
   Date: 7/29/2016
@@ -15,7 +15,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>
-                        <s:text name="admin.menu.about">About</s:text>
+                        <s:text name="admin.menu.abouter">About</s:text>
                     </h2>
 
                     <div class="clearfix"></div>
@@ -212,7 +212,7 @@
 </script>
 
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1ju2JGoRHLOsDZQTktv6J8zLa6XrvUXA&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=<%=Initializer.G_MAP_KEY%>&callback=initMap">
 </script>
 
 

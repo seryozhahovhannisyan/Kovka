@@ -39,7 +39,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
         {
             total: 0,
             getData: function ($defer, params) {
-                var path = $scope.actionPath;
+                var path = '/admin-sketch-list.htm'; 
                 var orderBy = 'name';
                 var orderType = 'asc';
 
@@ -108,7 +108,7 @@ controllers.listController = ['$scope', '$http', '$filter', '$window', '$sce', '
                     }
                 ).finally(function () {
                     $scope.hide_loader();
-                    $scope.serch_val = "";
+                    $scope.search_val = "";
 
                 });
 

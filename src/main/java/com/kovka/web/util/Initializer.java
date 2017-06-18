@@ -37,6 +37,7 @@ public class Initializer implements ServletContextListener {
      */
 
     public static String DATA_FOLDER = "data";
+    public static String G_MAP_KEY = "AIzaSyAFrmcXq4r7kvf21AENjl-qxUa9hJV_8gU";
     public static ServletContext context;
     /**
      * application context object (container)
