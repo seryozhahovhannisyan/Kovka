@@ -17,6 +17,7 @@ import com.kovka.web.action.dto.ResponseStatus;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -108,12 +109,12 @@ public class SketchAction extends BaseAction {
     }
 
     public String listView() {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("count",  10);
+        params.put("page",   1);
         try {
-            Map<String, Object> params = DataConverter.convertRequestToParams(requestJson);
             dataCount = sketchManager.getCountByParams(params);
         } catch (InternalErrorException e) {
-            logger.error(e);
-        } catch (DataParseException e) {
             logger.error(e);
         }
         return SUCCESS;

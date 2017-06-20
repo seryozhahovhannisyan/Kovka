@@ -160,7 +160,7 @@
                                     </table>
                                 </div>
 
-                                <input type="hidden" ng-model="itemsCount" ng-init='itemsCount=${dataCount}'/>
+                                <%--<input type="hidden" ng-model="itemsCount" ng-init='itemsCount=${dataCount}'/>--%>
 
                             <%--</s:if>--%>
                             <%--<s:else>--%>
