@@ -35,7 +35,7 @@
                 <ul style="" class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="admin-about.htm"><s:text name="admin.menu.about">About</s:text></a></li>
+                            <li><a href="admin-about.htm"><s:text name="admin.menu.abouter">About</s:text></a></li>
                             <li><a href="admin-machine.htm"><s:text name="admin.menu.machine">Machine</s:text></a></li>
                             <li><a href="admin-price-list.htm"><s:text name="admin.menu.price">Price List</s:text></a>
                             </li>

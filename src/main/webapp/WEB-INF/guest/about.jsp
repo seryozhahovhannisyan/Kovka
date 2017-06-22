@@ -1,3 +1,4 @@
+<%@ page import="com.kovka.web.util.Initializer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
@@ -182,5 +183,5 @@
     }
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFrmcXq4r7kvf21AENjl-qxUa9hJV_8gU&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=<%=Initializer.G_MAP_KEY%>&callback=initMap">
 </script>

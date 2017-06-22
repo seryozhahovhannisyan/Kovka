@@ -73,7 +73,7 @@
 
                     <div class="row">
                         <div id="listContent">
-                            <s:if test="%{dataCount != 0}">
+                            <%--<s:if test="%{dataCount != 0}">--%>
 
                                 <div class="table_parent_div">
                                     <table id="tableId" ng-table="tableParams" show-filter="true"
@@ -98,7 +98,7 @@
                                         </tr>
                                         </thead>
 
-                                        <form id="sortForm" action="admin-sketches-sort.htm" method="post">
+                                        <form id="sortForm" action="/admin-sketches-sort.htm" method="post">
                                             <tbody id="sortable">
                                             <tr id="row_{{item.id}}" ng-repeat="item in $data" ng-class-even="'tbl-row-even'"
                                                 ng-class="{'tbl_row_even': $even, 'tbl_row_odd': $odd }">
@@ -148,7 +148,7 @@
                                                     <a data-type="sketch" data-id="{{item.id}}"
                                                        ng-click="deleteSelectedRow($event)">
                                                         <i class="fa fa_edit fa-pencil-square-o" aria-hidden="true"/>
-                                                        <s:text name="label.delete">Delete</s:text>
+                                                        Delete
                                                     </a>
                                                 </td>
 
@@ -160,13 +160,12 @@
                                     </table>
                                 </div>
 
-                                <input type="hidden" ng-model="itemsCount" ng-init='itemsCount=${dataCount}'/>
-                                <input type="hidden" ng-model="actionPath" ng-init="actionPath='admin-sketch-list.htm'"/>
+                                <%--<input type="hidden" ng-model="itemsCount" ng-init='itemsCount=${dataCount}'/>--%>
 
-                            </s:if>
-                            <s:else>
-                                <s:text name="page.info.list.data.found">Data not found</s:text>
-                            </s:else>
+                            <%--</s:if>--%>
+                            <%--<s:else>--%>
+                                <%--<s:text name="page.info.list.data.found">Data not found</s:text>--%>
+                            <%--</s:else>--%>
                         </div>
                     </div>
 

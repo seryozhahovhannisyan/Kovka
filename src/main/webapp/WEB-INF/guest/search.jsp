@@ -91,7 +91,7 @@
             <%--</div>--%><!-- .content -->
             <div class="clear"></div>
 
-            <nav class="navigation paging-navigation" role="navigation">
+            <%--<nav class="navigation paging-navigation" role="navigation">
                 <h1 class="screen-reader-text">Навигация по записям</h1>
                 <div class="pagination loop-pagination">
                     <span class="page-numbers current">1</span>
@@ -100,7 +100,7 @@
                     <a class="page-numbers" href="http://zheldor-kovka.ru/page/4/?s=a">4</a>
                     <a class="next page-numbers" href="http://zheldor-kovka.ru/page/2/?s=a">Следующие →</a></div>
                 <!-- .pagination -->
-            </nav><!-- .navigation -->
+            </nav>--%><!-- .navigation -->
         </div><!-- .site-content -->
 
         <tiles:insertAttribute name="right"/><!-- .sidebar-2 -->

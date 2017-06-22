@@ -71,7 +71,7 @@
                                 </label>
                                 <div id="title<s:property value="#info.language.key"/>"
                                      class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="infosForEdit[<s:property value="#st.index"/>].title"
+                                    <input name="infosForEdit[<s:property value="#st.index"/>].name"
                                            value='<s:property value="#info.name"/>'
                                            class="form-control col-md-7 col-xs-12" type="text"/>
                                 </div>

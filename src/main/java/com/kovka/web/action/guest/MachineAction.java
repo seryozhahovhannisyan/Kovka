@@ -49,8 +49,9 @@ public class MachineAction extends BaseAction {
                         path = getMachineImage(path);
                         path.replaceAll("\\\\", "/");
                         path.replaceAll("//", "/");
+                        machines.add(path);
                     }
-                    machines.add(path);
+
                 }
             }
 
