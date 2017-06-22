@@ -8,3 +8,5 @@ Nameserver mngkovka.ru
 http://abcdomain.am/seryozha.hovhannisyan@gmail.com
 seryozha.hovhannisyan@gmail.com
 19851986As
+
+https://console.developers.google.com/apis/credentials/key/66?authuser=1&project=my-project-1496404077793
