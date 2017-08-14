@@ -177,7 +177,7 @@
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
-            title: 'MNG Ковка',
+            title: 'NMG Ковка',
             draggable: true
         });
     }

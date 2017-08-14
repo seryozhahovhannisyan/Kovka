@@ -596,10 +596,10 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <db.username>mngkovka_root</db.username>
-                <db.password>SQnbihXLi[h3</db.password>
-                <db.url>jdbc:mysql://192.69.210.154:3306/mngkovka_kovka?useUnicode=yes&amp;autoReconnect=true&amp;characterEncoding=UTF8</db.url>
-                <log.file.path>/home/mngkovka/appservers/apache-tomcat-7x/webapps/logs/log.log</log.file.path>
+                <db.username>nmgkovka_root</db.username>
+                <db.password>DRPt+Uo-W3[t[h3</db.password>
+                <db.url>jdbc:mysql://192.69.210.154:3306/nmgkovka_kovka?useUnicode=yes&amp;autoReconnect=true&amp;characterEncoding=UTF8</db.url>
+                <log.file.path>/home/nmgkovka/appservers/apache-tomcat-7x/webapps/logs/log.log</log.file.path>
                 <!--<log.file.path>${project.basedir}/kovka/log.log</log.file.path>-->
                 <log.level>DEBUG</log.level>
                 <setup.val>dev</setup.val>

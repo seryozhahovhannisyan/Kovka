@@ -14,7 +14,7 @@ public class SetupInfo implements Serializable {
     //    public String staticDir = ".";
     public String staticDir = "";
     //    public String staticDirProd = "/var/lib/tomcat7/webapps";//".";
-    public String staticDirProd = "/home/mngkovka/appservers/apache-tomcat-7x/webapps";//".";
+    public String staticDirProd = "/home/nmgkovka/appservers/apache-tomcat-7x/webapps";//".";
     private Properties props;
 
 

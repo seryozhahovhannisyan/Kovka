@@ -71,7 +71,7 @@ public class FeedbackAction extends BaseAction {
         About about = (About) session.get("about");
         Set<String> emails = about.getEmails();
 
-        String fromEmail = "mngkovka@gmail.com";
+        String fromEmail = "nmgkovka@gmail.com";
         String fromEmailPassword = "098478877";
 
         StringBuilder context = new StringBuilder();

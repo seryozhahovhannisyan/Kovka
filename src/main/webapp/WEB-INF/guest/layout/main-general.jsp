@@ -21,10 +21,10 @@
     <meta name="description"
           content="Художественная ковка, холодная ковка, декоративная ковка в Железнодорожном, Балашихе. Собственное производство, изготовление для Москвы и Московской области">
 
-    <link rel="canonical" href="http://mngkovka.ru/">
+    <link rel="canonical" href="http://nmgkovka.ru/">
     <!-- /all in one seo pack -->
-    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента" href="http://mngkovka.ru/feed/">
-    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"  href="http://mngkovka.ru/comments/feed/">
+    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента" href="http://nmgkovka.ru/feed/">
+    <link rel="alternate" type="application/rss+xml" title="Художественная ковка » Лента комментариев"  href="http://nmgkovka.ru/comments/feed/">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" id="dcjq-mega-menu-css" href="<%=request.getContextPath()%>/css/guest/dcjq-mega-menu.css"  type="text/css" media="all">
 

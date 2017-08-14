@@ -44,7 +44,7 @@
                                                 <div class="wpb_wrapper">
                                                     <p style="text-align: center;">
                                                         <span style="color: #000000;">
-                                                            <b><s:text name="page.home.title">«MNG Ковка» давно и прочно обосновалась на рынке металлообработки</s:text></b>
+                                                            <b><s:text name="page.home.title">«NMG Ковка» давно и прочно обосновалась на рынке металлообработки</s:text></b>
                                                         </span>
                                                     </p>
                                                     <p style="text-align: justify;">
